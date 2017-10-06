@@ -1,0 +1,11 @@
+/public/storage
+storage
+/vendor
+/.idea
+Homestead.json
+Homestead.yaml
+info.php
+.env
+.htaccess
+.ftpquota
+composer.lock

@@ -1,0 +1,24 @@
+{
+  "name": "demo",
+  "description": "demo",
+  "main": "demo",
+  "authors": [
+    "demo"
+  ],
+  "license": "demo",
+  "keywords": [
+    "demo"
+  ],
+  "homepage": "demo",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "ngCart": "ngcart#^1.0.0"
+  }
+}
