@@ -7,7 +7,7 @@
     <link rel="icon" href="{{ asset('images/favicon.ico') }}">
     <link href="https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i" rel="stylesheet">
 
-    <title>Disclout</title>
+    <title>Simplify</title>
 
     <!-- Bootstrap core CSS -->
     <link href="{{ asset('css/bootstrap.css') }}" rel="stylesheet">

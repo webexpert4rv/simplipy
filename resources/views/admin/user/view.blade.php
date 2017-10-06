@@ -72,10 +72,10 @@
                                         <span id="address_data"
                                               class="profile-text">{{ @$model->address }}</span>
                                     </li>
-                                    <li><b>Address2 : </b>
+                                    {{--<li><b>Address2 : </b>
                                         <span id="zip_data"
                                               class="profile-text">{{ @$model->address2}}</span>
-                                    </li>
+                                    </li>--}}
                                     <li><b>Postal Code : </b>
                                         <span id="country_data"
                                               class="profile-text">{{ @$model->zip }}</span>

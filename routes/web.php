@@ -32,7 +32,7 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'admin'], function () {
 
     Route::group(['middleware' => 'auth.admin'], function () {
         Route::get('home', 'DashboardController@admin');
-        Route::get('/profile', 'UserController@show');
+        Route::get('/profile', 'UserController@show')->name('admin.profile');;
         Route::post('/profile/{id}/update', 'UserController@profileUpdate');
 
         //Managers
@@ -66,6 +66,13 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'admin'], function () {
         Route::post('/user/store', 'UserController@store');
         Route::get('/user/edit/{user_id}', 'UserController@edit')->name('admin.user.edit');
         Route::post('/user/update/{user_id}', 'UserController@store')->name('admin.user.update');
+
+        //Change Password
+        Route::get('/user/{id?}/change-password', 'UserController@adminChangePassword')->name('admin.change-password');
+        Route::post('/user/{id}/admin-change-password', 'UserController@adminChangePasswordStore')->name('admin.change-password.store');
+        Route::get('/user/{id?}/manager-change-password', 'UserController@managerChangePassword')->name('admin.manager.change-password');
+        Route::get('/user/{id?}/agent-change-password', 'UserController@agentChangePassword')->name('admin.agent.change-password');
+        Route::post('/user/{id}/change-password', 'UserController@userChangePasswordStore')->name('user.change-password.store');
 
         Route::resource('/emails', 'EmailController');
     });

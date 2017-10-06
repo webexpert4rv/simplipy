@@ -30,7 +30,7 @@ class UserController extends Controller
      */
     public function index()
     {
-        $models = User::orderBy('created_at', 'DESC')->get();
+        $models = User::latest()->get();
         return view('admin.user.index', compact('models', 'role'));
     }
 
@@ -102,10 +102,10 @@ class UserController extends Controller
 
         if ($model->save()) {
             if (method_exists($request, 'file')) {
-                SystemFile::saveUploadedFile($request->file('profile_pic'), $model, 'profile_pic');
+                $image_id = SystemFile::saveUploadedFile($request->file('profile_pic'), $model, 'profile_pic');
+                $model->profile_pic = $image_id;
             }
             $model->save();
-            $result = $model->saveCustomer();
             if (isset($result['errors'])) {
                 return redirect()->back()->withInput()->with('errors', implode('<br/>', $result['errors']));
             }
@@ -206,6 +206,7 @@ class UserController extends Controller
         $data['page_title'] = 'Edit '.$model->getName();
         $data['model'] = $model;
         $data['profile'] = $profile;
+
         return view('admin.user.edit',$data);
     }
 
@@ -274,5 +275,67 @@ class UserController extends Controller
         $model = User::findOrFail($id);
         $message = $model->toggleStatus();
         return redirect()->back()->with('success',$message);
+    }
+
+    public function adminChangePassword($id)
+    {
+        $model = Admin::find($id);
+
+        $data['page_title'] = 'Change Password';
+        $data['model'] = $model;
+        $data['route'] = 'admin.change-password.store';
+        return view('admin.user.change_password', $data);
+    }
+
+    public function adminChangePasswordStore(Request $request, $id)
+    {
+        $model = Admin::find($id);
+
+        $this->validate($request,Admin::passwordRules());
+
+        if(!empty($request->password)) {
+            $model->password = bcrypt($request->password);
+            $model->save();
+            return redirect()->back()->withInput()->with('success', 'Successfully Updated.');
+        }
+        return redirect()->back()->withInput()->with('error', 'Something went wrong');
+    }
+
+    public function managerChangePassword($id)
+    {
+        $model = User::find($id);
+        $profile = $model->userProfile;
+
+        $data['page_title'] = 'Change Password';
+        $data['model'] = $model;
+        $data['profile'] = $profile;
+        $data['route'] = 'user.change-password.store';
+        return view('admin.user.change_password', $data);
+    }
+
+    public function agentChangePassword($id)
+    {
+        $model = User::find($id);
+        $profile = $model->userProfile;
+
+        $data['page_title'] = 'Change Password';
+        $data['model'] = $model;
+        $data['profile'] = $profile;
+        $data['route'] = 'user.change-password.store';
+        return view('admin.user.change_password', $data);
+    }
+
+    public function userChangePasswordStore(Request $request, $id)
+    {
+        $model = User::find($id);
+
+        $this->validate($request,User::passwordRules());
+
+        if(!empty($request->password)) {
+            $model->password = bcrypt($request->password);
+            $model->save();
+            return redirect()->back()->withInput()->with('success', 'Successfully Updated.');
+        }
+        return redirect()->back()->withInput()->with('error', 'Something went wrong');
     }
 }

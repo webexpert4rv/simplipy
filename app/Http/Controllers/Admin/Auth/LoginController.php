@@ -18,7 +18,9 @@ class LoginController extends Controller
     |
     */
 
-    use AuthenticatesUsers;
+    use AuthenticatesUsers{
+        logout as performLogout;
+    }
 
     /**
      * Where to redirect users after login.
@@ -26,6 +28,8 @@ class LoginController extends Controller
      * @var string
      */
     protected $redirectTo = '/admin/home';
+
+    protected $redirectAfterLogout = 'Auth/login';
 
     /**
      * Create a new controller instance.
@@ -50,5 +54,11 @@ class LoginController extends Controller
     protected function guard()
     {
         return \Auth::guard('admins');
+    }
+
+    public function logout(Request $request)
+    {
+        $this->performLogout($request);
+        return redirect()->setTargetUrl('admin');
     }
 }

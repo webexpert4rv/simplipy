@@ -71,6 +71,7 @@
                                     <th class="column-title">Email</th>
                                     <th class="column-title">Registered</th>
                                     <th class="column-title">Status</th>
+                                    <th class="column-title">Change Password</th>
                                     <th class="column-title">Actions</th>
                                     <th class="bulk-actions" colspan="5">
                                         <a class="antoo" style="color:#fff; font-weight:500;">Bulk Actions ( <span
@@ -86,6 +87,7 @@
                                         <td>{{ $model->email }}</td>
                                         <td>{{ $model->created_at }}</td>
                                         <td>{{ $model->status != null ? $model->getStatusOptions($model->status) : ""}}</td>
+                                        <td>{!! $model->getChangePasswordLink() !!}</td>
                                         <td>
                                            {{-- {!! $model->getViewLink() !!}--}}
                                             {!! $model->getEditLink() !!}

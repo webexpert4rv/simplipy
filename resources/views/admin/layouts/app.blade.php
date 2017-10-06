@@ -37,7 +37,9 @@
 
                 <!-- Branding Image -->
                 <a class="navbar-brand" href="{{ url('/') }}">
-                    {{ config('app.name', 'Demo') }}
+                  {{--  {{ config('app.name', 'Demo') }}--}}
+
+                    <img src="{{asset('images/logo.png')}}" class="logo" width="150px" height="70px">
                 </a>
             </div>
 
@@ -72,8 +74,10 @@
                             </ul>
                         </li>
                     @else
-                        <li><a href="{{ url('/admin') }}">Login</a></li>
-                        <li><a href="{{ url('/admin/register') }}">Register</a></li>
+
+                        <li><a href="{{ url('/admin') }}">Admin Login</a></li>
+                        <li><a href="{{ route('login') }}">User Login</a></li>
+                        {{-- <li><a href="{{ url('/admin/register') }}">Register</a></li>--}}
                     @endif
                 </ul>
             </div>

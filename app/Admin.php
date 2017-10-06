@@ -68,13 +68,19 @@ class Admin extends Authenticatable
             'last_name' => 'required|string',
             //  'dob' => 'date|min:' . date("Y-m-d", strtotime("-18 years")),
             // 'phone_num' => 'required|regex:/^\+\d+$/|max:255',
-            'address' => 'required|string',
-            'address2' => 'required|string',
-            'state' => 'required|string',
-            'city' => 'required|string',
-            'country' => 'required|string',
-            'zip' => 'required',
         ];
+    }
+
+    public static function passwordRules()
+    {
+        return [
+            'password' => 'required|min:6|confirmed',
+        ];
+    }
+
+    public function getListLink()
+    {
+        return link_to_route('admin.profile', 'Profile');
     }
 
 }

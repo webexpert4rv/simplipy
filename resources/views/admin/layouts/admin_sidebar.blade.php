@@ -1,7 +1,7 @@
 <div class="col-md-3 left_col">
     <div class="left_col scroll-view">
         <div class="navbar nav_title" style="border: 0;">
-            <a href="{{ url('/admin') }}" class="site_title"><i class="fa fa-paw"></i> <span>Demo</span></a>
+            <a href="{{ url('/admin') }}" class="site_title"><i class="fa fa-paw"></i> <span>Simplify</span></a>
         </div>
 
         <div class="clearfix"></div>
@@ -12,8 +12,9 @@
               {{--  <img src="images/img.jpg" alt="{{  \Auth::guard('admins')->user()->name }}" class="img-circle profile_img">--}}
             </div>
             <div class="profile_info">
+                <p>
                 <span>Welcome,</span>
-                <h2>{{  \Auth::guard('admins')->user()->name }}</h2>
+                <b>{{  \Auth::guard('admins')->user()->name }}</b></p>
             </div>
         </div>
         <!-- /menu profile quick info -->
@@ -90,6 +91,7 @@
                     </a>
                     <ul class="dropdown-menu dropdown-usermenu pull-right">
                         <li><a href="{{ url('admin/profile') }}"> Profile</a></li>
+                        <li><a href="{{ route('admin.change-password',\Auth::guard('admins')->user()->id) }}">Change Password</a></li>
                         <li>  <a data-toggle="tooltip" data-placement="top" title="Logout" href="{{ route('logout') }}"
                                  onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">

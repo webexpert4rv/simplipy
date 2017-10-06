@@ -14,7 +14,6 @@ class User extends Authenticatable
     const ROLE_AGENT = 1;
     const ROLE_ADMIN = 2;
 
-
     const STATUS_PENDING = 0;
     const STATUS_ACTIVE = 1;
     const STATUS_SUSPEND = 2;
@@ -49,9 +48,18 @@ class User extends Authenticatable
         return false;
     }
 
-    public function isUser()
+    public function isManager()
     {
-        if ($this->role_id == self::ROLE_USER) {
+        if ($this->role_id == self::ROLE_MANAGER) {
+            return true;
+        }
+
+        return false;
+    }
+
+    public function isAgent()
+    {
+        if ($this->role_id == self::ROLE_AGENT) {
             return true;
         }
 
@@ -244,10 +252,21 @@ class User extends Authenticatable
         return link_to_route('admin.users.edit', '', ['id' => $this->id], ['class' => 'fa fa-pencil','title' => 'Edit']);
     }
 
-    public function getListLink()
+    public function getChangePasswordLink($update = false)
     {
         if ($this->role_id == User::ROLE_AGENT) {
-            return link_to_route('admin.agents.edit', 'Agents');
+            return link_to_route('admin.agent.change-password', 'Change Password', ['id' => $this->id]);
+        }elseif ($this->role_id == User::ROLE_MANAGER) {
+            return link_to_route('admin.manager.change-password', 'Change Password', ['id' => $this->id]);
+        }
+        return link_to_route('admin.users.edit', '', ['id' => $this->id], ['class' => 'fa fa-pencil','title' => 'Edit']);
+    }
+
+    public function getListLink()
+    {
+
+        if ($this->role_id == User::ROLE_AGENT) {
+            return link_to_route('admin.agents', 'Agents');
         }elseif ($this->role_id == User::ROLE_MANAGER) {
             return link_to_route('admin.managers', 'Managers');
         }
@@ -268,5 +287,12 @@ class User extends Authenticatable
         ]);
         return $message;
 
+    }
+
+    public static function passwordRules()
+    {
+        return [
+            'password' => 'required|min:6|confirmed',
+        ];
     }
 }

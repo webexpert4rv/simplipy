@@ -23,7 +23,6 @@ class Email extends Model
 
     public function setData($data, $id = null)
     {
-
         if (!is_object($data)) {
             $data = new Collection($data);
         }
@@ -34,7 +33,7 @@ class Email extends Model
     }
 
 
-    public static function getRules()
+    public function getRules()
     {
         $rules = [
             'email' => 'email|required',
