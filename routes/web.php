@@ -12,7 +12,8 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    //return view('welcome');
+   return redirect(url('/admin'));
 });
 
 Auth::routes();
@@ -32,7 +33,7 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'admin'], function () {
 
     Route::group(['middleware' => 'auth.admin'], function () {
         Route::get('home', 'DashboardController@admin');
-        Route::get('/profile', 'UserController@show')->name('admin.profile');;
+        Route::get('/profile', 'UserController@show')->name('admin.profile');
         Route::post('/profile/{id}/update', 'UserController@profileUpdate');
 
         //Managers

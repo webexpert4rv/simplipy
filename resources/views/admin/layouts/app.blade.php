@@ -36,7 +36,7 @@
                 </button>
 
                 <!-- Branding Image -->
-                <a class="navbar-brand" href="{{ url('/') }}">
+                <a class="navbar-brand" href="{{ url('/admin') }}">
                   {{--  {{ config('app.name', 'Demo') }}--}}
 
                     <img src="{{asset('images/logo.png')}}" class="logo" width="150px" height="70px">

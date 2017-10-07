@@ -36,7 +36,7 @@ class Email extends Model
     public function getRules()
     {
         $rules = [
-            'email' => 'email|required',
+            'email' => 'email|required|unique:users',
             'center_id' => 'required',
             'type_id' => 'required',
         ];

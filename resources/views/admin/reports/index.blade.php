@@ -38,9 +38,9 @@
                             <h2>List
                                 <small>{!! $page_title !!}</small>
                             </h2>
-                           {{-- <div class="pull-right">
-                               <a class="btn btn-success" href="{{ route('admin.reports.create') }}">Create Report</a>
-                            </div>--}}
+                            <div class="pull-right">
+                               <a class="btn btn-success" href="{{ url('admin/reports/create') }}">Create Report</a>
+                            </div>
                             {{--<ul class="nav navbar-right panel_toolbox">
                                 <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
                                 </li>
@@ -90,24 +90,37 @@
                                 </tr>
                                 </thead>
                                 <tbody>
-                                {{--@foreach($models as $model)
+                                @foreach($models as $model)
                                     <tr>
                                         <td>{{ $loop->iteration}}</td>
-                                        <td>{{ @$model->email }}</td>
                                         <td>{{ $model->center_id != null ? $model->getCenterOptions($model->center_id) : ""}}</td>
-                                        <td>{{ $model->type_id != null ? $model->getTypeOptions($model->type_id) : ""}}</td>
+                                        <td>{{ @$model->name }}</td>
+                                        <td>{{ @$model->first_name }}</td>
+                                        <td>{{ @$model->dob }}</td>
+                                        <td>{{ @$model->comapny }}</td>
+                                        <td>{{ @$model->address }}</td>
+                                        <td>{{ @$model->city }}</td>
+                                        <td>{{ @$model->postal_code }}</td>
+                                        <td>{{ @$model->email }}</td>
+                                        <td>{{ @$model->mobile }}</td>
+                                        <td>{{ @$model->phone }}</td>
+                                        <td>{{ $model->physician_id != null ? $model->getPhysicianOptions($model->physician_id) : ""}}</td>
+                                        <td><a>Reason</a></td>
+                                        <td>{{ $model->exam_id != null ? $model->getExamOptions($model->exam_id) : ""}}</td>
+                                        <td>{{ $model->emergency_id != null ? $model->getEmergencyOptions($model->emergency_id) : ""}}</td>
+                                        <td>{{ @$model->attempt }}</td>
                                         <td>
-                                            <a href="{{ url("admin/emails/".$model->id.'/edit') }}"><i
+                                            <a href="{{ url("admin/reports/".$model->id.'/edit') }}"><i
                                                         class="fa fa-pencil"></i> </a>
 
-                                            {!! Form::open(['style' => 'display: inline;', 'method' => 'DELETE', 'onsubmit' => 'return confirm(\'Are you sure you want to delete ? \');',  'route' => array('emails.destroy', $model->id)]) !!}
+                                            {!! Form::open(['style' => 'display: inline;', 'method' => 'DELETE', 'onsubmit' => 'return confirm(\'Are you sure you want to delete ? \');',  'route' => array('reports.destroy', $model->id)]) !!}
                                             <button type="submit" class="btn btn-xs btn-danger"><i
                                                         class="fa fa-remove"></i></button>
                                             {!! Form::close() !!}
 
                                         </td>
                                     </tr>
-                                @endforeach--}}
+                                @endforeach
                                 </tbody>
                             </table>
                         </div>

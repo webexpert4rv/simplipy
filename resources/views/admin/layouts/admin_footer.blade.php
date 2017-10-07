@@ -53,7 +53,7 @@
 <script src="{{ asset('/vendor/unisharp/laravel-ckeditor/adapters/jquery.js') }}"></script>
 
 <script>
-    $(document).ready(function () {
+    /*$(document).ready(function () {
         $('textarea').ckeditor();
         var val = $("#success_notif").val();
         console.log('sdda'+val);
@@ -77,7 +77,7 @@
                 styling: 'bootstrap3'
             });
         }
-    })
+    })*/
 
 
 </script>
