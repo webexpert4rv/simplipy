@@ -10,6 +10,7 @@
 
     <!-- Bootstrap -->
     <link href="{{ asset('css/admin_dist/bootstrap.min.css') }}" rel="stylesheet">
+
     <!-- Font Awesome -->
     <link href="{{ asset('css/admin_dist/font-awesome.min.css') }}" rel="stylesheet">
     <!-- NProgress -->
@@ -27,6 +28,7 @@
     <link href="{{ asset('css/admin_dist/pnotify.css') }}" rel="stylesheet">
     <link href="{{ asset('css/admin_dist/pnotify.buttons.css') }}" rel="stylesheet">
     <link href="{{ asset('css/admin_dist/pnotify.nonblock.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/admin_dist/admin.css') }}" rel="stylesheet">
 
 @yield('css')
     <!-- Custom Theme Style -->

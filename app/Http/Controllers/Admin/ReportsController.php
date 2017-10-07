@@ -35,18 +35,43 @@ class ReportsController extends Controller
 
         $this->validate($request,$model->getRules());
 
-       /* $validator = \Validator::make($request->all(), $model->getRules());
-
-        if ($validator->fails()) {
-            return redirect()->back()->withInput()->withErrors($validator->errors());
-        }*/
-
         $model->setData($request);
-
         if ($model->save()) {
             return redirect('/admin/reports')->with('success', 'Successfully Added Report');
         }
 
         return redirect()->back()->withInput()->with('error', 'Something went wrong');
+    }
+
+    public function edit($id)
+    {
+        $data['model'] = Report::find($id);
+        $data['page_title'] = 'Edit Report';
+        return view('admin.reports.edit', $data);
+    }
+
+    public function update(Request $request, $id)
+    {
+        $model = Report::find($id);
+
+        $this->validate($request,$model->getRules());
+
+        $model->setData($request);
+        if ($model->save()) {
+            return redirect('/admin/reports')->with('success', 'Successfully Updated Report');
+        }
+
+        return redirect()->back()->withInput()->with('error', 'Something Went Wrong!!!');
+    }
+
+    public function destroy($id)
+    {
+        $model = Report::find($id);
+        if ($model->delete()) {
+            return redirect('/admin/reports')->with('success', 'Successfully Delete Report');
+        }
+
+        return redirect()->back()->withInput()->with('error', 'Something Went Wrong!!!');
+
     }
 }

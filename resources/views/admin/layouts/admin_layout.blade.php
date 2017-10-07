@@ -25,7 +25,7 @@
     <!-- footer content -->
         <footer>
             <div class="pull-right">
-                Demo
+                &copy; {{ date('Y') }} Simplify
             </div>
             <div class="clearfix"></div>
         </footer>

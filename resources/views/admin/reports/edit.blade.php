@@ -11,7 +11,7 @@
                 <div class="title_left">
                     <ul class="breadcrumb">
                         <li>
-                            <a href="{{ url('admin/emails') }}">Emails</a>
+                            <a href="{{ url('admin/reports') }}">Reports</a>
                         </li>
                         <li class="active">
                            {!! $page_title !!}
@@ -46,42 +46,170 @@
                         </div>
                         <div class="x_content">
                             <br/>
-                            {!! Form::open(['files' => true, 'route' => ['emails.update', 'id' => $model->id], 'class' => 'form-horizontal form-label-left', 'id' => 'demo-form2']) !!}
+                            {!! Form::open(['files' => true, 'route' => ['reports.update', 'id' => $model->id], 'class' => 'form-horizontal form-label-left', 'id' => 'demo-form2']) !!}
                             <input type="hidden" name="_method" value="PUT">
                             {!! csrf_field() !!}
                             <div class="form-group">
-                                <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first_name">Email
-                                </label>
-                                <div class="col-md-6 col-sm-6 col-xs-12">
-                                    <input name="email" type="email" value="{{ old('email', $model->email) }}"
-                                           required="required" class="form-control col-md-7 col-xs-12">
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label class="control-label col-md-3 col-sm-3 col-xs-12" for="center_id">Center <span
+                                <label class="control-label col-md-3 col-sm-3 col-xs-12" for="email">Center <span
                                             class="required">*</span>
                                 </label>
                                 <div class="col-md-6 col-sm-6 col-xs-12">
                                     <select required="required" name="center_id"
                                             class="form-control col-md-7 col-xs-12">
-                                        @foreach(\App\Email::getCenterOptions() as $key => $center)
-                                            <option value="{{ $key }}" {{ old('center_id', $model->center_id) == $key ? 'selected' : ""}}> {{ $center }}</option>
+                                        @foreach(\App\Report::getCenterOptions() as $key => $center)
+                                            <option value="{{ $key }}" {{ $model->center_id == $key ? 'selected' : ""}}> {{ $center }}</option>
                                         @endforeach
-
                                     </select>
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label class="control-label col-md-3 col-sm-3 col-xs-12" for="email">Type <span
+                                <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Name <span
                                             class="required">*</span>
                                 </label>
                                 <div class="col-md-6 col-sm-6 col-xs-12">
-                                    <select required="required" name="type_id"
-                                            class="form-control col-md-7 col-xs-12">
-                                        @foreach(\App\Email::getTypeOptions() as $key => $type)
-                                            <option value="{{ $key }}" {{ old('type_id', $model->type_id) == $key ? 'selected' : ""}}> {{ $type }}</option>
-                                        @endforeach
+                                    <input type="text" name="name" class="form-control col-md-7 col-xs-12" required value="{{ $model->name }}">
+                                </div>
+                            </div>
 
+                            <div class="form-group">
+                                <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first_name">First Name <span
+                                            class="required">*</span>
+                                </label>
+                                <div class="col-md-6 col-sm-6 col-xs-12">
+                                    <input type="text" name="first_name" class="form-control col-md-7 col-xs-12" required value="{{ $model->first_name }}">
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="control-label col-md-3 col-sm-3 col-xs-12" for="comp">Company<span
+                                            class="required">*</span>
+                                </label>
+                                <div class="col-md-6 col-sm-6 col-xs-12">
+                                    <input type="text" name="company" class="form-control col-md-7 col-xs-12" required value="{{ $model->company }}">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first_name">Date of birth<span
+                                            class="required">*</span>
+                                </label>
+                                <div class="col-md-6 col-sm-6 col-xs-12">
+                                    <input type="date" name="dob" class="form-control col-md-7 col-xs-12" required value="{{ $model->dob }}">
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="control-label col-md-3 col-sm-3 col-xs-12" for="add">Address<span
+                                            class="required">*</span>
+                                </label>
+                                <div class="col-md-6 col-sm-6 col-xs-12">
+                                    <input type="text" name="address" class="form-control col-md-7 col-xs-12" required value="{{ $model->address }}">
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="control-label col-md-3 col-sm-3 col-xs-12" for="city">City<span
+                                            class="required">*</span>
+                                </label>
+                                <div class="col-md-6 col-sm-6 col-xs-12">
+                                    <input type="text" name="city" class="form-control col-md-7 col-xs-12" required value="{{ $model->city }}">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-md-3 col-sm-3 col-xs-12" for="post_code">Postal Code<span
+                                            class="required">*</span>
+                                </label>
+                                <div class="col-md-6 col-sm-6 col-xs-12">
+                                    <input type="text" name="postal_code" class="form-control col-md-7 col-xs-12" required value="{{ $model->postal_code }}">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-md-3 col-sm-3 col-xs-12" for="email">Email<span
+                                            class="required">*</span>
+                                </label>
+                                <div class="col-md-6 col-sm-6 col-xs-12">
+                                    <input type="email" name="email" class="form-control col-md-7 col-xs-12" required value="{{ $model->email }}">
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="control-label col-md-3 col-sm-3 col-xs-12" for="mob">Mobile<span
+                                            class="required">*</span>
+                                </label>
+                                <div class="col-md-6 col-sm-6 col-xs-12">
+                                    <input type="text" name="mobile" class="form-control col-md-7 col-xs-12" required value="{{ $model->mobile }}">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-md-3 col-sm-3 col-xs-12" for="phone">Phone
+                                </label>
+
+                                <div class="col-md-6 col-sm-6 col-xs-12">
+                                    <input type="text" name="phone" class="form-control col-md-7 col-xs-12" value="{{ $model->phone }}">
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="control-label col-md-3 col-sm-3 col-xs-12" for="physic">Physician<span
+                                            class="required">*</span>
+                                </label>
+                                <div class="col-md-6 col-sm-6 col-xs-12">
+                                    <select required="required" name="physician_id"
+                                            class="form-control col-md-7 col-xs-12">
+                                        @foreach(\App\Report::getPhysicianOptions() as $key => $physician)
+                                            <option value="{{ $key }}" {{ $model->physician_id == $key ? 'selected' : ""}}> {{ $physician }}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="control-label col-md-3 col-sm-3 col-xs-12" for="add">Reasons<span
+                                            class="required">*</span>
+                                </label>
+                                <div class="col-md-6 col-sm-6 col-xs-12">
+                                    <textarea name="reason" class="form-control col-md-7 col-xs-12" rows="5" required>{{ $model->reason }}</textarea>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="control-label col-md-3 col-sm-3 col-xs-12" for="physic">Type of examination<span
+                                            class="required">*</span>
+                                </label>
+                                <div class="col-md-6 col-sm-6 col-xs-12">
+                                    <select required="required" name="exam_id"
+                                            class="form-control col-md-7 col-xs-12">
+                                        @foreach(\App\Report::getExamOptions() as $key => $exam)
+                                            <option value="{{ $key }}" {{ $model->exam_id == $key ? 'selected' : ""}}> {{ $exam }}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="control-label col-md-3 col-sm-3 col-xs-12" for="physic">Emergency<span
+                                            class="required">*</span>
+                                </label>
+                                <div class="col-md-6 col-sm-6 col-xs-12">
+                                    <select required="required" name="emergency_id"
+                                            class="form-control col-md-7 col-xs-12">
+                                        @foreach(\App\Report::getEmergencyOptions() as $key => $emergency)
+                                            <option value="{{ $key }}" {{ $model->emergency_id == $key ? 'selected' : ""}}> {{ $emergency }}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="control-label col-md-3 col-sm-3 col-xs-12" for="physic">Attempt<span
+                                            class="required">*</span>
+                                </label>
+                                <div class="col-md-6 col-sm-6 col-xs-12">
+                                    <select required="required" name="attempt"
+                                            class="form-control col-md-7 col-xs-12">
+                                        <option value="1" <?php if($model->attampt == 1) echo "selected"; ?>>1</option>
+                                        <option value="2" <?php if($model->attampt == 2) echo "selected"; ?>>2</option>
+                                        <option value="3" <?php if($model->attampt == 3) echo "selected"; ?>>3</option>
+                                        <option value="4" <?php if($model->attampt == 4) echo "selected"; ?>>4</option>
                                     </select>
                                 </div>
                             </div>

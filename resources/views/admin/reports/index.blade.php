@@ -35,7 +35,7 @@
                 <div class="col-md-12 col-sm-12 col-xs-12">
                     <div class="x_panel">
                         <div class="x_title">
-                            <h2>List
+                            <h2>
                                 <small>{!! $page_title !!}</small>
                             </h2>
                             <div class="pull-right">
@@ -56,7 +56,7 @@
                             </ul>--}}
                             <div class="clearfix"></div>
                         </div>
-                        <div class="x_content">
+                        <div class="x_content report_table">
                             <p class="text-muted font-13 m-b-30">
                                 {{--  DataTables has most features enabled by default, so all you need to do to use it with your own tables is to call the construction function: <code>$().DataTable();</code>--}}
                             </p>
@@ -83,9 +83,8 @@
                                     <th class="column-title">Type of examination</th>
                                     <th class="column-title">Emergency</th>
                                     <th class="column-title">Attempts</th>
-                                    <th class="bulk-actions" colspan="5">
-                                        <a class="antoo" style="color:#fff; font-weight:500;">Bulk Actions ( <span
-                                                    class="action-cnt"> </span> ) <i class="fa fa-chevron-down"></i></a>
+                                    <th class="column-title">
+                                        Bulk Actions </a>
                                     </th>
                                 </tr>
                                 </thead>
@@ -96,8 +95,8 @@
                                         <td>{{ $model->center_id != null ? $model->getCenterOptions($model->center_id) : ""}}</td>
                                         <td>{{ @$model->name }}</td>
                                         <td>{{ @$model->first_name }}</td>
+                                        <td>{{ @$model->company }}</td>
                                         <td>{{ @$model->dob }}</td>
-                                        <td>{{ @$model->comapny }}</td>
                                         <td>{{ @$model->address }}</td>
                                         <td>{{ @$model->city }}</td>
                                         <td>{{ @$model->postal_code }}</td>

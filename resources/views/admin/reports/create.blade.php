@@ -7,7 +7,7 @@
                 <div class="title_left">
                     <ul class="breadcrumb">
                         <li>
-                           <a href="{{ url('admin/emails') }}">Emails</a>
+                           <a href="{{ url('admin/reports') }}">Reports</a>
                         </li>
                         <li class="active">
                             {!! $page_title !!}
