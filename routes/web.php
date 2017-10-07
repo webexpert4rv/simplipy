@@ -19,8 +19,9 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
-
-
+Route::group(['middleware' => 'auth'], function () {
+    Route::resource('reports', 'ReportsController');
+});
 Route::group(['namespace' => 'Admin', 'prefix' => 'admin'], function () {
     Route::get('/', 'Auth\LoginController@showLoginForm');
     Route::post('login', 'Auth\LoginController@login');
@@ -77,6 +78,5 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'admin'], function () {
 
         Route::resource('/emails', 'EmailController');
 
-        Route::resource('/reports', 'ReportsController');
     });
 });

@@ -39,7 +39,7 @@
                                 <small>{!! $page_title !!}</small>
                             </h2>
                             <div class="pull-right">
-                               <a class="btn btn-success" href="{{ url('admin/reports/create') }}">Create Report</a>
+                               <a class="btn btn-success" href="{{ url('reports/create') }}">Create Report</a>
                             </div>
                             {{--<ul class="nav navbar-right panel_toolbox">
                                 <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
@@ -109,7 +109,7 @@
                                         <td>{{ $model->emergency_id != null ? $model->getEmergencyOptions($model->emergency_id) : ""}}</td>
                                         <td>{{ @$model->attempt }}</td>--}}
                                         <td>
-                                            <a href="{{ url("admin/reports/".$model->id.'/edit') }}"><i
+                                            <a href="{{ url("/reports/".$model->id.'/edit') }}"><i
                                                         class="fa fa-pencil"></i> </a>
 
                                             {!! Form::open(['style' => 'display: inline;', 'method' => 'DELETE', 'onsubmit' => 'return confirm(\'Are you sure you want to delete ? \');',  'route' => array('reports.destroy', $model->id)]) !!}

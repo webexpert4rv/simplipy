@@ -7,7 +7,7 @@
                 <div class="title_left">
                     <ul class="breadcrumb">
                         <li>
-                           <a href="{{ url('admin/reports') }}">Reports</a>
+                           <a href="{{ url('reports') }}">Reports</a>
                         </li>
                         <li class="active">
                             {!! $page_title !!}
@@ -43,7 +43,7 @@
                         <div class="x_content">
                             <br/>
                             <form id="demo-form2" data-parsley-validate class="form-horizontal form-label-left"
-                                  method="post" action="{{ url('admin/reports') }}">
+                                  method="post" action="{{ url('reports') }}">
                                 {!! csrf_field() !!}
                                 <div class="form-group">
                                     <label class="control-label col-md-3 col-sm-3 col-xs-12" for="email">Center <span

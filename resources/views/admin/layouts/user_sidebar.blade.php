@@ -16,7 +16,7 @@
             <div class="profile_info">
                 <p>
                 <span>Welcome,</span>
-                <b>{{  \Auth::guard('admins')->user()->name }}</b></p>
+                <b>{{  \Auth::user()->name }}</b></p>
             </div>
         </div>
         <!-- /menu profile quick info -->
@@ -29,19 +29,11 @@
                 <h3>General</h3>
                 <ul class="nav side-menu">
 
-                    <li><a><i class="fa fa-home"></i> Users <span class="fa fa-chevron-down"></span></a>
+                    <li><a><i class="fa fa-home"></i> Reports <span class="fa fa-chevron-down"></span></a>
                         <ul class="nav child_menu">
-                            <li><a href="{{ url('admin/managers') }}">Managers</a></li>
-                            <li><a href="{{ url('admin/agents') }}">Agents</a></li>
+                            <li><a href="{{ url('reports') }}">Manage Reports</a></li>
                         </ul>
                     </li>
-
-                    <li><a><i class="fa fa-home"></i> Emails <span class="fa fa-chevron-down"></span></a>
-                        <ul class="nav child_menu">
-                            <li><a href="{{ url('admin/emails') }}">Manage Emails</a></li>
-                        </ul>
-                    </li>
-
 
                 </ul>
             </div>
@@ -91,12 +83,11 @@
             <ul class="nav navbar-nav navbar-right">
                 <li class="">
                     <a href="javascript:;" class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-                       {{-- <img src="images/img.jpg" alt="">--}}{{  \Auth::guard('admins')->user()->name }}
+                       {{-- <img src="images/img.jpg" alt="">--}}{{  \Auth::user()->name }}
                         <span class=" fa fa-angle-down"></span>
                     </a>
                     <ul class="dropdown-menu dropdown-usermenu pull-right">
-                        <li><a href="{{ url('admin/profile') }}"> Profile</a></li>
-                        <li><a href="{{ route('admin.change-password',\Auth::guard('admins')->user()->id) }}">Change Password</a></li>
+
                         <li>  <a data-toggle="tooltip" data-placement="top" title="Logout" href="{{ route('logout') }}"
                                  onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">

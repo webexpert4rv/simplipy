@@ -19,7 +19,11 @@
                 @php  $html .= "</ul>"; @endphp
                     <input type="hidden" value="{!! $html !!}" id="error_notif">
         @endif
+        @if(!\Auth::user())
         @include('admin.layouts.admin_sidebar')
+        @else
+            @include('admin.layouts.user_sidebar')
+            @endif
         @yield('content')
 
     <!-- footer content -->
