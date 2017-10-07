@@ -42,7 +42,7 @@
                             <div class="clearfix"></div>
                         </div>
                         <div class="x_content" id="view_profile_div">
-                            {{--<div class="col-md-3 col-sm-3 col-xs-12 profile_left">
+                            <div class="col-md-3 col-sm-3 col-xs-12 profile_left">
                                 <div class="profile_img">
                                     <div id="crop-avatar">
                                         <!-- Current avatar -->
@@ -52,8 +52,8 @@
                                         @endif
                                     </div>
                                 </div>
-                            </div>--}}
-                            <div class="col-md-6 col-sm-6 col-xs-12 profile_left">
+                            </div>
+                            <div class="col-md-3 col-sm-3 col-xs-12 profile_left">
                                 <h3>{{ @$model->first_name.' '.@$model->last_name}}</h3>
 
                                 <ul class="list-unstyled user_data">
@@ -65,17 +65,17 @@
                                     </li>
                                 </ul>
                             </div>
-                            <div class="col-md-6 col-sm-6 col-xs-12 profile_left">
+                            <div class="col-md-3 col-sm-3 col-xs-12 profile_left">
                                 <h4>Address</h4>
                                 <ul class="list-unstyled user_data">
                                     <li><b>Address : </b>
                                         <span id="address_data"
                                               class="profile-text">{{ @$model->address }}</span>
                                     </li>
-                                    {{--<li><b>Address2 : </b>
+                                    <li><b>Address2 : </b>
                                         <span id="zip_data"
                                               class="profile-text">{{ @$model->address2}}</span>
-                                    </li>--}}
+                                    </li>
                                     <li><b>Postal Code : </b>
                                         <span id="country_data"
                                               class="profile-text">{{ @$model->zip }}</span>
@@ -101,7 +101,7 @@
                             <form class="form-horizontal form-label-left" method="POST" enctype="multipart/form-data"
                                   action="{{ url('admin/profile/'.$model->id.'/update') }}">
                                 {!! csrf_field() !!}
-                               {{-- <div id="preview-image-div">
+                                <div id="preview-image-div">
                                     @if(!empty(\App\SystemFile::getImageUrl($model, 'profile_pic')))
                                         <img class="img-responsive avatar-view"
                                              src="{{ \App\SystemFile::getImageUrl($model, 'profile_pic')}}">
@@ -116,7 +116,7 @@
                                         <input type="file" name="profile_pic" id="file-1"
                                                class="inputfile inputfile-1"/>
                                     </div>
-                                </div>--}}
+                                </div>
 
                                 <div class="form-group">
                                     <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">First Name

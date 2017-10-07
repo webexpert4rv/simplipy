@@ -1,7 +1,9 @@
 <div class="col-md-3 left_col">
     <div class="left_col scroll-view">
         <div class="navbar nav_title" style="border: 0;">
-            <a href="{{ url('/admin') }}" class="site_title"><i class="fa fa-paw"></i> <span>Simplify</span></a>
+            <a href="{{ url('/admin') }}" class="site_title">
+                <img src="{{asset('images/logo.png')}}" class="logo" width="120px" height="50px">
+                {{--<span>Simplify</span>--}}</a>
         </div>
 
         <div class="clearfix"></div>
@@ -36,6 +38,12 @@
                     <li><a><i class="fa fa-home"></i> Emails <span class="fa fa-chevron-down"></span></a>
                         <ul class="nav child_menu">
                             <li><a href="{{ url('admin/emails') }}">Manage Emails</a></li>
+                        </ul>
+                    </li>
+
+                    <li><a><i class="fa fa-home"></i> Reports <span class="fa fa-chevron-down"></span></a>
+                        <ul class="nav child_menu">
+                            <li><a href="{{ url('admin/reports') }}">Manage Reports</a></li>
                         </ul>
                     </li>
                 </ul>

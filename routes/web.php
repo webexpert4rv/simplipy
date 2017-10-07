@@ -75,5 +75,7 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'admin'], function () {
         Route::post('/user/{id}/change-password', 'UserController@userChangePasswordStore')->name('user.change-password.store');
 
         Route::resource('/emails', 'EmailController');
+
+        Route::resource('/reports', 'ReportsController');
     });
 });
