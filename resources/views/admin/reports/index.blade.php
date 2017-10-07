@@ -69,20 +69,20 @@
                                     <th class="column-title">Sr.No.</th>
                                     <th class="column-title">Center</th>
                                     <th class="column-title">Name</th>
-                                    <th class="column-title">First Name</th>
+
                                     <th class="column-title">Company</th>
-                                    <th class="column-title">Date of birth</th>
-                                    <th class="column-title">Address</th>
+                                    <th class="column-title">DOB</th>
+
                                     <th class="column-title">City</th>
-                                    <th class="column-title">Postal Code</th>
+
                                     <th class="column-title">Email</th>
                                     <th class="column-title">Mobile</th>
-                                    <th class="column-title">Phone</th>
-                                    <th class="column-title">Physician</th>
-                                    <th class="column-title">Reasons</th>
-                                    <th class="column-title">Type of examination</th>
+
+                                {{--    <th class="column-title">Physician</th>
+
+
                                     <th class="column-title">Emergency</th>
-                                    <th class="column-title">Attempts</th>
+                                    <th class="column-title">Attempts</th>--}}
                                     <th class="column-title">
                                         Bulk Actions </a>
                                     </th>
@@ -94,20 +94,20 @@
                                         <td>{{ $loop->iteration}}</td>
                                         <td>{{ $model->center_id != null ? $model->getCenterOptions($model->center_id) : ""}}</td>
                                         <td>{{ @$model->name }}</td>
-                                        <td>{{ @$model->first_name }}</td>
+
                                         <td>{{ @$model->company }}</td>
                                         <td>{{ @$model->dob }}</td>
-                                        <td>{{ @$model->address }}</td>
+
                                         <td>{{ @$model->city }}</td>
-                                        <td>{{ @$model->postal_code }}</td>
+
                                         <td>{{ @$model->email }}</td>
                                         <td>{{ @$model->mobile }}</td>
-                                        <td>{{ @$model->phone }}</td>
-                                        <td>{{ $model->physician_id != null ? $model->getPhysicianOptions($model->physician_id) : ""}}</td>
-                                        <td><a>Reason</a></td>
-                                        <td>{{ $model->exam_id != null ? $model->getExamOptions($model->exam_id) : ""}}</td>
+
+                                        {{--<td>{{ $model->physician_id != null ? $model->getPhysicianOptions($model->physician_id) : ""}}</td>
+
+
                                         <td>{{ $model->emergency_id != null ? $model->getEmergencyOptions($model->emergency_id) : ""}}</td>
-                                        <td>{{ @$model->attempt }}</td>
+                                        <td>{{ @$model->attempt }}</td>--}}
                                         <td>
                                             <a href="{{ url("admin/reports/".$model->id.'/edit') }}"><i
                                                         class="fa fa-pencil"></i> </a>
