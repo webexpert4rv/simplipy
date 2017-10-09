@@ -42,7 +42,7 @@
                         </div>
                         <div class="x_content">
                             <br/>
-                            <form id="demo-form2" data-parsley-validate class="form-horizontal form-label-left"
+                            <form id="demo-form2" data-parsley-validate class="form-horizontal form-label-left admin_create"
                                   method="post" action="{!! @$add_link !!}">
                                 {!! csrf_field() !!}
                                 <input type="hidden" name="role_id" value="{{ @$role_id }}">

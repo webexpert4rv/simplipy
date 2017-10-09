@@ -2,7 +2,7 @@
 <html lang="{{ config('app.locale') }}">
 @include('admin.layouts.admin_header')
 
-<body class="nav-md">
+<body class="nav-md after_login">
 <div class="container body">
     <div class="main_container">
         @if(session('success'))

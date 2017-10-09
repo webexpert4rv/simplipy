@@ -3,3 +3,80 @@
     width:100%;
     overflow: scroll;
 }*/
+
+
+body.after_login .left_col .navbar.nav_title {
+    background: #0256b3 !important;
+}
+
+body.after_login .nav.side-menu>li.active, body.after_login .nav.side-menu>li.current-page {
+    border-right: 5px solid #52b30c;
+}
+
+
+body.after_login .btn-primary {
+    color: #fff;
+    background-color: #0256b3;
+    border-color: #0256b3;
+}
+body.after_login .btn-primary:hover { 
+    background-color: #0650a2 ;
+    border-color: #0650a2 ;
+}
+
+body.after_login .btn-success {
+    background: #51b30c;
+    border: 1px solid #51b30c;
+}
+
+body.after_login .btn-success:hover {
+background: #4ba60a;
+    border: 1px solid #4ba60a;
+}
+body.after_login form#demo-form2 h1 {
+    font-size: 16px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    border-top: 1px solid #ece8e8;
+    padding-top: 20px;
+}
+
+
+body.after_login form#demo-form2  .form-control {
+    height: 40px;
+    background-color: #f1f1f1;
+     border: 1px solid #fff;
+     box-shadow: none;
+    }
+
+
+body.after_login a.btn.btn-success.cr_btn {
+    padding: 12px 30px;
+    font-size: 16px;
+    text-transform: uppercase;
+    font-weight: 700;
+    letter-spacing: 1px;
+}
+
+   body.after_login ul.nav.navbar-right.panel_toolbox li a {
+    background: #cb0000;
+    color: #fff;
+    margin-right: 5px;
+    border-radius: 5px;
+    padding: 5px 10px;
+}
+
+body.after_login  div#DataTables_Table_0_paginate ul.pagination a {
+    background: #52b30c !important;
+    color: #fff !important;
+}
+
+body.after_login .btn-danger {
+    color: #fff;
+    background-color: #cc0000;
+    border-color: #cc0000;
+}
+
+body.after_login .admin_create .form-group label.control-label {
+    text-align: left;
+}
