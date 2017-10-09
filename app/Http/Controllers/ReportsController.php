@@ -51,6 +51,19 @@ class ReportsController extends Controller
         $model->setData($request);
         if ($model->save()) {
 
+            $email = Email::where('center_id',$model->center_id)
+                ->where('type_id',Email::TYPE_INSTANT_REPORT)
+                ->pluck('email')->toArray();
+            try {
+
+                Mail::send('emails.instant_report',[], function($message) use ($email) {
+                    $message->to($email);
+                    $message->subject('Instant Email');
+                });
+            }catch (\Exception $e) {
+                return redirect()->back()->withInput()->withErrors( $e->getMessage());
+            }
+
             return redirect('/reports')->with('success', 'Successfully Added Report');
         }
 
@@ -82,7 +95,7 @@ class ReportsController extends Controller
         }catch (\Exception $e) {
             return redirect()->back()->withInput()->withErrors( $e->getMessage());
         }
-        
+
         /*$model = Report::find($id);
 
         $this->validate($request,$model->getRules());
