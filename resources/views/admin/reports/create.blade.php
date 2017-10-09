@@ -213,10 +213,11 @@
                                 <div class="ln_solid"></div>
                                 <div class="form-group">
                                     <div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3">
-                                        <a class="btn btn-primary" type="button"
-                                           href="{{ url('admin/emails') }}">Cancel</a>
+                                        {{--<a class="btn btn-primary" type="button"
+                                           href="{{ url('admin/emails') }}">Cancel</a>--}}
                                         <button class="btn btn-primary" type="reset">Reset</button>
-                                        <button type="submit" class="btn btn-success">Submit</button>
+                                        <button type="submit" class="btn btn-success" name="status_submit" value="status_submit">To Submit</button>
+                                        <button type="submit" class="btn btn-success" name="status_call" value="status_call">Send Incomplete Call</button>
                                     </div>
                                 </div>
 

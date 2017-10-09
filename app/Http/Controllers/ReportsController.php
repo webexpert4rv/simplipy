@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Email;
 use App\Report;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -42,12 +43,23 @@ class ReportsController extends Controller
     {
         //return $request->all();
 
+        //return $request->center_id;
+
+       /* $email = Email::select('email')->where('center_id',$request->center_id)
+                        ->where('type_id',Email::TYPE_INSTANT_REPORT)
+                        ->get();
+
+        return $email;
+
+        die;*/
+
         $model = new Report();
 
         $this->validate($request,$model->getRules());
 
         $model->setData($request);
         if ($model->save()) {
+
             return redirect('/reports')->with('success', 'Successfully Added Report');
         }
 
@@ -81,7 +93,6 @@ class ReportsController extends Controller
         if ($model->delete()) {
             return redirect('/reports')->with('success', 'Successfully Delete Report');
         }
-
         return redirect()->back()->withInput()->with('error', 'Something Went Wrong!!!');
 
     }

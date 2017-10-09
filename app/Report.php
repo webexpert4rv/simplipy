@@ -31,6 +31,9 @@ class Report extends Model
     const Emergency_ONE = 1;
     const Emergency_TWO = 2;
 
+    const STATUS_SUBMIT = 0;
+    const STATUS_CALL = 1;
+
     use SoftDeletes;
 
     protected $table = 'reports';
@@ -138,8 +141,9 @@ class Report extends Model
 
     public function setData($data, $id = null)
     {
+
         if (!is_object($data)) {
-            $data = new Collection($data);
+            $data = new Report($data);
         }
 
         $this->center_id = $data->get('center_id');
@@ -158,6 +162,16 @@ class Report extends Model
         $this->exam_id = $data->get('exam_id');
         $this->emergency_id = $data->get('emergency_id');
         $this->attempt = $data->get('attempt');
+        $status_submit =$data->get('status_submit');
+        $status_call =$data->get('status_call');
+        if(isset($status_submit)) {
+            $this->status = self::STATUS_SUBMIT;
+        }
+        if(isset($status_call)) {
+
+            $this->status = self::STATUS_CALL;
+        }
+
         return $this;
     }
 
