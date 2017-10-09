@@ -50,7 +50,7 @@
                             <input type="hidden" name="_method" value="PUT">
                             {!! csrf_field() !!}
                             <div class="form-group">
-                                <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first_name">First Name
+                                <label class="control-label col-md-2" for="first_name">First Name
                                     <span class="required">*</span>
                                 </label>
                                 <div class="col-md-6 col-sm-6 col-xs-12">
@@ -61,7 +61,7 @@
                             </div>
 
                             <div class="form-group">
-                                <label class="control-label col-md-3 col-sm-3 col-xs-12" for="last_name">Last Name <span
+                                <label class="control-label col-md-2" for="last_name">Last Name <span
                                             class="required">*</span>
                                 </label>
                                 <div class="col-md-6 col-sm-6 col-xs-12">
@@ -72,7 +72,7 @@
                             </div>
 
                             <div class="form-group">
-                                <label class="control-label col-md-3 col-sm-3 col-xs-12" for="email">Email <span
+                                <label class="control-label col-md-2" for="email">Email <span
                                             class="required">*</span>
                                 </label>
                                 <div class="col-md-6 col-sm-6 col-xs-12">
@@ -82,7 +82,7 @@
                             </div>
 
                             <div class="form-group">
-                                <label class="control-label col-md-3 col-sm-3 col-xs-12" for="email">Center <span
+                                <label class="control-label col-md-2" for="email">Center <span
                                             class="required">*</span>
                                 </label>
                                 <div class="col-md-6 col-sm-6 col-xs-12">
@@ -97,7 +97,7 @@
                             </div>
 
                             <div class="form-group">
-                                <label class="control-label col-md-3 col-sm-3 col-xs-12" for="profile_pic">Profile
+                                <label class="control-label col-md-2" for="profile_pic">Profile
                                     Picture
                                 </label>
                                 <div class="col-md-6 col-sm-6 col-xs-12">
@@ -112,7 +112,7 @@
                             </div>
 
                             <div class="form-group">
-                                <label class="control-label col-md-3 col-sm-3 col-xs-12" for="phone_num">Phone
+                                <label class="control-label col-md-2" for="phone_num">Phone
                                     Number
                                 </label>
                                 <div class="col-md-6 col-sm-6 col-xs-12">
@@ -123,7 +123,7 @@
                             </div>
 
                             <div class="form-group">
-                                <label class="control-label col-md-3 col-sm-3 col-xs-12" for="email">Address
+                                <label class="control-label col-md-2" for="email">Address
                                 </label>
                                 <div class="col-md-6 col-sm-6 col-xs-12">
                                     <textarea name="address"
@@ -132,7 +132,7 @@
                             </div>
 
                             <div class="form-group">
-                                <label class="control-label col-md-3 col-sm-3 col-xs-12" for="email">Address 2
+                                <label class="control-label col-md-2" for="email">Address 2
                                 </label>
                                 <div class="col-md-6 col-sm-6 col-xs-12">
                                     <input name="address2"
@@ -142,7 +142,7 @@
                             </div>
 
                             <div class="form-group">
-                                <label class="control-label col-md-3 col-sm-3 col-xs-12" for="email">State
+                                <label class="control-label col-md-2" for="email">State
                                 </label>
                                 <div class="col-md-6 col-sm-6 col-xs-12">
                                     <input name="state"
@@ -153,7 +153,7 @@
 
 
                             <div class="form-group">
-                                <label class="control-label col-md-3 col-sm-3 col-xs-12" for="zip">Zip
+                                <label class="control-label col-md-2" for="zip">Zip
                                 </label>
                                 <div class="col-md-6 col-sm-6 col-xs-12">
                                     <input name="zip" type="text" value="{{ old('zip', $profile->zip) }}"
@@ -162,7 +162,7 @@
                             </div>
 
                             <div class="form-group">
-                                <label class="control-label col-md-3 col-sm-3 col-xs-12" for="city">City
+                                <label class="control-label col-md-2" for="city">City
                                 </label>
                                 <div class="col-md-6 col-sm-6 col-xs-12">
                                     <input name="city" type="text" value="{{ old('city', $profile->city) }}"
@@ -171,7 +171,7 @@
                             </div>
 
                             <div class="form-group">
-                                <label class="control-label col-md-3 col-sm-3 col-xs-12" for="country">Country
+                                <label class="control-label col-md-2" for="country">Country
                                 </label>
                                 <div class="col-md-6 col-sm-6 col-xs-12">
                                     <input name="country" type="text" value="{{ old('country', $profile->country) }}"

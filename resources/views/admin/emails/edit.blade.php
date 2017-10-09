@@ -50,7 +50,7 @@
                             <input type="hidden" name="_method" value="PUT">
                             {!! csrf_field() !!}
                             <div class="form-group">
-                                <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first_name">Email
+                                <label class="control-label col-md-2" for="first_name">Email
                                 </label>
                                 <div class="col-md-6 col-sm-6 col-xs-12">
                                     <input name="email" type="email" value="{{ old('email', $model->email) }}"
@@ -58,7 +58,7 @@
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label class="control-label col-md-3 col-sm-3 col-xs-12" for="center_id">Center <span
+                                <label class="control-label col-md-2" for="center_id">Center <span
                                             class="required">*</span>
                                 </label>
                                 <div class="col-md-6 col-sm-6 col-xs-12">
@@ -72,7 +72,7 @@
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label class="control-label col-md-3 col-sm-3 col-xs-12" for="email">Type <span
+                                <label class="control-label col-md-2" for="email">Type <span
                                             class="required">*</span>
                                 </label>
                                 <div class="col-md-6 col-sm-6 col-xs-12">
