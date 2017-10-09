@@ -7,6 +7,7 @@ use App\Report;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Mail\Mailable;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Mail;
 
 class ReportsController extends Controller
@@ -69,30 +70,19 @@ class ReportsController extends Controller
 
         $model = Report::find($id);
 
-        $email = Email::select('email')->where('center_id',$model->center_id)
+        $email = Email::where('center_id',$model->center_id)
                         ->where('type_id',Email::TYPE_INSTANT_REPORT)
-                        ->get();
-
-        $emails = ['rvtech1@mailinator.com'];
-
-//        /$emails = explode(',',$email->email);
-
+                        ->pluck('email')->toArray();
         try {
 
-
-            Mail::queue('email.instant_email',[], function($message) use ($emails) {
-                $message->to('rvtech@mailinator.com');
-                $message->subject('Testing email');
+            Mail::send('emails.instant_report',[], function($message) use ($email) {
+                $message->to($email);
+                $message->subject('Instant Email');
             });
-        }catch (\Exception $e)
-        {
+        }catch (\Exception $e) {
             return redirect()->back()->withInput()->withErrors( $e->getMessage());
         }
-
-
-
-        return $emails;
-
+        
         /*$model = Report::find($id);
 
         $this->validate($request,$model->getRules());
@@ -102,7 +92,7 @@ class ReportsController extends Controller
             return redirect('/reports')->with('success', 'Successfully Updated Report');
         }*/
 
-        return redirect('/reports')->with('success', 'Email will send!!');
+        return redirect('/reports')->with('success', 'Email send!!');
     }
 
     public function destroy($id)
