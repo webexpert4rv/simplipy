@@ -44,7 +44,7 @@
                             </ul>
                             <div class="clearfix"></div>
                         </div>
-                        <div class="x_content">
+                        <div class="x_content report_disable">
                             <br/>
                             <p class="main_title">Fields marked with an asterisk * are mandatory.</p>
                             {!! Form::open(['files' => true,'route' => ['reports.update', 'id' => $model->id], 'class' => 'form-horizontal form-label-left', 'id' => 'demo-form2']) !!}
@@ -198,12 +198,13 @@
                                                 class="required">*</span>
                                     </label>
                                     <div class="col-md-6 col-sm-6 col-xs-12">
-                                        <select required="required" name="emergency_id"
+                                        {{--<select required="required" name="emergency_id"
                                                 class="form-control col-md-7 col-xs-12">
                                             @foreach(\App\Report::getEmergencyOptions() as $key => $emergency)
                                                 <option value="{{ $key }}" {{ $model->emergency_id == $key ? 'selected' : ""}}> {{ $emergency }}</option>
                                             @endforeach
-                                        </select>
+                                        </select>--}}
+                                        <input type="checkbox" name="emergency_id" onclick="return false;" value="{{\App\Report::Emergency_ONE}}" @if($model->emergency_id == \App\Report::Emergency_ONE) checked @endif> YES
                                     </div>
                                 </div>
 
@@ -249,6 +250,7 @@
             $(".report_disable input").prop("readonly", true);
             $(".report_disable select").prop("disabled", true);
             $(".report_disable textarea").prop("disabled", true);
+
         });
     </script>
 @endsection

@@ -79,8 +79,9 @@ class ReportsController extends Controller
 
         try {
 
+
             Mail::queue('email.instant_email',[], function($message) use ($emails) {
-                $message->to($emails);
+                $message->to('rvtech@mailinator.com');
                 $message->subject('Testing email');
             });
         }catch (\Exception $e)

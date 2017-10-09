@@ -96,7 +96,7 @@
                                                     class="required">*</span>
                                         </label>
                                         <div class="col-md-6 col-sm-6 col-xs-12">
-                                            <input type="date" name="dob" class="form-control col-md-7 col-xs-12" required>
+                                            <input type="date" name="dob" class="form-control col-md-7 col-xs-12 datepicker" required>
                                         </div>
                                     </div>
 
@@ -236,4 +236,11 @@
             </div>
         </div>
     </div>
+@endsection
+@section('scripts')
+    <script type="text/javascript" src="<?php echo(asset('js/admin_dist/bootstrap-datepicker.js')); ?>"></script>
+    <script>
+        $(".datepicker").datepicker({format: "yyyy-mm-dd", autoclose: true, endDate: new Date()});
+
+    </script>
 @endsection

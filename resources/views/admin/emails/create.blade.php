@@ -42,7 +42,7 @@
                         </div>
                         <div class="x_content">
                             <br/>
-                            <form id="demo-form2" data-parsley-validate class="form-horizontal form-label-left"
+                            <form id="demo-form2" data-parsley-validate class="form-horizontal form-label-left admin_create"
                                   method="post" action="{{ url('admin/emails') }}">
                                 {!! csrf_field() !!}
                                 <div class="form-group">

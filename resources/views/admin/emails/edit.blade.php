@@ -46,7 +46,7 @@
                         </div>
                         <div class="x_content">
                             <br/>
-                            {!! Form::open(['files' => true, 'route' => ['emails.update', 'id' => $model->id], 'class' => 'form-horizontal form-label-left', 'id' => 'demo-form2']) !!}
+                            {!! Form::open(['files' => true, 'route' => ['emails.update', 'id' => $model->id], 'class' => 'form-horizontal admin_create form-label-left', 'id' => 'demo-form2']) !!}
                             <input type="hidden" name="_method" value="PUT">
                             {!! csrf_field() !!}
                             <div class="form-group">
