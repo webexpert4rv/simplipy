@@ -136,6 +136,7 @@ class UserController extends Controller
         $model = new User();
         $profile = new UserProfile();
         $data['page_title'] = 'Create Manager';
+        $data['cancel_link'] = 'managers';
         $data['model'] = $model;
         $data['profile'] = $profile;
         $data['role_id'] = User::ROLE_MANAGER;
@@ -154,6 +155,7 @@ class UserController extends Controller
         $profile = new UserProfile();
 
         $data['page_title'] = 'Create Agent';
+        $data['cancel_link'] = 'agents';
         $data['model'] = $model;
         $data['profile'] = $profile;
         $data['role_id'] = User::ROLE_AGENT;
@@ -205,7 +207,14 @@ class UserController extends Controller
 
         $data['page_title'] = 'Edit '.$model->getName();
         $data['model'] = $model;
+
         $data['profile'] = $profile;
+        if($model->role_id == User::ROLE_MANAGER) {
+            $data['cancel_link'] = 'managers';
+        }
+        if($model->role_id == User::ROLE_AGENT) {
+            $data['cancel_link'] = 'agents';
+        }
 
         return view('admin.user.edit',$data);
     }

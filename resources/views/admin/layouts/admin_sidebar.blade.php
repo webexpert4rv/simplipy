@@ -38,7 +38,7 @@
 
                     <li><a><i class="fa fa-home"></i> Emails <span class="fa fa-chevron-down"></span></a>
                         <ul class="nav child_menu">
-                            <li><a href="{{ url('admin/emails') }}">Manage Emails</a></li>
+                            <li><a href="{{ url('admin/emails') }}">Mailing List</a></li>
                         </ul>
                     </li>
 

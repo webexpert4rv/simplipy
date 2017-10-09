@@ -11,7 +11,7 @@
                 <div class="title_left">
                     <ul class="breadcrumb">
                         <li>
-                            <a href="{{ url('admin/reports') }}">Reports</a>
+                            <a href="{{ url('/reports') }}">Reports</a>
                         </li>
                         <li class="active">
                            {!! $page_title !!}
@@ -44,9 +44,9 @@
                             </ul>
                             <div class="clearfix"></div>
                         </div>
-                        <div class="x_content">
+                        <div class="x_content report_disable">
                             <br/>
-                            {!! Form::open(['files' => true, 'route' => ['reports.update', 'id' => $model->id], 'class' => 'form-horizontal form-label-left', 'id' => 'demo-form2']) !!}
+                            {!! Form::open(['files' => true,'route' => ['reports.update', 'id' => $model->id], 'class' => 'form-horizontal form-label-left', 'id' => 'demo-form2']) !!}
                             <input type="hidden" name="_method" value="PUT">
                             {!! csrf_field() !!}
                             <div class="form-group">
@@ -93,7 +93,7 @@
                                             class="required">*</span>
                                 </label>
                                 <div class="col-md-6 col-sm-6 col-xs-12">
-                                    <input type="date" name="dob" class="form-control col-md-7 col-xs-12" required value="{{ $model->dob }}">
+                                    <input type="date" name="dob" class="form-control col-md-7 col-xs-12 datepicker" required value="{{ $model->dob }}">
                                 </div>
                             </div>
 
@@ -217,9 +217,10 @@
                             <div class="ln_solid"></div>
                             <div class="form-group">
                                 <div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3">
-                                    <a class="btn btn-primary" type="button" href="{{ url('admin/emails') }}">Cancel</a>
+                                   {{-- <a class="btn btn-primary" type="button" href="{{ url('admin/emails') }}">Cancel</a>
                                     <button class="btn btn-primary" type="reset">Reset</button>
-                                    <button type="submit" class="btn btn-success">Submit</button>
+                                    <button type="submit" class="btn btn-success">Submit</button>--}}
+                                    <button type="submit" class="btn btn-success">Resend Email</button>
                                 </div>
                             </div>
 
@@ -235,24 +236,11 @@
     <script type="text/javascript" src="<?php echo(asset('js/admin_dist/bootstrap-datepicker.js')); ?>"></script>
     <script>
         $(".datepicker").datepicker({format: "yyyy-mm-dd", autoclose: true, endDate: new Date()});
-        $("#profile_pic").change(function () {
-            showImage(this);
+
+        $(document).ready(function () {
+            $(".report_disable input").prop("readonly", true);
+            $(".report_disable select").prop("disabled", true);
+            $(".report_disable textarea").prop("disabled", true);
         });
-
-
-        function showImage(input) {
-            if (input.files && input.files[0]) {
-                var reader = new FileReader();
-
-                reader.onload = function (e) {
-                    $('#profile-pic-div img').attr('src', e.target.result);
-                    $('#profile-pic-div img').attr('src', e.target.result);
-                    $('#profile-pic-div img').attr('src', e.target.result);
-
-                }
-
-                reader.readAsDataURL(input.files[0]);
-            }
-        }
     </script>
 @endsection

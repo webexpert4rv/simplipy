@@ -110,7 +110,7 @@
                                         <td>{{ @$model->attempt }}</td>--}}
                                         <td>
                                             <a href="{{ url("/reports/".$model->id.'/edit') }}"><i
-                                                        class="fa fa-pencil"></i> </a>
+                                                        class="fa fa-eye"></i> </a>
 
                                             {!! Form::open(['style' => 'display: inline;', 'method' => 'DELETE', 'onsubmit' => 'return confirm(\'Are you sure you want to delete ? \');',  'route' => array('reports.destroy', $model->id)]) !!}
                                             <button type="submit" class="btn btn-xs btn-danger"><i

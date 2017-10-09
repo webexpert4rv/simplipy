@@ -107,9 +107,9 @@
                                 <div class="form-group">
                                     <div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3">
                                         <a class="btn btn-primary" type="button"
-                                           href="{{ url('admin/user') }}">Cancel</a>
+                                           href="{{ url('admin/'.$cancel_link) }}">Cancel</a>
                                         <button class="btn btn-primary" type="reset">Reset</button>
-                                        <button type="submit" class="btn btn-success">Submit</button>
+                                        <button type="submit" class="btn btn-success">Create</button>
                                     </div>
                                 </div>
 

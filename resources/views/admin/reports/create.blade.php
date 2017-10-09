@@ -143,7 +143,6 @@
                                         <input type="text" name="phone" class="form-control col-md-7 col-xs-12">
                                     </div>
                                 </div>
-
                                 <div class="form-group">
                                     <label class="control-label col-md-3 col-sm-3 col-xs-12" for="physic">Physician<span
                                                 class="required">*</span>
@@ -186,12 +185,13 @@
                                                 class="required">*</span>
                                     </label>
                                     <div class="col-md-6 col-sm-6 col-xs-12">
-                                        <select required="required" name="emergency_id"
+                                        {{--<select required="required" name="emergency_id"
                                                 class="form-control col-md-7 col-xs-12">
                                             @foreach(\App\Report::getEmergencyOptions() as $key => $emergency)
                                                 <option value="{{ $key }}" {{ old('emergency_id') == $key ? 'selected' : ""}}> {{ $emergency }}</option>
                                             @endforeach
-                                        </select>
+                                        </select>--}}
+                                        <input type="checkbox" name="emergency_id" value="{{\App\Report::Emergency_ONE}}" > YES
                                     </div>
                                 </div>
 
@@ -213,8 +213,8 @@
                                 <div class="ln_solid"></div>
                                 <div class="form-group">
                                     <div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3">
-                                        {{--<a class="btn btn-primary" type="button"
-                                           href="{{ url('admin/emails') }}">Cancel</a>--}}
+                                        <a class="btn btn-primary" type="button"
+                                           href="{{ url('/reports') }}">Cancel</a>
                                         <button class="btn btn-primary" type="reset">Reset</button>
                                         <button type="submit" class="btn btn-success" name="status_submit" value="status_submit">To Submit</button>
                                         <button type="submit" class="btn btn-success" name="status_call" value="status_call">Send Incomplete Call</button>

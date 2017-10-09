@@ -132,7 +132,6 @@ class Report extends Model
             'physician_id' => 'required',
             'reason' => 'required',
             'exam_id' => 'required',
-            'emergency_id' => 'required',
             'attempt' => 'required',
         ];
 
