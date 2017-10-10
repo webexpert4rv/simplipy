@@ -295,4 +295,17 @@ class User extends Authenticatable
             'password' => 'required|min:6|confirmed',
         ];
     }
+
+    public static function getFirstName($id)
+    {
+        if(!empty($id)) {
+            $name = UserProfile::select('first_name')->where('user_id',$id)->first();
+            if(!empty($name)) {
+                return $name->first_name;
+            }
+            return "--";
+        }
+        return "--";
+
+    }
 }

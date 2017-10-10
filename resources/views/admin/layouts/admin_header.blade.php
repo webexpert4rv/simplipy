@@ -30,6 +30,7 @@
     <link href="{{ asset('css/admin_dist/pnotify.nonblock.css') }}" rel="stylesheet">
     <link href="{{ asset('css/admin_dist/admin.css') }}" rel="stylesheet">
 
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.3.0/css/datepicker.css" rel="stylesheet" type="text/css" />
 @yield('css')
     <!-- Custom Theme Style -->
     <link href="{{ asset('css/admin_dist/custom.min.css') }}" rel="stylesheet">

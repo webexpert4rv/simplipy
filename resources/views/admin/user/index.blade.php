@@ -69,7 +69,7 @@
                                     <th class="column-title">Sr.No.</th>
                                     <th class="column-title">Name</th>
                                     <th class="column-title">Email</th>
-                                    <th class="column-title">Registered</th>
+                                   {{-- <th class="column-title">Registered</th>--}}
                                     <th class="column-title">Status</th>
                                     <th class="column-title">Change Password</th>
                                     <th class="column-title">Actions</th>
@@ -85,7 +85,7 @@
                                         <td>{{ $loop->iteration}}</td>
                                         <td>{{ @$model->getName() }}</td>
                                         <td>{{ $model->email }}</td>
-                                        <td>{{ $model->created_at }}</td>
+                                       {{-- <td>{{ $model->created_at }}</td>--}}
                                         <td>{{ $model->status != null ? $model->getStatusOptions($model->status) : ""}}</td>
                                         <td>{!! $model->getChangePasswordLink() !!}</td>
                                         <td>

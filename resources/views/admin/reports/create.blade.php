@@ -70,7 +70,7 @@
                                                     class="required">*</span>
                                         </label>
                                         <div class="col-md-6 col-sm-6 col-xs-12">
-                                            <input type="text" name="name" class="form-control col-md-7 col-xs-12" required>
+                                            <input type="text" name="name" class="form-control col-md-7 col-xs-12" required value="{{old('name')}}">
                                         </div>
                                     </div>
 
@@ -79,7 +79,7 @@
                                                     class="required">*</span>
                                         </label>
                                         <div class="col-md-6 col-sm-6 col-xs-12">
-                                            <input type="text" name="first_name" class="form-control col-md-7 col-xs-12" required>
+                                            <input type="text" name="first_name" class="form-control col-md-7 col-xs-12" required value="{{old('first_name')}}">
                                         </div>
                                     </div>
 
@@ -88,7 +88,7 @@
                                                     class="required">*</span>
                                         </label>
                                         <div class="col-md-6 col-sm-6 col-xs-12">
-                                            <input type="text" name="company" class="form-control col-md-7 col-xs-12" required>
+                                            <input type="text" name="company" class="form-control col-md-7 col-xs-12" required value="{{old('company')}}">
                                         </div>
                                     </div>
                                     <div class="form-group">
@@ -96,7 +96,7 @@
                                                     class="required">*</span>
                                         </label>
                                         <div class="col-md-6 col-sm-6 col-xs-12">
-                                            <input type="date" name="dob" class="form-control col-md-7 col-xs-12 datepicker" required>
+                                            <input type="text" name="dob" class="form-control col-md-7 col-xs-12 datepicker" required value="{{old('dob')}}">
                                         </div>
                                     </div>
 
@@ -105,7 +105,7 @@
                                                     class="required">*</span>
                                         </label>
                                         <div class="col-md-6 col-sm-6 col-xs-12">
-                                            <input type="text" name="address" class="form-control col-md-7 col-xs-12" required>
+                                            <input type="text" name="address" class="form-control col-md-7 col-xs-12" required value="{{old('address')}}">
                                         </div>
                                     </div>
 
@@ -114,7 +114,7 @@
                                                     class="required">*</span>
                                         </label>
                                         <div class="col-md-6 col-sm-6 col-xs-12">
-                                            <input type="text" name="city" class="form-control col-md-7 col-xs-12" required>
+                                            <input type="text" name="city" class="form-control col-md-7 col-xs-12" required value="{{old('city')}}">
                                         </div>
                                     </div>
                                     <div class="form-group">
@@ -122,7 +122,7 @@
                                                     class="required">*</span>
                                         </label>
                                         <div class="col-md-6 col-sm-6 col-xs-12">
-                                            <input type="text" name="postal_code" class="form-control col-md-7 col-xs-12" required>
+                                            <input type="text" name="postal_code" class="form-control col-md-7 col-xs-12" required value="{{old('postal_code')}}">
                                         </div>
                                     </div>
                                     <div class="form-group">
@@ -130,7 +130,7 @@
                                                     class="required">*</span>
                                         </label>
                                         <div class="col-md-6 col-sm-6 col-xs-12">
-                                            <input type="email" name="email" class="form-control col-md-7 col-xs-12" required>
+                                            <input type="email" name="email" class="form-control col-md-7 col-xs-12" required value="{{old('email')}}">
                                         </div>
                                     </div>
                                     <div class="form-group">
@@ -138,14 +138,14 @@
                                                     class="required">*</span>
                                         </label>
                                         <div class="col-md-6 col-sm-6 col-xs-12">
-                                            <input type="text" name="mobile" class="form-control col-md-7 col-xs-12" required>
+                                            <input type="text" name="mobile" class="form-control col-md-7 col-xs-12" required value="{{old('mobile')}}">
                                         </div>
                                     </div>
                                     <div class="form-group">
                                         <label class="control-label col-md-3 col-sm-3 col-xs-12" for="phone">Phone
                                         </label>
                                         <div class="col-md-6 col-sm-6 col-xs-12">
-                                            <input type="text" name="phone" class="form-control col-md-7 col-xs-12">
+                                            <input type="text" name="phone" class="form-control col-md-7 col-xs-12" value="{{old('phone')}}">
                                         </div>
                                     </div>
                                 </div>
@@ -170,7 +170,7 @@
                                                     class="required">*</span>
                                         </label>
                                         <div class="col-md-6 col-sm-6 col-xs-12">
-                                            <textarea name="reason" class="form-control col-md-7 col-xs-12" rows="5" required></textarea>
+                                            <textarea name="reason" class="form-control col-md-7 col-xs-12" rows="5" required>{{old('reason')}}</textarea>
                                         </div>
                                     </div>
 

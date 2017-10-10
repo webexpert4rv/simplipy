@@ -16,7 +16,8 @@
             <div class="profile_info">
                 <p>
                 <span>Welcome,</span>
-                <b>{{  \Auth::user()->name }}</b></p>
+                <b>{{\App\User::getFirstName(\Auth::user()->id)}}</b></p>
+
             </div>
         </div>
         <!-- /menu profile quick info -->
@@ -29,7 +30,7 @@
                 <h3>General</h3>
                 <ul class="nav side-menu">
 
-                    <li><a><i class="fa fa-home"></i> Reports <span class="fa fa-chevron-down"></span></a>
+                    <li><a><i class="fa fa-bar-chart" aria-hidden="true"></i> Reports <span class="fa fa-chevron-down"></span></a>
                         <ul class="nav child_menu">
                             <li><a href="{{ url('reports') }}">Manage Reports</a></li>
                         </ul>
@@ -83,7 +84,7 @@
             <ul class="nav navbar-nav navbar-right">
                 <li class="">
                     <a href="javascript:;" class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-                       {{-- <img src="images/img.jpg" alt="">--}}{{  \Auth::user()->name }}
+                       {{-- <img src="images/img.jpg" alt="">--}}{{\App\User::getFirstName(\Auth::user()->id)}}
                         <span class=" fa fa-angle-down"></span>
                     </a>
                     <ul class="dropdown-menu dropdown-usermenu pull-right">

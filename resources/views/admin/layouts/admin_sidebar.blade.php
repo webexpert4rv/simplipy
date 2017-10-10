@@ -29,14 +29,14 @@
                 <h3>General</h3>
                 <ul class="nav side-menu">
 
-                    <li><a><i class="fa fa-home"></i> Users <span class="fa fa-chevron-down"></span></a>
+                    <li><a><i class="fa fa-user" aria-hidden="true"></i> Users <span class="fa fa-chevron-down"></span></a>
                         <ul class="nav child_menu">
                             <li><a href="{{ url('admin/managers') }}">Managers</a></li>
                             <li><a href="{{ url('admin/agents') }}">Agents</a></li>
                         </ul>
                     </li>
 
-                    <li><a><i class="fa fa-home"></i> Emails <span class="fa fa-chevron-down"></span></a>
+                    <li><a><i class="fa fa-envelope" aria-hidden="true"></i> Emails <span class="fa fa-chevron-down"></span></a>
                         <ul class="nav child_menu">
                             <li><a href="{{ url('admin/emails') }}">Mailing List</a></li>
                         </ul>

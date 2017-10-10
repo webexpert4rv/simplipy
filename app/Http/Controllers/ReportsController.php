@@ -54,11 +54,23 @@ class ReportsController extends Controller
             $email = Email::where('center_id',$model->center_id)
                 ->where('type_id',Email::TYPE_INSTANT_REPORT)
                 ->pluck('email')->toArray();
+
+            if(isset($request->emergency_id)) {
+                $subject_content = "URGENT";
+            }elseif ($request->attempt == 2){
+                $subject_content = "Deuxième rappel";
+            }elseif ($request->attempt == 3){
+                $subject_content = "Troisième rappel";
+            }elseif ($request->attempt == 4){
+                $subject_content = "Quatrième rappel";
+            }else{
+                $subject_content = "Instant Email";
+            }
             try {
 
-                Mail::send('emails.instant_report',[], function($message) use ($email) {
+                Mail::send('emails.instant_report',[], function($message) use ($email,$subject_content) {
                     $message->to($email);
-                    $message->subject('Instant Email');
+                    $message->subject($subject_content);
                 });
             }catch (\Exception $e) {
                 return redirect()->back()->withInput()->withErrors( $e->getMessage());
@@ -86,11 +98,17 @@ class ReportsController extends Controller
         $email = Email::where('center_id',$model->center_id)
                         ->where('type_id',Email::TYPE_INSTANT_REPORT)
                         ->pluck('email')->toArray();
+
         try {
 
-            Mail::send('emails.instant_report',[], function($message) use ($email) {
+            Mail::send('emails.instant_report',[], function($message) use ($email,$request) {
                 $message->to($email);
-                $message->subject('Instant Email');
+                if(isset($request->emergency_id)) {
+                    $message->subject('URGENT');
+                }else{
+                    $message->subject('Instant Email');
+                }
+
             });
         }catch (\Exception $e) {
             return redirect()->back()->withInput()->withErrors( $e->getMessage());
