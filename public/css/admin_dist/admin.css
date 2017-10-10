@@ -126,3 +126,12 @@ body.after_login div#DataTables_Table_0_wrapper tbody td:last-child a, body.afte
     margin-right: 7px;
     float: left;
 }
+b.sidebar_name {
+    color: #fff;
+}
+body.after_login.nav-sm .navbar.nav_title {
+    text-align: center;
+}
+body.after_login.nav-sm .left_col.scroll-view a.site_title {
+    padding-left: 0px;
+}

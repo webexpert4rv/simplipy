@@ -56,7 +56,7 @@
     $(document).ready(function () {
        // $('textarea').ckeditor();
         var val = $("#success_notif").val();
-        console.log('sdda'+val);
+        //console.log('sdda'+val);
         if(typeof  val != "undefined") {
 
             new PNotify({
@@ -68,7 +68,7 @@
         }
 
         var error = $("#error_notif").val();
-        console.log('sd'+error);
+        //console.log('sd'+error);
         if(typeof  error != "undefined") {
             new PNotify({
                 title: 'Oh No!',
@@ -77,7 +77,9 @@
                 styling: 'bootstrap3'
             });
         }
-    })
+
+
+    });
 
 
 </script>

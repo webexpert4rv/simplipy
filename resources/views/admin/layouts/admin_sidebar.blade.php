@@ -3,6 +3,7 @@
         <div class="navbar nav_title" style="border: 0;">
             <a href="{{ url('/admin') }}" class="site_title">
                 <img src="{{asset('images/logo.png')}}" class="logo" width="120px" height="50px">
+                <img src="{{asset('images/logo_side.jpg')}}" class="logo_side" height="50px" style="display: none">
                 {{--<span>Simplify</span>--}}</a>
         </div>
 
@@ -16,7 +17,7 @@
             <div class="profile_info">
                 <p>
                 <span>Welcome,</span>
-                <b>{{  \Auth::guard('admins')->user()->name }}</b></p>
+                <b class="sidebar_name">{{  \Auth::guard('admins')->user()->name }}</b></p>
             </div>
         </div>
         <!-- /menu profile quick info -->

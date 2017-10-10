@@ -1,10 +1,15 @@
 <div class="col-md-3 left_col">
     <div class="left_col scroll-view">
+
+
         <div class="navbar nav_title" style="border: 0;">
-            <a href="{{ url('/admin') }}" class="site_title">
+            <a href="{{ url('/home') }}" class="site_title">
                 <img src="{{asset('images/logo.png')}}" class="logo" width="120px" height="50px">
+
+                <img src="{{asset('images/logo_side.jpg')}}" class="logo_side" height="50px" style="display: none">
                 {{--<span>Simplify</span>--}}</a>
         </div>
+
 
         <div class="clearfix"></div>
 
@@ -16,7 +21,7 @@
             <div class="profile_info">
                 <p>
                 <span>Welcome,</span>
-                <b>{{\App\User::getFirstName(\Auth::user()->id)}}</b></p>
+                <b class="sidebar_name">{{\App\User::getFirstName(\Auth::user()->id)}}</b></p>
 
             </div>
         </div>
