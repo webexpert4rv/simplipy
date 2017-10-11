@@ -46,8 +46,8 @@
                         </div>
                         <div class="x_content">
                             <br/>
-                            {!! Form::open(['files' => true, 'route' => ['admin.agents.update', 'id' => $model->id]/*$model->getEditLink(true)*/, 'class' => 'form-horizontal form-label-left admin_create', 'id' => 'demo-form2']) !!}
-                            <input type="hidden" name="_method" value="PUT">
+                            {!! Form::open(['files' => true,'method'=>'post', 'route' => ['admin.agents.update', 'id' => $model->id]/*$model->getEditLink(true)*/, 'class' => 'form-horizontal form-label-left admin_create', 'id' => 'demo-form2']) !!}
+
                             {!! csrf_field() !!}
                             <div class="form-group">
                                 <label class="control-label col-md-2" for="first_name">First Name
@@ -89,7 +89,7 @@
                                     <select required="required" name="center_id"
                                             class="form-control col-md-7 col-xs-12">
                                         @foreach(\App\Email::getCenterOptions() as $key => $center)
-                                            <option {{ old('center_id', $model->center_id) == $key ? 'selected' : ""}}> {{ $center }}</option>
+                                            <option value="{{$key}}" {{ old('center_id', $model->center_id) == $key ? 'selected' : ""}}> {{ $center }}</option>
                                         @endforeach
 
                                     </select>

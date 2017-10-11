@@ -35,11 +35,20 @@ class Email extends Model
 
     public function getRules()
     {
-        $rules = [
-            'email' => 'email|required|unique:emails',
-            'center_id' => 'required',
-            'type_id' => 'required',
-        ];
+        if ($this->id != null) {
+            $rules = [
+                'email' => 'email|required',
+                'center_id' => 'required',
+                'type_id' => 'required',
+            ];
+        }else{
+            $rules = [
+                'email' => 'email|required|unique:emails',
+                'center_id' => 'required',
+                'type_id' => 'required',
+            ];
+        }
+
 
         return $rules;
     }

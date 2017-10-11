@@ -99,9 +99,7 @@ class User extends Authenticatable
 
     public function rules()
     {
-        $rules = [
-            // 'name' => 'required',
-        ];
+        $rules = [];
 
         if ($this->id != null) {
             $rules['email'] = 'required|email|max:255|unique:users,id,' . $this->id;
