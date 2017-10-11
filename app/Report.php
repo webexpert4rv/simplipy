@@ -34,6 +34,10 @@ class Report extends Model
     const STATUS_SUBMIT = 0;
     const STATUS_CALL = 1;
 
+    const CIVIL_ONE = 0;
+    const CIVIL_TWO = 1;
+    const CIVIL_THREE = 2;
+
     use SoftDeletes;
 
     protected $table = 'reports';
@@ -105,6 +109,23 @@ class Report extends Model
         $list = [
             self::Emergency_ONE => 'Yes',
             self::Emergency_TWO => 'No',
+        ];
+
+        if ($id === null)
+            return $list;
+
+        if (isset($list[$id]))
+            return $list[$id];
+
+        return $id;
+    }
+
+    public static function getCivilOptions($id = null)
+    {
+        $list = [
+            self::CIVIL_ONE => 'Mr.',
+            self::CIVIL_TWO => 'Mrs',
+            self::CIVIL_THREE => 'Ms.',
         ];
 
         if ($id === null)

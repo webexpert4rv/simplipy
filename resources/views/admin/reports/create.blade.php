@@ -66,6 +66,20 @@
                                 <div class="second_section">
                                     <h1 class="fh2">Patient personal information</h1>
                                     <div class="form-group">
+                                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="civil">Civil status <span
+                                                    class="required">*</span>
+                                        </label>
+                                        <div class="col-md-6 col-sm-6 col-xs-12">
+                                            <select required="required" name="civil_id"
+                                                    class="form-control col-md-7 col-xs-12">
+                                                @foreach(\App\Report::getCivilOptions() as $key => $civil)
+                                                    <option value="{{ $key }}" {{ old('civil_id') == $key ? 'selected' : ""}}> {{ $civil }}</option>
+                                                @endforeach
+                                            </select>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
                                         <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Name <span
                                                     class="required">*</span>
                                         </label>
@@ -89,7 +103,9 @@
                                         </label>
                                         <div class="col-md-6 col-sm-6 col-xs-12">
                                             <input type="text" name="company" class="form-control col-md-7 col-xs-12" required value="{{old('company')}}">
+                                            <p>(Only for companies, if not N / C)</p>
                                         </div>
+
                                     </div>
                                     <div class="form-group">
                                         <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first_name">Date of birth<span
@@ -97,6 +113,7 @@
                                         </label>
                                         <div class="col-md-6 col-sm-6 col-xs-12">
                                             <input type="text" name="dob" class="form-control col-md-7 col-xs-12 datepicker" required value="{{old('dob')}}">
+                                            <p>(Only for patients - DD / MM / YYYY format, otherwise N / C).</p>
                                         </div>
                                     </div>
 
@@ -131,6 +148,7 @@
                                         </label>
                                         <div class="col-md-6 col-sm-6 col-xs-12">
                                             <input type="email" name="email" class="form-control col-md-7 col-xs-12" required value="{{old('email')}}">
+                                            <p>(If not available, indicate N / C)</p>
                                         </div>
                                     </div>
                                     <div class="form-group">
@@ -217,6 +235,7 @@
                                             </select>
                                         </div>
                                     </div>
+                                    <input type="hidden" name="user_id" value="{{\Illuminate\Support\Facades\Auth::user()->id}}">
                                 </div>    
                                 <div class="ln_solid"></div>
                                 <div class="form-group">

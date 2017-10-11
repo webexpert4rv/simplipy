@@ -135,3 +135,6 @@ body.after_login.nav-sm .navbar.nav_title {
 body.after_login.nav-sm .left_col.scroll-view a.site_title {
     padding-left: 0px;
 }
+body.nav-md.after_login .right_col .x_panel {
+    padding: 10px;
+}

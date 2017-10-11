@@ -63,11 +63,28 @@
                                                 <option value="{{ $key }}" {{ $model->center_id == $key ? 'selected' : ""}}> {{ $center }}</option>
                                             @endforeach
                                         </select>
+                                        <input type="hidden" name="center_id" value="{{$model->center_id}}" />
                                     </div>
                                 </div>
                             </div>
                             <div class="second_section">
                                 <h1 class="fh2">Patient personal information</h1>
+
+                                <div class="form-group">
+                                    <label class="control-label col-md-3 col-sm-3 col-xs-12" for="civil">Civil status <span
+                                                class="required">*</span>
+                                    </label>
+                                    <div class="col-md-6 col-sm-6 col-xs-12">
+                                        <select required="required" name="civil_id"
+                                                class="form-control col-md-7 col-xs-12">
+                                            @foreach(\App\Report::getCivilOptions() as $key => $civil)
+                                                <option value="{{ $key }}" {{ $model->civil_id == $key ? 'selected' : ""}}> {{ $civil }}</option>
+                                            @endforeach
+                                        </select>
+                                        <input type="hidden" name="civil_id" value="{{$model->civil_id}}" />
+                                    </div>
+                                </div>
+
                                 <div class="form-group">
                                     <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Name <span
                                                 class="required">*</span>
@@ -92,6 +109,7 @@
                                     </label>
                                     <div class="col-md-6 col-sm-6 col-xs-12">
                                         <input type="text" name="company" class="form-control col-md-7 col-xs-12" required value="{{ $model->company }}">
+                                        <p>(Only for companies, if not N / C)</p>
                                     </div>
                                 </div>
                                 <div class="form-group">
@@ -100,6 +118,7 @@
                                     </label>
                                     <div class="col-md-6 col-sm-6 col-xs-12">
                                         <input type="date" name="dob" class="form-control col-md-7 col-xs-12 datepicker" required value="{{ $model->dob }}">
+                                        <p>(Only for patients - DD / MM / YYYY format, otherwise N / C).</p>
                                     </div>
                                 </div>
 
@@ -134,6 +153,7 @@
                                     </label>
                                     <div class="col-md-6 col-sm-6 col-xs-12">
                                         <input type="email" name="email" class="form-control col-md-7 col-xs-12" required value="{{ $model->email }}">
+                                        <p>(If not available, indicate N / C)</p>
                                     </div>
                                 </div>
 
@@ -167,6 +187,7 @@
                                                 <option value="{{ $key }}" {{ $model->physician_id == $key ? 'selected' : ""}}> {{ $physician }}</option>
                                             @endforeach
                                         </select>
+                                        <input type="hidden" name="physician_id" value="{{$model->physician_id}}" />
                                     </div>
                                 </div>
 
@@ -177,6 +198,7 @@
                                     <div class="col-md-6 col-sm-6 col-xs-12">
                                         <textarea name="reason" class="form-control col-md-7 col-xs-12" rows="5" required>{{ $model->reason }}</textarea>
                                     </div>
+                                    <input type="hidden" name="reason" value="{{$model->reason}}" />
                                 </div>
 
                                 <div class="form-group">
@@ -190,6 +212,7 @@
                                                 <option value="{{ $key }}" {{ $model->exam_id == $key ? 'selected' : ""}}> {{ $exam }}</option>
                                             @endforeach
                                         </select>
+                                        <input type="hidden" name="exam_id" value="{{$model->exam_id}}" />
                                     </div>
                                 </div>
 
@@ -215,13 +238,15 @@
                                     <div class="col-md-6 col-sm-6 col-xs-12">
                                         <select required="required" name="attempt"
                                                 class="form-control col-md-7 col-xs-12">
-                                            <option value="1" <?php if($model->attampt == 1) echo "selected"; ?>>1</option>
-                                            <option value="2" <?php if($model->attampt == 2) echo "selected"; ?>>2</option>
-                                            <option value="3" <?php if($model->attampt == 3) echo "selected"; ?>>3</option>
-                                            <option value="4" <?php if($model->attampt == 4) echo "selected"; ?>>4</option>
+                                            <option value="1" <?php if($model->attempt == 1) echo "selected"; ?>>1</option>
+                                            <option value="2" <?php if($model->attempt == 2) echo "selected"; ?>>2</option>
+                                            <option value="3" <?php if($model->attempt == 3) echo "selected"; ?>>3</option>
+                                            <option value="4" <?php if($model->attempt == 4) echo "selected"; ?>>4</option>
                                         </select>
+                                        <input type="hidden" name="attempt" value="{{$model->attempt}}" />
                                     </div>
                                 </div>
+                                <input type="hidden" name="user_id" value="{{\Illuminate\Support\Facades\Auth::user()->id}}">
                             </div>
                             <div class="ln_solid"></div>
                             <div class="form-group">

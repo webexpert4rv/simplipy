@@ -55,20 +55,25 @@ class ReportsController extends Controller
                 ->where('type_id',Email::TYPE_INSTANT_REPORT)
                 ->pluck('email')->toArray();
 
+            $fields = $request->name.'/'.$request->first_name.
+                        '/'.Report::getPhysicianOptions($request->physician_id).
+                        '/'.date('d-m-Y').
+                        '/'. date('H:i',time() + 3600);
+
             if(isset($request->emergency_id)) {
-                $subject_content = "URGENT";
-            }elseif ($request->attempt == 2){
-                $subject_content = "Deuxième rappel";
-            }elseif ($request->attempt == 3){
-                $subject_content = "Troisième rappel";
-            }elseif ($request->attempt == 4){
-                $subject_content = "Quatrième rappel";
+                $subject_content = "[PATIENT REPORT]​[URGENT]".$fields;
+                if($request->attempt > 1) {
+                    $subject_content = "[PATIENT REPORT]​​[URGENT][RAPPEL]​".$fields;
+                }
+            }elseif ($request->attempt > 1){
+                $subject_content = "[PATIENT REPORT]​[RAPPEL]​".$fields;
             }else{
-                $subject_content = "Instant Email";
+                $subject_content = "[PATIENT REPORT]​​".$fields;
             }
+            $formdata = $request->toArray();
             try {
 
-                Mail::send('emails.instant_report',[], function($message) use ($email,$subject_content) {
+                Mail::send('emails.instant_report',$formdata, function($message) use ($email,$subject_content) {
                     $message->to($email);
                     $message->subject($subject_content);
                 });
@@ -99,16 +104,29 @@ class ReportsController extends Controller
                         ->where('type_id',Email::TYPE_INSTANT_REPORT)
                         ->pluck('email')->toArray();
 
+        $fields = $request->name.'/'.$request->first_name.
+            '/'.Report::getPhysicianOptions($request->physician_id).
+            '/'.date('d-m-Y').
+            '/'. date('H:i',time() + 3600);
+
+        if(isset($request->emergency_id)) {
+            $subject_content = "[PATIENT REPORT]​[URGENT]".$fields;
+            if($request->attempt > 1) {
+                $subject_content = "[PATIENT REPORT]​​[URGENT][RAPPEL]​".$fields;
+            }
+        }elseif ($request->attempt > 1){
+            $subject_content = "[PATIENT REPORT]​[RAPPEL]​".$fields;
+        }else{
+            $subject_content = "[PATIENT REPORT]​​".$fields;
+        }
+
+        $formdata = $request->toArray();
+
         try {
 
-            Mail::send('emails.instant_report',[], function($message) use ($email,$request) {
+            Mail::send('emails.instant_report',$formdata, function($message) use ($email,$request,$subject_content) {
                 $message->to($email);
-                if(isset($request->emergency_id)) {
-                    $message->subject('URGENT');
-                }else{
-                    $message->subject('Instant Email');
-                }
-
+                $message->subject($subject_content);
             });
         }catch (\Exception $e) {
             return redirect()->back()->withInput()->withErrors( $e->getMessage());
