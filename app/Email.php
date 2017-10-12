@@ -12,6 +12,11 @@ class Email extends Model
     const TYPE_DAILY_MONTHLY_REPORT = 1;
     const TYPE_INSTANT_REPORT = 2;
 
+    const HEADER_TO = 1;
+    const HEADER_CC = 2;
+    const HEADER_BCC = 3;
+
+
     protected $fillable = [
         'email',
         'center_id',
@@ -27,6 +32,7 @@ class Email extends Model
             $data = new Collection($data);
         }
         $this->email = $data->get('email');
+        $this->header_id = $data->get('header_id');
         $this->center_id = $data->get('center_id');
         $this->type_id = $data->get('type_id');
         return $this;
@@ -74,6 +80,23 @@ class Email extends Model
         $list = [
             self::TYPE_DAILY_MONTHLY_REPORT => 'Daily/Monthly Reports',
             self::TYPE_INSTANT_REPORT => 'Patient data Reports',
+        ];
+
+        if ($id === null)
+            return $list;
+
+        if (isset($list[$id]))
+            return $list[$id];
+
+        return $id;
+    }
+
+    public static function getHeaderOptions($id = null)
+    {
+        $list = [
+            self::HEADER_TO => 'To',
+            self::HEADER_CC => 'Cc',
+            self::HEADER_BCC => 'Bcc',
         ];
 
         if ($id === null)

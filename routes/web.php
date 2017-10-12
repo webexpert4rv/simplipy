@@ -22,11 +22,13 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 Route::group(['middleware' => 'auth'], function () {
     Route::resource('reports', 'ReportsController');
+
+    Route::any('daily/report', 'ReportsController@dailyReport');
 });
 Route::group(['namespace' => 'Admin', 'prefix' => 'admin'], function () {
     Route::get('/', 'Auth\LoginController@showLoginForm');
     Route::post('login', 'Auth\LoginController@login');
-    Route::post('logout', 'Auth\LoginController@logout');
+    Route::post('logout', 'Auth\LoginController@logout')->name('admin.logout');
     Route::post('password/email', 'Auth\ForgotPasswordController@sendResetLinkEmail');
     Route::get('password/reset', 'Auth\ForgotPasswordController@showLinkRequestForm');
     Route::post('password/reset', 'Auth\ResetPasswordController@reset');

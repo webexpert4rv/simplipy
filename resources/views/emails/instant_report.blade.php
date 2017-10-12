@@ -4,6 +4,9 @@
     <style type="text/css">
         body {margin: 0; padding: 0; min-width: 100%!important;}
         .content {width: 100%; max-width: 600px;}
+        table.patient_data tr td {
+            padding-top: 15px;
+        }
     </style>
 </head>
 <body>
@@ -43,7 +46,7 @@
             ?>
         </b></p>
 </div>
-<table name="patient_table" border="0" cellpadding="0" cellspacing="0" height="100%" width="100%" >
+<table name="patient_table" border="0" cellpadding="0" cellspacing="0" height="100%" width="100%" class="patient_data">
     <tr>
         <td width="20%">Date:</td>
         <td width="80%">{{ date('d-m-Y') }} </td>
@@ -110,7 +113,7 @@
     </tr>
 </table>
 
-<footer>
+<footer style="padding-top: 25px;">
     <div>
         <p class="logo_footer"><img src="{{asset('images/logo.png')}}" width="165px"></p>
         <p class="info_email">Email: contact@simplify.fr</p>

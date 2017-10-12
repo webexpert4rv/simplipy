@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers\Auth;
 
+use App\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\URL;
 
@@ -48,15 +50,8 @@ class LoginController extends Controller
 
         //return URL::previous();
 
-        //dd($request->());
-        $this->performLogout($request);
-        return redirect()->to('admin');
-    }
-
-    /*public function logout_user(Request $request)
-    {
         $this->performLogout($request);
         return redirect()->to('login');
-    }*/
+    }
 
 }

@@ -167,6 +167,8 @@ class Report extends Model
         }
 
         $this->center_id = $data->get('center_id');
+        $this->user_id = $data->get('user_id');
+        $this->civil_id = $data->get('civil_id');
         $this->name = $data->get('name');
         $this->first_name = $data->get('name');
         $this->company = $data->get('company');
@@ -193,6 +195,57 @@ class Report extends Model
         }
 
         return $this;
+    }
+
+    public static function getToAddress($center_id)
+    {
+        if(!empty($center_id)){
+
+            $emailTo = Email::where('center_id',$center_id)
+                ->where('header_id',Email::HEADER_TO)
+                ->where('type_id',Email::TYPE_INSTANT_REPORT)
+                ->pluck('email')->toArray();
+
+            if(count($emailTo) > 0){
+                return $emailTo;
+            }
+            return "";
+        }
+        return "";
+    }
+
+    public static function getCcAddress($center_id)
+    {
+        if(!empty($center_id)){
+
+            $emailCc = Email::where('center_id',$center_id)
+                ->where('header_id',Email::HEADER_CC)
+                ->where('type_id',Email::TYPE_INSTANT_REPORT)
+                ->pluck('email')->toArray();
+
+            if(count($emailCc) > 0){
+                return $emailCc;
+            }
+            return "";
+        }
+        return "";
+    }
+
+    public static function getBccAddress($center_id)
+    {
+        if(!empty($center_id)){
+
+            $emailBcc = Email::where('center_id',$center_id)
+                ->where('header_id',Email::HEADER_BCC)
+                ->where('type_id',Email::TYPE_INSTANT_REPORT)
+                ->pluck('email')->toArray();
+
+            if(count($emailBcc) > 0){
+                return $emailBcc;
+            }
+            return "";
+        }
+        return "";
     }
 
 }

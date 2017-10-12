@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Email;
 use App\Report;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Mail\Mailable;
@@ -51,39 +52,48 @@ class ReportsController extends Controller
         $model->setData($request);
         if ($model->save()) {
 
-            $email = Email::where('center_id',$model->center_id)
-                ->where('type_id',Email::TYPE_INSTANT_REPORT)
-                ->pluck('email')->toArray();
+            $emailTo = Report::getToAddress($model->center_id);
+            $emailCc = Report::getCcAddress($model->center_id);
+            $emailBcc = Report::getBccAddress($model->center_id);
 
-            $fields = $request->name.'/'.$request->first_name.
-                        '/'.Report::getPhysicianOptions($request->physician_id).
-                        '/'.date('d-m-Y').
-                        '/'. date('H:i',time() + 3600);
+            if (!empty($emailTo) || !empty($emailBcc) || !empty($emailCc)) {
 
-            if(isset($request->emergency_id)) {
-                $subject_content = "[PATIENT REPORT]​[URGENT]".$fields;
-                if($request->attempt > 1) {
-                    $subject_content = "[PATIENT REPORT]​​[URGENT][RAPPEL]​".$fields;
+                $fields = "  " . $request->name . '/' . $request->first_name .
+                    '/' . Report::getPhysicianOptions($request->physician_id) .
+                    '/' . date('d-m-Y') .
+                    '/' . Carbon::now()->format('H:i');
+
+                if (isset($request->emergency_id)) {
+                    $subject_content = "[PATIENT REPORT]​[URGENT]" . $fields;
+                    if ($request->attempt > 1) {
+                        $subject_content = "[PATIENT REPORT]​​[URGENT][RAPPEL]​" . $fields;
+                    }
+                } elseif ($request->attempt > 1) {
+                    $subject_content = "[PATIENT REPORT]​[RAPPEL]" . $fields;
+                } else {
+                    $subject_content = "[PATIENT REPORT]​​" . $fields;
                 }
-            }elseif ($request->attempt > 1){
-                $subject_content = "[PATIENT REPORT]​[RAPPEL]​".$fields;
-            }else{
-                $subject_content = "[PATIENT REPORT]​​".$fields;
-            }
-            $formdata = $request->toArray();
-            try {
+                $formdata = $request->toArray();
+                try {
 
-                Mail::send('emails.instant_report',$formdata, function($message) use ($email,$subject_content) {
-                    $message->to($email);
-                    $message->subject($subject_content);
-                });
-            }catch (\Exception $e) {
-                return redirect()->back()->withInput()->withErrors( $e->getMessage());
-            }
+                    Mail::send('emails.instant_report', $formdata, function ($message) use ($emailTo, $emailCc, $emailBcc, $subject_content) {
+                        if(empty($emailTo)){
+                            $message->to("admin@simplify-crm.com");
+                        }else{
+                            $message->to($emailTo);
+                        }
+                        $message->cc($emailCc);
+                        $message->bcc($emailBcc);
+                        $message->subject($subject_content);
+                    });
+                } catch (\Exception $e) {
+                    return redirect()->back()->withInput()->withErrors($e->getMessage());
+                }
 
+                return redirect('/reports')->with('success', 'Successfully Added Report');
+            }
             return redirect('/reports')->with('success', 'Successfully Added Report');
         }
-
         return redirect()->back()->withInput()->with('error', 'Something went wrong');
     }
 
@@ -96,52 +106,60 @@ class ReportsController extends Controller
 
     public function update(Request $request,$id)
     {
-        // Send Email code Here
-
         $model = Report::find($id);
 
-        $email = Email::where('center_id',$model->center_id)
-                        ->where('type_id',Email::TYPE_INSTANT_REPORT)
-                        ->pluck('email')->toArray();
+        $emailTo = Report::getToAddress($model->center_id);
+        $emailCc = Report::getCcAddress($model->center_id);
+        $emailBcc = Report::getBccAddress($model->center_id);
 
-        $fields = $request->name.'/'.$request->first_name.
-            '/'.Report::getPhysicianOptions($request->physician_id).
-            '/'.date('d-m-Y').
-            '/'. date('H:i',time() + 3600);
+        if (!empty($emailTo) || !empty($emailBcc) || !empty($emailCc)) {
 
-        if(isset($request->emergency_id)) {
-            $subject_content = "[PATIENT REPORT]​[URGENT]".$fields;
-            if($request->attempt > 1) {
-                $subject_content = "[PATIENT REPORT]​​[URGENT][RAPPEL]​".$fields;
+            $fields = "  " . $request->name . '/' . $request->first_name .
+                '/' . Report::getPhysicianOptions($request->physician_id) .
+                '/' . date('d-m-Y') .
+                '/' . Carbon::now()->format('H:i');
+
+            if (isset($request->emergency_id)) {
+                $subject_content = "[PATIENT REPORT]​[URGENT]" . $fields;
+                if ($request->attempt > 1) {
+                    $subject_content = "[PATIENT REPORT]​​[URGENT][RAPPEL]" . $fields;
+                }
+            } elseif ($request->attempt > 1) {
+                $subject_content = "[PATIENT REPORT]​[RAPPEL]" . $fields;
+            } else {
+                $subject_content = "[PATIENT REPORT]" . $fields;
             }
-        }elseif ($request->attempt > 1){
-            $subject_content = "[PATIENT REPORT]​[RAPPEL]​".$fields;
-        }else{
-            $subject_content = "[PATIENT REPORT]​​".$fields;
+
+            $formdata = $request->toArray();
+
+            try {
+
+                Mail::send('emails.instant_report', $formdata, function ($message) use ($emailTo, $emailCc, $emailBcc, $subject_content) {
+                    if(empty($emailTo)){
+                        $message->to("admin@simplify-crm.com");
+                    }else{
+                        $message->to($emailTo);
+                    }
+                    $message->cc($emailCc);
+                    $message->bcc($emailBcc);
+                    $message->subject($subject_content);
+                });
+            } catch (\Exception $e) {
+                return redirect()->back()->withInput()->withErrors($e->getMessage());
+            }
+
+            /*$model = Report::find($id);
+
+            $this->validate($request,$model->getRules());
+
+            $model->setData($request);
+            if ($model->save()) {
+                return redirect('/reports')->with('success', 'Successfully Updated Report');
+            }*/
+
+            return redirect('/reports')->with('success', 'Email send!!');
         }
-
-        $formdata = $request->toArray();
-
-        try {
-
-            Mail::send('emails.instant_report',$formdata, function($message) use ($email,$request,$subject_content) {
-                $message->to($email);
-                $message->subject($subject_content);
-            });
-        }catch (\Exception $e) {
-            return redirect()->back()->withInput()->withErrors( $e->getMessage());
-        }
-
-        /*$model = Report::find($id);
-
-        $this->validate($request,$model->getRules());
-
-        $model->setData($request);
-        if ($model->save()) {
-            return redirect('/reports')->with('success', 'Successfully Updated Report');
-        }*/
-
-        return redirect('/reports')->with('success', 'Email send!!');
+        return redirect('/reports')->with('success', 'Email not send!!');
     }
 
     public function destroy($id)
@@ -152,5 +170,57 @@ class ReportsController extends Controller
         }
         return redirect()->back()->withInput()->with('error', 'Something Went Wrong!!!');
 
+    }
+
+    public function dailyReport()
+    {
+        $reportData = Report::where('created_at', '>' ,Carbon::now()->format('Y-m-d'))
+                    ->pluck('center_id');
+        if(count($reportData) > 0) {
+
+            $emailTo = Report::getToAddress($reportData);
+            $emailCc = Report::getCcAddress($reportData);
+            $emailBcc = Report::getBccAddress($reportData);
+
+            if (!empty($emailTo) || !empty($emailBcc) || !empty($emailCc)) {
+
+                $dataCenterOne = Report::where('center_id',Report::CENTER_ONE)
+                            ->where('created_at', '>' ,Carbon::now()->format('Y-m-d'))
+                            ->count();
+                $dataCenterTwo = Report::where('center_id',Report::CENTER_TWO)
+                    ->where('created_at', '>' ,Carbon::now()->format('Y-m-d'))
+                    ->count();
+
+                $total =  $dataCenterOne+$dataCenterTwo;
+
+                if($total > 0) {
+                    $data = array('centerOne' => $dataCenterOne,
+                        'centerTwo' => $dataCenterTwo,
+                        'total' => $total,
+                    );
+
+                    $subject_content = "[DAILY PATIENT REPORT]".Carbon::now()->format('d-m-Y');
+                    try {
+                        Mail::send('emails.daily_report', $data, function ($message) use ($emailTo, $emailCc, $emailBcc, $subject_content) {
+                            if(empty($emailTo)){
+                                $message->to("admin@simplify-crm.com");
+                            }else{
+                                $message->to($emailTo);
+                            }
+                            $message->cc($emailCc);
+                            $message->bcc($emailBcc);
+                            $message->subject($subject_content);
+                        });
+                    } catch (\Exception $e) {
+                        return redirect()->back()->withInput()->withErrors($e->getMessage());
+                    }
+                }
+
+                return redirect('/reports')->with('success', 'Email send!!');
+            }
+            return redirect('/reports')->with('success', 'Email not send!!');
+        }
+
+        return redirect('/reports')->with('success', 'Center Id Not Available!!');
     }
 }

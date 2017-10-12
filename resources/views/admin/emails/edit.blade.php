@@ -57,6 +57,21 @@
                                            required="required" class="form-control col-md-7 col-xs-12">
                                 </div>
                             </div>
+
+                            <div class="form-group">
+                                <label class="control-label col-md-2" for="header">Recipient<span
+                                            class="required">*</span>
+                                </label>
+                                <div class="col-md-6 col-sm-6 col-xs-12">
+                                    <select required="required" name="header_id"
+                                            class="form-control col-md-7 col-xs-12">
+                                        @foreach(\App\Email::getHeaderOptions() as $key => $header)
+                                            <option value="{{ $key }}" {{ old('header_id', $model->header_id) == $key ? 'selected' : ""}}> {{ $header }}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                            </div>
+
                             <div class="form-group">
                                 <label class="control-label col-md-2" for="center_id">Center <span
                                             class="required">*</span>
