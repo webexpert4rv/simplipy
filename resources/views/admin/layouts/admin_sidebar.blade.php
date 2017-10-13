@@ -43,6 +43,12 @@
                         </ul>
                     </li>
 
+                    {{--<li><a><i class="fa fa-bar-chart" aria-hidden="true"></i> Reports <span class="fa fa-chevron-down"></span></a>
+                        <ul class="nav child_menu">
+                            <li><a href="{{ url('admin/reports') }}">Manage Reports</a></li>
+                        </ul>
+                    </li>--}}
+
 
                 </ul>
             </div>

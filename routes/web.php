@@ -36,6 +36,7 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'admin'], function () {
     Route::post('register', 'Auth\RegisterController@register');
 
     Route::group(['middleware' => 'auth.admin'], function () {
+
         Route::get('home', 'DashboardController@admin');
         Route::get('/profile', 'UserController@show')->name('admin.profile');
         Route::post('/profile/{id}/update', 'UserController@profileUpdate');

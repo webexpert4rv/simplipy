@@ -80,8 +80,8 @@
                                            class="form-control col-md-7 col-xs-12" required="required">
                                 </div>
                             </div>
-
-                            <div class="form-group">
+                            <input type="hidden" name="center_id" value="1">
+                            {{--<div class="form-group">
                                 <label class="control-label col-md-2" for="email">Center <span
                                             class="required">*</span>
                                 </label>
@@ -94,7 +94,7 @@
 
                                     </select>
                                 </div>
-                            </div>
+                            </div>--}}
 
                             <div class="form-group">
                                 <label class="control-label col-md-2" for="profile_pic">Profile
