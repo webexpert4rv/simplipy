@@ -141,19 +141,9 @@ class Report extends Model
     {
         $rules = [
             'center_id' => 'required',
+            'civil_id'=>'required',
             'name' => 'required',
             'first_name' => 'required',
-            'company' => 'required',
-            'dob' => 'required',
-            'address' => 'required',
-            'city' => 'required',
-            'postal_code' => 'required|numeric',
-            'email' => 'email|required',
-            'mobile' => 'required|numeric',
-            'physician_id' => 'required',
-            'reason' => 'required',
-            'exam_id' => 'required',
-            'attempt' => 'required',
         ];
 
         return $rules;
@@ -170,17 +160,58 @@ class Report extends Model
         $this->user_id = $data->get('user_id');
         $this->civil_id = $data->get('civil_id');
         $this->name = $data->get('name');
-        $this->first_name = $data->get('name');
-        $this->company = $data->get('company');
-        $this->dob = $data->get('dob');
-        $this->address = $data->get('address');
-        $this->city = $data->get('city');
-        $this->postal_code = $data->get('postal_code');
-        $this->email = $data->get('email');
-        $this->mobile = $data->get('mobile');
-        $this->phone = $data->get('phone');
+        $this->first_name = $data->get('first_name');
+        if($data->get('company') != ''){
+            $this->company = $data->get('company');
+        }else{
+            $this->company = "N/C";
+        }
+        if($data->get('dob') != ''){
+            $this->dob = $data->get('dob');
+        }else{
+            $this->dob = "N/C";
+        }
+        if($data->get('address') != ''){
+            $this->address = $data->get('address');
+        }else{
+            $this->address = "N/C";
+        }
+        if($data->get('city') != ''){
+            $this->city = $data->get('city');
+        }else{
+            $this->city = "N/C";
+        }
+        if($data->get('postal_code') != ''){
+            $this->postal_code = $data->get('postal_code');
+        }else{
+            $this->postal_code = "N/C";
+        }
+        if($data->get('email') != ''){
+            $this->email = $data->get('email');
+        }else{
+            $this->email = "N/C";
+        }
+        if($data->get('mobile') != ''){
+            $this->mobile = $data->get('mobile');
+        }else{
+            $this->mobile = "N/C";
+        }
+        if($data->get('phone') != ''){
+            $this->phone = $data->get('phone');
+        }else{
+            $this->phone = "N/C";
+        }
+        if($data->get('reason') != ''){
+            $this->reason = $data->get('reason');
+        }else{
+            $this->reason = "N/C";
+        }
+        if($data->get('reason') != ''){
+            $this->reason = $data->get('reason');
+        }else{
+            $this->reason = "N/C";
+        }
         $this->physician_id = $data->get('physician_id');
-        $this->reason = $data->get('reason');
         $this->exam_id = $data->get('exam_id');
         $this->emergency_id = $data->get('emergency_id');
         $this->attempt = $data->get('attempt');

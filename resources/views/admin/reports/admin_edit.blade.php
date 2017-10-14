@@ -240,7 +240,7 @@
                                         <input type="hidden" name="attempt" value="{{$model->attempt}}" />
                                     </div>
                                 </div>
-                                <input type="hidden" name="user_id" value="{{\Auth::user()->id}}">
+                                <input type="hidden" name="user_id" value="{{\Auth::guard('admins')->user()->id}}">
                             </div>
                             <div class="ln_solid"></div>
                             <div class="form-group">
@@ -248,7 +248,6 @@
                                    {{-- <a class="btn btn-primary" type="button" href="{{ url('admin/emails') }}">Cancel</a>
                                     <button class="btn btn-primary" type="reset">Reset</button>
                                     <button type="submit" class="btn btn-success">Submit</button>--}}
-                                        <button type="submit" class="btn btn-success">Resend Email</button>
                                 </div>
                             </div>
 

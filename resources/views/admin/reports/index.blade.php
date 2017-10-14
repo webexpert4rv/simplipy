@@ -39,7 +39,9 @@
                                 <small>{!! $page_title !!}</small>
                             </h2>
                             <div class="pull-right">
-                               <a class="btn btn-success cr_btn" href="{{ url('reports/create') }}">Create Report</a>
+                                @if(\Illuminate\Support\Facades\Auth::user())
+                                    <a class="btn btn-success cr_btn" href="{{ url('reports/create') }}">Create Report</a>
+                                @endif
                             </div>
                             {{--<ul class="nav navbar-right panel_toolbox">
                                 <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
@@ -67,16 +69,16 @@
                                     <input type="checkbox" id="check-all" class="flat">
                                      </th>--}}
                                     <th class="column-title">Sr.No.</th>
-                                    <th class="column-title">Center</th>
-                                    <th class="column-title">Name</th>
-
+                                    <th class="column-title">Date of Call</th>
+                                    <th class="column-title">Full Name</th>
+                                    <th class="column-title">Mobile</th>
                                     <th class="column-title">Company</th>
                                     <th class="column-title">DOB</th>
 
-                                    <th class="column-title">City</th>
+                                    {{--<th class="column-title">City</th>
 
                                     <th class="column-title">Email</th>
-                                    <th class="column-title">Mobile</th>
+                                    <th class="column-title">Mobile</th>--}}
 
                                 {{--    <th class="column-title">Physician</th>
 
@@ -92,16 +94,15 @@
                                 @foreach($models as $model)
                                     <tr>
                                         <td>{{ $loop->iteration}}</td>
-                                        <td>{{ $model->center_id != null ? $model->getCenterOptions($model->center_id) : ""}}</td>
+                                        <td>{{ @$model->created_at  }}</td>
                                         <td>{{ @$model->name }}</td>
-
+                                        <td>{{ @$model->mobile }}</td>
                                         <td>{{ @$model->company }}</td>
                                         <td>{{ @$model->dob }}</td>
+                                        {{--<td>{{ @$model->city }}</td>
 
-                                        <td>{{ @$model->city }}</td>
+                                        <td>{{ @$model->email }}</td>--}}
 
-                                        <td>{{ @$model->email }}</td>
-                                        <td>{{ @$model->mobile }}</td>
 
                                         {{--<td>{{ $model->physician_id != null ? $model->getPhysicianOptions($model->physician_id) : ""}}</td>
 
@@ -109,13 +110,18 @@
                                         <td>{{ $model->emergency_id != null ? $model->getEmergencyOptions($model->emergency_id) : ""}}</td>
                                         <td>{{ @$model->attempt }}</td>--}}
                                         <td>
-                                            <a href="{{ url("/reports/".$model->id.'/edit') }}"><i
-                                                        class="fa fa-eye"></i> </a>
-
-                                            {!! Form::open(['style' => 'display: inline;', 'method' => 'DELETE', 'onsubmit' => 'return confirm(\'Are you sure you want to delete ? \');',  'route' => array('reports.destroy', $model->id)]) !!}
-                                            <button type="submit" class="btn btn-xs btn-danger"><i
-                                                        class="fa fa-remove"></i></button>
-                                            {!! Form::close() !!}
+                                            @if(\Illuminate\Support\Facades\Auth::user())
+                                                <a href="{{ url("/reports/".$model->id.'/edit') }}"><i
+                                                            class="fa fa-eye"></i> </a>
+                                            @else
+                                                <a href="{{ url("admin/reports/".$model->id.'/edit') }}">View Report</a>
+                                            @endif
+                                            @if(\Illuminate\Support\Facades\Auth::user())
+                                                {!! Form::open(['style' => 'display: inline;', 'method' => 'DELETE', 'onsubmit' => 'return confirm(\'Are you sure you want to delete ? \');',  'route' => array('reports.destroy', $model->id)]) !!}
+                                                <button type="submit" class="btn btn-xs btn-danger"><i
+                                                            class="fa fa-remove"></i></button>
+                                                {!! Form::close() !!}
+                                            @endif
 
                                         </td>
                                     </tr>
@@ -143,7 +149,11 @@
     <script>
         $('.jambo_table').DataTable();
     </script>
-
+    <script>
+        $(document).ready(function () {
+            $('.report_table').find('.row:first').addClass('search_report');
+        });
+    </script>
     {{--
     <script src="../vendors/jszip/dist/jszip.min.js"></script>
     <script src="../vendors/pdfmake/build/pdfmake.min.js"></script>

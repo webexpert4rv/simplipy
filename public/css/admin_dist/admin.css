@@ -138,3 +138,27 @@ body.after_login.nav-sm .left_col.scroll-view a.site_title {
 body.nav-md.after_login .right_col .x_panel {
     padding: 10px;
 }
+.report_btn button.btn.btn-warning {
+    float: right;
+}
+.row.search_report .col-sm-6:first-child {
+    float: right;
+    text-align: right;
+}
+.row.search_report .col-sm-6:first-child .dataTables_length {
+    width: 100%;
+    float: right;
+}
+.row.search_report .col-sm-6:last-child div.dataTables_filter {
+    text-align: left;
+    float: left;
+}
+.row.search_report .col-sm-6:last-child input.form-control.input-sm {
+    width: 100% !important;
+    max-width: 500px !important;
+    height: 40px;
+    font-size: 15px;
+}
+.row.search_report .col-sm-6:last-child label {
+    font-size: 20px;
+}

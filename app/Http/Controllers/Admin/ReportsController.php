@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
 use App\Email;
 use App\Report;
@@ -20,7 +20,7 @@ class ReportsController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth');
+        $this->middleware('auth.admin');
     }
 
 
@@ -103,7 +103,7 @@ class ReportsController extends Controller
     {
         $data['model'] = Report::find($id);
         $data['page_title'] = 'View Report';
-        return view('admin.reports.edit', $data);
+        return view('admin.reports.admin_edit', $data);
     }
 
     public function update(Request $request,$id)

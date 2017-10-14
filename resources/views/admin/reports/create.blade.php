@@ -98,65 +98,58 @@
                                     </div>
 
                                     <div class="form-group">
-                                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="comp">Company<span
-                                                    class="required">*</span>
+                                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="comp">Company
                                         </label>
                                         <div class="col-md-6 col-sm-6 col-xs-12">
-                                            <input type="text" name="company" class="form-control col-md-7 col-xs-12" required value="{{old('company')}}">
+                                            <input type="text" name="company" class="form-control col-md-7 col-xs-12" value="{{old('company')}}">
                                             <p>(Only for companies, if not N / C)</p>
                                         </div>
 
                                     </div>
                                     <div class="form-group">
-                                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first_name">Date of birth<span
-                                                    class="required">*</span>
+                                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first_name">Date of birth
                                         </label>
                                         <div class="col-md-6 col-sm-6 col-xs-12">
-                                            <input type="text" name="dob" class="form-control col-md-7 col-xs-12 datepicker" required value="{{old('dob')}}">
+                                            <input type="text" name="dob" class="form-control col-md-7 col-xs-12 datepicker" value="{{old('dob')}}">
                                             <p>(Only for patients - DD / MM / YYYY format, otherwise N / C).</p>
                                         </div>
                                     </div>
 
                                     <div class="form-group">
-                                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="add">Address<span
-                                                    class="required">*</span>
+                                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="add">Address
                                         </label>
                                         <div class="col-md-6 col-sm-6 col-xs-12">
-                                            <input type="text" name="address" class="form-control col-md-7 col-xs-12" required value="{{old('address')}}">
+                                            <input type="text" name="address" class="form-control col-md-7 col-xs-12" value="{{old('address')}}">
                                         </div>
                                     </div>
 
                                     <div class="form-group">
-                                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="city">City<span
-                                                    class="required">*</span>
+                                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="city">City
                                         </label>
                                         <div class="col-md-6 col-sm-6 col-xs-12">
-                                            <input type="text" name="city" class="form-control col-md-7 col-xs-12" required value="{{old('city')}}">
+                                            <input type="text" name="city" class="form-control col-md-7 col-xs-12" value="{{old('city')}}">
                                         </div>
                                     </div>
                                     <div class="form-group">
-                                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="post_code">Postal Code<span
-                                                    class="required">*</span>
+                                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="post_code">Postal Code
                                         </label>
                                         <div class="col-md-6 col-sm-6 col-xs-12">
-                                            <input type="text" name="postal_code" class="form-control col-md-7 col-xs-12" required value="{{old('postal_code')}}">
+                                            <input type="text" name="postal_code" class="form-control col-md-7 col-xs-12" value="{{old('postal_code')}}">
                                         </div>
                                     </div>
                                     <div class="form-group">
-                                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="email">Email<span
-                                                    class="required">*</span>
+                                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="email">Email
                                         </label>
                                         <div class="col-md-6 col-sm-6 col-xs-12">
-                                            <input type="email" name="email" class="form-control col-md-7 col-xs-12" required value="{{old('email')}}">
+                                            <input type="email" name="email" class="form-control col-md-7 col-xs-12" value="{{old('email')}}">
                                             <p>(If not available, indicate N / C)</p>
                                         </div>
                                     </div>
                                     <div class="form-group">
-                                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="mob">Mobile<span
-                                                    class="required">*</span>
+                                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="mob">Mobile
                                         </label>
                                         <div class="col-md-6 col-sm-6 col-xs-12">
-                                            <input type="text" name="mobile" class="form-control col-md-7 col-xs-12" required value="{{old('mobile')}}">
+                                            <input type="text" name="mobile" class="form-control col-md-7 col-xs-12" value="{{old('mobile')}}">
                                         </div>
                                     </div>
                                     <div class="form-group">
@@ -170,11 +163,10 @@
                                 <div class="third_section">
                                     <h1 class="fh1">Reasons for Appeal</h1>    
                                     <div class="form-group">
-                                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="physic">Physician<span
-                                                    class="required">*</span>
+                                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="physic">Physician
                                         </label>
                                         <div class="col-md-6 col-sm-6 col-xs-12">
-                                            <select required="required" name="physician_id"
+                                            <select name="physician_id"
                                                     class="form-control col-md-7 col-xs-12">
                                                 @foreach(\App\Report::getPhysicianOptions() as $key => $physician)
                                                     <option value="{{ $key }}" {{ old('physician_id') == $key ? 'selected' : ""}}> {{ $physician }}</option>
@@ -184,20 +176,18 @@
                                     </div>
 
                                     <div class="form-group">
-                                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="add">Reasons<span
-                                                    class="required">*</span>
+                                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="add">Reasons
                                         </label>
                                         <div class="col-md-6 col-sm-6 col-xs-12">
-                                            <textarea name="reason" class="form-control col-md-7 col-xs-12" rows="5" required>{{old('reason')}}</textarea>
+                                            <textarea name="reason" class="form-control col-md-7 col-xs-12" rows="5" >{{old('reason')}}</textarea>
                                         </div>
                                     </div>
 
                                     <div class="form-group">
-                                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="physic">Type of examination<span
-                                                    class="required">*</span>
+                                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="physic">Type of examination
                                         </label>
                                         <div class="col-md-6 col-sm-6 col-xs-12">
-                                            <select required="required" name="exam_id"
+                                            <select name="exam_id"
                                                     class="form-control col-md-7 col-xs-12">
                                                 @foreach(\App\Report::getExamOptions() as $key => $exam)
                                                     <option value="{{ $key }}" {{ old('exam_id') == $key ? 'selected' : ""}}> {{ $exam }}</option>
@@ -207,8 +197,7 @@
                                     </div>
 
                                     <div class="form-group">
-                                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="physic">Emergency<span
-                                                    class="required">*</span>
+                                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="physic">Emergency
                                         </label>
                                         <div class="col-md-6 col-sm-6 col-xs-12">
                                             <!-- <select required="required" name="emergency_id"
@@ -222,11 +211,10 @@
                                     </div>
 
                                     <div class="form-group">
-                                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="physic">Attempt<span
-                                                    class="required">*</span>
+                                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="physic">Attempt
                                         </label>
                                         <div class="col-md-6 col-sm-6 col-xs-12">
-                                            <select required="required" name="attempt"
+                                            <select  name="attempt"
                                                     class="form-control col-md-7 col-xs-12">
                                                <option value="1">1</option>
                                                 <option value="2">2</option>
@@ -239,12 +227,12 @@
                                 </div>    
                                 <div class="ln_solid"></div>
                                 <div class="form-group">
-                                    <div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3">
+                                    <div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3 report_btn">
                                        {{-- <a class="btn btn-warning" type="button"
                                            href="{{ url('/reports') }}">Cancel</a>
                                         <button class="btn btn-primary" type="reset">Reset</button>--}}
                                         <button type="submit" class="btn btn-success" name="status_submit" value="status_submit">To Submit</button>
-                                        <button type="submit" class="btn btn-success" name="status_call" value="status_call">Send Incomplete Call</button>
+                                        <button type="submit" class="btn btn-warning" name="status_call" value="status_call">Send Incomplete Call</button>
                                     </div>
                                 </div>
 
@@ -259,7 +247,7 @@
 @section('scripts')
     <script type="text/javascript" src="<?php echo(asset('js/admin_dist/bootstrap-datepicker.js')); ?>"></script>
     <script>
-        $(".datepicker").datepicker({format: "yyyy-mm-dd", autoclose: true, endDate: new Date()});
+        $(".datepicker").datepicker({format: "dd-mm-yyyy", autoclose: true, endDate: new Date()});
 
     </script>
 @endsection

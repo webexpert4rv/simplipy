@@ -7,11 +7,16 @@
         table.patient_data tr td {
             padding-top: 15px;
         }
+        tr { border-bottom: 1px solid black; }
+
     </style>
 </head>
 <body>
-<header style="background-color: #00abf3;height: 50px;">
-    <p style="text-align: center;padding-top: 15px;"><b>APPELS PATIENTS - DATA REPORT</b></p>
+<header style="background-color: rgba(79, 164, 218, 0.61);height: 60px;">
+    <p style="text-align: center;padding-top: 7px;color: #21527d;font-size: 20px;">
+        <b>CARDIF C.T.A.R</b>
+        <br>
+        <b>APPELS PATIENTS - DATA REPORT</b></p>
 </header>
 <div class="urgent">
     <p style='color: red'><b>
@@ -48,76 +53,73 @@
 </div>
 <table name="patient_table" border="0" cellpadding="0" cellspacing="0" height="100%" width="100%" class="patient_data">
     <tr>
-        <td width="20%">Date:</td>
-        <td width="80%">{{ date('d-m-Y') }} </td>
+        <td width="20%" style="padding-top: 15px;font-weight:bold;">Centre appelé:</td>
+        <td width="80%" style="padding-top: 15px;">{{ \App\Report::getCenterOptions($center_id) }}</td>
+    </tr>
+
+    <tr>
+        <td width="20%" style="padding-top: 15px;font-weight:bold;">Date:</td>
+        <td width="80%" style="padding-top: 15px;">{{ date('d-m-Y') }} </td>
     </tr>
     <tr>
-        <td width="20%">Heure:</td>
-        <td width="80%">{{ date('H:i',time() + 3600) }}</td>
+        <td width="20%" style="padding-top: 15px;font-weight:bold;">Heure:</td>
+        <td width="80%" style="padding-top: 15px;">{{ date('H:i',time()) }}</td>
+
+    </tr>
+
+    <tr>
+        <td width="20%" style="padding-top: 15px;font-weight:bold;">Nom et Prénom :</td>
+        <td width="80%" style="padding-top: 15px;">{{ \App\Report::getCivilOptions($civil_id) }} {{$name}} {{$first_name}}</td>
+    </tr>
+
+    <tr>
+        <td width="20%" style="padding-top: 15px;font-weight:bold;">Société:</td>
+        <td width="80%" style="padding-top: 15px;">{{$company}}</td>
     </tr>
     <tr>
-        <td width="20%">Centre appelé:</td>
-        <td width="80%">{{ \App\Report::getCenterOptions($center_id) }}</td>
+        <td width="20%" style="padding-top: 15px;font-weight:bold;">Date de naissance:</td>
+        <td width="80%" style="padding-top: 15px;">{{$dob}}</td>
     </tr>
     <tr>
-        <td width="20%">Etat civil:</td>
-        <td width="80%">{{ \App\Report::getCivilOptions($civil_id) }}</td>
+        <td width="20%" style="padding-top: 15px;font-weight:bold;">Adresse:</td>
+        <td width="80%" style="padding-top: 15px;">{{$address}}</td>
     </tr>
     <tr>
-        <td width="20%">Nom:</td>
-        <td width="80%">{{$name}}</td>
+        <td width="20%" style="padding-top: 15px;font-weight:bold;">Ville:</td>
+        <td width="80%" style="padding-top: 15px;">{{$city}}</td>
     </tr>
     <tr>
-        <td width="20%">Prénom:</td>
-        <td width="80%">{{$first_name}}</td>
+        <td width="20%" style="padding-top: 15px;font-weight:bold;">Code postal:</td>
+        <td width="80%" style="padding-top: 15px;">{{$postal_code}}</td>
     </tr>
     <tr>
-        <td width="20%">Société:</td>
-        <td width="80%">{{$company}}</td>
+        <td width="20%" style="padding-top: 15px;font-weight:bold;">Adresse email:</td>
+        <td width="80%" style="padding-top: 15px;">{{$email}}</td>
     </tr>
     <tr>
-        <td width="20%">Date de naissance:</td>
-        <td width="80%">{{$dob}}</td>
+        <td width="20%" style="padding-top: 15px;font-weight:bold;">Téléphone mobile:</td>
+        <td width="80%" style="padding-top: 15px;">{{$mobile}}</td>
     </tr>
     <tr>
-        <td width="20%">Adresse:</td>
-        <td width="80%">{{$address}}</td>
+        <td width="20%" style="padding-top: 15px;font-weight:bold;">Médecin concerné:</td>
+        <td width="80%" style="padding-top: 15px;">{{ \App\Report::getPhysicianOptions($physician_id) }}</td>
     </tr>
     <tr>
-        <td width="20%">Ville:</td>
-        <td width="80%">{{$city}}</td>
+        <td width="20%" style="padding-top: 15px;font-weight:bold;">Type d'examen:</td>
+        <td width="80%" style="padding-top: 15px;">{{ \App\Report::getExamOptions($exam_id) }}</td>
     </tr>
     <tr>
-        <td width="20%">Code postal:</td>
-        <td width="80%">{{$postal_code}}</td>
+        <td width="20%" style="padding-top: 15px;font-weight:bold;">Message:</td>
+        <td width="80%" style="padding-top: 15px;">{{$reason}}</td>
     </tr>
-    <tr>
-        <td width="20%">Adresse email:</td>
-        <td width="80%">{{$email}}</td>
-    </tr>
-    <tr>
-        <td width="20%">Téléphone mobile:</td>
-        <td width="80%">{{$mobile}}</td>
-    </tr>
-    <tr>
-        <td width="20%">Médecin concerné:</td>
-        <td width="80%">{{ \App\Report::getPhysicianOptions($physician_id) }}</td>
-    </tr>
-    <tr>
-        <td width="20%">Message:</td>
-        <td width="80%">{{$reason}}</td>
-    </tr>
-    <tr>
-        <td width="20%">Type d'examen:</td>
-        <td width="80%">{{ \App\Report::getExamOptions($exam_id) }}</td>
-    </tr>
+
 </table>
 
 <footer style="padding-top: 25px;">
-    <div>
-        <p class="logo_footer"><img src="{{asset('images/logo.png')}}" width="165px"></p>
-        <p class="info_email">Email: contact@simplify.fr</p>
-        <p class="info_phone">Phone:+33 (0)1 30432277</p>
+    <div style="margin-bottom: 100px">
+        <p class="logo_footer" style="float:left;"><img src="{{asset('images/whiteLogo.jpeg')}}" width="165px"></p>
+        <p class="info_email" style="float: left;padding: 30px 0 0 150px;">Email: contact@simplify.fr</p>
+        <p class="info_phone" style="float: left;padding: 30px 0 0 130px;">Phone:+33 (0)1 30432277</p>
     </div>
 </footer>
 </body>
