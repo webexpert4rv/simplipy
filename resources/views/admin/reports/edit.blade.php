@@ -232,10 +232,10 @@
                                     <div class="col-md-6 col-sm-6 col-xs-12">
                                         <select required="required" name="attempt"
                                                 class="form-control col-md-7 col-xs-12">
-                                            <option value="1" <?php if($model->attempt == 1) echo "selected"; ?>>1</option>
-                                            <option value="2" <?php if($model->attempt == 2) echo "selected"; ?>>2</option>
-                                            <option value="3" <?php if($model->attempt == 3) echo "selected"; ?>>3</option>
-                                            <option value="4" <?php if($model->attempt == 4) echo "selected"; ?>>4</option>
+                                            <option value="1" {{ $model->attempt == 1 ? "selected" : '' }}>1</option>
+                                            <option value="2" {{ $model->attempt == 2 ? "selected" : '' }}>2</option>
+                                            <option value="3" {{ $model->attempt == 3 ? "selected" : '' }}>3</option>
+                                            <option value="4" {{ $model->attempt == 4 ? "selected" : '' }}>4</option>
                                         </select>
                                         <input type="hidden" name="attempt" value="{{$model->attempt}}" />
                                     </div>
