@@ -40,7 +40,7 @@
                     <li><a><i class="fa fa-envelope" aria-hidden="true"></i> Emails <span class="fa fa-chevron-down"></span></a>
                         <ul class="nav child_menu">
                             <li><a href="{{ url('admin/emails') }}">Mailing List</a></li>
-                            <li><a href="{{ url('admin/reports') }}">Reports</a></li>
+                            <li><a href="{{ url('admin/adminReports') }}">Reports</a></li>
                         </ul>
                     </li>
 

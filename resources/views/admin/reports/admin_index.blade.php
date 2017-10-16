@@ -39,8 +39,21 @@
                                 <small>{!! $page_title !!}</small>
                             </h2>
                             <div class="pull-right">
-                                <a class="btn btn-success cr_btn" href="{{ url('user/reports/create') }}">Create Report</a>
+
                             </div>
+                            {{--<ul class="nav navbar-right panel_toolbox">
+                                <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                                </li>
+                                <li class="dropdown">
+                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-wrench"></i></a>
+                                    <ul class="dropdown-menu" role="menu">
+                                        <li><a href="{{ url('admin/user/create') }}">Create User</a>
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li><a class="close-link"><i class="fa fa-close"></i></a>
+                                </li>
+                            </ul>--}}
                             <div class="clearfix"></div>
                         </div>
                         <div class="x_content report_table">
@@ -50,12 +63,26 @@
                             <table class="table table-striped jambo_table bulk_action">
                                 <thead>
                                 <tr class="headings">
+                                    {{-- <th>
+                                    <input type="checkbox" id="check-all" class="flat">
+                                     </th>--}}
                                     <th class="column-title">Sr.No.</th>
                                     <th class="column-title">Date of Call</th>
                                     <th class="column-title">Full Name</th>
                                     <th class="column-title">Mobile</th>
                                     <th class="column-title">Company</th>
                                     <th class="column-title">DOB</th>
+
+                                    {{--<th class="column-title">City</th>
+
+                                    <th class="column-title">Email</th>
+                                    <th class="column-title">Mobile</th>--}}
+
+                                {{--    <th class="column-title">Physician</th>
+
+
+                                    <th class="column-title">Emergency</th>
+                                    <th class="column-title">Attempts</th>--}}
                                     <th class="column-title">
                                         Bulk Actions </a>
                                     </th>
@@ -70,18 +97,19 @@
                                         <td>{{ @$model->mobile }}</td>
                                         <td>{{ @$model->company }}</td>
                                         <td>{{ @$model->dob }}</td>
+                                        {{--<td>{{ @$model->city }}</td>
+
+                                        <td>{{ @$model->email }}</td>--}}
+
+
+                                        {{--<td>{{ $model->physician_id != null ? $model->getPhysicianOptions($model->physician_id) : ""}}</td>
+
+
+                                        <td>{{ $model->emergency_id != null ? $model->getEmergencyOptions($model->emergency_id) : ""}}</td>
+                                        <td>{{ @$model->attempt }}</td>--}}
                                         <td>
-                                            <a href="{{ url("user/reports/".$model->id.'/edit') }}"><i
-                                                            class="fa fa-eye"></i> </a>
 
-
-                                            {!! Form::open(['style' => 'display: inline;', 'method' => 'DELETE', 'onsubmit' => 'return confirm(\'Are you sure you want to delete ? \');',  'route' => array('reports.destroy', $model->id)]) !!}
-                                            <button type="submit" class="btn btn-xs btn-danger"><i
-                                                        class="fa fa-remove"></i></button>
-                                            {!! Form::close() !!}
-
-                                            <a href="{{ url("user/reports/".$model->id.'/duplicate') }}"> Duplicate</a>
-
+                                                <a href="{{ url("admin/adminReports/".$model->id.'/edit') }}">View Report</a>
 
                                         </td>
                                     </tr>

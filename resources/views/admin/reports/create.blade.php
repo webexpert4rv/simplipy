@@ -7,7 +7,7 @@
                 <div class="title_left">
                     <ul class="breadcrumb">
                         <li>
-                           <a href="{{ url('reports') }}">Reports</a>
+                           <a href="{{ url('user/reports') }}">Reports</a>
                         </li>
                         <li class="active">
                             {!! $page_title !!}
@@ -45,7 +45,7 @@
                             <br/>
                             <p class="main_title">Fields marked with an asterisk * are mandatory.</p>
                             <form id="demo-form2" data-parsley-validate class="form-horizontal form-label-left"
-                                  method="post" action="{{ url('reports') }}">
+                                  method="post" action="{{ url('user/reports') }}">
                                 {!! csrf_field() !!}
                                 <div class="first_section">
                                     <h1 class="fh1">Specify the identity of the called center</h1>
@@ -84,7 +84,7 @@
                                                     class="required">*</span>
                                         </label>
                                         <div class="col-md-6 col-sm-6 col-xs-12">
-                                            <input type="text" name="name" class="form-control col-md-7 col-xs-12" required value="{{old('name')}}">
+                                            <input type="text" name="name" class="form-control col-md-7 col-xs-12" value="{{old('name')}}">
                                         </div>
                                     </div>
 
@@ -93,7 +93,7 @@
                                                     class="required">*</span>
                                         </label>
                                         <div class="col-md-6 col-sm-6 col-xs-12">
-                                            <input type="text" name="first_name" class="form-control col-md-7 col-xs-12" required value="{{old('first_name')}}">
+                                            <input type="text" name="first_name" class="form-control col-md-7 col-xs-12" value="{{old('first_name')}}">
                                         </div>
                                     </div>
 

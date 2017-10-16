@@ -53,8 +53,8 @@
 </div>
 <table name="patient_table" border="0" cellpadding="0" cellspacing="0" height="100%" width="100%" class="patient_data">
     <tr>
-        <td width="20%" style="padding-top: 15px;font-weight:bold;">Centre appelé:</td>
-        <td width="80%" style="padding-top: 15px;">{{ \App\Report::getCenterOptions($center_id) }}</td>
+        <td width="20%" style="padding-top: 15px;font-weight:bold;border-top: 1px solid #000;">Centre appelé:</td>
+        <td width="80%" style="padding-top: 15px;border-top: 1px solid #000;">{{ \App\Report::getCenterOptions($center_id) }}</td>
     </tr>
 
     <tr>
@@ -62,8 +62,8 @@
         <td width="80%" style="padding-top: 15px;">{{ date('d-m-Y') }} </td>
     </tr>
     <tr>
-        <td width="20%" style="padding-top: 15px;font-weight:bold;">Heure:</td>
-        <td width="80%" style="padding-top: 15px;">{{ date('H:i',time()) }}</td>
+        <td width="20%" style="padding-bottom: 15px;padding-top: 15px;font-weight:bold;border-bottom: 1px solid #000;">Heure:</td>
+        <td width="80%" style="padding-bottom: 15px;padding-top: 15px;border-bottom: 1px solid #000;">{{ date('H:i',time()) }}</td>
 
     </tr>
 
@@ -97,8 +97,8 @@
         <td width="80%" style="padding-top: 15px;">{{$email}}</td>
     </tr>
     <tr>
-        <td width="20%" style="padding-top: 15px;font-weight:bold;">Téléphone mobile:</td>
-        <td width="80%" style="padding-top: 15px;">{{$mobile}}</td>
+        <td width="20%" style="padding-bottom: 15px;padding-top: 15px;font-weight:bold;border-bottom: 1px solid #000;">Téléphone mobile:</td>
+        <td width="80%" style="padding-bottom: 15px;padding-top: 15px;border-bottom: 1px solid #000;">{{$mobile}}</td>
     </tr>
     <tr>
         <td width="20%" style="padding-top: 15px;font-weight:bold;">Médecin concerné:</td>
@@ -109,17 +109,23 @@
         <td width="80%" style="padding-top: 15px;">{{ \App\Report::getExamOptions($exam_id) }}</td>
     </tr>
     <tr>
-        <td width="20%" style="padding-top: 15px;font-weight:bold;">Message:</td>
-        <td width="80%" style="padding-top: 15px;">{{$reason}}</td>
+        <td width="20%" style="padding-bottom: 15px;padding-top: 15px;font-weight:bold;border-bottom: 1px solid #000;">Message:</td>
+        <td width="80%" style="padding-bottom: 15px;padding-top: 15px;border-bottom: 1px solid #000;">{{$reason}}</td>
     </tr>
 
+    <tr>
+        <td style="padding-top: 40px;">Cordialement,</td>
+    </tr>
+    <tr>
+        <td style="padding-bottom: 40px;">Simplify</td>
+    </tr>
 </table>
 
-<footer style="padding-top: 25px;">
-    <div style="margin-bottom: 100px">
+<footer style="padding-bottom: 50px;border-top: 1px solid #000;">
+    <div>
         <p class="logo_footer" style="float:left;"><img src="{{asset('images/whiteLogo.jpeg')}}" width="165px"></p>
-        <p class="info_email" style="float: left;padding: 30px 0 0 150px;">Email: contact@simplify.fr</p>
-        <p class="info_phone" style="float: left;padding: 30px 0 0 130px;">Phone:+33 (0)1 30432277</p>
+        <p class="info_email" style="float: left;padding: 25px 0 0 150px;">Email: contact@simplify.fr</p>
+        <p class="info_phone" style="float: left;padding: 25px 0 0 130px;">Phone:+33 (0)1 30432277</p>
     </div>
 </footer>
 </body>

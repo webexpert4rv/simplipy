@@ -155,12 +155,19 @@ class Report extends Model
         if (!is_object($data)) {
             $data = new Report($data);
         }
-
         $this->center_id = $data->get('center_id');
         $this->user_id = $data->get('user_id');
         $this->civil_id = $data->get('civil_id');
-        $this->name = $data->get('name');
-        $this->first_name = $data->get('first_name');
+        if($data->get('name') != ''){
+            $this->name = $data->get('name');
+        }else{
+            $this->name = "N/C";
+        }
+        if($data->get('first_name') != ''){
+            $this->first_name = $data->get('first_name');
+        }else{
+            $this->first_name = "N/C";
+        }
         if($data->get('company') != ''){
             $this->company = $data->get('company');
         }else{

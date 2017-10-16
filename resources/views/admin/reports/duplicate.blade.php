@@ -11,7 +11,7 @@
                 <div class="title_left">
                     <ul class="breadcrumb">
                         <li>
-                            <a href="{{ url('admin/adminReports') }}">Reports</a>
+                            <a href="{{ url('user/reports') }}">Reports</a>
                         </li>
                         <li class="active">
                            {!! $page_title !!}
@@ -48,8 +48,9 @@
                         <div class="x_content report_disable">
                             <br/>
                             <p class="main_title">Fields marked with an asterisk * are mandatory.</p>
-                            {!! Form::open(['files' => true,'route' => ['reports.update', 'id' => $model->id], 'class' => 'form-horizontal form-label-left', 'id' => 'demo-form2']) !!}
-                            <input type="hidden" name="_method" value="PUT">
+                            <form id="demo-form2" data-parsley-validate class="form-horizontal form-label-left"
+                                  method="post" action="{{ url('user/reports') }}">
+
                             {!! csrf_field() !!}
                             <div class="first_section">
                                 <h1 class="fh1">Specify the identity of the called center</h1>
@@ -116,7 +117,12 @@
                                     <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first_name">Date of birth
                                     </label>
                                     <div class="col-md-6 col-sm-6 col-xs-12">
-                                        <input type="date" name="dob" class="form-control col-md-7 col-xs-12" value="{{ $model->dob }}" readonly>
+                                        @if($model->dob == "N/C")
+                                            <input type="date" name="dob" class="form-control col-md-7 col-xs-12 datepicker"  value="N/C">
+                                        @else
+                                            <input type="date" name="dob" class="form-control col-md-7 col-xs-12 datepicker" value="{{ $model->dob }}">
+                                        @endif
+
                                         <p>(Only for patients - DD / MM / YYYY format, otherwise N / C).</p>
                                     </div>
                                 </div>
@@ -147,7 +153,7 @@
                                     <label class="control-label col-md-3 col-sm-3 col-xs-12" for="email">Email
                                     </label>
                                     <div class="col-md-6 col-sm-6 col-xs-12">
-                                        <input type="email" name="email" class="form-control col-md-7 col-xs-12" value="{{ $model->email }}">
+                                        <input type="text" name="email" class="form-control col-md-7 col-xs-12" value="{{ $model->email }}">
                                         <p>(If not available, indicate N / C)</p>
                                     </div>
                                 </div>
@@ -235,14 +241,16 @@
                                         <input type="hidden" name="attempt" value="{{$model->attempt}}" />
                                     </div>
                                 </div>
-                                <input type="hidden" name="user_id" value="{{\Auth::guard('admins')->user()->id}}">
+                                <input type="hidden" name="user_id" value="{{\Auth::user()->id}}">
                             </div>
                             <div class="ln_solid"></div>
                             <div class="form-group">
-                                <div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3">
+                                <div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3 report_btn">
                                    {{-- <a class="btn btn-primary" type="button" href="{{ url('admin/emails') }}">Cancel</a>
                                     <button class="btn btn-primary" type="reset">Reset</button>
                                     <button type="submit" class="btn btn-success">Submit</button>--}}
+                                    <button type="submit" class="btn btn-success" name="status_submit" value="status_submit">To Submit</button>
+                                    <button type="submit" class="btn btn-warning" name="status_call" value="status_call">Send Incomplete Call</button>
                                 </div>
                             </div>
 
@@ -258,12 +266,5 @@
     <script type="text/javascript" src="<?php echo(asset('js/admin_dist/bootstrap-datepicker.js')); ?>"></script>
     <script>
         $(".datepicker").datepicker({format: "dd-mm-yyyy", autoclose: true, endDate: new Date()});
-
-        $(document).ready(function () {
-            $(".report_disable input").prop("readonly", true);
-            $(".report_disable select").prop("disabled", true);
-            $(".report_disable textarea").prop("disabled", true);
-
-        });
     </script>
 @endsection

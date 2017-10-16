@@ -20,9 +20,9 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-Route::group(['middleware' => 'auth'], function () {
-    Route::resource('reports', 'ReportsController');
-
+Route::group(['middleware' => 'auth','prefix' => 'user'], function () {
+    Route::resource('/reports', 'ReportsController');
+    Route::get('/reports/{id}/duplicate', 'ReportsController@duplicate');
     Route::any('daily/report', 'ReportsController@dailyReport');
 });
 Route::group(['namespace' => 'Admin', 'prefix' => 'admin'], function () {
@@ -81,7 +81,7 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'admin'], function () {
         Route::post('/user/{id}/change-password', 'UserController@userChangePasswordStore')->name('user.change-password.store');
 
         Route::resource('/emails', 'EmailController');
-        Route::resource('/reports', 'ReportsController');
+        Route::resource('/adminReports', 'ReportsController');
 
     });
 });

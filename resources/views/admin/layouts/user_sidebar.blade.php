@@ -34,14 +34,12 @@
             <div class="menu_section">
                 <h3>General</h3>
                 <ul class="nav side-menu">
-
                     <li><a><i class="fa fa-bar-chart" aria-hidden="true"></i> Reports <span class="fa fa-chevron-down"></span></a>
                         <ul class="nav child_menu">
-                            <li><a href="{{ url('reports') }}">Manage Reports</a></li>
-                            <li><a href="{{ url('reports/create') }}">New Reports</a></li>
+                            <li><a href="{{ url('user/reports') }}">Manage Reports</a></li>
+                            <li><a href="{{ url('user/reports/create') }}">New Reports</a></li>
                         </ul>
                     </li>
-
                 </ul>
             </div>
             {{--<div class="menu_section">

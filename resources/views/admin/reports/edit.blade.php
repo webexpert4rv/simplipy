@@ -11,7 +11,7 @@
                 <div class="title_left">
                     <ul class="breadcrumb">
                         <li>
-                            <a href="{{ url('/reports') }}">Reports</a>
+                            <a href="{{ url('user/reports') }}">Reports</a>
                         </li>
                         <li class="active">
                            {!! $page_title !!}
@@ -50,6 +50,7 @@
                             <p class="main_title">Fields marked with an asterisk * are mandatory.</p>
                             {!! Form::open(['files' => true,'route' => ['reports.update', 'id' => $model->id], 'class' => 'form-horizontal form-label-left', 'id' => 'demo-form2']) !!}
                             <input type="hidden" name="_method" value="PUT">
+
                             {!! csrf_field() !!}
                             <div class="first_section">
                                 <h1 class="fh1">Specify the identity of the called center</h1>
@@ -119,7 +120,7 @@
                                         @if($model->dob == "N/C")
                                             <input name="dob" class="form-control col-md-7 col-xs-12" value="N/C" readonly="">
                                         @else
-                                            <input type="date" name="dob" class="form-control col-md-7 col-xs-12 datepicker" value="{{ $model->dob }}">
+                                            <input type="date" name="dob" class="form-control col-md-7 col-xs-12 datepicker" value="{{ $model->dob }}" re>
                                         @endif
 
                                         <p>(Only for patients - DD / MM / YYYY format, otherwise N / C).</p>
@@ -216,12 +217,6 @@
                                     <label class="control-label col-md-3 col-sm-3 col-xs-12" for="physic">Emergency
                                     </label>
                                     <div class="col-md-6 col-sm-6 col-xs-12">
-                                        {{--<select required="required" name="emergency_id"
-                                                class="form-control col-md-7 col-xs-12">
-                                            @foreach(\App\Report::getEmergencyOptions() as $key => $emergency)
-                                                <option value="{{ $key }}" {{ $model->emergency_id == $key ? 'selected' : ""}}> {{ $emergency }}</option>
-                                            @endforeach
-                                        </select>--}}
                                         <input type="checkbox" name="emergency_id" onclick="return false;" value="{{\App\Report::Emergency_ONE}}" @if($model->emergency_id == \App\Report::Emergency_ONE) checked @endif> YES
                                     </div>
                                 </div>
@@ -263,7 +258,7 @@
 @section('scripts')
     <script type="text/javascript" src="<?php echo(asset('js/admin_dist/bootstrap-datepicker.js')); ?>"></script>
     <script>
-        $(".datepicker").datepicker({format: "yyyy-mm-dd", autoclose: true, endDate: new Date()});
+        $(".datepicker").datepicker({format: "dd-mm-yyyy", autoclose: true, endDate: new Date()});
 
         $(document).ready(function () {
             $(".report_disable input").prop("readonly", true);

@@ -47,7 +47,9 @@ class ReportsController extends Controller
     {
         $model = new Report();
 
-        $this->validate($request,$model->getRules());
+        if(isset($request->status_submit)){
+            $this->validate($request, $model->getRules());
+        }
 
         $model->setData($request);
         if ($model->save()) {
@@ -92,22 +94,28 @@ class ReportsController extends Controller
                     return redirect()->back()->withInput()->withErrors($e->getMessage());
                 }
 
-                return redirect('/reports')->with('success', 'Successfully Added Report');
+                return redirect('user/reports')->with('success', 'Successfully Added Report');
             }
-            return redirect('/reports')->with('success', 'Successfully Added Report');
+            return redirect('user/reports')->with('success', 'Successfully Added Report');
         }
         return redirect()->back()->withInput()->with('error', 'Something went wrong');
     }
 
     public function edit($id)
     {
+
         $data['model'] = Report::find($id);
         $data['page_title'] = 'View Report';
+
+        //return $data;
+
         return view('admin.reports.edit', $data);
     }
 
     public function update(Request $request,$id)
     {
+
+
         $model = Report::find($id);
 
         $emailTo = Report::getToAddress($model->center_id);
@@ -132,7 +140,7 @@ class ReportsController extends Controller
                 $subject_content = "[PATIENT REPORT]" . $fields;
             }
 
-            $formdata = $request->toArray();
+            $formdata = $model->toArray();
 
             try {
 
@@ -161,20 +169,28 @@ class ReportsController extends Controller
                 return redirect('/reports')->with('success', 'Successfully Updated Report');
             }*/
 
-            return redirect('/reports')->with('success', 'Email send!!');
+            return redirect('user/reports')->with('success', 'Email send!!');
         }
-        return redirect('/reports')->with('success', 'Email not send!!');
+        return redirect('user/reports')->with('success', 'Email not send!!');
     }
 
     public function destroy($id)
     {
         $model = Report::find($id);
         if ($model->delete()) {
-            return redirect('/reports')->with('success', 'Successfully Delete Report');
+            return redirect('user/reports')->with('success', 'Successfully Delete Report');
         }
         return redirect()->back()->withInput()->with('error', 'Something Went Wrong!!!');
 
     }
+
+    public function duplicate(Request $request,$id)
+    {
+        $data['model'] = Report::find($id);
+        $data['page_title'] = 'Edit Report';
+        return view('admin.reports.duplicate', $data);
+    }
+
 
     public function dailyReport()
     {
@@ -220,11 +236,11 @@ class ReportsController extends Controller
                     }
                 }
 
-                return redirect('/reports')->with('success', 'Email send!!');
+                return redirect('user/reports')->with('success', 'Email send!!');
             }
-            return redirect('/reports')->with('success', 'Email not send!!');
+            return redirect('user/reports')->with('success', 'Email not send!!');
         }
 
-        return redirect('/reports')->with('success', 'Center Id Not Available!!');
+        return redirect('user/reports')->with('success', 'Center Id Not Available!!');
     }
 }
