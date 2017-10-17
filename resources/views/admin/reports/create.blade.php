@@ -110,7 +110,7 @@
                                         <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first_name">Date of birth
                                         </label>
                                         <div class="col-md-6 col-sm-6 col-xs-12">
-                                            <input type="text" name="dob" class="form-control col-md-7 col-xs-12 datepicker" value="{{old('dob')}}">
+                                            <input type="text" name="dob" class="form-control col-md-7 col-xs-12" value="{{old('dob')}}">
                                             <p>(Only for patients - DD / MM / YYYY format, otherwise N / C).</p>
                                         </div>
                                     </div>

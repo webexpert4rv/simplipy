@@ -71,7 +71,7 @@
                                     <th class="column-title">Full Name</th>
                                     <th class="column-title">Mobile</th>
                                     <th class="column-title">Company</th>
-                                    <th class="column-title">DOB</th>
+                                    <th class="column-title">Physician</th>
 
                                     {{--<th class="column-title">City</th>
 
@@ -93,10 +93,10 @@
                                     <tr>
                                         <td>{{ $loop->iteration}}</td>
                                         <td>{{ @$model->created_at  }}</td>
-                                        <td>{{ @$model->name }}</td>
+                                        <td>{{ \App\Report::getCivilOptions((int)$model->civil_id) }} {{$model->name}} {{$model->first_name}}</td>
                                         <td>{{ @$model->mobile }}</td>
                                         <td>{{ @$model->company }}</td>
-                                        <td>{{ @$model->dob }}</td>
+                                        <td>{{\App\Report::getPhysicianOptions($model->physician_id)}}</td>
                                         {{--<td>{{ @$model->city }}</td>
 
                                         <td>{{ @$model->email }}</td>--}}

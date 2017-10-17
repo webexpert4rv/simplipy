@@ -110,7 +110,7 @@
                                     </label>
                                     <div class="col-md-6 col-sm-6 col-xs-12">
                                         <input type="text" name="company" class="form-control col-md-7 col-xs-12" value="{{ $model->company }}">
-                                        <p>(Only for companies, if not N / C)</p>
+
                                     </div>
                                 </div>
                                 <div class="form-group">
@@ -123,7 +123,7 @@
                                             <input type="date" name="dob" class="form-control col-md-7 col-xs-12 datepicker" value="{{ $model->dob }}" re>
                                         @endif
 
-                                        <p>(Only for patients - DD / MM / YYYY format, otherwise N / C).</p>
+
                                     </div>
                                 </div>
 
@@ -154,7 +154,7 @@
                                     </label>
                                     <div class="col-md-6 col-sm-6 col-xs-12">
                                         <input type="email" name="email" class="form-control col-md-7 col-xs-12" value="{{ $model->email }}">
-                                        <p>(If not available, indicate N / C)</p>
+
                                     </div>
                                 </div>
 
@@ -243,7 +243,7 @@
                                    {{-- <a class="btn btn-primary" type="button" href="{{ url('admin/emails') }}">Cancel</a>
                                     <button class="btn btn-primary" type="reset">Reset</button>
                                     <button type="submit" class="btn btn-success">Submit</button>--}}
-                                        <button type="submit" class="btn btn-success">Resend Email</button>
+                                      {{--  <button type="submit" class="btn btn-success">Resend Email</button>--}}
                                 </div>
                             </div>
 

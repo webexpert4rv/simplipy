@@ -32,9 +32,8 @@ class HomeController extends Controller
     {
         $user = \Auth::user();
 
-        $data['models'] = Report::all();
-        $data['page_title'] = 'Reports';
-        return view('admin.reports.index', $data);
+        $data['page_title'] = 'Add Reports';
+        return view('admin.reports.create', $data);
     }
 
 

@@ -39,7 +39,9 @@
                                 <small>{!! $page_title !!}</small>
                             </h2>
                             <div class="pull-right">
-                                <a class="btn btn-success cr_btn" href="{{ url('user/reports/create') }}">Create Report</a>
+                                @if(\Auth::user()->role_id == \App\User::ROLE_AGENT)
+                                    <a class="btn btn-success cr_btn" href="{{ url('user/reports/create') }}">Create Report</a>
+                                @endif
                             </div>
                             <div class="clearfix"></div>
                         </div>
@@ -55,7 +57,7 @@
                                     <th class="column-title">Full Name</th>
                                     <th class="column-title">Mobile</th>
                                     <th class="column-title">Company</th>
-                                    <th class="column-title">DOB</th>
+                                    <th class="column-title">Physician</th>
                                     <th class="column-title">
                                         Bulk Actions </a>
                                     </th>
@@ -66,22 +68,22 @@
                                     <tr>
                                         <td>{{ $loop->iteration}}</td>
                                         <td>{{ @$model->created_at  }}</td>
-                                        <td>{{ @$model->name }}</td>
+                                        <td>{{ \App\Report::getCivilOptions((int)$model->civil_id) }} {{$model->name}} {{$model->first_name}}</td>
                                         <td>{{ @$model->mobile }}</td>
                                         <td>{{ @$model->company }}</td>
-                                        <td>{{ @$model->dob }}</td>
+                                        <td>{{\App\Report::getPhysicianOptions($model->physician_id)}}</td>
                                         <td>
                                             <a href="{{ url("user/reports/".$model->id.'/edit') }}"><i
                                                             class="fa fa-eye"></i> </a>
 
 
-                                            {!! Form::open(['style' => 'display: inline;', 'method' => 'DELETE', 'onsubmit' => 'return confirm(\'Are you sure you want to delete ? \');',  'route' => array('reports.destroy', $model->id)]) !!}
+                                           {{-- {!! Form::open(['style' => 'display: inline;', 'method' => 'DELETE', 'onsubmit' => 'return confirm(\'Are you sure you want to delete ? \');',  'route' => array('reports.destroy', $model->id)]) !!}
                                             <button type="submit" class="btn btn-xs btn-danger"><i
                                                         class="fa fa-remove"></i></button>
-                                            {!! Form::close() !!}
-
-                                            <a href="{{ url("user/reports/".$model->id.'/duplicate') }}"> Duplicate</a>
-
+                                            {!! Form::close() !!}--}}
+                                            @if(\Auth::user()->role_id == \App\User::ROLE_AGENT)
+                                                <a href="{{ url("user/reports/".$model->id.'/duplicate') }}"> Duplicate</a>
+                                            @endif
 
                                         </td>
                                     </tr>

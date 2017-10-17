@@ -237,13 +237,19 @@ class Report extends Model
 
     public static function getToAddress($center_id)
     {
+
         if(!empty($center_id)){
-
-            $emailTo = Email::where('center_id',$center_id)
-                ->where('header_id',Email::HEADER_TO)
-                ->where('type_id',Email::TYPE_INSTANT_REPORT)
-                ->pluck('email')->toArray();
-
+            if(is_object($center_id)) {
+                $emailTo = Email::whereIn('center_id', $center_id)
+                    ->where('header_id', Email::HEADER_TO)
+                    ->where('type_id', Email::TYPE_INSTANT_REPORT)
+                    ->pluck('email')->toArray();
+            }else{
+                $emailTo = Email::where('center_id', $center_id)
+                    ->where('header_id', Email::HEADER_TO)
+                    ->where('type_id', Email::TYPE_INSTANT_REPORT)
+                    ->pluck('email')->toArray();
+            }
             if(count($emailTo) > 0){
                 return $emailTo;
             }
@@ -254,13 +260,19 @@ class Report extends Model
 
     public static function getCcAddress($center_id)
     {
+        //return $center_id;
         if(!empty($center_id)){
-
-            $emailCc = Email::where('center_id',$center_id)
-                ->where('header_id',Email::HEADER_CC)
-                ->where('type_id',Email::TYPE_INSTANT_REPORT)
-                ->pluck('email')->toArray();
-
+            if(is_object($center_id)) {
+                $emailCc = Email::whereIn('center_id', $center_id)
+                    ->where('header_id', Email::HEADER_CC)
+                    ->where('type_id', Email::TYPE_INSTANT_REPORT)
+                    ->pluck('email')->toArray();
+            }else{
+                $emailCc = Email::where('center_id', $center_id)
+                    ->where('header_id', Email::HEADER_CC)
+                    ->where('type_id', Email::TYPE_INSTANT_REPORT)
+                    ->pluck('email')->toArray();
+            }
             if(count($emailCc) > 0){
                 return $emailCc;
             }
@@ -272,12 +284,17 @@ class Report extends Model
     public static function getBccAddress($center_id)
     {
         if(!empty($center_id)){
-
-            $emailBcc = Email::where('center_id',$center_id)
-                ->where('header_id',Email::HEADER_BCC)
-                ->where('type_id',Email::TYPE_INSTANT_REPORT)
-                ->pluck('email')->toArray();
-
+            if(is_object($center_id)) {
+                $emailBcc = Email::whereIn('center_id', $center_id)
+                    ->where('header_id', Email::HEADER_BCC)
+                    ->where('type_id', Email::TYPE_INSTANT_REPORT)
+                    ->pluck('email')->toArray();
+            }else{
+                $emailBcc = Email::where('center_id', $center_id)
+                    ->where('header_id', Email::HEADER_BCC)
+                    ->where('type_id', Email::TYPE_INSTANT_REPORT)
+                    ->pluck('email')->toArray();
+            }
             if(count($emailBcc) > 0){
                 return $emailBcc;
             }

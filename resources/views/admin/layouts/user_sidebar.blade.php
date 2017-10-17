@@ -36,8 +36,11 @@
                 <ul class="nav side-menu">
                     <li><a><i class="fa fa-bar-chart" aria-hidden="true"></i> Reports <span class="fa fa-chevron-down"></span></a>
                         <ul class="nav child_menu">
-                            <li><a href="{{ url('user/reports') }}">Manage Reports</a></li>
-                            <li><a href="{{ url('user/reports/create') }}">New Reports</a></li>
+
+                            @if(\Auth::user()->role_id == \App\User::ROLE_AGENT)
+                                <li><a href="{{ url('user/reports/create') }}">Nouveau Message</a></li>
+                            @endif
+                            <li><a href="{{ url('user/reports') }}">Rechercher</a></li>
                         </ul>
                     </li>
                 </ul>

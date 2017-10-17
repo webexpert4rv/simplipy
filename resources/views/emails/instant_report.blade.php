@@ -16,37 +16,36 @@
     <p style="text-align: center;padding-top: 7px;color: #21527d;font-size: 20px;">
         <b>CARDIF C.T.A.R</b>
         <br>
-        <b>APPELS PATIENTS - DATA REPORT</b></p>
+        <b>APPELS PATIENTS - MESSAGERIE SIMPLIFY</b></p>
 </header>
 <div class="urgent">
     <p style='color: red'><b>
             <?php
             if(isset($emergency_id)) {
-                echo "[URGENT]";
+                echo "URGENT<br/>";
                 if($attempt == 2) {
-                    echo "[Premier Rappel]";
-                }elseif ($attempt == 3){
-                    echo "[Deuxième Rappel]";
-                }elseif($attempt == 4){
-                    echo "[Troisième Rappel]";
+                    echo "Premier Rappel<br/>";
+                }if ($attempt == 3){
+                    echo "Deuxième Rappel<br/>";
+                }if($attempt == 4){
+                    echo "Troisième Rappel<br/>";
+                }if ($status == \App\Report::STATUS_CALL) {
+                    echo "APPEL RACCROCHE PAR LE PATIENT<br/>";
                 }/*else{
                     echo "[RAPPLE]";
                 }*/
             }else{
                 if($attempt == 2) {
-                    echo "[Premier Rappel]";
-                }elseif ($attempt == 3){
-                    echo "[Deuxième Rappel]";
-                }elseif($attempt == 4){
-                    echo "[Troisième Rappel]";
-                }elseif (isset($status_call)) {
-                    echo "[Données incomplètes]";
+                    echo "Premier Rappel<br/>";
+                }if ($attempt == 3){
+                    echo "Deuxième Rappel<br/>";
+                }if($attempt == 4){
+                    echo "Troisième Rappel<br/>";
+                }if ($status == \App\Report::STATUS_CALL) {
+                    echo "APPEL RACCROCHE PAR LE PATIENT<br/>";
                 }/*else{
                     echo "[RAPPLE]";
                 }*/
-            }
-            if (isset($status_call)) {
-                echo "[Données incomplètes]";
             }
             ?>
         </b></p>
@@ -97,9 +96,15 @@
         <td width="80%" style="padding-top: 15px;">{{$email}}</td>
     </tr>
     <tr>
-        <td width="20%" style="padding-bottom: 15px;padding-top: 15px;font-weight:bold;border-bottom: 1px solid #000;">Téléphone mobile:</td>
-        <td width="80%" style="padding-bottom: 15px;padding-top: 15px;border-bottom: 1px solid #000;">{{$mobile}}</td>
+        <td width="20%" style="padding-top: 15px;font-weight:bold;">Téléphone mobile:</td>
+        <td width="80%" style="padding-top: 15px;">{{$mobile}}</td>
     </tr>
+
+    <tr>
+        <td width="20%" style="padding-bottom: 15px;padding-top: 15px;font-weight:bold;border-bottom: 1px solid #000;">Téléphone fixe:</td>
+        <td width="80%" style="padding-bottom: 15px;padding-top: 15px;border-bottom: 1px solid #000;">{{$phone}}</td>
+    </tr>
+
     <tr>
         <td width="20%" style="padding-top: 15px;font-weight:bold;">Médecin concerné:</td>
         <td width="80%" style="padding-top: 15px;">{{ \App\Report::getPhysicianOptions($physician_id) }}</td>
@@ -117,7 +122,7 @@
         <td style="padding-top: 40px;">Cordialement,</td>
     </tr>
     <tr>
-        <td style="padding-bottom: 40px;">Simplify</td>
+        <td style="padding-bottom: 40px;">Messagerie Simplify</td>
     </tr>
 </table>
 

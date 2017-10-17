@@ -8,8 +8,11 @@
     </style>
 </head>
 <body>
-<header style="background-color: #00abf3;height: 50px;">
-    <p style="text-align: center;padding-top: 15px;"><b>DAILY PATIENT REPORT</b></p>
+<header style="background-color: rgba(79, 164, 218, 0.61);height: 60px;">
+    <p style="text-align: center;padding-top: 7px;color: #21527d;font-size: 20px;">
+        <b>CARDIF C.T.A.R</b>
+        <br>
+        <b>APPELS PATIENTS - DAILY REPORT</b></p>
 </header>
 
 <div class="daily_report">

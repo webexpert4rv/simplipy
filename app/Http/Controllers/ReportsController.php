@@ -31,7 +31,8 @@ class ReportsController extends Controller
      */
     public function index()
     {
-        $data['models'] = Report::all();
+
+        $data['models'] = Report::orderBy('created_at','desc')->get();
         $data['page_title'] = 'Reports';
         return view('admin.reports.index', $data);
     }
@@ -60,20 +61,20 @@ class ReportsController extends Controller
 
             if (!empty($emailTo) || !empty($emailBcc) || !empty($emailCc)) {
 
-                $fields = "  " . $request->name . '/' . $request->first_name .
-                    '/' . Report::getPhysicianOptions($request->physician_id) .
+                $fields = "  " . $model->name . '/' . $model->first_name .
+                    '/' . Report::getPhysicianOptions($model->physician_id) .
                     '/' . date('d-m-Y') .
                     '/' . Carbon::now()->format('H:i');
 
-                if (isset($request->emergency_id)) {
-                    $subject_content = "[PATIENT REPORT]​[URGENT]" . $fields;
-                    if ($request->attempt > 1) {
-                        $subject_content = "[PATIENT REPORT]​​[URGENT][RAPPEL]​" . $fields;
+                if (isset($model->emergency_id)) {
+                    $subject_content = "[MESSAGERIE SIMPLIFY]​[URGENT]" . $fields;
+                    if ($model->attempt > 1) {
+                        $subject_content = "[MESSAGERIE SIMPLIFY]​​[URGENT][RAPPEL]​" . $fields;
                     }
-                } elseif ($request->attempt > 1) {
-                    $subject_content = "[PATIENT REPORT]​[RAPPEL]" . $fields;
+                } elseif ($model->attempt > 1) {
+                    $subject_content = "[MESSAGERIE SIMPLIFY]​[RAPPEL]" . $fields;
                 } else {
-                    $subject_content = "[PATIENT REPORT]​​" . $fields;
+                    $subject_content = "[MESSAGERIE SIMPLIFY]​​" . $fields;
                 }
                 $formdata = Report::find($model->id)->toArray();
                 try {
@@ -117,7 +118,6 @@ class ReportsController extends Controller
 
 
         $model = Report::find($id);
-
         $emailTo = Report::getToAddress($model->center_id);
         $emailCc = Report::getCcAddress($model->center_id);
         $emailBcc = Report::getBccAddress($model->center_id);
@@ -130,14 +130,14 @@ class ReportsController extends Controller
                 '/' . Carbon::now()->format('H:i');
 
             if (isset($request->emergency_id)) {
-                $subject_content = "[PATIENT REPORT]​[URGENT]" . $fields;
+                $subject_content = "[MESSAGERIE SIMPLIFY]​[URGENT]" . $fields;
                 if ($request->attempt > 1) {
-                    $subject_content = "[PATIENT REPORT]​​[URGENT][RAPPEL]" . $fields;
+                    $subject_content = "[MESSAGERIE SIMPLIFY]​​[URGENT][RAPPEL]" . $fields;
                 }
             } elseif ($request->attempt > 1) {
-                $subject_content = "[PATIENT REPORT]​[RAPPEL]" . $fields;
+                $subject_content = "[MESSAGERIE SIMPLIFY]​[RAPPEL]" . $fields;
             } else {
-                $subject_content = "[PATIENT REPORT]" . $fields;
+                $subject_content = "[MESSAGERIE SIMPLIFY]" . $fields;
             }
 
             $formdata = $model->toArray();
@@ -195,11 +195,19 @@ class ReportsController extends Controller
     public function dailyReport()
     {
         $reportData = Report::where('created_at', '>' ,Carbon::now()->format('Y-m-d'))
-                    ->pluck('center_id');
+                      ->distinct('center_id')
+            ->pluck('center_id');
+
+
+
+
         if(count($reportData) > 0) {
 
             $emailTo = Report::getToAddress($reportData);
+
+            //return $emailTo;
             $emailCc = Report::getCcAddress($reportData);
+            return $emailCc;
             $emailBcc = Report::getBccAddress($reportData);
 
             if (!empty($emailTo) || !empty($emailBcc) || !empty($emailCc)) {
@@ -240,7 +248,9 @@ class ReportsController extends Controller
             }
             return redirect('user/reports')->with('success', 'Email not send!!');
         }
-
         return redirect('user/reports')->with('success', 'Center Id Not Available!!');
     }
+
+
+
 }

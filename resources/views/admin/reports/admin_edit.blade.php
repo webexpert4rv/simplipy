@@ -109,7 +109,7 @@
                                     </label>
                                     <div class="col-md-6 col-sm-6 col-xs-12">
                                         <input type="text" name="company" class="form-control col-md-7 col-xs-12" value="{{ $model->company }}">
-                                        <p>(Only for companies, if not N / C)</p>
+
                                     </div>
                                 </div>
                                 <div class="form-group">
@@ -117,7 +117,7 @@
                                     </label>
                                     <div class="col-md-6 col-sm-6 col-xs-12">
                                         <input type="date" name="dob" class="form-control col-md-7 col-xs-12" value="{{ $model->dob }}" readonly>
-                                        <p>(Only for patients - DD / MM / YYYY format, otherwise N / C).</p>
+
                                     </div>
                                 </div>
 
@@ -148,7 +148,7 @@
                                     </label>
                                     <div class="col-md-6 col-sm-6 col-xs-12">
                                         <input type="email" name="email" class="form-control col-md-7 col-xs-12" value="{{ $model->email }}">
-                                        <p>(If not available, indicate N / C)</p>
+
                                     </div>
                                 </div>
 

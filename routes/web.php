@@ -24,6 +24,7 @@ Route::group(['middleware' => 'auth','prefix' => 'user'], function () {
     Route::resource('/reports', 'ReportsController');
     Route::get('/reports/{id}/duplicate', 'ReportsController@duplicate');
     Route::any('daily/report', 'ReportsController@dailyReport');
+
 });
 Route::group(['namespace' => 'Admin', 'prefix' => 'admin'], function () {
     Route::get('/', 'Auth\LoginController@showLoginForm');

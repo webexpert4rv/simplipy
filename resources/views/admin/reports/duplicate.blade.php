@@ -65,7 +65,6 @@
                                                 <option value="{{ $key }}" {{ $model->center_id == $key ? 'selected' : ""}}> {{ $center }}</option>
                                             @endforeach
                                         </select>
-                                        <input type="hidden" name="center_id" value="{{$model->center_id}}" />
                                     </div>
                                 </div>
                             </div>
@@ -83,7 +82,6 @@
                                                 <option value="{{ $key }}" {{ $model->civil_id == $key ? 'selected' : ""}}> {{ $civil }}</option>
                                             @endforeach
                                         </select>
-                                        <input type="hidden" name="civil_id" value="{{$model->civil_id}}" />
                                     </div>
                                 </div>
 
@@ -110,20 +108,13 @@
                                     </label>
                                     <div class="col-md-6 col-sm-6 col-xs-12">
                                         <input type="text" name="company" class="form-control col-md-7 col-xs-12" value="{{ $model->company }}">
-                                        <p>(Only for companies, if not N / C)</p>
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first_name">Date of birth
                                     </label>
                                     <div class="col-md-6 col-sm-6 col-xs-12">
-                                        @if($model->dob == "N/C")
-                                            <input type="date" name="dob" class="form-control col-md-7 col-xs-12 datepicker"  value="N/C">
-                                        @else
-                                            <input type="date" name="dob" class="form-control col-md-7 col-xs-12 datepicker" value="{{ $model->dob }}">
-                                        @endif
-
-                                        <p>(Only for patients - DD / MM / YYYY format, otherwise N / C).</p>
+                                        <input type="text" name="dob" class="form-control col-md-7 col-xs-12" value="{{ $model->dob }}">
                                     </div>
                                 </div>
 
@@ -154,7 +145,6 @@
                                     </label>
                                     <div class="col-md-6 col-sm-6 col-xs-12">
                                         <input type="text" name="email" class="form-control col-md-7 col-xs-12" value="{{ $model->email }}">
-                                        <p>(If not available, indicate N / C)</p>
                                     </div>
                                 </div>
 
@@ -186,7 +176,6 @@
                                                 <option value="{{ $key }}" {{ $model->physician_id == $key ? 'selected' : ""}}> {{ $physician }}</option>
                                             @endforeach
                                         </select>
-                                        <input type="hidden" name="physician_id" value="{{$model->physician_id}}" />
                                     </div>
                                 </div>
 
@@ -209,7 +198,6 @@
                                                 <option value="{{ $key }}" {{ $model->exam_id == $key ? 'selected' : ""}}> {{ $exam }}</option>
                                             @endforeach
                                         </select>
-                                        <input type="hidden" name="exam_id" value="{{$model->exam_id}}" />
                                     </div>
                                 </div>
 
@@ -223,7 +211,7 @@
                                                 <option value="{{ $key }}" {{ $model->emergency_id == $key ? 'selected' : ""}}> {{ $emergency }}</option>
                                             @endforeach
                                         </select>--}}
-                                        <input type="checkbox" name="emergency_id" onclick="return false;" value="{{\App\Report::Emergency_ONE}}" @if($model->emergency_id == \App\Report::Emergency_ONE) checked @endif> YES
+                                        <input type="checkbox" name="emergency_id" value="{{\App\Report::Emergency_ONE}}" @if($model->emergency_id == \App\Report::Emergency_ONE) checked @endif> YES
                                     </div>
                                 </div>
 
@@ -233,12 +221,12 @@
                                     <div class="col-md-6 col-sm-6 col-xs-12">
                                         <select required="required" name="attempt"
                                                 class="form-control col-md-7 col-xs-12">
+
                                             <option value="1" {{ $model->attempt == 1 ? "selected" : '' }}>1</option>
                                             <option value="2" {{ $model->attempt == 2 ? "selected" : '' }}>2</option>
                                             <option value="3" {{ $model->attempt == 3 ? "selected" : '' }}>3</option>
                                             <option value="4" {{ $model->attempt == 4 ? "selected" : '' }}>4</option>
                                         </select>
-                                        <input type="hidden" name="attempt" value="{{$model->attempt}}" />
                                     </div>
                                 </div>
                                 <input type="hidden" name="user_id" value="{{\Auth::user()->id}}">
