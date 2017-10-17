@@ -55,8 +55,9 @@
                                     <th class="column-title">Sr.No.</th>
                                     <th class="column-title">Date of Call</th>
                                     <th class="column-title">Full Name</th>
-                                    <th class="column-title">Mobile</th>
+
                                     <th class="column-title">Company</th>
+                                    <th class="column-title">Mobile</th>
                                     <th class="column-title">Physician</th>
                                     <th class="column-title">
                                         Bulk Actions </a>
@@ -69,8 +70,8 @@
                                         <td>{{ $loop->iteration}}</td>
                                         <td>{{ @$model->created_at  }}</td>
                                         <td>{{ \App\Report::getCivilOptions((int)$model->civil_id) }} {{$model->name}} {{$model->first_name}}</td>
-                                        <td>{{ @$model->mobile }}</td>
                                         <td>{{ @$model->company }}</td>
+                                        <td>{{ @$model->mobile }}</td>
                                         <td>{{\App\Report::getPhysicianOptions($model->physician_id)}}</td>
                                         <td>
                                             <a href="{{ url("user/reports/".$model->id.'/edit') }}"><i
