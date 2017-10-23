@@ -40,7 +40,7 @@
                             </h2>
                             <div class="pull-right">
                                 @if(\Auth::user()->role_id == \App\User::ROLE_AGENT)
-                                    <a class="btn btn-success cr_btn" href="{{ url('user/reports/create') }}">Create Report</a>
+                                    <a class="btn btn-success cr_btn" href="{{ url('user/reports/create') }}">Nouveau Message</a>
                                 @endif
                             </div>
                             <div class="clearfix"></div>
@@ -52,13 +52,13 @@
                             <table class="table table-striped jambo_table bulk_action">
                                 <thead>
                                 <tr class="headings">
-                                    <th class="column-title">Sr.No.</th>
-                                    <th class="column-title">Date of Call</th>
-                                    <th class="column-title">Full Name</th>
+                                    <th class="column-title" style="display: none">Sr.No.</th>
+                                    <th class="column-title">Date Appel</th>
+                                    <th class="column-title">Nom Complet du Patient</th>
 
-                                    <th class="column-title">Company</th>
+                                    <th class="column-title">Société</th>
                                     <th class="column-title">Mobile</th>
-                                    <th class="column-title">Physician</th>
+                                    <th class="column-title">Médecin</th>
                                     <th class="column-title">
                                         Bulk Actions </a>
                                     </th>
@@ -67,7 +67,7 @@
                                 <tbody>
                                 @foreach($models as $model)
                                     <tr>
-                                        <td>{{ $loop->iteration}}</td>
+                                        <td style="display: none">{{ $loop->iteration}}</td>
                                         <td>{{ @$model->created_at  }}</td>
                                         <td>{{ \App\Report::getCivilOptions((int)$model->civil_id) }} {{$model->name}} {{$model->first_name}}</td>
                                         <td>{{ @$model->company }}</td>
@@ -83,7 +83,7 @@
                                                         class="fa fa-remove"></i></button>
                                             {!! Form::close() !!}--}}
                                             @if(\Auth::user()->role_id == \App\User::ROLE_AGENT)
-                                                <a href="{{ url("user/reports/".$model->id.'/duplicate') }}"> Duplicate</a>
+                                                <a href="{{ url("user/reports/".$model->id.'/duplicate') }}"> Dupliquer</a>
                                             @endif
 
                                         </td>

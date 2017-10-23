@@ -43,7 +43,15 @@ class ReportsController extends Controller
         return view('admin.reports.admin_edit', $data);
     }
 
+    public function destroy($id)
+    {
+        $model = Report::find($id);
+        if ($model->delete()) {
+            return redirect('admin/adminReports')->with('success', 'Successfully Delete Report');
+        }
+        return redirect()->back()->withInput()->with('error', 'Something Went Wrong!!!');
 
+    }
 
 
 }

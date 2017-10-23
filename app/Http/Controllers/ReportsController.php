@@ -31,7 +31,6 @@ class ReportsController extends Controller
      */
     public function index()
     {
-
         $data['models'] = Report::orderBy('created_at','desc')->get();
         $data['page_title'] = 'Reports';
         return view('admin.reports.index', $data);

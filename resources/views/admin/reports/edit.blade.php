@@ -117,13 +117,7 @@
                                     <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first_name">Date of birth
                                     </label>
                                     <div class="col-md-6 col-sm-6 col-xs-12">
-                                        @if($model->dob == "N/C")
-                                            <input name="dob" class="form-control col-md-7 col-xs-12" value="N/C" readonly="">
-                                        @else
-                                            <input type="date" name="dob" class="form-control col-md-7 col-xs-12 datepicker" value="{{ $model->dob }}" re>
-                                        @endif
-
-
+                                            <input type="text" name="dob" class="form-control col-md-7 col-xs-12" value="{{ $model->dob }}" readonly>
                                     </div>
                                 </div>
 

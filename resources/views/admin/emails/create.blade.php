@@ -69,31 +69,29 @@
                                 </div>
 
                                 <div class="form-group">
-                                    <label class="control-label col-md-2" for="email">Center <span
+                                    <label class="control-label col-md-2" for="email">Type <span
                                                 class="required">*</span>
                                     </label>
                                     <div class="col-md-6 col-sm-6 col-xs-12">
-                                        <select required="required" name="center_id"
-                                                class="form-control col-md-7 col-xs-12">
-                                            @foreach(\App\Email::getCenterOptions() as $key => $center)
-                                                <option value="{{ $key }}" {{ old('center_id') == $key ? 'selected' : ""}}> {{ $center }}</option>
+                                        <select required="required" name="type_id"
+                                                class="form-control col-md-7 col-xs-12 dailyType">
+                                            @foreach(\App\Email::getTypeOptions() as $key => $type)
+                                                <option value="{{ $key }}" {{ old('type_id') == $key ? 'selected' : ""}}> {{ $type }}</option>
                                             @endforeach
 
                                         </select>
                                     </div>
                                 </div>
 
-
-
                                 <div class="form-group">
-                                    <label class="control-label col-md-2" for="email">Type <span
+                                    <label class="control-label col-md-2" for="email">Center <span
                                                 class="required">*</span>
                                     </label>
                                     <div class="col-md-6 col-sm-6 col-xs-12">
-                                        <select required="required" name="type_id"
-                                                class="form-control col-md-7 col-xs-12">
-                                            @foreach(\App\Email::getTypeOptions() as $key => $type)
-                                                <option value="{{ $key }}" {{ old('type_id') == $key ? 'selected' : ""}}> {{ $type }}</option>
+                                        <select required="required" name="center_id"
+                                                class="form-control col-md-7 col-xs-12 centerDaily" readonly="" style="cursor: pointer;pointer-events: none">
+                                            @foreach(\App\Email::getCenterOptions() as $key => $center)
+                                                <option value="{{ $key }}" {{ $key == 3 ? 'selected' : ""}}> {{ $center }}</option>
                                             @endforeach
 
                                         </select>
@@ -117,4 +115,25 @@
             </div>
         </div>
     </div>
+@endsection
+@section('scripts')
+    <script>
+        $(document).ready(function () {
+            $('.centerDaily').append( '<option value="3" selected>Both</option>');
+            $('.dailyType').change(function () {
+                if($(this).val() == 1){
+                    $('.centerDaily').attr('readonly');
+                    $('.centerDaily').css('cursor','pointer');
+                    $('.centerDaily').css('pointer-events','none');
+                    $('.centerDaily').append( '<option value="3" selected>Both</option>');
+                }
+                if($(this).val() == 2){
+                    $(".centerDaily").removeAttr('readonly');
+                    $(".centerDaily").css('cursor','');
+                    $(".centerDaily").css('pointer-events','');
+                    $(".centerDaily option[value='3']").remove();
+                }
+            });
+        });
+    </script>
 @endsection

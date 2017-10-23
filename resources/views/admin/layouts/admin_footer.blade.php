@@ -77,9 +77,8 @@
                 styling: 'bootstrap3'
             });
         }
-
-
     });
+
 
 
 </script>

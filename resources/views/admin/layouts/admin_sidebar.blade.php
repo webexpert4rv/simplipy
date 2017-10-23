@@ -16,7 +16,7 @@
             </div>
             <div class="profile_info">
                 <p>
-                <span>Welcome,</span>
+                <span>Bonjour,</span>
                 <b class="sidebar_name">{{  \Auth::guard('admins')->user()->name }}</b></p>
             </div>
         </div>
@@ -27,7 +27,7 @@
         <!-- sidebar menu -->
         <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
             <div class="menu_section">
-                <h3>General</h3>
+                <h3>Messagerie Cardif</h3>
                 <ul class="nav side-menu">
 
                     <li><a><i class="fa fa-user" aria-hidden="true"></i> Users <span class="fa fa-chevron-down"></span></a>

@@ -73,20 +73,6 @@
                             </div>
 
                             <div class="form-group">
-                                <label class="control-label col-md-2" for="center_id">Center <span
-                                            class="required">*</span>
-                                </label>
-                                <div class="col-md-6 col-sm-6 col-xs-12">
-                                    <select required="required" name="center_id"
-                                            class="form-control col-md-7 col-xs-12">
-                                        @foreach(\App\Email::getCenterOptions() as $key => $center)
-                                            <option value="{{ $key }}" {{ old('center_id', $model->center_id) == $key ? 'selected' : ""}}> {{ $center }}</option>
-                                        @endforeach
-
-                                    </select>
-                                </div>
-                            </div>
-                            <div class="form-group">
                                 <label class="control-label col-md-2" for="email">Type <span
                                             class="required">*</span>
                                 </label>
@@ -100,6 +86,22 @@
                                     </select>
                                 </div>
                             </div>
+
+                            <div class="form-group">
+                                <label class="control-label col-md-2" for="center_id">Center <span
+                                            class="required">*</span>
+                                </label>
+                                <div class="col-md-6 col-sm-6 col-xs-12">
+                                    <select required="required" name="center_id"
+                                            class="form-control col-md-7 col-xs-12">
+                                        @foreach(\App\Email::getCenterOptions() as $key => $center)
+                                            <option value="{{ $key }}" {{ old('center_id', $model->center_id) == $key ? 'selected' : ""}}> {{ $center }}</option>
+                                        @endforeach
+
+                                    </select>
+                                </div>
+                            </div>
+
 
                             <div class="ln_solid"></div>
                             <div class="form-group">

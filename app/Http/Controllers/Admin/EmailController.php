@@ -51,6 +51,8 @@ class EmailController extends Controller
      */
     public function store(Request $request)
     {
+        //return $request->all();
+
         $model = new Email();
         $validator = \Validator::make($request->all(), $model->getRules());
 
@@ -58,14 +60,27 @@ class EmailController extends Controller
             return redirect()->back()->withInput()->withErrors($validator->errors());
         }
 
-        $model->setData($request);
-        if ($model->checkEmail()) {
+        if($request->center_id == 3)
+        {
+            $request->merge(['center_id'=>1]) ;
+            $model->setData($request);
+            if ($model->save()) {
+                $model = new Email();
+                $request->merge(['center_id'=>2]) ;
+                $model->setData($request);
+                if ($model->save()) {
+                    return redirect('/admin/emails')->with('success', 'Successfully Added Email');
+                }
+                return redirect('/admin/emails')->with('success', 'Successfully Added Email');
+            }
+            return redirect('/admin/emails')->with('error', 'Something Went Wrong!!!');
+        }else{
+            $model->setData($request);
             if ($model->save()) {
                 return redirect('/admin/emails')->with('success', 'Successfully Added Email');
             }
+            return redirect()->back()->withInput()->with('error', 'Something Went Wrong!!!');
         }
-
-        return redirect()->back()->withInput()->with('error', 'You can only add at max 4 emails of one type and for one center');
     }
 
     /**

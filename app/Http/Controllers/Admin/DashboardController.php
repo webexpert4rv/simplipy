@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Report;
 use Illuminate\Http\Request;
 
 class DashboardController extends Controller
@@ -23,6 +24,7 @@ class DashboardController extends Controller
      */
     public function index()
     {
+
         return view('home');
     }
 
@@ -33,6 +35,9 @@ class DashboardController extends Controller
      */
     public function admin()
     {
-        return view('admin.dashboard.admin');
+        //return view('admin.dashboard.admin');
+        $data['models'] = Report::orderBy('created_at','desc')->get();
+        $data['page_title'] = 'Reports';
+        return view('admin.reports.admin_index', $data);
     }
 }

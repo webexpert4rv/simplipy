@@ -30,7 +30,9 @@ class HomeController extends Controller
      */
     public function index()
     {
+
         $user = \Auth::user();
+
         if(\Auth::user()->role_id == \App\User::ROLE_AGENT){
             $data['page_title'] = 'Add Reports';
             return view('admin.reports.create', $data);

@@ -10,6 +10,7 @@ class Report extends Model
     const CENTER_ONE = 1;
     const CENTER_TWO = 2;
 
+    const PHYSICIAN_ZERO = 0;
     const PHYSICIAN_ONE = 1;
     const PHYSICIAN_TWO = 2;
     const PHYSICIAN_THREE = 3;
@@ -20,6 +21,7 @@ class Report extends Model
     const PHYSICIAN_EIGHT = 8;
     const PHYSICIAN_NINE = 9;
 
+    const EXAM_ZERO = 0;
     const EXAM_ONE = 1;
     const EXAM_TWO = 2;
     const EXAM_THREE = 3;
@@ -61,6 +63,7 @@ class Report extends Model
     public static function getPhysicianOptions($id = null)
     {
         $list = [
+            self::PHYSICIAN_ZERO => 'N/C',
             self::PHYSICIAN_ONE => 'DR El Husseini',
             self::PHYSICIAN_TWO => 'DR Pigné',
             self::PHYSICIAN_THREE => 'DR Sahut D\'Izran',
@@ -69,7 +72,7 @@ class Report extends Model
             self::PHYSICIAN_SIX => 'DR Vial Dupuy',
             self::PHYSICIAN_SEVEN => 'DR Lanouar',
             self::PHYSICIAN_EIGHT => 'DR Caussanel',
-            self::PHYSICIAN_NINE => 'Other',
+            self::PHYSICIAN_NINE => 'Autre',
 
         ];
 
@@ -86,13 +89,14 @@ class Report extends Model
     public static function getExamOptions($id = null)
     {
         $list = [
+            self::EXAM_ZERO => 'N/C',
             self::EXAM_ONE => 'EFR (Functional Respiratory Explorations)',
             self::EXAM_TWO => 'DLCO',
             self::EXAM_THREE => 'Blood gas',
             self::EXAM_FOUR => 'Walking test',
             self::EXAM_FIVE => 'Holters Cardiac and Tensionnel - MAPA',
             self::EXAM_SIX => 'Polygraphy and Polysomnography',
-            self::EXAM_SEVEN => 'Other',
+            self::EXAM_SEVEN => 'Autre',
         ];
 
         if ($id === null)
@@ -123,9 +127,9 @@ class Report extends Model
     public static function getCivilOptions($id = null)
     {
         $list = [
-            self::CIVIL_ONE => 'Mr.',
-            self::CIVIL_TWO => 'Mrs',
-            self::CIVIL_THREE => 'Ms.',
+            self::CIVIL_ONE => 'M.',
+            self::CIVIL_TWO => 'Mme',
+            self::CIVIL_THREE => 'Mlle',
         ];
 
         if ($id === null)
@@ -207,11 +211,6 @@ class Report extends Model
             $this->phone = $data->get('phone');
         }else{
             $this->phone = "N/C";
-        }
-        if($data->get('reason') != ''){
-            $this->reason = $data->get('reason');
-        }else{
-            $this->reason = "N/C";
         }
         if($data->get('reason') != ''){
             $this->reason = $data->get('reason');

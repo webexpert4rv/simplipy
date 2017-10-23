@@ -20,7 +20,7 @@
             </div>
             <div class="profile_info">
                 <p>
-                <span>Welcome,</span>
+                <span>Bonjour,</span>
                 <b class="sidebar_name">{{\App\User::getFirstName(\Auth::user()->id)}}</b></p>
 
             </div>
@@ -32,9 +32,9 @@
         <!-- sidebar menu -->
         <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
             <div class="menu_section">
-                <h3>General</h3>
+                <h3>Messagerie Cardif</h3>
                 <ul class="nav side-menu">
-                    <li><a><i class="fa fa-bar-chart" aria-hidden="true"></i> Reports <span class="fa fa-chevron-down"></span></a>
+                    <li><a><i class="fa fa-bar-chart" aria-hidden="true"></i> Gestion Messagerie <span class="fa fa-chevron-down"></span></a>
                         <ul class="nav child_menu">
 
                             @if(\Auth::user()->role_id == \App\User::ROLE_AGENT)

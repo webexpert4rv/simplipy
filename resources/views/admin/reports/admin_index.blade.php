@@ -66,12 +66,14 @@
                                     {{-- <th>
                                     <input type="checkbox" id="check-all" class="flat">
                                      </th>--}}
-                                    <th class="column-title">Sr.No.</th>
-                                    <th class="column-title">Date of Call</th>
-                                    <th class="column-title">Full Name</th>
-                                    <th class="column-title">Company</th>
+                                    <th class="column-title" style="display: none">Sr.No.</th>
+                                    <th class="column-title">Agent Name</th>
+                                    <th class="column-title">Date Appel</th>
+                                    <th class="column-title">Nom Complet du Patient</th>
+
+                                    <th class="column-title">Société</th>
                                     <th class="column-title">Mobile</th>
-                                    <th class="column-title">Physician</th>
+                                    <th class="column-title">Médecin</th>
 
                                     {{--<th class="column-title">City</th>
 
@@ -91,12 +93,14 @@
                                 <tbody>
                                 @foreach($models as $model)
                                     <tr>
-                                        <td>{{ $loop->iteration}}</td>
+                                        <td style="display: none">{{ $loop->iteration}}</td>
+                                        <td>{{\App\User::getFirstName($model->user_id)}}</td>
                                         <td>{{ @$model->created_at  }}</td>
                                         <td>{{ \App\Report::getCivilOptions((int)$model->civil_id) }} {{$model->name}} {{$model->first_name}}</td>
 
                                         <td>{{ @$model->company }}</td>
                                         <td>{{ @$model->mobile }}</td>
+
                                         <td>{{\App\Report::getPhysicianOptions($model->physician_id)}}</td>
                                         {{--<td>{{ @$model->city }}</td>
 
@@ -108,10 +112,14 @@
 
                                         <td>{{ $model->emergency_id != null ? $model->getEmergencyOptions($model->emergency_id) : ""}}</td>
                                         <td>{{ @$model->attempt }}</td>--}}
+
+
                                         <td>
-
-                                                <a href="{{ url("admin/adminReports/".$model->id.'/edit') }}">View Report</a>
-
+                                            <a href="{{ url("admin/adminReports/".$model->id.'/edit') }}">View Report</a>
+                                             {!! Form::open(['style' => 'display: inline;', 'method' => 'DELETE', 'onsubmit' => 'return confirm(\'Are you sure you want to delete ? \');',  'route' => array('adminReports.destroy', $model->id)]) !!}
+                                            <button type="submit" class="btn btn-xs btn-danger"><i
+                                                        class="fa fa-remove"></i></button>
+                                            {!! Form::close() !!}
                                         </td>
                                     </tr>
                                 @endforeach

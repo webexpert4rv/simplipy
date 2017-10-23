@@ -8,6 +8,7 @@ class Email extends Model
 {
     const CENTER_ONE = 1;
     const CENTER_TWO = 2;
+    const CENTER_BOTH = 3;
 
     const TYPE_DAILY_MONTHLY_REPORT = 1;
     const TYPE_INSTANT_REPORT = 2;
@@ -28,14 +29,18 @@ class Email extends Model
 
     public function setData($data, $id = null)
     {
+
         if (!is_object($data)) {
             $data = new Collection($data);
         }
+
         $this->email = $data->get('email');
         $this->header_id = $data->get('header_id');
         $this->center_id = $data->get('center_id');
         $this->type_id = $data->get('type_id');
         return $this;
+
+
     }
 
 
@@ -49,13 +54,11 @@ class Email extends Model
             ];
         }else{
             $rules = [
-                'email' => 'email|required|unique:emails',
+                'email' => 'email|required',
                 'center_id' => 'required',
                 'type_id' => 'required',
             ];
         }
-
-
         return $rules;
     }
 

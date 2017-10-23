@@ -185,7 +185,6 @@
                                     <div class="col-md-6 col-sm-6 col-xs-12">
                                         <textarea name="reason" class="form-control col-md-7 col-xs-12" rows="5" >{{ $model->reason }}</textarea>
                                     </div>
-                                    <input type="hidden" name="reason" value="{{$model->reason}}" />
                                 </div>
 
                                 <div class="form-group">
