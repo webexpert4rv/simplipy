@@ -19,7 +19,7 @@
             <div class="row">
                 <div class="col-md-12 col-sm-12 col-xs-12">
                     <div class="x_panel">
-                        <div class="x_title">
+                        <div class="x_title" style="border-bottom: 0px white !important; margin-bottom: -30px!important;">
                             <h2> {!! $page_title !!}
                             </h2>
                             <ul class="nav navbar-right panel_toolbox">
@@ -42,12 +42,12 @@
 
                         <div class="x_content">
                             <br/>
-                            <p class="main_title">Fields marked with an asterisk * are mandatory.</p>
+                          {{--  <p class="main_title">Fields marked with an asterisk * are mandatory.</p>--}}
                             <form id="demo-form2" data-parsley-validate class="form-horizontal form-label-left"
                                   method="post" action="{{ url('user/reports') }}">
                                 {!! csrf_field() !!}
                                 <div class="first_section">
-                                    <h1 class="fh1">Centre Médical</h1>
+                                    <h1 class="fh1" >Centre Médical</h1>
                                     <div class="form-group">
                                         <label class="control-label col-md-3 col-sm-3 col-xs-12" for="email">Center <span
                                                     class="required">*</span>
