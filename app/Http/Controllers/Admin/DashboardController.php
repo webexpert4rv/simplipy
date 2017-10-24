@@ -37,7 +37,7 @@ class DashboardController extends Controller
     {
         //return view('admin.dashboard.admin');
         $data['models'] = Report::orderBy('created_at','desc')->get();
-        $data['page_title'] = 'Reports';
+        $data['page_title'] = 'Gestion Messagerie';
         return view('admin.reports.admin_index', $data);
     }
 }

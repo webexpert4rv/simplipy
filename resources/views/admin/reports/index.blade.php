@@ -35,10 +35,10 @@
                 <div class="col-md-12 col-sm-12 col-xs-12">
                     <div class="x_panel">
                         <div class="x_title">
-                            <h2>
+                            {{--<h2>
                                 <small>{!! $page_title !!}</small>
-                            </h2>
-                            <div class="pull-right">
+                            </h2>--}}
+                            <div class="pull-right" style="float: left!important;">
                                 @if(\Auth::user()->role_id == \App\User::ROLE_AGENT)
                                     <a class="btn btn-success cr_btn" href="{{ url('user/reports/create') }}">Nouveau Message</a>
                                 @endif
@@ -110,7 +110,13 @@
     <script src="{{ asset('js/admin_dist/dataTable/dataTables.scroller.min.js') }}"></script>
 
     <script>
-        $('.jambo_table').DataTable();
+        $('.jambo_table').DataTable({
+            "language": {
+                "search": "Rechercher",
+                "sLengthMenu": "Afficher _MENU_ entrées",
+            }
+
+        } );
     </script>
     <script>
         $(document).ready(function () {

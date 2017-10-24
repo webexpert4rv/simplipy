@@ -144,7 +144,13 @@
     <script src="{{ asset('js/admin_dist/dataTable/dataTables.scroller.min.js') }}"></script>
 
     <script>
-        $('.jambo_table').DataTable();
+        $('.jambo_table').DataTable({
+            "language": {
+                "search": "Rechercher",
+                "sLengthMenu": "Afficher _MENU_ entrées",
+            }
+
+        });
     </script>
     <script>
         $(document).ready(function () {

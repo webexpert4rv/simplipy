@@ -32,14 +32,14 @@ class ReportsController extends Controller
     public function index()
     {
         $data['models'] = Report::orderBy('created_at','desc')->get();
-        $data['page_title'] = 'Reports';
+        $data['page_title'] = 'Historique des Messages';
         return view('admin.reports.index', $data);
     }
 
     public function create()
     {
         //$data['model'] = new ;
-        $data['page_title'] = 'Add Reports';
+        $data['page_title'] = 'Nouveau Message';
         return view('admin.reports.create', $data);
     }
 

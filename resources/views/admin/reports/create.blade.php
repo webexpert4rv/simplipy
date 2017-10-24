@@ -7,7 +7,7 @@
                 <div class="title_left">
                     <ul class="breadcrumb">
                         <li>
-                           <a href="{{ url('user/reports') }}">Reports</a>
+                           <a href="{{ url('user/reports') }}">Gestion Messagerie</a>
                         </li>
                         <li class="active">
                             {!! $page_title !!}
@@ -21,7 +21,6 @@
                     <div class="x_panel">
                         <div class="x_title">
                             <h2> {!! $page_title !!}
-                                <small> fill details in below form</small>
                             </h2>
                             <ul class="nav navbar-right panel_toolbox">
                                 <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
