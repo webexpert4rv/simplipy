@@ -64,6 +64,7 @@ body.after_login a.btn.btn-success.cr_btn {
     margin-right: 5px;
     border-radius: 5px;
     padding: 5px 10px;
+       display: none;
 }
 
 body.after_login  div#DataTables_Table_0_paginate ul.pagination a {

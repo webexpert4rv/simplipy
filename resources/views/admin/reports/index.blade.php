@@ -60,7 +60,7 @@
                                     <th class="column-title">Mobile</th>
                                     <th class="column-title">Médecin</th>
                                     <th class="column-title">
-                                        Bulk Actions </a>
+                                        Actions </a>
                                     </th>
                                 </tr>
                                 </thead>
@@ -114,9 +114,15 @@
             "language": {
                 "search": "Rechercher",
                 "sLengthMenu": "Afficher _MENU_ entrées",
+                "sInfo": "Affichage _START_ de _END_ sur _TOTAL_ entrées",
+                paginate: {
+                    previous: 'Précédent',
+                    next:     'Suivant'
+                },
+
             }
 
-        } );
+        });
     </script>
     <script>
         $(document).ready(function () {

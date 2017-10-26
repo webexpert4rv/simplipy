@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Simplify</title>
+    <title>Messagerie Cardif</title>
 
     <!-- Bootstrap -->
     <link href="{{ asset('css/admin_dist/bootstrap.min.css') }}" rel="stylesheet">

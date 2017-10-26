@@ -306,4 +306,17 @@ class User extends Authenticatable
         return "--";
 
     }
+
+    public static function getFullName($id)
+    {
+        if(!empty($id)) {
+            $name = UserProfile::select('first_name','last_name')->where('user_id',$id)->first();
+            if(!empty($name)) {
+                return $name->first_name. " " . $name->last_name;
+            }
+            return "--";
+        }
+        return "--";
+
+    }
 }

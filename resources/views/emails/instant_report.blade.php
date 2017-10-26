@@ -58,11 +58,11 @@
 
     <tr>
         <td width="20%" style="padding-top: 15px;font-weight:bold;">Date:</td>
-        <td width="80%" style="padding-top: 15px;">{{ date('d-m-Y') }} </td>
+        <td width="80%" style="padding-top: 15px;">{{\Carbon\Carbon::now()->format('d-m-Y')}} </td>
     </tr>
     <tr>
         <td width="20%" style="padding-bottom: 15px;padding-top: 15px;font-weight:bold;border-bottom: 1px solid #000;">Heure:</td>
-        <td width="80%" style="padding-bottom: 15px;padding-top: 15px;border-bottom: 1px solid #000;">{{ date('H:i',time()) }}</td>
+        <td width="80%" style="padding-bottom: 15px;padding-top: 15px;border-bottom: 1px solid #000;">{{ \Carbon\Carbon::now()->format('H:i') }}</td>
 
     </tr>
 

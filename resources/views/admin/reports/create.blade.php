@@ -7,7 +7,7 @@
                 <div class="title_left">
                     <ul class="breadcrumb">
                         <li>
-                           <a href="{{ url('user/reports') }}">Gestion Messagerie</a>
+                           <a href="{{route('reports.index')}}">Gestion Messagerie</a>
                         </li>
                         <li class="active">
                             {!! $page_title !!}
@@ -109,7 +109,10 @@
                                         </label>
                                         <div class="col-md-6 col-sm-6 col-xs-12">
                                             <input type="text" name="dob" class="form-control col-md-7 col-xs-12" value="{{old('dob')}}">
+                                            <p>Date format: (jj/mm/aaaa) </p>
                                         </div>
+
+
                                     </div>
 
                                     <div class="form-group">

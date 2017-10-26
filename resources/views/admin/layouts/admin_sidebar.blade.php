@@ -32,15 +32,15 @@
 
                     <li><a><i class="fa fa-user" aria-hidden="true"></i> Users <span class="fa fa-chevron-down"></span></a>
                         <ul class="nav child_menu">
-                            <li><a href="{{ url('admin/managers') }}">Managers</a></li>
-                            <li><a href="{{ url('admin/agents') }}">Agents</a></li>
+                            <li><a href="{{ route('admin.managers') }}">Managers</a></li>
+                            <li><a href="{{ route('admin.agents') }}">Agents</a></li>
                         </ul>
                     </li>
 
                     <li><a><i class="fa fa-envelope" aria-hidden="true"></i> Emails <span class="fa fa-chevron-down"></span></a>
                         <ul class="nav child_menu">
-                            <li><a href="{{ url('admin/emails') }}">Mailing List</a></li>
-                            <li><a href="{{ url('admin/adminReports') }}">Reports</a></li>
+                            <li><a href="{{ route('emails.index') }}">Mailing List</a></li>
+                            <li><a href="{{ route('adminReports.index') }}">Reports</a></li>
                         </ul>
                     </li>
 
@@ -96,12 +96,12 @@
                         <span class=" fa fa-angle-down"></span>
                     </a>
                     <ul class="dropdown-menu dropdown-usermenu pull-right">
-                        <li><a href="{{ url('admin/profile') }}"> Profile</a></li>
+                        <li><a href="{{ route('admin.profile') }}"> Profile</a></li>
                         <li><a href="{{ route('admin.change-password',\Auth::guard('admins')->user()->id) }}">Change Password</a></li>
                         <li>  <a data-toggle="tooltip" data-placement="top" title="Logout" href="{{ route('logout') }}"
                                  onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
-                                <i class="fa fa-sign-out pull-right"></i> Log Out
+                                <i class="fa fa-sign-out pull-right"></i> Se déconnecter
                             </a>
                             <form id="logout-form" action="{{ route('admin.logout') }}" method="POST" style="display: none;">
                                 {{ csrf_field() }}

@@ -12,7 +12,7 @@
     <p style="text-align: center;padding-top: 7px;color: #21527d;font-size: 20px;">
         <b>CARDIF C.T.A.R</b>
         <br>
-        <b>Rapport​ Quotidien​ Messagerie​ Simplify {{\Carbon\Carbon::now()->format('F Y')}}</b></p>
+        <b>Rapport​ Mensuel​ ​Messagerie​ Simplify {{\Carbon\Carbon::now()->format('F Y')}}</b></p>
 </header>
 
 <div class="daily_report">
@@ -33,7 +33,7 @@
 
 <footer style="padding-top: 25px;">
     <div>
-        <p class="logo_footer"><img src="{{asset('images/logo.png')}}" width="165px"></p>
+        <p class="logo_footer"><img src="{{asset('images/whiteLogo.jpeg')}}" width="165px"></p>
         <p class="info_email">Email: contact@simplify.fr</p>
         <p class="info_phone">Phone:+33 (0)1 30432277</p>
     </div>

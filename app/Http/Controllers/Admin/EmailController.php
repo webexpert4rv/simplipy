@@ -69,15 +69,15 @@ class EmailController extends Controller
                 $request->merge(['center_id'=>2]) ;
                 $model->setData($request);
                 if ($model->save()) {
-                    return redirect('/admin/emails')->with('success', 'Successfully Added Email');
+                    return redirect(route('emails.index'))->with('success', 'Successfully Added Email');
                 }
-                return redirect('/admin/emails')->with('success', 'Successfully Added Email');
+                return redirect(route('emails.index'))->with('success', 'Successfully Added Email');
             }
-            return redirect('/admin/emails')->with('error', 'Something Went Wrong!!!');
+            return redirect(route('emails.index'))->with('error', 'Something Went Wrong!!!');
         }else{
             $model->setData($request);
             if ($model->save()) {
-                return redirect('/admin/emails')->with('success', 'Successfully Added Email');
+                return redirect(route('emails.index'))->with('success', 'Successfully Added Email');
             }
             return redirect()->back()->withInput()->with('error', 'Something Went Wrong!!!');
         }
@@ -125,7 +125,7 @@ class EmailController extends Controller
 
         $model->setData($request);
         if ($model->save()) {
-            return redirect('/admin/emails')->with('success', 'Successfully Updated Email');
+            return redirect(route('emails.index'))->with('success', 'Successfully Updated Email');
         }
 
         return redirect()->back()->withInput()->with('error', 'Something Went Wrong!!!');
@@ -141,7 +141,7 @@ class EmailController extends Controller
     {
         $model = Email::find($id);
         if ($model->delete()) {
-            return redirect('/admin/emails')->with('success', 'Successfully Delete Email');
+            return redirect(route('emails.index'))->with('success', 'Successfully Delete Email');
         }
 
         return redirect()->back()->withInput()->with('error', 'Something Went Wrong!!!');

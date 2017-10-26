@@ -23,16 +23,17 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::group(['middleware' => 'auth','prefix' => 'user'], function () {
     Route::resource('/reports', 'ReportsController');
     Route::get('/reports/{id}/duplicate', 'ReportsController@duplicate');
-    Route::any('daily/report', 'ReportsController@dailyReport');
+    Route::any('daily/report123', 'ReportsController@dailyReport123');
+    Route::any('monthly/report123', 'ReportsController@monthlyReport123');
 
 });
-Route::group(['namespace' => 'Admin', 'prefix' => 'admin'], function () {
+Route::group(['namespace' => 'Admin', 'prefix' => 'admin-login-cardif'], function () {
     Route::get('/', 'Auth\LoginController@showLoginForm');
     Route::post('login', 'Auth\LoginController@login');
     Route::post('logout', 'Auth\LoginController@logout')->name('admin.logout');
     Route::post('password/email', 'Auth\ForgotPasswordController@sendResetLinkEmail');
     Route::get('password/reset', 'Auth\ForgotPasswordController@showLinkRequestForm');
-    Route::post('password/reset', 'Auth\ResetPasswordController@reset');
+    Route::post('password/reset', 'Auth\ResetPasswordController@reset')->name('admin.password.reset');
     Route::get('register', 'Auth\RegisterController@showRegistrationForm');
     Route::post('register', 'Auth\RegisterController@register');
 
@@ -85,4 +86,14 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'admin'], function () {
         Route::resource('/adminReports', 'ReportsController');
 
     });
+});
+
+
+Route::get('/info', function () {
+
+    return \Carbon\Carbon::now()->format('H:i');
+
+    //return date('d.m.Y',strtotime("-1 days"));
+    //return \Carbon\Carbon::yesterday()->format('d-m-Y');
+
 });

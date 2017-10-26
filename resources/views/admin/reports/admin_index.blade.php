@@ -86,7 +86,7 @@
                                     <th class="column-title">Emergency</th>
                                     <th class="column-title">Attempts</th>--}}
                                     <th class="column-title">
-                                        Bulk Actions </a>
+                                        Actions </a>
                                     </th>
                                 </tr>
                                 </thead>
@@ -94,7 +94,7 @@
                                 @foreach($models as $model)
                                     <tr>
                                         <td style="display: none">{{ $loop->iteration}}</td>
-                                        <td>{{\App\User::getFirstName($model->user_id)}}</td>
+                                        <td>{{\App\User::getFullName($model->user_id)}}</td>
                                         <td>{{ @$model->created_at  }}</td>
                                         <td>{{ \App\Report::getCivilOptions((int)$model->civil_id) }} {{$model->name}} {{$model->first_name}}</td>
 
@@ -115,7 +115,7 @@
 
 
                                         <td>
-                                            <a href="{{ url("admin/adminReports/".$model->id.'/edit') }}">View Report</a>
+                                            <a href=" {{route('adminReports.edit',[$model->id])}} ">View Report</a>
                                              {!! Form::open(['style' => 'display: inline;', 'method' => 'DELETE', 'onsubmit' => 'return confirm(\'Are you sure you want to delete ? \');',  'route' => array('adminReports.destroy', $model->id)]) !!}
                                             <button type="submit" class="btn btn-xs btn-danger"><i
                                                         class="fa fa-remove"></i></button>
@@ -148,6 +148,12 @@
             "language": {
                 "search": "Rechercher",
                 "sLengthMenu": "Afficher _MENU_ entrées",
+                "sInfo": "Affichage _START_ de _END_ sur _TOTAL_ entrées",
+                paginate: {
+                    previous: 'Précédent',
+                    next:     'Suivant'
+                },
+
             }
 
         });

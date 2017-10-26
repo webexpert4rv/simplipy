@@ -29,7 +29,7 @@ class LoginController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/admin/home';
+    protected $redirectTo = '/admin-login-cardif/home';
 
     protected $redirectAfterLogout = 'Auth/login';
 
@@ -61,6 +61,6 @@ class LoginController extends Controller
     public function logout(Request $request)
     {
         $this->performLogout($request);
-        return redirect()->to('admin');
+        return redirect()->to('admin-login-cardif');
     }
 }

@@ -7,7 +7,7 @@
                 <div class="title_left">
                     <ul class="breadcrumb">
                         <li>
-                           <a href="{{ url('admin/emails') }}">Emails</a>
+                           <a href="{{ route('emails.index') }}">Emails</a>
                         </li>
                         <li class="active">
                             {!! $page_title !!}
@@ -43,7 +43,7 @@
                         <div class="x_content">
                             <br/>
                             <form id="demo-form2" data-parsley-validate class="form-horizontal form-label-left admin_create"
-                                  method="post" action="{{ url('admin/emails') }}">
+                                  method="post" action="{{ route('emails.store') }}">
                                 {!! csrf_field() !!}
                                 <div class="form-group">
                                     <label class="control-label col-md-2" for="first_name">Email
@@ -102,7 +102,7 @@
                                 <div class="form-group">
                                     <div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3">
                                         <a class="btn btn-warning" type="button"
-                                           href="{{ url('admin/emails') }}">Cancel</a>
+                                           href="{{ route('emails.index') }}">Cancel</a>
                                         <button class="btn btn-primary" type="reset">Reset</button>
                                         <button type="submit" class="btn btn-success">Submit</button>
                                     </div>

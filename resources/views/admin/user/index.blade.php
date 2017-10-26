@@ -74,7 +74,7 @@
                                     <th class="column-title">Change Password</th>
                                     <th class="column-title">Actions</th>
                                     <th class="bulk-actions" colspan="5">
-                                        <a class="antoo" style="color:#fff; font-weight:500;">Bulk Actions ( <span
+                                        <a class="antoo" style="color:#fff; font-weight:500;">Actions ( <span
                                                     class="action-cnt"> </span> ) <i class="fa fa-chevron-down"></i></a>
                                     </th>
                                 </tr>
@@ -131,7 +131,19 @@
     <script src="{{ asset('js/admin_dist/dataTable/dataTables.scroller.min.js') }}"></script>
 
     <script>
-        $('.jambo_table').DataTable();
+        $('.jambo_table').DataTable({
+            "language": {
+                "search": "Rechercher",
+                "sLengthMenu": "Afficher _MENU_ entrées",
+                "sInfo": "Affichage _START_ de _END_ sur _TOTAL_ entrées",
+                paginate: {
+                    previous: 'Précédent',
+                    next:     'Suivant'
+                },
+
+            }
+
+        });
     </script>
 
     {{--

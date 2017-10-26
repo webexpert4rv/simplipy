@@ -19,7 +19,7 @@ class CheckIfAdminAuthenticated
     {
         $auth = Auth::guard('admins');
         if (!$auth->check()) {
-            return redirect('/admin');
+            return redirect('/admin-login-cardif');
         }
 
         return $next($request);

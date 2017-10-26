@@ -11,7 +11,7 @@
                 <div class="title_left">
                     <ul class="breadcrumb">
                         <li>
-                            <a href="{{ url('admin/emails') }}">Emails</a>
+                            <a href="{{ route('emails.index') }}">Emails</a>
                         </li>
                         <li class="active">
                            {!! $page_title !!}
@@ -106,7 +106,7 @@
                             <div class="ln_solid"></div>
                             <div class="form-group">
                                 <div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3">
-                                    <a class="btn btn-warning" type="button" href="{{ url('admin/emails') }}">Cancel</a>
+                                    <a class="btn btn-warning" type="button" href="{{ route('emails.index') }}">Cancel</a>
                                     <button class="btn btn-primary" type="reset">Reset</button>
                                     <button type="submit" class="btn btn-success">Submit</button>
                                 </div>

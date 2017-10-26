@@ -29,7 +29,7 @@
     <!-- footer content -->
         <footer>
             <div class="pull-right">
-                &copy; {{ date('Y') }} Simplify
+                &copy; {{ date('Y') }} Messagerie Cardif
             </div>
             <div class="clearfix"></div>
         </footer>

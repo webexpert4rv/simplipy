@@ -107,7 +107,7 @@
                                 <div class="form-group">
                                     <div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3">
                                         <a class="btn btn-warning" type="button"
-                                           href="{{ url('admin/'.$cancel_link) }}">Cancel</a>
+                                           href="{{ url('admin-login-cardif/'.$cancel_link) }}">Cancel</a>
                                         <button class="btn btn-primary" type="reset">Reset</button>
                                         <button type="submit" class="btn btn-success">Create</button>
                                     </div>

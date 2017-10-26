@@ -11,7 +11,7 @@
                 <div class="title_left">
                     <ul class="breadcrumb">
                         <li>
-                            <a href="{{ url('user/reports') }}">Reports</a>
+                            <a href="{{route('reports.index')}}">Reports</a>
                         </li>
                         <li class="active">
                            {!! $page_title !!}
@@ -73,7 +73,7 @@
                                 <h1 class="fh2">Patient personal information</h1>
 
                                 <div class="form-group">
-                                    <label class="control-label col-md-3 col-sm-3 col-xs-12" for="civil">Civil status <span
+                                    <label class="control-label col-md-3 col-sm-3 col-xs-12" for="civil">Civilité<span
                                                 class="required">*</span>
                                     </label>
                                     <div class="col-md-6 col-sm-6 col-xs-12">
@@ -88,7 +88,7 @@
                                 </div>
 
                                 <div class="form-group">
-                                    <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Name <span
+                                    <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Nom <span
                                                 class="required">*</span>
                                     </label>
                                     <div class="col-md-6 col-sm-6 col-xs-12">
@@ -97,7 +97,7 @@
                                 </div>
 
                                 <div class="form-group">
-                                    <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first_name">First Name <span
+                                    <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first_name">Prénom <span
                                                 class="required">*</span>
                                     </label>
                                     <div class="col-md-6 col-sm-6 col-xs-12">
@@ -106,7 +106,7 @@
                                 </div>
 
                                 <div class="form-group">
-                                    <label class="control-label col-md-3 col-sm-3 col-xs-12" for="comp">Company
+                                    <label class="control-label col-md-3 col-sm-3 col-xs-12" for="comp">Société
                                     </label>
                                     <div class="col-md-6 col-sm-6 col-xs-12">
                                         <input type="text" name="company" class="form-control col-md-7 col-xs-12" value="{{ $model->company }}">
@@ -114,15 +114,16 @@
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first_name">Date of birth
+                                    <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first_name">Date de Naissance
                                     </label>
                                     <div class="col-md-6 col-sm-6 col-xs-12">
-                                            <input type="text" name="dob" class="form-control col-md-7 col-xs-12" value="{{ $model->dob }}" readonly>
+                                        <input type="text" name="dob" class="form-control col-md-7 col-xs-12" value="{{ $model->dob }}" readonly>
+                                        <p>Date format: (jj/mm/aaaa) </p>
                                     </div>
                                 </div>
 
                                 <div class="form-group">
-                                    <label class="control-label col-md-3 col-sm-3 col-xs-12" for="add">Address
+                                    <label class="control-label col-md-3 col-sm-3 col-xs-12" for="add">Adresse
                                     </label>
                                     <div class="col-md-6 col-sm-6 col-xs-12">
                                         <input type="text" name="address" class="form-control col-md-7 col-xs-12"  value="{{ $model->address }}">
@@ -130,21 +131,21 @@
                                 </div>
 
                                 <div class="form-group">
-                                    <label class="control-label col-md-3 col-sm-3 col-xs-12" for="city">City
+                                    <label class="control-label col-md-3 col-sm-3 col-xs-12" for="city">Ville
                                     </label>
                                     <div class="col-md-6 col-sm-6 col-xs-12">
                                         <input type="text" name="city" class="form-control col-md-7 col-xs-12"  value="{{ $model->city }}">
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <label class="control-label col-md-3 col-sm-3 col-xs-12" for="post_code">Postal Code
+                                    <label class="control-label col-md-3 col-sm-3 col-xs-12" for="post_code">Code Postal
                                     </label>
                                     <div class="col-md-6 col-sm-6 col-xs-12">
                                         <input type="text" name="postal_code" class="form-control col-md-7 col-xs-12"  value="{{ $model->postal_code }}">
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <label class="control-label col-md-3 col-sm-3 col-xs-12" for="email">Email
+                                    <label class="control-label col-md-3 col-sm-3 col-xs-12" for="email">Adresse Mail
                                     </label>
                                     <div class="col-md-6 col-sm-6 col-xs-12">
                                         <input type="email" name="email" class="form-control col-md-7 col-xs-12" value="{{ $model->email }}">
@@ -153,14 +154,14 @@
                                 </div>
 
                                 <div class="form-group">
-                                    <label class="control-label col-md-3 col-sm-3 col-xs-12" for="mob">Mobile
+                                    <label class="control-label col-md-3 col-sm-3 col-xs-12" for="mob">Téléphone Mobile
                                     </label>
                                     <div class="col-md-6 col-sm-6 col-xs-12">
                                         <input type="text" name="mobile" class="form-control col-md-7 col-xs-12"  value="{{ $model->mobile }}">
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <label class="control-label col-md-3 col-sm-3 col-xs-12" for="phone">Phone
+                                    <label class="control-label col-md-3 col-sm-3 col-xs-12" for="phone">Téléphone Fixe
                                     </label>
 
                                     <div class="col-md-6 col-sm-6 col-xs-12">
@@ -171,7 +172,7 @@
                             <div class="third_section">
                                 <h1 class="fh1">Reasons for Appeal</h1>
                                 <div class="form-group">
-                                    <label class="control-label col-md-3 col-sm-3 col-xs-12" for="physic">Physician
+                                    <label class="control-label col-md-3 col-sm-3 col-xs-12" for="physic">Médecin Concerné
                                     </label>
                                     <div class="col-md-6 col-sm-6 col-xs-12">
                                         <select name="physician_id"
@@ -185,7 +186,7 @@
                                 </div>
 
                                 <div class="form-group">
-                                    <label class="control-label col-md-3 col-sm-3 col-xs-12" for="add">Reasons
+                                    <label class="control-label col-md-3 col-sm-3 col-xs-12" for="add">Message
                                     </label>
                                     <div class="col-md-6 col-sm-6 col-xs-12">
                                         <textarea name="reason" class="form-control col-md-7 col-xs-12" rows="5" >{{ $model->reason }}</textarea>
@@ -194,11 +195,11 @@
                                 </div>
 
                                 <div class="form-group">
-                                    <label class="control-label col-md-3 col-sm-3 col-xs-12" for="physic">Type of examination
+                                    <label class="control-label col-md-3 col-sm-3 col-xs-12" for="physic">Type d'examen
                                     </label>
                                     <div class="col-md-6 col-sm-6 col-xs-12">
                                         <select  name="exam_id"
-                                                class="form-control col-md-7 col-xs-12">
+                                                 class="form-control col-md-7 col-xs-12">
                                             @foreach(\App\Report::getExamOptions() as $key => $exam)
                                                 <option value="{{ $key }}" {{ $model->exam_id == $key ? 'selected' : ""}}> {{ $exam }}</option>
                                             @endforeach
@@ -208,15 +209,21 @@
                                 </div>
 
                                 <div class="form-group">
-                                    <label class="control-label col-md-3 col-sm-3 col-xs-12" for="physic">Emergency
+                                    <label class="control-label col-md-3 col-sm-3 col-xs-12" for="physic">Urgence
                                     </label>
                                     <div class="col-md-6 col-sm-6 col-xs-12">
-                                        <input type="checkbox" name="emergency_id" onclick="return false;" value="{{\App\Report::Emergency_ONE}}" @if($model->emergency_id == \App\Report::Emergency_ONE) checked @endif> YES
+                                        {{--<select required="required" name="emergency_id"
+                                                class="form-control col-md-7 col-xs-12">
+                                            @foreach(\App\Report::getEmergencyOptions() as $key => $emergency)
+                                                <option value="{{ $key }}" {{ $model->emergency_id == $key ? 'selected' : ""}}> {{ $emergency }}</option>
+                                            @endforeach
+                                        </select>--}}
+                                        <input type="checkbox" name="emergency_id" onclick="return false;" value="{{\App\Report::Emergency_ONE}}" @if($model->emergency_id == \App\Report::Emergency_ONE) checked @endif> Oui
                                     </div>
                                 </div>
 
                                 <div class="form-group">
-                                    <label class="control-label col-md-3 col-sm-3 col-xs-12" for="physic">Attempt
+                                    <label class="control-label col-md-3 col-sm-3 col-xs-12" for="physic">Tentative
                                     </label>
                                     <div class="col-md-6 col-sm-6 col-xs-12">
                                         <select required="required" name="attempt"

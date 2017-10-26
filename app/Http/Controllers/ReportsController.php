@@ -191,31 +191,30 @@ class ReportsController extends Controller
     }
 
 
-    public function dailyReport()
+    public function dailyReport123()
     {
-        $reportData = Report::where('created_at', '>' ,Carbon::now()->format('Y-m-d'))
+
+        //return $reportData;
+        $reportData = Report::where('created_at', '>' ,Carbon::yesterday()->format('Y-m-d'))
                       ->distinct('center_id')
             ->pluck('center_id');
-
-
-
 
         if(count($reportData) > 0) {
 
             $emailTo = Report::getToAddress($reportData);
 
-            //return $emailTo;
+
             $emailCc = Report::getCcAddress($reportData);
-            return $emailCc;
+
             $emailBcc = Report::getBccAddress($reportData);
 
             if (!empty($emailTo) || !empty($emailBcc) || !empty($emailCc)) {
 
                 $dataCenterOne = Report::where('center_id',Report::CENTER_ONE)
-                            ->where('created_at', '>' ,Carbon::now()->format('Y-m-d'))
+                            ->where('created_at', '>' ,Carbon::yesterday()->format('Y-m-d'))
                             ->count();
                 $dataCenterTwo = Report::where('center_id',Report::CENTER_TWO)
-                    ->where('created_at', '>' ,Carbon::now()->format('Y-m-d'))
+                    ->where('created_at', '>' ,Carbon::yesterday()->format('Y-m-d'))
                     ->count();
 
                 $total =  $dataCenterOne+$dataCenterTwo;
@@ -226,23 +225,81 @@ class ReportsController extends Controller
                         'total' => $total,
                     );
 
-                    $subject_content = "[DAILY PATIENT REPORT]".Carbon::now()->format('d-m-Y');
+                    $subject_content = "[Rapport​ Quotidien​ Messagerie​ Simplify]​ ".Carbon::now()->format('d-m-Y');
                     try {
-                        Mail::send('emails.daily_report', $data, function ($message) use ($emailTo, $emailCc, $emailBcc, $subject_content) {
-                            if(empty($emailTo)){
-                                $message->to("admin@simplify-crm.com");
+                        Mail::send('emails.daily_report', $data, function ($message) use ($subject_content) {
+                            /*if(empty($emailTo)){
+                                $message->to("testing.rvtech@gmail.com");
                             }else{
                                 $message->to($emailTo);
-                            }
-                            $message->cc($emailCc);
-                            $message->bcc($emailBcc);
+                            }*/
+                            $message->to("testing.rvtech@gmail.com");
+                          /*  $message->cc($emailCc);
+                            $message->bcc($emailBcc);*/
                             $message->subject($subject_content);
                         });
                     } catch (\Exception $e) {
                         return redirect()->back()->withInput()->withErrors($e->getMessage());
                     }
+                    return redirect('user/reports')->with('success', 'Email send!!');
                 }
+                return redirect('user/reports')->with('success', 'Email send!!');
+            }
+            return redirect('user/reports')->with('success', 'Email not send!!');
+        }
+        return redirect('user/reports')->with('success', 'Center Id Not Available!!');
+    }
 
+    public function monthlyReport123()
+    {
+
+        //return $reportData;
+        $reportData = Report::where('created_at', '>' ,Carbon::now()->format('Y-m'))
+            ->distinct('center_id')
+            ->pluck('center_id');
+
+        if(count($reportData) > 0) {
+
+            $emailTo = Report::getToAddress($reportData);
+            $emailCc = Report::getCcAddress($reportData);
+            $emailBcc = Report::getBccAddress($reportData);
+
+            if (!empty($emailTo) || !empty($emailBcc) || !empty($emailCc)) {
+
+                $dataCenterOne = Report::where('center_id',Report::CENTER_ONE)
+                    ->where('created_at', '>' ,Carbon::now()->format('Y-m'))
+                    ->count();
+                $dataCenterTwo = Report::where('center_id',Report::CENTER_TWO)
+                    ->where('created_at', '>' ,Carbon::now()->format('Y-m'))
+                    ->count();
+
+                $total =  $dataCenterOne+$dataCenterTwo;
+
+                if($total > 0) {
+                    $data = array('centerOne' => $dataCenterOne,
+                        'centerTwo' => $dataCenterTwo,
+                        'total' => $total,
+                    );
+
+                    $subject_content = "[Rapport​ Mensuel​ ​Messagerie​ Simplify]​ ".Carbon::now()->format('F Y');
+                    try {
+                        Mail::send('emails.monthly_report', $data, function ($message) use ($subject_content) {
+                            /*if(empty($emailTo)){
+                                $message->to("testing.rvtech@gmail.com");
+                            }else{
+                                $message->to($emailTo);
+                            }*/
+                            $message->to("rajat_jain@rvtechnologies.co.in");
+                            /*  $message->cc($emailCc);
+                              $message->bcc($emailBcc);*/
+                            $message->subject($subject_content);
+                        });
+
+                    } catch (\Exception $e) {
+                        return redirect()->back()->withInput()->withErrors($e->getMessage());
+                    }
+                    return redirect('user/reports')->with('success', 'Email send!!');
+                }
                 return redirect('user/reports')->with('success', 'Email send!!');
             }
             return redirect('user/reports')->with('success', 'Email not send!!');

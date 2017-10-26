@@ -39,7 +39,7 @@
                                 <small>{!! $page_title !!}</small>
                             </h2>
                             <div class="pull-right">
-                               <a class="btn btn-success" href="{{ url('admin/emails/create') }}">Add Email</a>
+                               <a class="btn btn-success" href="{{ route('emails.create') }}">Add Email</a>
                             </div>
                             {{--<ul class="nav navbar-right panel_toolbox">
                                 <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
@@ -72,7 +72,7 @@
                                     <th class="column-title">Type</th>
                                     <th class="column-title">Actions</th>
                                     <th class="bulk-actions" colspan="5">
-                                        <a class="antoo" style="color:#fff; font-weight:500;">Bulk Actions ( <span
+                                        <a class="antoo" style="color:#fff; font-weight:500;">Actions ( <span
                                                     class="action-cnt"> </span> ) <i class="fa fa-chevron-down"></i></a>
                                     </th>
                                 </tr>
@@ -85,7 +85,7 @@
                                         <td>{{ $model->center_id != null ? $model->getCenterOptions($model->center_id) : ""}}</td>
                                         <td>{{ $model->type_id != null ? $model->getTypeOptions($model->type_id) : ""}}</td>
                                         <td>
-                                            <a href="{{ url("admin/emails/".$model->id.'/edit') }}"><i
+                                            <a href="{{ route('emails.edit', [$model->id]) }}"><i
                                                         class="fa fa-pencil"></i> </a>
 
                                             {!! Form::open(['style' => 'display: inline;', 'method' => 'DELETE', 'onsubmit' => 'return confirm(\'Are you sure you want to delete ? \');',  'route' => array('emails.destroy', $model->id)]) !!}
@@ -117,7 +117,19 @@
     <script src="{{ asset('js/admin_dist/dataTable/dataTables.scroller.min.js') }}"></script>
 
     <script>
-        $('.jambo_table').DataTable();
+        $('.jambo_table').DataTable({
+            "language": {
+                "search": "Rechercher",
+                "sLengthMenu": "Afficher _MENU_ entrées",
+                "sInfo": "Affichage _START_ de _END_ sur _TOTAL_ entrées",
+                paginate: {
+                    previous: 'Précédent',
+                    next:     'Suivant'
+                },
+
+            }
+
+        });
     </script>
 
     {{--
