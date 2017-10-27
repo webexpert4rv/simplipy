@@ -66,7 +66,6 @@ class userEmail extends Command
                 $total =  $dataCenterOne+$dataCenterTwo;
 
                 if($total > 0) {
-                    Log::info('cron daily1');
                     $data = array('centerOne' => $dataCenterOne,
                         'centerTwo' => $dataCenterTwo,
                         'total' => $total,
@@ -74,7 +73,6 @@ class userEmail extends Command
 
                     $subject_content = "[Rapport​ Quotidien​ Messagerie​ Simplify]​ ".Carbon::now()->format('d-m-Y');
                     try {
-                        Log::info('cron daily12');
                         Mail::send('emails.daily_report', $data, function ($message) use ($subject_content) {
                             /*if(empty($emailTo)){
                                 $message->to("testing.rvtech@gmail.com");
