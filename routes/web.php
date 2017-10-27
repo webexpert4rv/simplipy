@@ -1,6 +1,4 @@
 <?php
-
-
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -102,11 +100,21 @@ Route::get('/info', function () {
 });
 
 
+/*
+    Mail::send('emails.instant_report', [], function ($message){
+
+            $message->to("testing.rvtech@gmail.com");
+        $message->subject("Test Mail");
+    });*/
+
+
 
 Route::get('test-email',function (){
 
     \Illuminate\Support\Facades\Mail::raw('This is test email',function($message){
         $message->to('mehar_singh@rvtechnologies.co.in');
     });
-    //return phpinfo();
+
+    return phpinfo();
+
 });
