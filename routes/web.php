@@ -90,6 +90,8 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'admin-login-cardif'], functio
 
 Route::get('/info', function () {
 
+
+    return date('t');
     //return \Carbon\Carbon::now()->format('H:i');
 
     //return date('d.m.Y',strtotime("-1 days"));
@@ -112,7 +114,7 @@ Route::get('/info', function () {
 Route::get('test-email',function (){
 
     \Illuminate\Support\Facades\Mail::raw('This is test email',function($message){
-        $message->to('mehar_singh@rvtechnologies.co.in');
+        $message->to('rajat_jain@rvtechnologies.co.in');
     });
 
     return phpinfo();
