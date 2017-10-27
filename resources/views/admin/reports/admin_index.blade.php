@@ -56,10 +56,30 @@
                             </ul>--}}
                             <div class="clearfix"></div>
                         </div>
+                        <div class="col-md-12 row">
+                            <div class="col-md-3" style="width: 23%">
+                                <label for="designer_field">Agent: </label><input type="text" id="agent_field">
+                            </div>
+                            <div class="col-md-3" style="width: 23%">
+                                <label for="industry_field">Center: </label>
+                                <input type="text" id="center_field">
+                               {{-- <input type="checkbox" id="center1" value="1">Cardif 1
+                                <input type="checkbox" id="center2" value="2">Cardif 2--}}
+                            </div>
+                            <div class="col-md-3" style="width: 23%">
+                                <label for="material_field">Daily: </label><input type="text" id="daily_field">
+                                <p>(aaaa-mm-jj)</p>
+                            </div>
+                            <div class="col-md-3" style="width: 23%">
+                                <label for="material_field">Monthly: </label><input type="text" id="monthly_field">
+                                <p>(aaaa-mm)</p>
+                            </div>
+                        </div>
                         <div class="x_content report_table">
                             <p class="text-muted font-13 m-b-30">
                                 {{--  DataTables has most features enabled by default, so all you need to do to use it with your own tables is to call the construction function: <code>$().DataTable();</code>--}}
                             </p>
+
                             <table class="table table-striped jambo_table bulk_action">
                                 <thead>
                                 <tr class="headings">
@@ -74,6 +94,7 @@
                                     <th class="column-title">Société</th>
                                     <th class="column-title">Mobile</th>
                                     <th class="column-title">Médecin</th>
+                                    <th class="column-title" style="display: none">Center</th>
 
                                     {{--<th class="column-title">City</th>
 
@@ -112,6 +133,7 @@
 
                                         <td>{{ $model->emergency_id != null ? $model->getEmergencyOptions($model->emergency_id) : ""}}</td>
                                         <td>{{ @$model->attempt }}</td>--}}
+                                        <td style="display: none">{{ \App\Report::getCenterOptions($model->center_id) }}</td>
 
 
                                         <td>
@@ -161,6 +183,27 @@
     <script>
         $(document).ready(function () {
             $('.report_table').find('.row:first').addClass('search_report');
+        });
+    </script>
+
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            oTable = $('.jambo_table').DataTable();   //pay attention to capital D, which is mandatory to retrieve "api" datatables' object, as @Lionel said
+            $('#agent_field').keyup(function(){
+                // oTable.search($(this).val()).draw() ;
+                oTable.column(1).search($(this).val()).draw();
+            });
+            $('#center_field').keyup(function(){
+                // oTable.search($(this).val()).draw() ;
+                oTable.column(7).search($(this).val()).draw();
+            });
+            $('#daily_field').keyup(function(){
+                oTable.columns(2).search($(this).val()).draw();
+            });
+            $('#monthly_field').keyup(function(){
+                oTable.columns(2).search($(this).val()).draw();
+            });
         });
     </script>
     {{--

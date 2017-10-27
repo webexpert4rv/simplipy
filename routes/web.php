@@ -12,7 +12,7 @@
 
 Route::get('/', function () {
     //return view('welcome');
-   return redirect(url('/admin'));
+   return redirect(url('/admin-login-cardif'));
 });
 
 Auth::routes();
