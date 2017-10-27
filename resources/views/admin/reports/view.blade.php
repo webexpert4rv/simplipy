@@ -7,7 +7,7 @@
                 <div class="title_left">
                     <ul class="breadcrumb">
                         <li class="active">
-                            View Profile
+                            Profil
                         </li>
                     </ul>
                 </div>
@@ -30,7 +30,7 @@
                 <div class="col-md-12 col-sm-12 col-xs-12">
                     <div class="x_panel">
                         <div class="x_title">
-                            <h2>Profile Details
+                            <h2>Détails du Profil
                                 <small></small>
                             </h2>
                             <ul class="nav navbar-right panel_toolbox">
@@ -66,31 +66,31 @@
                                 </ul>
                             </div>
                             <div class="col-md-3 col-sm-3 col-xs-12 profile_left">
-                                <h4>Address</h4>
+                                <h4>Adresse</h4>
                                 <ul class="list-unstyled user_data">
-                                    <li><b>Address : </b>
+                                    <li><b>Adresse : </b>
                                         <span id="address_data"
                                               class="profile-text">{{ @$model->address }}</span>
                                     </li>
-                                    <li><b>Address2 : </b>
+                                    <li><b>Adresse 2 : </b>
                                         <span id="zip_data"
                                               class="profile-text">{{ @$model->address2}}</span>
                                     </li>
-                                    <li><b>Postal Code : </b>
+                                    <li><b>Code Postal : </b>
                                         <span id="country_data"
                                               class="profile-text">{{ @$model->zip }}</span>
                                     </li>
-                                    <li><b>City : </b>
+                                    <li><b>Ville : </b>
                                         <span id="city_data"
                                               class="profile-text">{{ @$model->city }}</span>
                                     </li>
 
-                                    <li><b>State : </b>
+                                    <li><b>Region : </b>
                                         <span id="city_data"
                                               class="profile-text">{{ @$model->state }}</span>
                                     </li>
 
-                                    <li><b>Country : </b>
+                                    <li><b>Pays : </b>
                                         <span id="country_data"
                                               class="profile-text">{{ @$model->country }}</span>
                                     </li>
@@ -138,7 +138,7 @@
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Email
+                                    <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Adresse Mail
                                     </label>
                                     <div class="col-md-6 col-sm-6 col-xs-12">
                                         <input type="email" placeholder="Email" name="email"
@@ -146,7 +146,7 @@
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">DOB
+                                    <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Date de Naissance
                                     </label>
                                     <div class="col-md-6 col-sm-6 col-xs-12">
                                         <input type="text" placeholder="DOB" name="dob"
@@ -155,7 +155,7 @@
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Phone Number
+                                    <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Numéro de Téléphone
                                     </label>
                                     <div class="col-md-6 col-sm-6 col-xs-12">
                                         <input type="text" placeholder="Phone Number" name="phone_num"

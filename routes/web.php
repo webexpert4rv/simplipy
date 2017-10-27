@@ -1,5 +1,6 @@
 <?php
 
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -91,9 +92,21 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'admin-login-cardif'], functio
 
 Route::get('/info', function () {
 
-    return \Carbon\Carbon::now()->format('H:i');
+    //return \Carbon\Carbon::now()->format('H:i');
 
     //return date('d.m.Y',strtotime("-1 days"));
-    //return \Carbon\Carbon::yesterday()->format('d-m-Y');
+    // return \Carbon\Carbon::yesterday()->format('d-m-Y');
 
+
+
+});
+
+
+
+Route::get('test-email',function (){
+
+    \Illuminate\Support\Facades\Mail::raw('This is test email',function($message){
+        $message->to('mehar_singh@rvtechnologies.co.in');
+    });
+    //return phpinfo();
 });

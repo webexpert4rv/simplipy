@@ -64,7 +64,7 @@
                                     <a href="{{ url('/admin/logout') }}"
                                        onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
-                                        Logout
+                                        Se déconnecter
                                     </a>
 
                                     <form id="logout-form" action="{{ url('/admin/logout') }}" method="POST"
@@ -76,8 +76,8 @@
                         </li>
                     @else
 
-                        <li><a href="{{ url('/admin') }}">Admin Login</a></li>
-                        <li><a href="{{ route('login') }}">User Login</a></li>
+                        <li><a href="{{ url('/admin') }}">Connexion Admin</a></li>
+                        <li><a href="{{ route('login') }}">Connexion Agent</a></li>
                         {{-- <li><a href="{{ url('/admin/register') }}">Register</a></li>--}}
                     @endif
                 </ul>

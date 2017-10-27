@@ -47,9 +47,9 @@ class ReportsController extends Controller
     {
         $model = Report::find($id);
         if ($model->delete()) {
-            return redirect(route('adminReports.index'))->with('success', 'Successfully Delete Report');
+            return redirect(route('adminReports.index'))->with('success', 'Message supprimé');
         }
-        return redirect()->back()->withInput()->with('error', 'Something Went Wrong!!!');
+        return redirect()->back()->withInput()->with('error', 'Erreur de suppression!');
 
     }
 
