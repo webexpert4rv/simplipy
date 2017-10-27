@@ -77,7 +77,6 @@ class ReportsController extends Controller
                 }
                 $formdata = Report::find($model->id)->toArray();
                 try {
-
                     Mail::send('emails.instant_report', $formdata, function ($message) use ($emailTo, $emailCc, $emailBcc, $subject_content) {
                         if(empty($emailTo)){
                             $message->to("admin@simplify-crm.com");
@@ -94,9 +93,9 @@ class ReportsController extends Controller
                     return redirect()->back()->withInput()->withErrors($e->getMessage());
                 }
 
-                return redirect('user/reports')->with('success', 'Successfully Added Report');
+                return redirect('user/reports')->with('success', 'Message envoyé');
             }
-            return redirect('user/reports')->with('success', 'Successfully Added Report');
+            return redirect('user/reports')->with('success', 'Message envoyé');
         }
         return redirect()->back()->withInput()->with('error', 'Something went wrong');
     }
@@ -165,10 +164,10 @@ class ReportsController extends Controller
 
             $model->setData($request);
             if ($model->save()) {
-                return redirect('/reports')->with('success', 'Successfully Updated Report');
+                return redirect('/reports')->with('success', 'Message à jour');
             }*/
 
-            return redirect('user/reports')->with('success', 'Email send!!');
+            return redirect('user/reports')->with('success', 'Message envoyé');
         }
         return redirect('user/reports')->with('success', 'Email not send!!');
     }
@@ -177,7 +176,7 @@ class ReportsController extends Controller
     {
         $model = Report::find($id);
         if ($model->delete()) {
-            return redirect('user/reports')->with('success', 'Successfully Delete Report');
+            return redirect('user/reports')->with('success', 'Message supprimé');
         }
         return redirect()->back()->withInput()->with('error', 'Something Went Wrong!!!');
 
@@ -298,9 +297,9 @@ class ReportsController extends Controller
                     } catch (\Exception $e) {
                         return redirect()->back()->withInput()->withErrors($e->getMessage());
                     }
-                    return redirect('user/reports')->with('success', 'Email send!!');
+                    return redirect('user/reports')->with('success', 'Message envoyé');
                 }
-                return redirect('user/reports')->with('success', 'Email send!!');
+                return redirect('user/reports')->with('success', 'Message envoyé');
             }
             return redirect('user/reports')->with('success', 'Email not send!!');
         }

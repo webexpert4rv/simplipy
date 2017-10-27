@@ -1,6 +1,4 @@
 <?php
-/*ini_set('display_errors',true);
-error_reporting(E_ALL|E_STRICT);*/
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -95,7 +93,12 @@ Route::get('/info', function () {
     //return \Carbon\Carbon::now()->format('H:i');
 
     //return date('d.m.Y',strtotime("-1 days"));
-    //return \Carbon\Carbon::yesterday()->format('d-m-Y');
+    // return \Carbon\Carbon::yesterday()->format('d-m-Y');
+
+
+
+});
+
 
 /*
     Mail::send('emails.instant_report', [], function ($message){
@@ -104,7 +107,6 @@ Route::get('/info', function () {
         $message->subject("Test Mail");
     });*/
 
-});
 
 
 Route::get('test-email',function (){
@@ -112,5 +114,7 @@ Route::get('test-email',function (){
     \Illuminate\Support\Facades\Mail::raw('This is test email',function($message){
         $message->to('mehar_singh@rvtechnologies.co.in');
     });
+
     return phpinfo();
+
 });

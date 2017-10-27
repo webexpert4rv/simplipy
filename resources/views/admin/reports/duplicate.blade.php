@@ -5,16 +5,16 @@
 @endsection
 @section('title', $page_title)
 @section('content')
-    <div class="right_col" role="main">
+   <div class="right_col" role="main">
         <div class="">
             <div class="page-title">
                 <div class="title_left">
                     <ul class="breadcrumb">
                         <li>
-                            <a href="{{route('reports.index')}}">Reports</a>
+                           <a href="{{route('reports.index')}}">Gestion Messagerie</a>
                         </li>
                         <li class="active">
-                           {!! $page_title !!}
+                            Nouveau Message (duplication)
                         </li>
                     </ul>
                 </div>
@@ -23,9 +23,8 @@
             <div class="row">
                 <div class="col-md-12 col-sm-12 col-xs-12">
                     <div class="x_panel">
-                        <div class="x_title">
-                            <h2>{!! $page_title !!}
-                                <small> fill details in below form</small>
+                        <div class="x_title" style="border-bottom: 0px white !important; margin-bottom: -30px!important;">
+                            <h2> Message dupliqué
                             </h2>
                             <ul class="nav navbar-right panel_toolbox">
                                 <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
@@ -44,18 +43,17 @@
                             </ul>
                             <div class="clearfix"></div>
                         </div>
-                      
-                        <div class="x_content report_disable">
+ 
+                        <div class="x_content">
                             <br/>
-                            <p class="main_title">Fields marked with an asterisk * are mandatory.</p>
+                          {{--  <p class="main_title">Fields marked with an asterisk * are mandatory.</p>--}}
                             <form id="demo-form2" data-parsley-validate class="form-horizontal form-label-left"
                                   method="post" action="{{ url('user/reports') }}">
-
-                            {!! csrf_field() !!}
-                            <div class="first_section">
-                                <h1 class="fh1">Specify the identity of the called center</h1>
+                                {!! csrf_field() !!}
+                                <div class="first_section">
+                                    <h1 class="fh1" >Centre Médical</h1>
                                 <div class="form-group">
-                                    <label class="control-label col-md-3 col-sm-3 col-xs-12" for="email">Center <span
+                                    <label class="control-label col-md-3 col-sm-3 col-xs-12" for="email">Centre <span
                                                 class="required">*</span>
                                     </label>
                                     <div class="col-md-6 col-sm-6 col-xs-12">
@@ -69,7 +67,7 @@
                                 </div>
                             </div>
                             <div class="second_section">
-                                <h1 class="fh2">Patient personal information</h1>
+                                <h1 class="fh2">Informations personnelles du patient</h1>
 
                                 <div class="form-group">
                                     <label class="control-label col-md-3 col-sm-3 col-xs-12" for="civil">Civilité<span
@@ -166,7 +164,7 @@
                                 </div>
                             </div>
                             <div class="third_section">
-                                <h1 class="fh1">Reasons for Appeal</h1>
+                                <h1 class="fh1">Raisons d'appel</h1>
                                 <div class="form-group">
                                     <label class="control-label col-md-3 col-sm-3 col-xs-12" for="physic">Médecin Concerné
                                     </label>

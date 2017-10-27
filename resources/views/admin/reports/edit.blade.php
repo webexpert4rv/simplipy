@@ -53,7 +53,7 @@
 
                             {!! csrf_field() !!}
                             <div class="first_section">
-                                <h1 class="fh1">Specify the identity of the called center</h1>
+                                <h1 class="fh1">Centre Médical</h1>
                                 <div class="form-group">
                                     <label class="control-label col-md-3 col-sm-3 col-xs-12" for="email">Center <span
                                                 class="required">*</span>
@@ -70,7 +70,7 @@
                                 </div>
                             </div>
                             <div class="second_section">
-                                <h1 class="fh2">Patient personal information</h1>
+                                <h1 class="fh2">Informations Personnelles du Patient</h1>
 
                                 <div class="form-group">
                                     <label class="control-label col-md-3 col-sm-3 col-xs-12" for="civil">Civilité<span
@@ -170,7 +170,7 @@
                                 </div>
                             </div>
                             <div class="third_section">
-                                <h1 class="fh1">Reasons for Appeal</h1>
+                                <h1 class="fh1">Raisons d'appel</h1>
                                 <div class="form-group">
                                     <label class="control-label col-md-3 col-sm-3 col-xs-12" for="physic">Médecin Concerné
                                     </label>

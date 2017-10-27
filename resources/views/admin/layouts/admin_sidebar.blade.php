@@ -30,7 +30,7 @@
                 <h3>Messagerie Cardif</h3>
                 <ul class="nav side-menu">
 
-                    <li><a><i class="fa fa-user" aria-hidden="true"></i> Users <span class="fa fa-chevron-down"></span></a>
+                    <li><a><i class="fa fa-user" aria-hidden="true"></i> Utilisateurs <span class="fa fa-chevron-down"></span></a>
                         <ul class="nav child_menu">
                             <li><a href="{{ route('admin.managers') }}">Managers</a></li>
                             <li><a href="{{ route('admin.agents') }}">Agents</a></li>
@@ -39,8 +39,8 @@
 
                     <li><a><i class="fa fa-envelope" aria-hidden="true"></i> Emails <span class="fa fa-chevron-down"></span></a>
                         <ul class="nav child_menu">
-                            <li><a href="{{ route('emails.index') }}">Mailing List</a></li>
-                            <li><a href="{{ route('adminReports.index') }}">Reports</a></li>
+                            <li><a href="{{ route('emails.index') }}">List Destinataires</a></li>
+                            <li><a href="{{ route('adminReports.index') }}">Historique Messages</a></li>
                         </ul>
                     </li>
 
