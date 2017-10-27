@@ -1,5 +1,6 @@
 <?php
-
+/*ini_set('display_errors',true);
+error_reporting(E_ALL|E_STRICT);*/
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -91,9 +92,25 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'admin-login-cardif'], functio
 
 Route::get('/info', function () {
 
-    return \Carbon\Carbon::now()->format('H:i');
+    //return \Carbon\Carbon::now()->format('H:i');
 
     //return date('d.m.Y',strtotime("-1 days"));
     //return \Carbon\Carbon::yesterday()->format('d-m-Y');
 
+/*
+    Mail::send('emails.instant_report', [], function ($message){
+
+            $message->to("testing.rvtech@gmail.com");
+        $message->subject("Test Mail");
+    });*/
+
+});
+
+
+Route::get('test-email',function (){
+
+    \Illuminate\Support\Facades\Mail::raw('This is test email',function($message){
+        $message->to('mehar_singh@rvtechnologies.co.in');
+    });
+    return phpinfo();
 });
