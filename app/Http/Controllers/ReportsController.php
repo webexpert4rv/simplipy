@@ -307,5 +307,14 @@ class ReportsController extends Controller
     }
 
 
+    /*public function sendEmail()
+    {
+        Mail::raw('This is test email',function($message){
+            $message->to('rajat_jain@rvtechnologies.co.in');
+        });
+
+        return phpinfo();
+    }*/
+
 
 }

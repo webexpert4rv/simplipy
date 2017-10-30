@@ -41,6 +41,15 @@ class userEmail extends Command
      */
     public function handle()
     {
+
+        //return $this->info('Inside handler function!!'); 
+        
+     /*   Mail::raw('This is test email',function($message){
+            $message->to('rajat_jain@rvtechnologies.co.in');
+        });
+
+        return $this->info('Email send!!');*/
+
         $reportData = Report::where('created_at', '>' ,Carbon::yesterday()->format('Y-m-d'))
                         ->distinct('center_id')
                         ->pluck('center_id');
@@ -73,18 +82,15 @@ class userEmail extends Command
 
                     $subject_content = "[Rapport​ Quotidien​ Messagerie​ Simplify]​ ".Carbon::now()->format('d-m-Y');
                     try {
+                         Log::info('Jain');
                         Mail::send('emails.daily_report', $data, function ($message) use ($subject_content) {
-                            /*if(empty($emailTo)){
-                                $message->to("testing.rvtech@gmail.com");
-                            }else{
-                                $message->to($emailTo);
-                            }*/
+                          
                             $message->to("testing.rvtech@gmail.com");
-                            /*  $message->cc($emailCc);
-                              $message->bcc($emailBcc);*/
+                          
                             $message->subject($subject_content);
                         });
                     } catch (\Exception $e) {
+                        Log::info($e->getMessage());
                         return redirect()->back()->withInput()->withErrors($e->getMessage());
                     }
                     return $this->info('Email send!!');
