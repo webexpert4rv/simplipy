@@ -2,6 +2,7 @@
 
 namespace App\Console\Commands;
 
+
 use App\Report;
 use Carbon\Carbon;
 use Illuminate\Console\Command;
@@ -41,6 +42,7 @@ class userEmail extends Command
      */
     public function handle()
     {
+
         $reportData = Report::where('created_at', '>' ,Carbon::yesterday()->format('Y-m-d'))
                         ->distinct('center_id')
                         ->pluck('center_id');

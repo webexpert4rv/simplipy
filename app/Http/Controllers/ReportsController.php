@@ -306,6 +306,14 @@ class ReportsController extends Controller
         return redirect('user/reports')->with('success', 'Center Id Not Available!!');
     }
 
+    /*public function sendEmail()
+    {
+        Mail::raw('This is test email',function($message){
+            $message->to('rajat_jain@rvtechnologies.co.in');
+        });
+
+        return phpinfo();
+    }*/
 
 
 }
