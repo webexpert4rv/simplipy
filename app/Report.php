@@ -64,14 +64,14 @@ class Report extends Model
     {
         $list = [
             self::PHYSICIAN_ZERO => 'N/C',
-            self::PHYSICIAN_ONE => 'DR El Husseini',
-            self::PHYSICIAN_TWO => 'DR Pigné',
-            self::PHYSICIAN_THREE => 'DR Sahut D\'Izran',
-            self::PHYSICIAN_FOUR => 'DR Benazzouz',
-            self::PHYSICIAN_FIVE => 'DR Mounedji',
-            self::PHYSICIAN_SIX => 'DR Vial Dupuy',
-            self::PHYSICIAN_SEVEN => 'DR Lanouar',
-            self::PHYSICIAN_EIGHT => 'DR Caussanel',
+            self::PHYSICIAN_ONE => 'DR El Husseini (Pneumologue)',
+            self::PHYSICIAN_TWO => 'DR Pigné (Pneumologue)',
+            self::PHYSICIAN_THREE => "DR Sahut D'Izran (Pneumologue)",
+            self::PHYSICIAN_FOUR => 'DR Benazzouz (Pneumologue)',
+            self::PHYSICIAN_FIVE => 'DR Mounedji (Pneumologue)',
+            self::PHYSICIAN_SIX => 'DR Vial Dupuy (Pneumologue)',
+            self::PHYSICIAN_SEVEN => 'DR Lanouar (Cardiologue)',
+            self::PHYSICIAN_EIGHT => 'DR Caussanel (Allergologue)',
             self::PHYSICIAN_NINE => 'Autre',
 
         ];
@@ -90,12 +90,12 @@ class Report extends Model
     {
         $list = [
             self::EXAM_ZERO => 'N/C',
-            self::EXAM_ONE => 'EFR (Functional Respiratory Explorations)',
+            self::EXAM_ONE => 'EFR (Explorations Fonctionnelles Respiratoires)',
             self::EXAM_TWO => 'DLCO',
-            self::EXAM_THREE => 'Blood gas',
-            self::EXAM_FOUR => 'Walking test',
-            self::EXAM_FIVE => 'Holters Cardiac and Tensionnel - MAPA',
-            self::EXAM_SIX => 'Polygraphy and Polysomnography',
+            self::EXAM_THREE => 'Gaz du sang',
+            self::EXAM_FOUR => 'Test de marche',
+            self::EXAM_FIVE => 'Holters Cardiaque et Tensionnel - MAPA',
+            self::EXAM_SIX => 'Polygraphie et Polysomnographie',
             self::EXAM_SEVEN => 'Autre',
         ];
 

@@ -35,11 +35,10 @@
                 <div class="col-md-12 col-sm-12 col-xs-12">
                     <div class="x_panel">
                         <div class="x_title">
-                            <h2>List
-                                <small>{!! $page_title !!}</small>
+                            <h2>Liste des Destinataires
                             </h2>
                             <div class="pull-right">
-                               <a class="btn btn-success" href="{{ route('emails.create') }}">Add Email</a>
+                               <a class="btn btn-success" href="{{ route('emails.create') }}">Ajouter </a>
                             </div>
                             {{--<ul class="nav navbar-right panel_toolbox">
                                 <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
@@ -67,8 +66,8 @@
                                     <input type="checkbox" id="check-all" class="flat">
                                      </th>--}}
                                     <th class="column-title">Sr.No.</th>
-                                    <th class="column-title">Email</th>
-                                    <th class="column-title">Center</th>
+                                    <th class="column-title">Adresse Mail</th>
+                                    <th class="column-title">Centre</th>
                                     <th class="column-title">Type</th>
                                     <th class="column-title">Actions</th>
                                     <th class="bulk-actions" colspan="5">

@@ -35,8 +35,8 @@
                 <div class="col-md-12 col-sm-12 col-xs-12">
                     <div class="x_panel">
                         <div class="x_title">
-                            <h2>List
-                                <small>{!! $page_title !!}</small>
+                            <h2>Liste
+                                <small>des {!! $page_title !!}</small>
                             </h2>
                             <div class="pull-right">
                                {!! $add_link !!}
@@ -47,7 +47,7 @@
                                 <li class="dropdown">
                                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-wrench"></i></a>
                                     <ul class="dropdown-menu" role="menu">
-                                        <li><a href="{{ url('admin/user/create') }}">Create User</a>
+                                        <li><a href="{{ url('admin/user/create') }}">Ajouter utilisateur</a>
                                         </li>
                                     </ul>
                                 </li>
@@ -67,11 +67,11 @@
                                     <input type="checkbox" id="check-all" class="flat">
                                      </th>--}}
                                     <th class="column-title">Sr.No.</th>
-                                    <th class="column-title">Name</th>
-                                    <th class="column-title">Email</th>
+                                    <th class="column-title">Nom Complet</th>
+                                    <th class="column-title">Adresse Mail</th>
                                    {{-- <th class="column-title">Registered</th>--}}
                                     <th class="column-title">Status</th>
-                                    <th class="column-title">Change Password</th>
+                                    <th class="column-title">Mot de Passe</th>
                                     <th class="column-title">Actions</th>
                                     <th class="bulk-actions" colspan="5">
                                         <a class="antoo" style="color:#fff; font-weight:500;">Actions ( <span
@@ -94,15 +94,15 @@
                                             {{--<a href="{{ url("admin/users/".$model->id.'/edit') }}"><i
                                                         class="fa fa-pencil"></i> </a>--}}
                                             @if($model->status == \App\User::STATUS_SUSPEND)
-                                            {!! Form::open(['style' => 'display: inline;', 'method' => 'POST', 'onsubmit' => 'return confirm(\'Are you sure you want to suspend ? \');',  'route' => array('users.toggle.status', $model->id)]) !!}
-                                            <button type="submit" class="btn btn-xs btn-success">Active</button>
+                                            {!! Form::open(['style' => 'display: inline;', 'method' => 'POST', 'onsubmit' => 'return confirm(\'Mettre en suspend ? \');',  'route' => array('users.toggle.status', $model->id)]) !!}
+                                            <button type="submit" class="btn btn-xs btn-success">Activer</button>
                                             {!! Form::close() !!}
                                             @else
-                                                {!! Form::open(['style' => 'display: inline;', 'method' => 'POST', 'onsubmit' => 'return confirm(\'Are you sure you want to suspend ? \');',  'route' => array('users.toggle.status', $model->id)]) !!}
-                                                <button type="submit" class="btn btn-xs btn-warning">Suspend</button>
+                                                {!! Form::open(['style' => 'display: inline;', 'method' => 'POST', 'onsubmit' => 'return confirm(\'Mettre en suspend ? \');',  'route' => array('users.toggle.status', $model->id)]) !!}
+                                                <button type="submit" class="btn btn-xs btn-warning">Désactiver</button>
                                                 {!! Form::close() !!}
                                             @endif
-                                            {!! Form::open(['style' => 'display: inline;', 'method' => 'DELETE', 'onsubmit' => 'return confirm(\'Are you sure you want to delete ? \');',  'route' => array('users.destroy', $model->id)]) !!}
+                                            {!! Form::open(['style' => 'display: inline;', 'method' => 'DELETE', 'onsubmit' => 'return confirm(\'Supprimer ? \');',  'route' => array('users.destroy', $model->id)]) !!}
                                             <button type="submit" class="btn btn-xs btn-danger"><i
                                                         class="fa fa-remove"></i></button>
                                             {!! Form::close() !!}

@@ -14,7 +14,7 @@
                             {!! $model->getListLink() !!}
                         </li>
                         <li class="active">
-                           {!! $page_title !!}
+                           Modifier
                         </li>
                     </ul>
                 </div>
@@ -25,7 +25,7 @@
                     <div class="x_panel">
                         <div class="x_title">
                             <h2>{!! $page_title !!}
-                                <small> fill details in below form</small>
+                               
                             </h2>
                             <ul class="nav navbar-right panel_toolbox">
                                 <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
@@ -50,7 +50,7 @@
 
                             {!! csrf_field() !!}
                             <div class="form-group">
-                                <label class="control-label col-md-2" for="first_name">First Name
+                                <label class="control-label col-md-2" for="first_name">Prénom
                                     <span class="required">*</span>
                                 </label>
                                 <div class="col-md-6 col-sm-6 col-xs-12">
@@ -61,7 +61,7 @@
                             </div>
 
                             <div class="form-group">
-                                <label class="control-label col-md-2" for="last_name">Last Name <span
+                                <label class="control-label col-md-2" for="last_name">Nom <span
                                             class="required">*</span>
                                 </label>
                                 <div class="col-md-6 col-sm-6 col-xs-12">
@@ -72,7 +72,7 @@
                             </div>
 
                             <div class="form-group">
-                                <label class="control-label col-md-2" for="email">Email <span
+                                <label class="control-label col-md-2" for="email">Adresse Mail <span
                                             class="required">*</span>
                                 </label>
                                 <div class="col-md-6 col-sm-6 col-xs-12">
@@ -94,7 +94,7 @@
 
                                     </select>
                                 </div>
-                            </div>--}}
+                            </div>
 
                             <div class="form-group">
                                 <label class="control-label col-md-2" for="profile_pic">Profile
@@ -177,14 +177,13 @@
                                     <input name="country" type="text" value="{{ old('country', $profile->country) }}"
                                            class="form-control col-md-7 col-xs-12">
                                 </div>
-                            </div>
+                            </div>--}}
 
                             <div class="ln_solid"></div>
                             <div class="form-group">
                                 <div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3">
-                                    <a class="btn btn-warning" type="button" href="{{ url('admin-login-cardif/'.$cancel_link) }}">Cancel</a>
-                                    <button class="btn btn-primary" type="reset">Reset</button>
-                                    <button type="submit" class="btn btn-success">Submit</button>
+                                 <a class="btn btn-warning" type="button" href="{{ url('admin-login-cardif/'.$cancel_link) }}">Annuler</a>
+                                    <button type="submit" class="btn btn-success">Valider</button>
                                 </div>
                             </div>
 
@@ -220,4 +219,4 @@
             }
         }
     </script>
-@endsection
+@endsection	

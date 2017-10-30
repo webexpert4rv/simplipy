@@ -47,7 +47,7 @@
                                 {!! csrf_field() !!}
                                 <input type="hidden" name="role_id" value="{{ @$role_id }}">
                                 <div class="form-group">
-                                    <label class="control-label col-md-2" for="first_name">First Name
+                                    <label class="control-label col-md-2" for="first_name">Prénom
                                     </label>
                                     <div class="col-md-6 col-sm-6 col-xs-12">
                                         <input name="first_name" type="text" value="{{ old('first_name') }}"
@@ -55,7 +55,7 @@
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <label class="control-label col-md-2" for="last_name">Last Name
+                                    <label class="control-label col-md-2" for="last_name">Nom
                                     </label>
                                     <div class="col-md-6 col-sm-6 col-xs-12">
                                         <input name="last_name" type="text" value="{{ old('last_name') }}"
@@ -63,7 +63,7 @@
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <label class="control-label col-md-2" for="email">Email <span
+                                    <label class="control-label col-md-2" for="email">Adresse Mail<span
                                                 class="required">*</span>
                                     </label>
                                     <div class="col-md-6 col-sm-6 col-xs-12">
@@ -88,7 +88,7 @@
                                 </div>--}}
                                 <div class="form-group">
                                     <label for="password"
-                                           class="control-label col-md-2">Password</label>
+                                           class="control-label col-md-2">Mot de Passe</label>
                                     <div class="col-md-6 col-sm-6 col-xs-12">
                                         <input id="middle-name" class="form-control col-md-7 col-xs-12" type="password"
                                                name="password">
@@ -96,7 +96,7 @@
                                 </div>
                                 <div class="form-group">
                                     <label for="password_confirmation"
-                                           class="control-label col-md-2">Confirm Password</label>
+                                           class="control-label col-md-2">Confirmer  le Mot de Passe</label>
                                     <div class="col-md-6 col-sm-6 col-xs-12">
                                         <input id="middle-name" class="form-control col-md-7 col-xs-12" type="password"
                                                name="password_confirmation">
@@ -107,9 +107,9 @@
                                 <div class="form-group">
                                     <div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3">
                                         <a class="btn btn-warning" type="button"
-                                           href="{{ url('admin-login-cardif/'.$cancel_link) }}">Cancel</a>
-                                        <button class="btn btn-primary" type="reset">Reset</button>
-                                        <button type="submit" class="btn btn-success">Create</button>
+                                           href="{{ url('admin-login-cardif/'.$cancel_link) }}">Annuler</a>
+                                       
+                                        <button type="submit" class="btn btn-success">Créer</button>
                                     </div>
                                 </div>
 

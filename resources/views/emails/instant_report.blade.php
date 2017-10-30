@@ -24,11 +24,11 @@
             if(isset($emergency_id)) {
                 echo "URGENT<br/>";
                 if($attempt == 2) {
-                    echo "Premier Rappel<br/>";
+                    echo "Deuxième Appel<br/>";
                 }if ($attempt == 3){
-                    echo "Deuxième Rappel<br/>";
+                    echo "Troisième Appel<br/>";
                 }if($attempt == 4){
-                    echo "Troisième Rappel<br/>";
+                    echo "Quatrième Appel<br/>";
                 }if ($status == \App\Report::STATUS_CALL) {
                     echo "APPEL RACCROCHE PAR LE PATIENT<br/>";
                 }/*else{
@@ -80,7 +80,7 @@
         <td width="80%" style="padding-top: 15px;">{{$dob}}</td>
     </tr>
     <tr>
-        <td width="20%" style="padding-top: 15px;font-weight:bold;">Adresse:</td>
+        <td width="20%" style="padding-top: 15px;font-weight:bold;">Adresse Postale:</td>
         <td width="80%" style="padding-top: 15px;">{{$address}}</td>
     </tr>
     <tr>
@@ -92,7 +92,7 @@
         <td width="80%" style="padding-top: 15px;">{{$postal_code}}</td>
     </tr>
     <tr>
-        <td width="20%" style="padding-top: 15px;font-weight:bold;">Adresse email:</td>
+        <td width="20%" style="padding-top: 15px;font-weight:bold;">Adresse mail:</td>
         <td width="80%" style="padding-top: 15px;">{{$email}}</td>
     </tr>
     <tr>
