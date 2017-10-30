@@ -56,15 +56,15 @@
                             </ul>--}}
                             <div class="clearfix"></div>
                         </div>
-                        <div class="col-md-12 row">
+                        {{--<div class="col-md-12 row">
                             <div class="col-md-3" style="width: 23%">
                                 <label for="designer_field">Agent: </label><input type="text" id="agent_field">
                             </div>
                             <div class="col-md-3" style="width: 23%">
                                 <label for="industry_field">Center: </label>
                                 <input type="text" id="center_field">
-                               {{-- <input type="checkbox" id="center1" value="1">Cardif 1
-                                <input type="checkbox" id="center2" value="2">Cardif 2--}}
+                               --}}{{-- <input type="checkbox" id="center1" value="1">Cardif 1
+                                <input type="checkbox" id="center2" value="2">Cardif 2--}}{{--
                             </div>
                             <div class="col-md-3" style="width: 23%">
                                 <label for="material_field">Daily: </label><input type="text" id="daily_field">
@@ -74,7 +74,7 @@
                                 <label for="material_field">Monthly: </label><input type="text" id="monthly_field">
                                 <p>(aaaa-mm)</p>
                             </div>
-                        </div>
+                        </div>--}}
                         <div class="x_content report_table">
                             <p class="text-muted font-13 m-b-30">
                                 {{--  DataTables has most features enabled by default, so all you need to do to use it with your own tables is to call the construction function: <code>$().DataTable();</code>--}}
