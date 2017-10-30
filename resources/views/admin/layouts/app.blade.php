@@ -76,7 +76,7 @@
                         </li>
                     @else
 
-                        <li><a href="{{ url('/admin') }}">Connexion Admin</a></li>
+                       {{-- <li><a href="{{ url('/admin-login-cardif') }}">Connexion Admin</a></li> --}}
                         <li><a href="{{ route('login') }}">Connexion Agent</a></li>
                         {{-- <li><a href="{{ url('/admin/register') }}">Register</a></li>--}}
                     @endif

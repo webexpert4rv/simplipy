@@ -1,7 +1,7 @@
 <div class="col-md-3 left_col">
     <div class="left_col scroll-view">
         <div class="navbar nav_title" style="border: 0;">
-            <a href="{{ url('/admin') }}" class="site_title">
+            <a href="{{ url('/admin-login-cardif') }}" class="site_title">
                 <img src="{{asset('images/logo.png')}}" class="logo" width="120px" height="50px">
                 <img src="{{asset('images/logo_side.jpg')}}" class="logo_side" height="50px" style="display: none">
                 {{--<span>Simplify</span>--}}</a>
@@ -37,9 +37,9 @@
                         </ul>
                     </li>
 
-                    <li><a><i class="fa fa-envelope" aria-hidden="true"></i> Emails <span class="fa fa-chevron-down"></span></a>
+                    <li><a><i class="fa fa-envelope" aria-hidden="true"></i> Gestion Messagerie <span class="fa fa-chevron-down"></span></a>
                         <ul class="nav child_menu">
-                            <li><a href="{{ route('emails.index') }}">List Destinataires</a></li>
+                            <li><a href="{{ route('emails.index') }}">Liste Destinataires</a></li>
                             <li><a href="{{ route('adminReports.index') }}">Historique Messages</a></li>
                         </ul>
                     </li>
@@ -97,7 +97,7 @@
                     </a>
                     <ul class="dropdown-menu dropdown-usermenu pull-right">
                         <li><a href="{{ route('admin.profile') }}"> Profile</a></li>
-                        <li><a href="{{ route('admin.change-password',\Auth::guard('admins')->user()->id) }}">Change Password</a></li>
+                        <li><a href="{{ route('admin.change-password',\Auth::guard('admins')->user()->id) }}">Modifier le Mot de Passe</a></li>
                         <li>  <a data-toggle="tooltip" data-placement="top" title="Logout" href="{{ route('logout') }}"
                                  onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">

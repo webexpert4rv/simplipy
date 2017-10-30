@@ -109,7 +109,7 @@ class UserController extends Controller
             if (isset($result['errors'])) {
                 return redirect()->back()->withInput()->with('errors', implode('<br/>', $result['errors']));
             }
-            return redirect()->back()->withInput()->with('success', 'Successfully Updated.');
+            return redirect()->back()->withInput()->with('success', 'Mis à jour');
         }
 
         return redirect()->back()->withInput()->with('error', 'Something went wrong');
@@ -185,8 +185,8 @@ class UserController extends Controller
             $profile->center_id = $request->get('center_id');
             $profile->save();
             if ($model->role_id == User::ROLE_AGENT)
-                return redirect('/admin/agents')->with('success', 'Successfully Added Agent');
-            return redirect('/admin/managers')->with('success', 'Successfully Added Manager');
+                return redirect('/admin/agents')->with('success', 'Agent créé avec succès');
+            return redirect('/admin/managers')->with('success', 'Manager créé avec succès');
         }
 
         return redirect()->back()->withInput()->with('error', 'Something went wrong');
@@ -344,7 +344,7 @@ class UserController extends Controller
         if(!empty($request->password)) {
             $model->password = bcrypt($request->password);
             $model->save();
-            return redirect()->back()->withInput()->with('success', 'Successfully Updated.');
+            return redirect()->back()->withInput()->with('success', 'Mot de passe mis à jour');
         }
         return redirect()->back()->withInput()->with('error', 'Something went wrong');
     }

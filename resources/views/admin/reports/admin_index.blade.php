@@ -87,14 +87,14 @@
                                     <input type="checkbox" id="check-all" class="flat">
                                      </th>--}}
                                     <th class="column-title" style="display: none">Sr.No.</th>
-                                    <th class="column-title">Agent Name</th>
+                                    <th class="column-title">Agent Concerné</th>
                                     <th class="column-title">Date Appel</th>
                                     <th class="column-title">Nom Complet du Patient</th>
 
                                     <th class="column-title">Société</th>
                                     <th class="column-title">Mobile</th>
                                     <th class="column-title">Médecin</th>
-                                    <th class="column-title" style="display: none">Center</th>
+                                    <th class="column-title" style="display: none">Centre</th>
 
                                     {{--<th class="column-title">City</th>
 
@@ -137,8 +137,8 @@
 
 
                                         <td>
-                                            <a href=" {{route('adminReports.edit',[$model->id])}} ">View Report</a>
-                                             {!! Form::open(['style' => 'display: inline;', 'method' => 'DELETE', 'onsubmit' => 'return confirm(\'Are you sure you want to delete ? \');',  'route' => array('adminReports.destroy', $model->id)]) !!}
+                                            <a href=" {{route('adminReports.edit',[$model->id])}} ">Voir</a>
+                                             {!! Form::open(['style' => 'display: inline;', 'method' => 'DELETE', 'onsubmit' => 'return confirm(\Supprimer ? \');',  'route' => array('adminReports.destroy', $model->id)]) !!}
                                             <button type="submit" class="btn btn-xs btn-danger"><i
                                                         class="fa fa-remove"></i></button>
                                             {!! Form::close() !!}

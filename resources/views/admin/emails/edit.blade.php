@@ -11,10 +11,10 @@
                 <div class="title_left">
                     <ul class="breadcrumb">
                         <li>
-                            <a href="{{ route('emails.index') }}">Emails</a>
+                            <a href="{{ route('emails.index') }}">Adresses Mails</a>
                         </li>
                         <li class="active">
-                           {!! $page_title !!}
+                           Modifier
                         </li>
                     </ul>
                 </div>
@@ -24,8 +24,7 @@
                 <div class="col-md-12 col-sm-12 col-xs-12">
                     <div class="x_panel">
                         <div class="x_title">
-                            <h2>{!! $page_title !!}
-                                <small> fill details in below form</small>
+                            <h2>Modifier
                             </h2>
                             <ul class="nav navbar-right panel_toolbox">
                                 <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
@@ -50,7 +49,7 @@
                             <input type="hidden" name="_method" value="PUT">
                             {!! csrf_field() !!}
                             <div class="form-group">
-                                <label class="control-label col-md-2" for="first_name">Email
+                                <label class="control-label col-md-2" for="first_name">Adresse Mail
                                 </label>
                                 <div class="col-md-6 col-sm-6 col-xs-12">
                                     <input name="email" type="email" value="{{ old('email', $model->email) }}"
@@ -59,7 +58,7 @@
                             </div>
 
                             <div class="form-group">
-                                <label class="control-label col-md-2" for="header">Recipient<span
+                                <label class="control-label col-md-2" for="header">Destinataire en <span
                                             class="required">*</span>
                                 </label>
                                 <div class="col-md-6 col-sm-6 col-xs-12">
@@ -88,7 +87,7 @@
                             </div>
 
                             <div class="form-group">
-                                <label class="control-label col-md-2" for="center_id">Center <span
+                                <label class="control-label col-md-2" for="center_id">Centre <span
                                             class="required">*</span>
                                 </label>
                                 <div class="col-md-6 col-sm-6 col-xs-12">
@@ -106,9 +105,9 @@
                             <div class="ln_solid"></div>
                             <div class="form-group">
                                 <div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3">
-                                    <a class="btn btn-warning" type="button" href="{{ route('emails.index') }}">Cancel</a>
-                                    <button class="btn btn-primary" type="reset">Reset</button>
-                                    <button type="submit" class="btn btn-success">Submit</button>
+                                    <a class="btn btn-warning" type="button" href="{{ route('emails.index') }}">Annuler</a>
+                                    {{-- <button class="btn btn-primary" type="reset">Réinitialiser</button> --}}
+                                    <button type="submit" class="btn btn-success">Valider</button>
                                 </div>
                             </div>
 

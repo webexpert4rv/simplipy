@@ -7,10 +7,10 @@
                 <div class="title_left">
                     <ul class="breadcrumb">
                         <li>
-                           <a href="{{ route('emails.index') }}">Emails</a>
+                           <a href="{{ route('emails.index') }}">Adresses Mails</a>
                         </li>
                         <li class="active">
-                            {!! $page_title !!}
+                            Ajouter
                         </li>
                     </ul>
                 </div>
@@ -20,8 +20,7 @@
                 <div class="col-md-12 col-sm-12 col-xs-12">
                     <div class="x_panel">
                         <div class="x_title">
-                            <h2> {!! $page_title !!}
-                                <small> fill details in below form</small>
+                            <h2> Ajouter une nouvelle adresse
                             </h2>
                             <ul class="nav navbar-right panel_toolbox">
                                 <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
@@ -46,7 +45,7 @@
                                   method="post" action="{{ route('emails.store') }}">
                                 {!! csrf_field() !!}
                                 <div class="form-group">
-                                    <label class="control-label col-md-2" for="first_name">Email
+                                    <label class="control-label col-md-2" for="first_name">Adresse Mail
                                     </label>
                                     <div class="col-md-6 col-sm-6 col-xs-12">
                                         <input name="email" type="email" value="{{ old('email') }}"
@@ -55,7 +54,7 @@
                                 </div>
 
                                 <div class="form-group">
-                                    <label class="control-label col-md-2" for="header">Recipient<span
+                                    <label class="control-label col-md-2" for="header">Destinataire en<span
                                                 class="required">*</span>
                                     </label>
                                     <div class="col-md-6 col-sm-6 col-xs-12">
@@ -84,7 +83,7 @@
                                 </div>
 
                                 <div class="form-group">
-                                    <label class="control-label col-md-2" for="email">Center <span
+                                    <label class="control-label col-md-2" for="email">Centre <span
                                                 class="required">*</span>
                                     </label>
                                     <div class="col-md-6 col-sm-6 col-xs-12">
@@ -102,9 +101,9 @@
                                 <div class="form-group">
                                     <div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3">
                                         <a class="btn btn-warning" type="button"
-                                           href="{{ route('emails.index') }}">Cancel</a>
-                                        <button class="btn btn-primary" type="reset">Reset</button>
-                                        <button type="submit" class="btn btn-success">Submit</button>
+                                           href="{{ route('emails.index') }}">Annuler</a>
+                                        {{-- <button class="btn btn-primary" type="reset">Réinitialiser</button> --}}
+                                        <button type="submit" class="btn btn-success">Valider</button>
                                     </div>
                                 </div>
 
@@ -119,13 +118,13 @@
 @section('scripts')
     <script>
         $(document).ready(function () {
-            $('.centerDaily').append( '<option value="3" selected>Both</option>');
+            $('.centerDaily').append( '<option value="3" selected>Cardif</option>');
             $('.dailyType').change(function () {
                 if($(this).val() == 1){
                     $('.centerDaily').attr('readonly');
                     $('.centerDaily').css('cursor','pointer');
                     $('.centerDaily').css('pointer-events','none');
-                    $('.centerDaily').append( '<option value="3" selected>Both</option>');
+                    $('.centerDaily').append( '<option value="3" selected>Cardif</option>');
                 }
                 if($(this).val() == 2){
                     $(".centerDaily").removeAttr('readonly');
