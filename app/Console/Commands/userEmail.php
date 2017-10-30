@@ -2,6 +2,7 @@
 
 namespace App\Console\Commands;
 
+
 use App\Report;
 use Carbon\Carbon;
 use Illuminate\Console\Command;
@@ -41,6 +42,7 @@ class userEmail extends Command
      */
     public function handle()
     {
+
 
         //return $this->info('Inside handler function!!'); 
         
