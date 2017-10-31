@@ -80,7 +80,7 @@
         <td width="80%" style="padding-top: 15px;">{{$dob}}</td>
     </tr>
     <tr>
-        <td width="20%" style="padding-top: 15px;font-weight:bold;">Adresse Postale:</td>
+        <td width="20%" style="padding-top: 15px;font-weight:bold;">Adresse postale:</td>
         <td width="80%" style="padding-top: 15px;">{{$address}}</td>
     </tr>
     <tr>
