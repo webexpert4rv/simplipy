@@ -185,8 +185,8 @@ class UserController extends Controller
             $profile->center_id = $request->get('center_id');
             $profile->save();
             if ($model->role_id == User::ROLE_AGENT)
-                return redirect('/admin/agents')->with('success', 'Agent créé avec succès');
-            return redirect('/admin/managers')->with('success', 'Manager créé avec succès');
+                return redirect(route('admin.agents'))->with('success', 'Agent créé avec succès');
+            return redirect(route('admin.managers'))->with('success', 'Manager créé avec succès');
         }
 
         return redirect()->back()->withInput()->with('error', 'Something went wrong');

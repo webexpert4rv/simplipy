@@ -46,7 +46,7 @@
                       
                         {{-- <div class="x_content report_disable"> --}}
                             
-                            {!! Form::open(['files' => true,'route' => ['reports.update', 'id' => $model->id], 'class' => 'form-horizontal form-label-left', 'id' => 'demo-form2']) !!}
+                            {!! Form::open(['files' => true,'route' => ['adminReports.update', 'id' => $model->id], 'class' => 'form-horizontal form-label-left', 'id' => 'demo-form2']) !!}
                             <input type="hidden" name="_method" value="PUT">
                             {!! csrf_field() !!}
                             <div class="first_section">
@@ -241,6 +241,8 @@
                                    {{-- <a class="btn btn-primary" type="button" href="{{ url('admin/emails') }}">Cancel</a>
                                     <button class="btn btn-primary" type="reset">Reset</button>
                                     <button type="submit" class="btn btn-success">Submit</button>--}}
+
+                                      <button type="submit" class="btn btn-success">Renvoyer Report</button>
                                 </div>
                             </div>
 

@@ -17,7 +17,7 @@
                    @php $html .="<li>".$error."</li>"; @endphp
                 @endforeach
                 @php  $html .= "</ul>"; @endphp
-                    <input type="hidden" value="{!! $html !!}" id="error_notif">
+                    <input type="hidden" value='{!! $html !!}' id="error_notif">
         @endif
         @if(!\Auth::user())
         @include('admin.layouts.admin_sidebar')
