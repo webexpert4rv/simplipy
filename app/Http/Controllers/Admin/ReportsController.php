@@ -43,6 +43,7 @@ class ReportsController extends Controller
         return view('admin.reports.admin_edit', $data);
     }
 
+
     public function update(Request $request,$id)
     {
         //return $request->all();
@@ -114,6 +115,5 @@ class ReportsController extends Controller
         return redirect()->back()->withInput()->with('error', 'Erreur de suppression!');
 
     }
-
 
 }
