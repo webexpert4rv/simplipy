@@ -7,7 +7,9 @@ use App\Order;
 use App\OrderProduct;
 use App\Report;
 use App\User;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
 use Overtrue\LaravelSocialite\Socialite;
 
 class HomeController extends Controller
@@ -44,6 +46,7 @@ class HomeController extends Controller
         }
 
     }
+
 
 
 }

@@ -3,7 +3,10 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Report;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
 use Overtrue\LaravelSocialite\Socialite;
 
 class HomeController extends Controller
@@ -27,6 +30,8 @@ class HomeController extends Controller
     {
         return view('admin.home');
     }
+
+
 
   
 }

@@ -23,7 +23,7 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::group(['middleware' => 'auth','prefix' => 'user'], function () {
     Route::resource('/reports', 'ReportsController');
     Route::get('/reports/{id}/duplicate', 'ReportsController@duplicate');
-    Route::any('daily/report123', 'ReportsController@dailyReport123');
+    Route::any('daily/report', 'ReportsController@dailyReport123');
     Route::any('monthly/report123', 'ReportsController@monthlyReport123');
 
 });
