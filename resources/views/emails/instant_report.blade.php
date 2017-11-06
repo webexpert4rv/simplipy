@@ -30,19 +30,19 @@
                 }if($attempt == 4){
                     echo "Quatrième Appel<br/>";
                 }if ($status == \App\Report::STATUS_CALL) {
-                    echo "APPEL RACCROCHE PAR LE PATIENT<br/>";
+                    echo "APPEL RACCROCHÉ PAR LE PATIENT<br/>";
                 }/*else{
                     echo "[RAPPLE]";
                 }*/
             }else{
                 if($attempt == 2) {
-                    echo "Premier Rappel<br/>";
+                    echo "Deuxième Appel<br/>";
                 }if ($attempt == 3){
-                    echo "Deuxième Rappel<br/>";
+                    echo "Troisième Appel<br/>";
                 }if($attempt == 4){
-                    echo "Troisième Rappel<br/>";
+                    echo "Quatrième Appel<br/>";
                 }if ($status == \App\Report::STATUS_CALL) {
-                    echo "APPEL RACCROCHE PAR LE PATIENT<br/>";
+                    echo "APPEL RACCROCHÉ PAR LE PATIENT<br/>";
                 }/*else{
                     echo "[RAPPLE]";
                 }*/

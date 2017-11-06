@@ -42,17 +42,19 @@ class userEmail extends Command
      */
     public function handle()
     {
-
-
         //return $this->info('Inside handler function!!'); 
         
-     /*   Mail::raw('This is test email',function($message){
+        Mail::raw('This is test email',function($message){
             $message->to('rajat_jain@rvtechnologies.co.in');
+            $swiftMessage = $message->getSwiftMessage();
+            $headers = $swiftMessage->getHeaders();
+            $headers->addTextHeader('x-mailgun-native-send', 'true');
+            dd($headers);
         });
+        
+        return $this->info('Email send!!');
 
-        return $this->info('Email send!!');*/
-
-        $reportData = Report::where('created_at', '>' ,Carbon::yesterday()->format('Y-m-d'))
+        /*$reportData = Report::where('created_at', '>' ,Carbon::yesterday()->format('Y-m-d'))
                         ->distinct('center_id')
                         ->pluck('center_id');
 
@@ -101,6 +103,6 @@ class userEmail extends Command
             }
             return $this->info('Email not send!!');
         }
-        return $this->info('Center Id Not Available!!');
+        return $this->info('Center Id Not Available!!');*/
     }
 }
