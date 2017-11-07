@@ -77,9 +77,12 @@ class DailyReportsController extends Controller
                                 }else{
                                     $message->to($emailTo);
                                 }
-                                //$message->to("testing.rvtech@gmail.com");
-                                 $message->cc($emailCc);
-                                  $message->bcc($emailBcc);
+                                if(!empty($emailCc)){
+                                    $message->cc($emailCc);
+                                }
+                                if(!empty($emailBcc)){
+                                    $message->bcc($emailBcc);
+                                }
                                 $message->subject($subject_content);
                             });
                         } catch (\Exception $e) {
@@ -132,8 +135,12 @@ class DailyReportsController extends Controller
                                     $message->to($emailTo);
                                 }
                                 //$message->to("rajat_jain@rvtechnologies.co.in");
-                                  $message->cc($emailCc);
-                                  $message->bcc($emailBcc);
+                                if(!empty($emailCc)){
+                                    $message->cc($emailCc);
+                                }
+                                if(!empty($emailBcc)){
+                                    $message->bcc($emailBcc);
+                                }
                                 $message->subject($subject_content);
                             });
 
