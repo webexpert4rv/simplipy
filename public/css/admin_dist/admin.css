@@ -163,3 +163,7 @@ body.nav-md.after_login .right_col .x_panel {
 .row.search_report .col-sm-6:last-child label {
     font-size: 20px;
 }
+
+textarea.form-control.col-md-7.col-xs-12 {
+    height: 140px !important;
+}
