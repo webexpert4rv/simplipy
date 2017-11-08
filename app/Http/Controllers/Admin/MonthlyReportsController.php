@@ -11,7 +11,7 @@ use Illuminate\Mail\Mailable;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Mail;
 
-class DailyReportsController extends Controller
+class MonthlyReportsController extends Controller
 {
     /**
      * Create a new controller instance.
@@ -31,24 +31,24 @@ class DailyReportsController extends Controller
      */
     public function index()
     {
-        //$data['page_title'] = 'Daily Reports';
+//$datec = Carbon::now()->format('Y-m-d');
+  //      $data['models'] = Report::WhereMonth('created_at',date('m'))
+            //->WhereYear('created_at',date('Y'))
+            //->orderBy('created_at','desc')->get();
+
+        $data['models'] = Report::where('created_at', '>=' ,Carbon::now()->format('Y-m'))->orderBy('created_at','desc')->get();
+      //  return $data;
+
+        $data['page_title'] = 'Monthly Reports';
+        return view('admin.monthly.index',$data);
         //return view('admin.reports.daily_monthly',$data);
-        $data['models'] = Report::where('created_at','>=',Carbon::now()->format('Y-m-d'))->orderBy('created_at','desc')->get();
-        $data['page_title'] = 'Daily Reports';
-        return view('admin.daily.index',$data);
     }
 
     public function edit($id)
     {
         $data['model'] = Report::find($id);
         $data['page_title'] = 'View Report';
-        return view('admin.daily.edit', $data);
-    }
-
-    public function dailyMonthly()
-    {
-        $data['page_title'] = 'Daily/Monthly Reports';
-        return view('admin.reports.daily_monthly',$data);
+        return view('admin.monthly.edit', $data);
     }
 
     public function store(Request $request)
@@ -104,13 +104,13 @@ class DailyReportsController extends Controller
                         } catch (\Exception $e) {
                             return redirect()->back()->withInput()->withErrors($e->getMessage());
                         }
-                        return redirect(route('reports.dailyMonthly'))->with('success', 'Email send!!');
+                        return redirect(route('dailyReports.index'))->with('success', 'Email send!!');
                     }
-                    return redirect(route('reports.dailyMonthly'))->with('success', 'Email send!!');
+                    return redirect(route('dailyReports.index'))->with('success', 'Email send!!');
                 }
-                return redirect(route('reports.dailyMonthly'))->with('success', 'Email not send!!');
+                return redirect(route('dailyReports.index'))->with('success', 'Email not send!!');
             }
-            return redirect(route('reports.dailyMonthly'))->with('success', 'Center Id Not Available!!');
+            return redirect(route('dailyReports.index'))->with('success', 'Center Id Not Available!!');
 
         }
         if($type == '2'){
@@ -232,8 +232,8 @@ class DailyReportsController extends Controller
                 return redirect('/reports')->with('success', 'Message à jour');
             }*/
 
-            return redirect(route('dailyReports.index'))->with('success', 'Message envoyé');
+            return redirect(route('monthlyReports.index'))->with('success', 'Message envoyé');
         }
-        return redirect(route('dailyReports.index'))->with('success', 'Email not send!!');
+        return redirect(route('monthlyReports.index'))->with('success', 'Email not send!!');
     }
 }

@@ -39,10 +39,17 @@
 
                     <li><a><i class="fa fa-envelope" aria-hidden="true"></i> Gestion Messagerie <span class="fa fa-chevron-down"></span></a>
                         <ul class="nav child_menu">
-                            <li><a href="{{ route('dailyReports.index') }}">Daily/Monthly Reports</a></li>
+                            <li><a href="{{ route('reports.dailyMonthly') }}">Daily/Monthly Reports</a></li>
                             <li><a href="{{ route('emails.index') }}">Liste Destinataires</a></li>
                             <li><a href="{{ route('adminReports.index') }}">Historique Messages</a></li>
 
+                        </ul>
+                    </li>
+
+                    <li><a><i class="fa fa-bar-chart" aria-hidden="true"></i> Reporting <span class="fa fa-chevron-down"></span></a>
+                        <ul class="nav child_menu">
+                            <li><a href="{{ route('dailyReports.index') }}">Daily Reports</a></li>
+                            <li><a href="{{ route('monthlyReports.index') }}">Monthly Reports</a></li>
                         </ul>
                     </li>
 

@@ -85,6 +85,8 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'admin-login-cardif'], functio
         Route::resource('/emails', 'EmailController');
         Route::resource('/adminReports', 'ReportsController');
         Route::resource('/dailyReports', 'DailyReportsController');
+        Route::get('/daily', 'DailyReportsController@dailyMonthly')->name('reports.dailyMonthly');
+        Route::resource('/monthlyReports', 'MonthlyReportsController');
 
 
     });
