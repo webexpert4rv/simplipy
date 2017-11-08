@@ -12,11 +12,11 @@
     <p style="text-align: center;padding-top: 7px;color: #21527d;font-size: 20px;">
         <b>CARDIF C.T.A.R</b>
         <br>
-        <b>Rapport​ Quotidien​ Messagerie​ Simplify {{\Carbon\Carbon::now()->format('F Y')}}</b></p>
+        <b>Rapport​ Quotidien​ Messagerie​ Simplify {{\Carbon\Carbon::setLocale('fr')->now()->format('d F Y')}}</b></p>
 </header>
 
 <div class="daily_report">
-    <p>Nombre total d’appels traités: <b>{{$total}}</b> appels</p>
+    <p>Nombre total de messages envoyés: <b>{{$total}}</b> messages</p>
     <ul style="
             display: block;
             list-style-type: lower-roman;
@@ -26,8 +26,8 @@
             margin-right: 0;
             padding-left: 40px;
         ">
-        <li>Nombre d’appels traités CARDIF 1:  <b>{{$centerOne}}</b> appels</li>
-        <li>Nombre d’appels traités CARDIF 2:  <b>{{$centerTwo}}</b> appels</li>
+        <li>Nombre de messages envoyés CARDIF 1:  <b>{{$centerOne}}</b> messages</li>
+        <li>Nombre de messages envoyés CARDIF 2:  <b>{{$centerTwo}}</b> messages</li>
     </ul>
 </div>
 
