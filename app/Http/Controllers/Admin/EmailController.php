@@ -27,7 +27,7 @@ class EmailController extends Controller
     public function index()
     {
         $data['models'] = Email::all();
-        $data['page_title'] = 'Emails';
+        $data['page_title'] = 'Adresses Mails';
         return view('admin.emails.index', $data);
     }
 
@@ -39,7 +39,7 @@ class EmailController extends Controller
     public function create()
     {
         $data['model'] = new Email;
-        $data['page_title'] = 'Add Email';
+        $data['page_title'] = 'Destinataires';
         return view('admin.emails.create', $data);
     }
 
@@ -69,17 +69,17 @@ class EmailController extends Controller
                 $request->merge(['center_id'=>2]) ;
                 $model->setData($request);
                 if ($model->save()) {
-                    return redirect(route('emails.index'))->with('success', 'Successfully Added Email');
+                    return redirect(route('emails.index'))->with('success', 'Destinataire ajouté à la liste');
                 }
-                return redirect(route('emails.index'))->with('success', 'Successfully Added Email');
+                return redirect(route('emails.index'))->with('success', 'Destinataire ajouté à la liste');
             }
-            return redirect(route('emails.index'))->with('error', 'Something Went Wrong!!!');
+            return redirect(route('emails.index'))->with('error', "Une erreur s'est produite");
         }else{
             $model->setData($request);
             if ($model->save()) {
-                return redirect(route('emails.index'))->with('success', 'Successfully Added Email');
+                return redirect(route('emails.index'))->with('success', 'Destinataire ajouté à la liste');
             }
-            return redirect()->back()->withInput()->with('error', 'Something Went Wrong!!!');
+            return redirect()->back()->withInput()->with('error', "Une erreur s'est produite");
         }
     }
 
@@ -128,7 +128,7 @@ class EmailController extends Controller
             return redirect(route('emails.index'))->with('success', 'Successfully Updated Email');
         }
 
-        return redirect()->back()->withInput()->with('error', 'Something Went Wrong!!!');
+        return redirect()->back()->withInput()->with('error', "Une erreur s'est produite");
     }
 
     /**
@@ -141,10 +141,10 @@ class EmailController extends Controller
     {
         $model = Email::find($id);
         if ($model->delete()) {
-            return redirect(route('emails.index'))->with('success', 'Successfully Delete Email');
+            return redirect(route('emails.index'))->with('success', 'Destinataire supprimé de la liste');
         }
 
-        return redirect()->back()->withInput()->with('error', 'Something Went Wrong!!!');
+        return redirect()->back()->withInput()->with('error', "Une erreur s'est produite");
 
     }
 }

@@ -104,11 +104,11 @@ class DailyReportsController extends Controller
                         } catch (\Exception $e) {
                             return redirect()->back()->withInput()->withErrors($e->getMessage());
                         }
-                        return redirect(route('reports.dailyMonthly'))->with('success', 'Email send!!');
+                        return redirect(route('reports.dailyMonthly'))->with('success', 'Rapport quotidien envoyé');
                     }
-                    return redirect(route('reports.dailyMonthly'))->with('success', 'Email send!!');
+                    return redirect(route('reports.dailyMonthly'))->with('success', 'Rapport quotidien envoyé');
                 }
-                return redirect(route('reports.dailyMonthly'))->with('success', 'Email not send!!');
+                return redirect(route('reports.dailyMonthly'))->with('success', 'Rapport quotidien envoyé');
             }
             return redirect(route('reports.dailyMonthly'))->with('success', 'Center Id Not Available!!');
 
@@ -163,9 +163,9 @@ class DailyReportsController extends Controller
                         } catch (\Exception $e) {
                             return redirect()->back()->withInput()->withErrors($e->getMessage());
                         }
-                        return redirect(route('dailyReports.index'))->with('success', 'Message envoyé');
+                        return redirect(route('dailyReports.index'))->with('success', 'Rapport mensuel envoyé');
                     }
-                    return redirect(route('dailyReports.index'))->with('success', 'Message envoyé');
+                    return redirect(route('dailyReports.index'))->with('success', 'Rapport mensuel envoyé');
                 }
                 return redirect(route('dailyReports.index'))->with('success', 'Email not send!!');
             }
