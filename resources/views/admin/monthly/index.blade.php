@@ -83,9 +83,6 @@
                             <table class="table table-striped jambo_table bulk_action">
                                 <thead>
                                 <tr class="headings">
-                                    {{-- <th>
-                                    <input type="checkbox" id="check-all" class="flat">
-                                     </th>--}}
                                     <th class="column-title" style="display: none">Sr.No.</th>
                                     <th class="column-title">Agent Concerné</th>
                                     <th class="column-title">Date Appel</th>
@@ -95,17 +92,6 @@
                                     <th class="column-title">Mobile</th>
                                     <th class="column-title">Médecin</th>
                                     <th class="column-title" style="display: none">Centre</th>
-
-                                    {{--<th class="column-title">City</th>
-
-                                    <th class="column-title">Email</th>
-                                    <th class="column-title">Mobile</th>--}}
-
-                                {{--    <th class="column-title">Physician</th>
-
-
-                                    <th class="column-title">Emergency</th>
-                                    <th class="column-title">Attempts</th>--}}
                                     <th class="column-title">
                                         Actions </a>
                                     </th>
@@ -123,25 +109,11 @@
                                         <td>{{ @$model->mobile }}</td>
 
                                         <td>{{\App\Report::getPhysicianOptions($model->physician_id)}}</td>
-                                        {{--<td>{{ @$model->city }}</td>
-
-                                        <td>{{ @$model->email }}</td>--}}
-
-
-                                        {{--<td>{{ $model->physician_id != null ? $model->getPhysicianOptions($model->physician_id) : ""}}</td>
-
-
-                                        <td>{{ $model->emergency_id != null ? $model->getEmergencyOptions($model->emergency_id) : ""}}</td>
-                                        <td>{{ @$model->attempt }}</td>--}}
                                         <td style="display: none">{{ \App\Report::getCenterOptions($model->center_id) }}</td>
 
 
                                         <td>
                                             <a href=" {{route('monthlyReports.edit',[$model->id])}} ">Voir</a>
-                                            {{-- {!! Form::open(['style' => 'display: inline;', 'method' => 'DELETE', 'onsubmit' => 'return confirm(\Supprimer ? \');',  'route' => array('adminReports.destroy', $model->id)]) !!}
-                                            <button type="submit" class="btn btn-xs btn-danger"><i
-                                                        class="fa fa-remove"></i></button>
-                                            {!! Form::close() !!}--}}
                                         </td>
                                     </tr>
                                 @endforeach
