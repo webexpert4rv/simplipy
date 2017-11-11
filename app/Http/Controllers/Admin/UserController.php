@@ -56,7 +56,7 @@ class UserController extends Controller
         $models = User::where('role_id', User::ROLE_MANAGER)->orderBy('created_at', 'DESC')->get();
         $data['page_title'] = 'Managers';
         $data['models'] = $models;
-        $data['add_link'] = link_to_route('admin.managers.create', 'Create Manager', [], ['class' => 'btn btn-success']);
+        $data['add_link'] = link_to_route('admin.managers.create', 'Nouveau Manager', [], ['class' => 'btn btn-success']);
         return view('admin.user.index', $data);
     }
 
@@ -70,7 +70,7 @@ class UserController extends Controller
         $models = User::where('role_id', User::ROLE_AGENT)->orderBy('created_at', 'DESC')->get();
         $data['page_title'] = 'Agents';
         $data['models'] = $models;
-        $data['add_link'] = link_to_route('admin.agents.create', 'Create Agent', [], ['class' => 'btn btn-success']);
+        $data['add_link'] = link_to_route('admin.agents.create', 'Nouvel Agent', [], ['class' => 'btn btn-success']);
         return view('admin.user.index', $data);
     }
 
@@ -135,7 +135,7 @@ class UserController extends Controller
     {
         $model = new User();
         $profile = new UserProfile();
-        $data['page_title'] = 'Create Manager';
+        $data['page_title'] = 'Nouveau Manager';
         $data['cancel_link'] = 'managers';
         $data['model'] = $model;
         $data['profile'] = $profile;
@@ -154,7 +154,7 @@ class UserController extends Controller
         $model = new User();
         $profile = new UserProfile();
 
-        $data['page_title'] = 'Create Agent';
+        $data['page_title'] = 'Nouvel Agent';
         $data['cancel_link'] = 'agents';
         $data['model'] = $model;
         $data['profile'] = $profile;
@@ -274,7 +274,7 @@ class UserController extends Controller
         $model = User::findOrFail($id);
 
         if ($model->customDelete()) {
-            return redirect()->back()->with('success', 'Successfully Deleted!!!');
+            return redirect()->back()->with('success', 'Supprimé');
         }
 
         return redirect()->back()->with('error', 'Something went wrong');
@@ -291,7 +291,7 @@ class UserController extends Controller
     {
         $model = Admin::find($id);
 
-        $data['page_title'] = 'Change Password';
+        $data['page_title'] = 'Modifier le Mot de Passe';
         $data['model'] = $model;
         $data['route'] = 'admin.change-password.store';
         return view('admin.user.change_password', $data);
@@ -306,7 +306,7 @@ class UserController extends Controller
         if(!empty($request->password)) {
             $model->password = bcrypt($request->password);
             $model->save();
-            return redirect()->back()->withInput()->with('success', 'Successfully Updated.');
+            return redirect()->back()->withInput()->with('success', 'Mot de passe modifié');
         }
         return redirect()->back()->withInput()->with('error', 'Something went wrong');
     }
@@ -316,7 +316,7 @@ class UserController extends Controller
         $model = User::find($id);
         $profile = $model->userProfile;
 
-        $data['page_title'] = 'Change Password';
+        $data['page_title'] = 'Modification Mot de Passe';
         $data['model'] = $model;
         $data['profile'] = $profile;
         $data['route'] = 'user.change-password.store';
@@ -328,7 +328,7 @@ class UserController extends Controller
         $model = User::find($id);
         $profile = $model->userProfile;
 
-        $data['page_title'] = 'Change Password';
+        $data['page_title'] = 'Modification Mot de Passe';
         $data['model'] = $model;
         $data['profile'] = $profile;
         $data['route'] = 'user.change-password.store';
@@ -344,7 +344,7 @@ class UserController extends Controller
         if(!empty($request->password)) {
             $model->password = bcrypt($request->password);
             $model->save();
-            return redirect()->back()->withInput()->with('success', 'Mot de passe mis à jour');
+            return redirect()->back()->withInput()->with('success', 'Mot de passe modifié');
         }
         return redirect()->back()->withInput()->with('error', 'Something went wrong');
     }

@@ -34,22 +34,23 @@
                         <ul class="nav child_menu">
                             <li><a href="{{ route('admin.managers') }}">Managers</a></li>
                             <li><a href="{{ route('admin.agents') }}">Agents</a></li>
+                            <li><a href="{{ route('emails.index') }}">Destinataires</a></li>
                         </ul>
                     </li>
 
                     <li><a><i class="fa fa-envelope" aria-hidden="true"></i> Gestion Messagerie <span class="fa fa-chevron-down"></span></a>
                         <ul class="nav child_menu">
-                            <li><a href="{{ route('reports.dailyMonthly') }}">Daily/Monthly Reports</a></li>
-                            <li><a href="{{ route('emails.index') }}">Liste Destinataires</a></li>
                             <li><a href="{{ route('adminReports.index') }}">Historique Messages</a></li>
-
+                            <li><a href="{{ route('dailyReports.index') }}">Messages du Jour</a></li>
+                            <li><a href="{{ route('monthlyReports.index') }}">Messages du Mois</a></li>
                         </ul>
                     </li>
 
-                    <li><a><i class="fa fa-bar-chart" aria-hidden="true"></i> Reporting <span class="fa fa-chevron-down"></span></a>
+                    <li><a><i class="fa fa-bar-chart" aria-hidden="true"></i> Statistiques <span class="fa fa-chevron-down"></span></a>
                         <ul class="nav child_menu">
-                            <li><a href="{{ route('dailyReports.index') }}">Daily Reports</a></li>
-                            <li><a href="{{ route('monthlyReports.index') }}">Monthly Reports</a></li>
+                            <li><a href="{{ route('reports.dailyMonthly') }}">Daily/Monthly Reports</a></li>
+                            <li><a href="{{ route('reports.dailyMonthly') }}">Daily Reports</a></li>
+                            <li><a href="{{ route('reports.dailyMonthly') }}">Monthly Reports</a></li>
                         </ul>
                     </li>
 
@@ -188,4 +189,4 @@
         </nav>
     </div>
 </div>
-<!-- /top navigation -->
+<!-- /top navigation -->	

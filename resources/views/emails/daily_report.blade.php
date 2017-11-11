@@ -9,11 +9,10 @@
 </head>
 <body>
 <header style="background-color: rgba(79, 164, 218, 0.61);height: 60px;">
-    <?php \Carbon\Carbon::setLocale('fr'); ?>
     <p style="text-align: center;padding-top: 7px;color: #21527d;font-size: 20px;">
         <b>CARDIF C.T.A.R</b>
         <br>
-        <b>Rapport​ Quotidien​ Messagerie​ Simplify {{\Carbon\Carbon::now()->format('d F Y')}}</b></p>
+        <b>Rapport​ Quotidien​ Messagerie​ Simplify {{\Carbon\Carbon::now()->format('F Y')}}</b></p>
 </header>
 
 <div class="daily_report">
