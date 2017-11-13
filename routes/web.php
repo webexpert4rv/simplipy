@@ -84,10 +84,15 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'admin-login-cardif'], functio
 
         Route::resource('/emails', 'EmailController');
         Route::resource('/adminReports', 'ReportsController');
+
         Route::resource('/dailyReports', 'DailyReportsController');
         Route::get('/daily', 'DailyReportsController@dailyMonthly')->name('reports.dailyMonthly');
-        Route::resource('/monthlyReports', 'MonthlyReportsController');
+        Route::get('/dailyStatus', 'DailyReportsController@dailyStatus')->name('status.daily');
+        Route::any('/dailyStatusResend', 'DailyReportsController@dailyStatusResend')->name('status.dailyResend');
 
+        Route::resource('/monthlyReports', 'MonthlyReportsController');
+        Route::get('/monthlyStatus', 'MonthlyReportsController@monthlyStatus')->name('status.monthly');
+        Route::any('/monthlyStatusResend', 'MonthlyReportsController@monthlyStatusResend')->name('status.monthlyResend');
 
     });
 });

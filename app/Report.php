@@ -110,6 +110,7 @@ class Report extends Model
         return $id;
     }
 
+
     public static function getEmergencyOptions($id = null)
     {
         $list = [
@@ -243,7 +244,7 @@ class Report extends Model
             if(is_object($center_id)) {
                 $emailTo = Email::whereIn('center_id', $center_id)
                     ->where('header_id', Email::HEADER_TO)
-                    ->where('type_id', Email::TYPE_INSTANT_REPORT)
+                    ->where('type_id', Email::TYPE_DAILY_MONTHLY_REPORT)
                     ->pluck('email')->toArray();
             }else{
                 $emailTo = Email::where('center_id', $center_id)
@@ -266,7 +267,7 @@ class Report extends Model
             if(is_object($center_id)) {
                 $emailCc = Email::whereIn('center_id', $center_id)
                     ->where('header_id', Email::HEADER_CC)
-                    ->where('type_id', Email::TYPE_INSTANT_REPORT)
+                    ->where('type_id', Email::TYPE_DAILY_MONTHLY_REPORT)
                     ->pluck('email')->toArray();
             }else{
                 $emailCc = Email::where('center_id', $center_id)
@@ -288,7 +289,7 @@ class Report extends Model
             if(is_object($center_id)) {
                 $emailBcc = Email::whereIn('center_id', $center_id)
                     ->where('header_id', Email::HEADER_BCC)
-                    ->where('type_id', Email::TYPE_INSTANT_REPORT)
+                    ->where('type_id', Email::TYPE_DAILY_MONTHLY_REPORT)
                     ->pluck('email')->toArray();
             }else{
                 $emailBcc = Email::where('center_id', $center_id)

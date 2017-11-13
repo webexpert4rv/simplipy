@@ -49,8 +49,8 @@
                     <li><a><i class="fa fa-bar-chart" aria-hidden="true"></i> Statistiques <span class="fa fa-chevron-down"></span></a>
                         <ul class="nav child_menu">
                             <li><a href="{{ route('reports.dailyMonthly') }}">Daily/Monthly Reports</a></li>
-                            <li><a href="{{ route('reports.dailyMonthly') }}">Daily Reports</a></li>
-                            <li><a href="{{ route('reports.dailyMonthly') }}">Monthly Reports</a></li>
+                            <li><a href="{{ route('status.daily') }}">Daily Reports</a></li>
+                            <li><a href="{{ route('status.monthly') }}">Monthly Reports</a></li>
                         </ul>
                     </li>
 

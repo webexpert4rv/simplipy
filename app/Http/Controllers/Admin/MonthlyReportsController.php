@@ -8,6 +8,7 @@ use Carbon\Carbon;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Mail\Mailable;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Mail;
 
@@ -235,5 +236,129 @@ class MonthlyReportsController extends Controller
             return redirect(route('monthlyReports.index'))->with('success', 'Message envoyé');
         }
         return redirect(route('monthlyReports.index'))->with('success', 'Email not send!!');
+    }
+
+    public function monthlyStatus()
+    {
+        $data['page_title'] = 'Monthly Reports';
+        $dateReport = DB::table("reports")
+                        ->select(DB::raw('YEAR(created_at) year, MONTH(created_at) month'))
+                        ->groupby('year','month')
+                        ->get();
+        if (!empty($dateReport)){
+
+            $total['cardif1_comp'] = [];
+            $total['cardif1_drop'] = [];
+            $total['cardif2_comp'] = [];
+            $total['cardif2_drop'] = [];
+            $total['totalReport'] = [];
+            foreach ($dateReport as $key=>$date1){
+                $center1_completed = Report::where('center_id',Report::CENTER_ONE)
+                    ->where('status',Report::STATUS_SUBMIT)
+                    ->where('created_at', '>=', $date1->year.'-'.$date1->month)
+                    ->count();
+
+                $center1_dropped = Report::where('center_id',Report::CENTER_ONE)
+                    ->where('status',Report::STATUS_CALL)
+                    ->where('created_at', '>=', $date1->year.'-'.$date1->month)
+                    ->count();
+
+                $center2_completed = Report::where('center_id',Report::CENTER_TWO)
+                    ->where('status',Report::STATUS_SUBMIT)
+                    ->where('created_at', '>=', $date1->year.'-'.$date1->month)
+                    ->count();
+
+                $center2_dropped = Report::where('center_id',Report::CENTER_ONE)
+                    ->where('status',Report::STATUS_CALL)
+                    ->where('created_at', '>=', $date1->year.'-'.$date1->month)
+                    ->count();
+
+                $totalCenter = $center1_completed+$center1_dropped+$center2_completed+$center2_dropped;
+
+
+                $total['cardif1_comp'][] += $center1_completed;
+                $total['cardif1_drop'][] += $center1_dropped;
+                $total['cardif2_comp'][] += $center2_completed;
+                $total['cardif2_drop'][] += $center2_dropped;
+                $total['totalReport'][] +=$totalCenter;
+
+                $data1[$key]['date'] = $date1->year.'-'.$date1->month;
+                $data1[$key]['cardif1_comp'] = $total['cardif1_comp'][$key];
+                $data1[$key]['cardif1_drop'] = $total['cardif1_drop'][$key];
+                $data1[$key]['cardif2_comp'] = $total['cardif2_comp'][$key];
+                $data1[$key]['cardif2_drop'] = $total['cardif2_drop'][$key];
+                $data1[$key]['totalReport'] = $total['totalReport'][$key];
+            }
+
+        }
+
+        $data['total'] =$data1;
+        return view('admin.monthly.monthly_index', $data);
+    }
+
+
+    public function monthlyStatusResend(Request $request)
+    {
+        if(!empty($request->get('date'))){
+            $date =  $request->get('date');
+        }else{
+            $date = Carbon::now()->format('Y-m');
+        }
+
+        $reportData = Report::where('created_at', '>', $date)
+            ->distinct('center_id')
+            ->pluck('center_id');
+
+        if (count($reportData) > 0) {
+
+            $emailTo = Report::getToAddress($reportData);
+            $emailCc = Report::getCcAddress($reportData);
+            $emailBcc = Report::getBccAddress($reportData);
+
+            if (!empty($emailTo) || !empty($emailBcc) || !empty($emailCc)) {
+
+                $dataCenterOne = Report::where('center_id', Report::CENTER_ONE)
+                    ->where('created_at', '>', $date)
+                    ->count();
+                $dataCenterTwo = Report::where('center_id', Report::CENTER_TWO)
+                    ->where('created_at', '>', $date)
+                    ->count();
+
+                $total = $dataCenterOne + $dataCenterTwo;
+
+                if ($total > 0) {
+                    $data = array('centerOne' => $dataCenterOne,
+                        'centerTwo' => $dataCenterTwo,
+                        'total' => $total,
+                    );
+
+                    $subject_content = "[Rapport​ Mensuel​ ​Messagerie​ Simplify]​ " . Carbon::parse($date)->format('F Y');
+                    try {
+                        Mail::send('emails.monthly_report', $data, function ($message) use ($subject_content, $emailTo, $emailCc, $emailBcc) {
+                            if (empty($emailTo)) {
+                                $message->to("testing.rvtech@gmail.com");
+                            } else {
+                                $message->to($emailTo);
+                            }
+                            //$message->to("rajat_jain@rvtechnologies.co.in");
+                            if (!empty($emailCc)) {
+                                $message->cc($emailCc);
+                            }
+                            if (!empty($emailBcc)) {
+                                $message->bcc($emailBcc);
+                            }
+                            $message->subject($subject_content);
+                        });
+
+                    } catch (\Exception $e) {
+                        return redirect()->back()->withInput()->withErrors($e->getMessage());
+                    }
+                    return redirect(route('status.monthly'))->with('success', 'Rapport mensuel envoyé');
+                }
+                return redirect(route('status.monthly'))->with('success', 'Rapport mensuel envoyé');
+            }
+            return redirect(route('status.monthly'))->with('success', 'Email not send!!');
+        }
+        return redirect(route('status.monthly'))->with('success', 'Center Id Not Available!!');
     }
 }
