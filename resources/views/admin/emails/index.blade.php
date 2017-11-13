@@ -12,7 +12,7 @@
         <div class="">
             <div class="page-title">
                 <div class="title_left">
-                    <h3>{!! $page_title !!}
+                    <h3>Destinataires
                         <small></small>
                     </h3>
                 </div>
@@ -35,7 +35,8 @@
                 <div class="col-md-12 col-sm-12 col-xs-12">
                     <div class="x_panel">
                         <div class="x_title">
-                            <h2>Liste des Destinataires
+                            <h2>Liste
+                            <small> des destinataires</small>
                             </h2>
                             <div class="pull-right">
                                <a class="btn btn-success" href="{{ route('emails.create') }}">Ajouter </a>
