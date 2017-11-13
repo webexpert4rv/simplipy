@@ -34,7 +34,7 @@
             <div class="menu_section">
                 <h3>Messagerie Cardif</h3>
                 <ul class="nav side-menu">
-                    <li><a><i class="fa fa-bar-chart" aria-hidden="true"></i> Gestion Messagerie <span class="fa fa-chevron-down"></span></a>
+                    <li><a><i class="fa fa-envelope" aria-hidden="true"></i> Gestion Messagerie <span class="fa fa-chevron-down"></span></a>
                         <ul class="nav child_menu">
 
                             @if(\Auth::user()->role_id == \App\User::ROLE_AGENT)
