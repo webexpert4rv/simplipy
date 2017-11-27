@@ -12,7 +12,7 @@
         <div class="">
             <div class="page-title">
                 <div class="title_left">
-                    <h3>{!! $page_title !!}
+                    <h3>Historique Messages
                         <small></small>
                     </h3>
                 </div>
@@ -35,8 +35,8 @@
                 <div class="col-md-12 col-sm-12 col-xs-12">
                     <div class="x_panel">
                         <div class="x_title">
-                            <h2>
-                                <small>{!! $page_title !!}</small>
+                            <h2>Liste
+                                <small>de la totalité des messages traités</small>
                             </h2>
                             <div class="pull-right">
 
@@ -61,7 +61,7 @@
                                 <label for="designer_field">Agent: </label><input type="text" id="agent_field">
                             </div>
                             <div class="col-md-3" style="width: 23%">
-                                <label for="industry_field">Center: </label>
+                                <label for="industry_field">Centre: </label>
                                 <input type="text" id="center_field">
                               {{--  <input type="checkbox" id="center1" value="1">Cardif 1
                                 <input type="checkbox" id="center2" value="2">Cardif 2--}}
@@ -93,8 +93,9 @@
 
                                     <th class="column-title">Société</th>
                                     <th class="column-title">Mobile</th>
+ 					<th class="column-title">Centre</th>
                                     <th class="column-title">Médecin</th>
-                                    <th class="column-title" style="display: none">Centre</th>
+                                   
 
                                     {{--<th class="column-title">City</th>
 
@@ -121,7 +122,7 @@
 
                                         <td>{{ @$model->company }}</td>
                                         <td>{{ @$model->mobile }}</td>
-
+					<td>{{ \App\Report::getCenterOptions($model->center_id) }}</td>
                                         <td>{{\App\Report::getPhysicianOptions($model->physician_id)}}</td>
                                         {{--<td>{{ @$model->city }}</td>
 
@@ -133,7 +134,7 @@
 
                                         <td>{{ $model->emergency_id != null ? $model->getEmergencyOptions($model->emergency_id) : ""}}</td>
                                         <td>{{ @$model->attempt }}</td>--}}
-                                        <td style="display: none">{{ \App\Report::getCenterOptions($model->center_id) }}</td>
+                                        
 
 
                                         <td>

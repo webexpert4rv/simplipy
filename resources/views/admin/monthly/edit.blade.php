@@ -242,7 +242,7 @@
                                     <button class="btn btn-primary" type="reset">Reset</button>
                                     <button type="submit" class="btn btn-success">Submit</button>--}}
 
-                                      <button type="submit" class="btn btn-success">Renvoyer Report</button>
+                                      <button type="submit" class="btn btn-success">Réenvoyer Message</button>
                                 </div>
                             </div>
 

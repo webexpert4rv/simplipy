@@ -12,7 +12,7 @@
         <div class="">
             <div class="page-title">
                 <div class="title_left">
-                    <h3>{!! $page_title !!}
+                    <h3>Messages du Mois
                         <small></small>
                     </h3>
                 </div>
@@ -35,8 +35,8 @@
                 <div class="col-md-12 col-sm-12 col-xs-12">
                     <div class="x_panel">
                         <div class="x_title">
-                            <h2>
-                                <small>{!! $page_title !!}</small>
+                            <h2>Liste
+                                <small>des messages traités au mois courant</small>
                             </h2>
                             <div class="pull-right">
 
@@ -90,8 +90,9 @@
 
                                     <th class="column-title">Société</th>
                                     <th class="column-title">Mobile</th>
+					<th class="column-title" >Centre</th>
                                     <th class="column-title">Médecin</th>
-                                    <th class="column-title" style="display: none">Centre</th>
+                                    
                                     <th class="column-title">
                                         Actions </a>
                                     </th>
@@ -107,9 +108,9 @@
 
                                         <td>{{ @$model->company }}</td>
                                         <td>{{ @$model->mobile }}</td>
-
+					  <td >{{ \App\Report::getCenterOptions($model->center_id) }}</td>
                                         <td>{{\App\Report::getPhysicianOptions($model->physician_id)}}</td>
-                                        <td style="display: none">{{ \App\Report::getCenterOptions($model->center_id) }}</td>
+                                      
 
 
                                         <td>

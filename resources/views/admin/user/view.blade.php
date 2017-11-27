@@ -7,7 +7,7 @@
                 <div class="title_left">
                     <ul class="breadcrumb">
                         <li class="active">
-                            View Profile
+                            Profile
                         </li>
                     </ul>
                 </div>
@@ -30,8 +30,8 @@
                 <div class="col-md-12 col-sm-12 col-xs-12">
                     <div class="x_panel">
                         <div class="x_title">
-                            <h2>Profile Details
-                                <small></small>
+                            <h2>
+                                <small>Informations personnelles de l'administrateur</small>
                             </h2>
                             <ul class="nav navbar-right panel_toolbox">
                                 <li><a class="btn btn-primary" id="edit-profile"><i class="fa fa-pencil"></i>Edit
@@ -57,18 +57,18 @@
                                 <h3>{{ @$model->first_name.' '.@$model->last_name}}</h3>
 
                                 <ul class="list-unstyled user_data">
-                                    <li>Email: {{ $model->email}}
+                                    <li>Adresse Mail : {{ $model->email}}
                                     </li>
-                                    <li>Phone: {{ @$model->phone_num}}
+                                    <li>Téléphone : {{ @$model->phone_num}}
                                     </li>
-                                    <li>ssn: {{ @$model->ssn}}
+                                    {{--<li>ssn: {{ @$model->ssn}}--}}
                                     </li>
                                 </ul>
                             </div>
                             <div class="col-md-6 col-sm-6 col-xs-12 profile_left">
-                                <h4>Address</h4>
+                                <h4>Détails adresse</h4>
                                 <ul class="list-unstyled user_data">
-                                    <li><b>Address : </b>
+                                    <li><b>Adresse : </b>
                                         <span id="address_data"
                                               class="profile-text">{{ @$model->address }}</span>
                                     </li>
@@ -76,21 +76,21 @@
                                         <span id="zip_data"
                                               class="profile-text">{{ @$model->address2}}</span>
                                     </li>--}}
-                                    <li><b>Postal Code : </b>
+                                    <li><b>Code Postal : </b>
                                         <span id="country_data"
                                               class="profile-text">{{ @$model->zip }}</span>
                                     </li>
-                                    <li><b>City : </b>
+                                    <li><b>Ville : </b>
                                         <span id="city_data"
                                               class="profile-text">{{ @$model->city }}</span>
                                     </li>
 
-                                    <li><b>State : </b>
+                                    <li><b>Province : </b>
                                         <span id="city_data"
                                               class="profile-text">{{ @$model->state }}</span>
                                     </li>
 
-                                    <li><b>Country : </b>
+                                    <li><b>Pays : </b>
                                         <span id="country_data"
                                               class="profile-text">{{ @$model->country }}</span>
                                     </li>

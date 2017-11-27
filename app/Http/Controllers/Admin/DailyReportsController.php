@@ -272,7 +272,7 @@ class DailyReportsController extends Controller
                     ->where('created_at', '>=', $date1->date)
                     ->count();
 
-                $center2_dropped = Report::where('center_id',Report::CENTER_ONE)
+                $center2_dropped = Report::where('center_id',Report::CENTER_TWO)
                     ->where('status',Report::STATUS_CALL)
                     ->where('created_at', '>=', $date1->date)
                     ->count();

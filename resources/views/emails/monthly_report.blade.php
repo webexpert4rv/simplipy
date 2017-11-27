@@ -16,7 +16,7 @@
 </header>
 
 <div class="daily_report">
-    <p>Nombre total d’appels traités: <b>{{$total}}</b> appels</p>
+    <p>Nombre total de messages envoyés: <b>{{$total}}</b> messages</p>
     <ul style="
             display: block;
             list-style-type: lower-roman;
@@ -26,14 +26,14 @@
             margin-right: 0;
             padding-left: 40px;
         ">
-        <li>Nombre d’appels traités CARDIF 1:  <b>{{$centerOne}}</b> appels</li>
-        <li>Nombre d’appels traités CARDIF 2:  <b>{{$centerTwo}}</b> appels</li>
+        <li>Nombre de messages envoyés CARDIF 1:  <b>{{$centerOne}}</b> messages</li>
+        <li>Nombre de messages envoyés CARDIF 2:  <b>{{$centerTwo}}</b> messages</li>
     </ul>
 </div>
 
 <footer style="padding-top: 25px;">
     <div>
-        <p class="logo_footer"><img src="{{asset('images/whiteLogo.jpeg')}}" width="165px"></p>
+        <p class="logo_footer"><img src="{{asset('images/logo.png')}}" width="165px"></p>
         <p class="info_email">Email: contact@simplify.fr</p>
         <p class="info_phone">Phone:+33 (0)1 30432277</p>
     </div>

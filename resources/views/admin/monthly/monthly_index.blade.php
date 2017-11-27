@@ -12,7 +12,7 @@
         <div class="">
             <div class="page-title">
                 <div class="title_left">
-                    <h3>{!! $page_title !!}
+                    <h3>Rapports Mensuels
                         <small></small>
                     </h3>
                 </div>
@@ -35,8 +35,8 @@
                 <div class="col-md-12 col-sm-12 col-xs-12">
                     <div class="x_panel">
                         <div class="x_title">
-                            <h2>
-                                <small>{!! $page_title !!}</small>
+                            <h2>Liste
+                                <small>des rapports générés mensuellement</small>
                             </h2>
                             <div class="pull-right">
 
@@ -85,10 +85,10 @@
                                 <tr class="headings">
                                    {{-- <th class="column-title" style="display: none">Sr.No.</th>--}}
                                     <th class="column-title">Date</th>
-                                    <th class="column-title">Cardif 1 Completed</th>
-                                    <th class="column-title">Cardif 1 dropped</th>
-                                    <th class="column-title">Cardif 2 Completed</th>
-                                    <th class="column-title">Cardif 2 dropped</th>
+                                    <th class="column-title">Cardif 1 ✓</th>
+                                    <th class="column-title">Cardif 1 x</th>
+                                    <th class="column-title">Cardif 2 ✓</th>
+                                    <th class="column-title">Cardif 2 x</th>
                                     <th class="column-title">Total</th>
                                     <th class="column-title">
                                         Actions </a>
@@ -108,7 +108,7 @@
                                         <td>
                                             {!! Form::open(['style' => 'display: inline;', 'method' => 'POST', 'route' => array('status.monthlyResend')]) !!}
                                             <input type="hidden" name="date" value="{{$totalReport['date']}}">
-                                            <button type="submit" class="btn btn-xs btn-success">Resend Email</button>
+                                            <button type="submit" class="btn btn-xs btn-success">Réenvoyer</button>
                                             {!! Form::close() !!}
                                         </td>
                                     </tr>
@@ -149,11 +149,11 @@
 
         });
     </script>
-    {{--<script>
+    <script>
         $(document).ready(function () {
             $('.report_table').find('.row:first').addClass('search_report');
         });
-    </script>--}}
+    </script>
 
 
     {{--<script type="text/javascript">
