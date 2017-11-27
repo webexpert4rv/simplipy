@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Email;
 use App\Report;
+use App\User;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -33,6 +34,7 @@ class ReportsController extends Controller
     {
         $data['models'] = Report::orderBy('created_at','desc')->get();
         $data['page_title'] = 'Gestion Messagerie';
+        $data['agents'] = User::where('role_id',User::ROLE_AGENT)->get();
         return view('admin.reports.admin_index', $data);
     }
 

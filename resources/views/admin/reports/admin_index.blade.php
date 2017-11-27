@@ -58,21 +58,43 @@
                         </div>
                         <div class="col-md-12 row">
                             <div class="col-md-3" style="width: 23%">
-                                <label for="designer_field">Agent: </label><input type="text" id="agent_field">
+                                <label for="designer_field">Agent: </label>
+                                <select id="agent_field" class="form-control">
+                                @if(!empty($agents))
+                                    <option> -- Select Agent -- </option>
+                                    @foreach($agents as $agent)
+                                        {{--<input type="text" id="agent_field">--}}
+                                        <option value="{{ $agent->userProfile->first_name }} {{ $agent->userProfile->last_name }}">{{ $agent->userProfile->first_name }} {{ $agent->userProfile->last_name }}</option>
+                                    @endforeach
+
+                                @endif
+                                </select>
                             </div>
                             <div class="col-md-3" style="width: 23%">
                                 <label for="industry_field">Centre: </label>
-                                <input type="text" id="center_field">
-                              {{--  <input type="checkbox" id="center1" value="1">Cardif 1
-                                <input type="checkbox" id="center2" value="2">Cardif 2--}}
+                                {{--<input type="text" id="center_field">--}}
+                                <select id="center_field" class="form-control">
+                                    <option> -- Select Center -- </option>
+                                    @foreach(\App\Report::getCenterOptions() as $key => $center)
+                                        <option value="{{ $center }}"> {{ $center }}</option>
+                                    @endforeach
+                                </select>
                             </div>
                             <div class="col-md-3" style="width: 23%">
-                                <label for="material_field">Daily: </label><input type="text" id="daily_field">
+                                <label for="material_field">Daily: </label>
+                                <input class="form-control datepicker" type="text" id="daily_field" value="{{ \Carbon\Carbon::now()->format('Y-m-d') }}">
                                 <p>(aaaa-mm-jj)</p>
                             </div>
                             <div class="col-md-3" style="width: 23%">
-                                <label for="material_field">Monthly: </label><input type="text" id="monthly_field">
-                                <p>(aaaa-mm)</p>
+                                <label for="material_field">Monthly: </label>
+                                <select class="form-control" id="monthly_field">
+                                    <option> -- Select Month -- </option>
+                                    @foreach(\App\User::months() as $key => $month)
+                                        <option value="{{ $key }}"> {{ $month }}</option>
+                                    @endforeach
+                                </select>
+                               {{-- <input type="text" id="monthly_field">--}}
+                                {{--<p>(aaaa-mm)</p>--}}
                             </div>
                         </div>
                         <div class="x_content report_table">
@@ -122,7 +144,7 @@
 
                                         <td>{{ @$model->company }}</td>
                                         <td>{{ @$model->mobile }}</td>
-					<td>{{ \App\Report::getCenterOptions($model->center_id) }}</td>
+                                        <td>{{ \App\Report::getCenterOptions($model->center_id) }}</td>
                                         <td>{{\App\Report::getPhysicianOptions($model->physician_id)}}</td>
                                         {{--<td>{{ @$model->city }}</td>
 
@@ -139,7 +161,7 @@
 
                                         <td>
                                             <a href=" {{route('adminReports.edit',[$model->id])}} ">Voir</a>
-                                             {!! Form::open(['style' => 'display: inline;', 'method' => 'DELETE', 'onsubmit' => 'return confirm(\Supprimer ? \');',  'route' => array('adminReports.destroy', $model->id)]) !!}
+                                             {!! Form::open(['style' => 'display: inline;', 'method' => 'DELETE', 'onsubmit' => 'return confirm(\'Supprimer ? \');',  'route' => array('adminReports.destroy', $model->id)]) !!}
                                             <button type="submit" class="btn btn-xs btn-danger"><i
                                                         class="fa fa-remove"></i></button>
                                             {!! Form::close() !!}
@@ -165,6 +187,7 @@
     <script src="{{ asset('js/admin_dist/dataTable/dataTables.responsive.min.js') }}"></script>
     <script src="{{ asset('js/admin_dist/dataTable/responsive.bootstrap.js') }}"></script>
     <script src="{{ asset('js/admin_dist/dataTable/dataTables.scroller.min.js') }}"></script>
+    <script type="text/javascript" src="<?php echo(asset('js/admin_dist/bootstrap-datepicker.js')); ?>"></script>
 
     <script>
         $('.jambo_table').DataTable({
@@ -180,6 +203,8 @@
             }
 
         });
+
+
     </script>
     <script>
         $(document).ready(function () {
@@ -187,23 +212,29 @@
         });
     </script>
 
+    <script>
+        $(".datepicker").datepicker({format: "yyyy-mm-dd", autoclose: true, endDate: new Date()});
+
+    </script>
 
     <script type="text/javascript">
         $(document).ready(function () {
             oTable = $('.jambo_table').DataTable();   //pay attention to capital D, which is mandatory to retrieve "api" datatables' object, as @Lionel said
-            $('#agent_field').keyup(function(){
+            $('#agent_field').change(function(){
                 // oTable.search($(this).val()).draw() ;
                 oTable.column(1).search($(this).val()).draw();
             });
-            $('#center_field').keyup(function(){
+            $('#center_field').change(function(){
                 // oTable.search($(this).val()).draw() ;
-                oTable.column(7).search($(this).val()).draw();
+                oTable.column(6).search($(this).val()).draw();
             });
-            $('#daily_field').keyup(function(){
+            $('#daily_field').change(function(){
                 oTable.columns(2).search($(this).val()).draw();
             });
-            $('#monthly_field').keyup(function(){
-                oTable.columns(2).search($(this).val()).draw();
+            $('#monthly_field').change(function(){
+                var year = new Date().getFullYear();
+                console.log(year+'-'+$(this).val());
+                oTable.columns(2).search(year+'-'+$(this).val()).draw();
             });
         });
     </script>

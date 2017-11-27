@@ -40,7 +40,8 @@
                             </h2>--}}
                             <div class="pull-right" style="float: left!important;">
                                 @if(\Auth::user()->role_id == \App\User::ROLE_AGENT)
-                                    <a class="btn btn-success cr_btn" href="{{ url('user/reports/create') }}">Nouveau Message</a>
+                                    <a class="btn btn-success cr_btn" href="{{ url('user/reports/create') }}">Nouveau
+                                        Message</a>
                                 @endif
                             </div>
                             <div class="clearfix"></div>
@@ -58,6 +59,7 @@
 
                                     <th class="column-title">Société</th>
                                     <th class="column-title">Mobile</th>
+                                    <th class="column-title">Centre</th>
                                     <th class="column-title">Médecin</th>
                                     <th class="column-title">
                                         Actions </a>
@@ -72,18 +74,20 @@
                                         <td>{{ \App\Report::getCivilOptions((int)$model->civil_id) }} {{$model->name}} {{$model->first_name}}</td>
                                         <td>{{ @$model->company }}</td>
                                         <td>{{ @$model->mobile }}</td>
+                                        <td>{{ \App\Report::getCenterOptions($model->center_id) }}</td>
                                         <td>{{\App\Report::getPhysicianOptions($model->physician_id)}}</td>
                                         <td>
                                             <a href="{{ url("user/reports/".$model->id.'/edit') }}"><i
-                                                            class="fa fa-eye"></i> </a>
+                                                        class="fa fa-eye"></i> </a>
 
 
-                                           {{-- {!! Form::open(['style' => 'display: inline;', 'method' => 'DELETE', 'onsubmit' => 'return confirm(\'Are you sure you want to delete ? \');',  'route' => array('reports.destroy', $model->id)]) !!}
-                                            <button type="submit" class="btn btn-xs btn-danger"><i
-                                                        class="fa fa-remove"></i></button>
-                                            {!! Form::close() !!}--}}
+                                            {{-- {!! Form::open(['style' => 'display: inline;', 'method' => 'DELETE', 'onsubmit' => 'return confirm(\'Are you sure you want to delete ? \');',  'route' => array('reports.destroy', $model->id)]) !!}
+                                             <button type="submit" class="btn btn-xs btn-danger"><i
+                                                         class="fa fa-remove"></i></button>
+                                             {!! Form::close() !!}--}}
                                             @if(\Auth::user()->role_id == \App\User::ROLE_AGENT)
-                                                <a href="{{ url("user/reports/".$model->id.'/duplicate') }}"> Dupliquer</a>
+                                                <a href="{{ url("user/reports/".$model->id.'/duplicate') }}">
+                                                    Dupliquer</a>
                                             @endif
 
                                         </td>
@@ -117,7 +121,7 @@
                 "sInfo": "Affichage _START_ de _END_ sur _TOTAL_ entrées",
                 paginate: {
                     previous: 'Précédent',
-                    next:     'Suivant'
+                    next: 'Suivant'
                 },
 
             }

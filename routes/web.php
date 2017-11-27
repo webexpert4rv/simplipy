@@ -115,7 +115,7 @@ Route::get('/info', function () {
 /*
     Mail::send('emails.instant_report', [], function ($message){
 
-            $message->to("testing.rvtech@gmail.com");
+        $message->to("testing.rvtech@gmail.com");
         $message->subject("Test Mail");
     });*/
 

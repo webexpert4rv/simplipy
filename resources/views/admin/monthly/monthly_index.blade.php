@@ -89,7 +89,9 @@
                                     <th class="column-title">Cardif 1 x</th>
                                     <th class="column-title">Cardif 2 ✓</th>
                                     <th class="column-title">Cardif 2 x</th>
-                                    <th class="column-title">Total</th>
+                                    <th class="column-title">Total for Cardif 1</th>
+                                    <th class="column-title">Total for Cardif 2</th>
+                                    <th class="column-title">Grand Total</th>
                                     <th class="column-title">
                                         Actions </a>
                                     </th>
@@ -100,11 +102,13 @@
                                 @foreach($total as $totalReport)
                                     <tr>
                                         <td>{{ \Carbon\Carbon::parse($totalReport['date'])->format('M-Y')  }}</td>
-                                        <td>{{ $totalReport['cardif1_comp']  }}</td>
-                                        <td>{{ $totalReport['cardif1_drop'] }}</td>
-                                        <td>{{ $totalReport['cardif2_comp']  }}</td>
-                                        <td>{{ $totalReport['cardif2_drop'] }}</td>
-                                        <td>{{ $totalReport['totalReport'] }}</td>
+                                        <td>{{ number_format($totalReport['cardif1_comp'])  }}</td>
+                                        <td>{{ number_format($totalReport['cardif1_drop']) }}</td>
+                                        <td>{{ number_format($totalReport['cardif2_comp'])  }}</td>
+                                        <td>{{ number_format($totalReport['cardif2_drop']) }}</td>
+                                        <td>{{ number_format($totalReport['cardif1_comp'] + $totalReport['cardif1_drop']) }}</td>
+                                        <td>{{ number_format($totalReport['cardif2_comp'] + $totalReport['cardif2_drop']) }}</td>
+                                        <td>{{ number_format($totalReport['totalReport']) }}</td>
                                         <td>
                                             {!! Form::open(['style' => 'display: inline;', 'method' => 'POST', 'route' => array('status.monthlyResend')]) !!}
                                             <input type="hidden" name="date" value="{{$totalReport['date']}}">

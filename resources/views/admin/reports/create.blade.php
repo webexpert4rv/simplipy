@@ -116,10 +116,10 @@
                                     </div>
 
                                     <div class="form-group">
-                                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="add">Adresse Postale
+                                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="add" >Adresse Postale
                                         </label>
                                         <div class="col-md-6 col-sm-6 col-xs-12">
-                                            <input type="text" name="address" class="form-control col-md-7 col-xs-12" value="{{old('address')}}">
+                                            <input type="text" id="pac-input" name="address" class="form-control col-md-7 col-xs-12" value="{{old('address')}}" placeholder="">
                                         </div>
                                     </div>
 
@@ -127,14 +127,14 @@
                                         <label class="control-label col-md-3 col-sm-3 col-xs-12" for="city">Ville
                                         </label>
                                         <div class="col-md-6 col-sm-6 col-xs-12">
-                                            <input type="text" name="city" class="form-control col-md-7 col-xs-12" value="{{old('city')}}">
+                                            <input type="text" id="city" name="city" class="form-control col-md-7 col-xs-12" value="{{old('city')}}">
                                         </div>
                                     </div>
                                     <div class="form-group">
                                         <label class="control-label col-md-3 col-sm-3 col-xs-12" for="post_code">Code Postal
                                         </label>
                                         <div class="col-md-6 col-sm-6 col-xs-12">
-                                            <input type="text" name="postal_code" class="form-control col-md-7 col-xs-12" value="{{old('postal_code')}}">
+                                            <input type="text" id="postal_code" name="postal_code" class="form-control col-md-7 col-xs-12" value="{{old('postal_code')}}">
                                         </div>
                                     </div>
                                     <div class="form-group">
@@ -245,8 +245,35 @@
 @endsection
 @section('scripts')
     <script type="text/javascript" src="<?php echo(asset('js/admin_dist/bootstrap-datepicker.js')); ?>"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAOHjLVDgGV6Ww3XAqU44BzFEY00otrndQ&libraries=places&callback=initAutocomplete" async defer></script>
     <script>
         $(".datepicker").datepicker({format: "dd-mm-yyyy", autoclose: true, endDate: new Date()});
 
+    </script>
+
+    <script>
+        /*function initAutocomplete() {
+            var input = document.getElementById('pac-input');
+            var searchBox = new google.maps.places.SearchBox(input);
+            /!*map.controls[google.maps.ControlPosition.TOP_LEFT].push(input);*!/
+            var autocomplete = new google.maps.places.Autocomplete(input);
+            autocomplete.addListener('place_changed', function() {
+                var place = autocomplete.getPlace();
+                for (var i = 0; i < place.address_components.length; i++) {
+                    if(place.address_components[i].types[0] == 'postal_code'){
+                        var post_code = place.address_components[i].long_name;
+                        $('#postal_code').val(post_code);
+                    }
+                    if(place.address_components[i].types[0] == 'locality'){
+                        var city = place.address_components[i].long_name;
+                        $('#city').val(city);
+                    }
+                    /!*if(place.address_components[i].types[0] == 'country'){
+                        var country = place.address_components[i].long_name;
+                        $('#country').val(country);
+                    }*!/
+                }
+            });
+        }*/
     </script>
 @endsection
