@@ -57,45 +57,53 @@
                             <div class="clearfix"></div>
                         </div>
                         <div class="col-md-12 row">
-                            <div class="col-md-3" style="width: 23%">
+                            <div class="col-md-3" style="width: 20%">
                                 <label for="designer_field">Agent: </label>
                                 <select id="agent_field" class="form-control">
-                                @if(!empty($agents))
-                                    <option> -- Select Agent -- </option>
-                                    @foreach($agents as $agent)
-                                        {{--<input type="text" id="agent_field">--}}
-                                        <option value="{{ $agent->userProfile->first_name }} {{ $agent->userProfile->last_name }}">{{ $agent->userProfile->first_name }} {{ $agent->userProfile->last_name }}</option>
-                                    @endforeach
+                                    @if(!empty($agents))
+                                        <option> -- Select Agent --</option>
+                                        @foreach($agents as $agent)
+                                            {{--<input type="text" id="agent_field">--}}
+                                            <option value="{{ $agent->userProfile->first_name }} {{ $agent->userProfile->last_name }}">{{ $agent->userProfile->first_name }} {{ $agent->userProfile->last_name }}</option>
+                                        @endforeach
 
-                                @endif
+                                    @endif
                                 </select>
                             </div>
-                            <div class="col-md-3" style="width: 23%">
+                            <div class="col-md-2" style="width: 20%">
                                 <label for="industry_field">Centre: </label>
                                 {{--<input type="text" id="center_field">--}}
                                 <select id="center_field" class="form-control">
-                                    <option> -- Select Center -- </option>
+                                    <option> -- Select Center --</option>
                                     @foreach(\App\Report::getCenterOptions() as $key => $center)
                                         <option value="{{ $center }}"> {{ $center }}</option>
                                     @endforeach
                                 </select>
                             </div>
-                            <div class="col-md-3" style="width: 23%">
+                            <div class="col-md-3" style="width: 20%">
                                 <label for="material_field">Daily: </label>
-                                <input class="form-control datepicker" type="text" id="daily_field" value="{{ \Carbon\Carbon::now()->format('Y-m-d') }}">
+                                <input class="form-control datepicker" type="text" id="daily_field"
+                                       value="{{ \Carbon\Carbon::now()->format('Y-m-d') }}">
                                 <p>(aaaa-mm-jj)</p>
                             </div>
-                            <div class="col-md-3" style="width: 23%">
+                            <div class="col-md-2" style="width: 20%">
                                 <label for="material_field">Monthly: </label>
                                 <select class="form-control" id="monthly_field">
-                                    <option> -- Select Month -- </option>
+                                    <option> -- Select Month --</option>
                                     @foreach(\App\User::months() as $key => $month)
                                         <option value="{{ $key }}"> {{ $month }}</option>
                                     @endforeach
                                 </select>
-                               {{-- <input type="text" id="monthly_field">--}}
+                                {{-- <input type="text" id="monthly_field">--}}
                                 {{--<p>(aaaa-mm)</p>--}}
                             </div>
+                            <div class="col-md-2" style="width: 20%; padding-top: 5px;">
+                                <label for="material_field"></label>
+                                <button type="button" class="form-control" onclick="window.location.reload();" style="background: #52b30c;
+    color: white;">Reset
+                                </button>
+                            </div>
+
                         </div>
                         <div class="x_content report_table">
                             <p class="text-muted font-13 m-b-30">
@@ -115,20 +123,20 @@
 
                                     <th class="column-title">Société</th>
                                     <th class="column-title">Mobile</th>
- 					<th class="column-title">Centre</th>
+                                    <th class="column-title">Centre</th>
                                     <th class="column-title">Médecin</th>
-                                   
+
 
                                     {{--<th class="column-title">City</th>
 
                                     <th class="column-title">Email</th>
                                     <th class="column-title">Mobile</th>--}}
 
-                                {{--    <th class="column-title">Physician</th>
+                                    {{--    <th class="column-title">Physician</th>
 
 
-                                    <th class="column-title">Emergency</th>
-                                    <th class="column-title">Attempts</th>--}}
+                                        <th class="column-title">Emergency</th>
+                                        <th class="column-title">Attempts</th>--}}
                                     <th class="column-title">
                                         Actions </a>
                                     </th>
@@ -156,12 +164,11 @@
 
                                         <td>{{ $model->emergency_id != null ? $model->getEmergencyOptions($model->emergency_id) : ""}}</td>
                                         <td>{{ @$model->attempt }}</td>--}}
-                                        
 
 
                                         <td>
                                             <a href=" {{route('adminReports.edit',[$model->id])}} ">Voir</a>
-                                             {!! Form::open(['style' => 'display: inline;', 'method' => 'DELETE', 'onsubmit' => 'return confirm(\'Supprimer ? \');',  'route' => array('adminReports.destroy', $model->id)]) !!}
+                                            {!! Form::open(['style' => 'display: inline;', 'method' => 'DELETE', 'onsubmit' => 'return confirm(\'Supprimer ? \');',  'route' => array('adminReports.destroy', $model->id)]) !!}
                                             <button type="submit" class="btn btn-xs btn-danger"><i
                                                         class="fa fa-remove"></i></button>
                                             {!! Form::close() !!}
@@ -197,7 +204,7 @@
                 "sInfo": "Affichage _START_ de _END_ sur _TOTAL_ entrées",
                 paginate: {
                     previous: 'Précédent',
-                    next:     'Suivant'
+                    next: 'Suivant'
                 },
 
             }
@@ -220,21 +227,21 @@
     <script type="text/javascript">
         $(document).ready(function () {
             oTable = $('.jambo_table').DataTable();   //pay attention to capital D, which is mandatory to retrieve "api" datatables' object, as @Lionel said
-            $('#agent_field').change(function(){
+            $('#agent_field').change(function () {
                 // oTable.search($(this).val()).draw() ;
                 oTable.column(1).search($(this).val()).draw();
             });
-            $('#center_field').change(function(){
+            $('#center_field').change(function () {
                 // oTable.search($(this).val()).draw() ;
                 oTable.column(6).search($(this).val()).draw();
             });
-            $('#daily_field').change(function(){
+            $('#daily_field').change(function () {
                 oTable.columns(2).search($(this).val()).draw();
             });
-            $('#monthly_field').change(function(){
+            $('#monthly_field').change(function () {
                 var year = new Date().getFullYear();
-                console.log(year+'-'+$(this).val());
-                oTable.columns(2).search(year+'-'+$(this).val()).draw();
+                console.log(year + '-' + $(this).val());
+                oTable.columns(2).search(year + '-' + $(this).val()).draw();
             });
         });
     </script>
