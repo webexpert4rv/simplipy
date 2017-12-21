@@ -83,8 +83,8 @@
                             <div class="col-md-3" style="width: 20%">
                                 <label for="material_field">Daily: </label>
                                 <input class="form-control datepicker" type="text" id="daily_field"
-                                       value="{{ \Carbon\Carbon::now()->format('Y-m-d') }}">
-                                <p>(aaaa-mm-jj)</p>
+                                       value="">
+                                <!-- <p>(aaaa-mm-jj)</p> -->
                             </div>
                             <div class="col-md-2" style="width: 20%">
                                 <label for="material_field">Monthly: </label>
