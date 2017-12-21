@@ -259,22 +259,22 @@ class DailyReportsController extends Controller
             foreach ($dateReport as $key=>$date1){
                 $center1_completed = Report::where('center_id',Report::CENTER_ONE)
                     ->where('status',Report::STATUS_SUBMIT)
-                    ->where('created_at', '>=', $date1->date)
+                    ->whereDate('created_at',  $date1->date)
                     ->count();
 
                 $center1_dropped = Report::where('center_id',Report::CENTER_ONE)
                     ->where('status',Report::STATUS_CALL)
-                    ->where('created_at', '>=', $date1->date)
+                    ->whereDate('created_at',  $date1->date)
                     ->count();
 
                 $center2_completed = Report::where('center_id',Report::CENTER_TWO)
                     ->where('status',Report::STATUS_SUBMIT)
-                    ->where('created_at', '>=', $date1->date)
+                    ->whereDate('created_at',  $date1->date)
                     ->count();
 
                 $center2_dropped = Report::where('center_id',Report::CENTER_TWO)
                     ->where('status',Report::STATUS_CALL)
-                    ->where('created_at', '>=', $date1->date)
+                    ->whereDate('created_at',  $date1->date)
                     ->count();
 
                 $totalCenter = $center1_completed+$center1_dropped+$center2_completed+$center2_dropped;
