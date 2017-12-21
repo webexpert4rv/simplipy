@@ -102,12 +102,14 @@ class DashboardController extends Controller
                 $query->whereMonth('reports.created_at',$request->filter_monthly);
             }
 
+            $totalFiltered  =   $query->count();
+
             $reports    =   $query->offset($start)
                             ->limit($limit)
                             ->orderBy($order,$dir)
                             ->get();
 
-            $totalFiltered  =   $query->count();
+
 
         }else {
 
@@ -143,12 +145,13 @@ class DashboardController extends Controller
                 $query->whereMonth('reports.created_at',$request->filter_monthly);
             }
 
+            $totalFiltered  =   $query->count();
+
             $reports    =   $query->offset($start)
                             ->limit($limit)
                             ->orderBy($order,$dir)
                             ->get();
 
-            $totalFiltered  =   $query->count();
         }
 
         $data = array();
@@ -179,7 +182,7 @@ class DashboardController extends Controller
         }
 
         $json_data = array(
-            "draw"            => intval($request->input('draw')),
+            "draw"            => intval($request->input('sEcho')),
             "recordsTotal"    => intval($totalData),
             "recordsFiltered" => intval($totalFiltered),
             "data"            => $data
