@@ -40,6 +40,8 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'admin-login-cardif'], functio
     Route::group(['middleware' => 'auth.admin'], function () {
 
         Route::get('home', 'DashboardController@admin');
+        /*Route::get('home2', 'DashboardController@admin2')->name('home2');
+        Route::get('reports-optimize', 'DashboardController@adminOptimize')->name('reports-optimize');*/
         Route::get('/profile', 'UserController@show')->name('admin.profile');
         Route::post('/profile/{id}/update', 'UserController@profileUpdate');
 

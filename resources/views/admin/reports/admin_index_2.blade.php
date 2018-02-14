@@ -61,7 +61,7 @@
                                 <label for="designer_field">Agent: </label>
                                 <select id="agent_field" class="form-control">
                                     @if(!empty($agents))
-                                        <option> -- Select Agent --</option>
+                                        <option value=""> -- Select Agent --</option>
                                         @foreach($agents as $agent)
                                             {{--<input type="text" id="agent_field">--}}
                                             <option value="{{ $agent->userProfile->first_name }} {{ $agent->userProfile->last_name }}">{{ $agent->userProfile->first_name }} {{ $agent->userProfile->last_name }}</option>
@@ -74,21 +74,22 @@
                                 <label for="industry_field">Centre: </label>
                                 {{--<input type="text" id="center_field">--}}
                                 <select id="center_field" class="form-control">
-                                    <option> -- Select Center --</option>
+                                    <option value=""> -- Select Center --</option>
                                     @foreach(\App\Report::getCenterOptions() as $key => $center)
-                                        <option value="{{ $center }}"> {{ $center }}</option>
+                                        <option value="{{ $key }}"> {{ $center }}</option>
                                     @endforeach
                                 </select>
                             </div>
                             <div class="col-md-3" style="width: 20%">
                                 <label for="material_field">Daily: </label>
                                 <input class="form-control datepicker" type="text" id="daily_field"
-                                       value="">
+                                       value="{{ \Carbon\Carbon::now()->format('Y-m-d') }}">
+                                {{--<p>(aaaa-mm-jj)</p>--}}
                             </div>
                             <div class="col-md-2" style="width: 20%">
                                 <label for="material_field">Monthly: </label>
                                 <select class="form-control" id="monthly_field">
-                                    <option> -- Select Month --</option>
+                                    <option value=""> -- Select Month --</option>
                                     @foreach(\App\User::months() as $key => $month)
                                         <option value="{{ $key }}"> {{ $month }}</option>
                                     @endforeach
@@ -115,7 +116,6 @@
                                     {{-- <th>
                                     <input type="checkbox" id="check-all" class="flat">
                                      </th>--}}
-                                    <th class="column-title" style="display: none">Sr.No.</th>
                                     <th class="column-title">Agent Concerné</th>
                                     <th class="column-title">Date Appel</th>
                                     <th class="column-title">Nom Complet du Patient</th>
@@ -142,37 +142,7 @@
                                 </tr>
                                 </thead>
                                 <tbody>
-                                @foreach($models as $model)
-                                    <tr>
-                                        <td style="display: none">{{ $loop->iteration}}</td>
-                                        <td>{{\App\User::getFullName($model->user_id)}}</td>
-                                        <td>{{ @$model->created_at  }}</td>
-                                        <td>{{ \App\Report::getCivilOptions((int)$model->civil_id) }} {{$model->name}} {{$model->first_name}}</td>
 
-                                        <td>{{ @$model->company }}</td>
-                                        <td>{{ @$model->mobile }}</td>
-                                        <td>{{ \App\Report::getCenterOptions($model->center_id) }}</td>
-                                        <td>{{\App\Report::getPhysicianOptions($model->physician_id)}}</td>
-                                        {{--<td>{{ @$model->city }}</td>
-
-                                        <td>{{ @$model->email }}</td>--}}
-
-
-                                        {{--<td>{{ $model->physician_id != null ? $model->getPhysicianOptions($model->physician_id) : ""}}</td>
-
-
-                                        <td>{{ $model->emergency_id != null ? $model->getEmergencyOptions($model->emergency_id) : ""}}</td>
-                                        <td>{{ @$model->attempt }}</td>--}}
-
-
-                                        <td>
-                                            <a href=" {{route('adminReports.edit',[$model->id])}} ">Voir</a>
-                                            {!! Form::open(['style' => 'display: inline;', 'method' => 'DELETE', 'onsubmit' => 'return confirm(\'Supprimer ? \');',  'route' => array('adminReports.destroy', $model->id)]) !!}
-                                            <button type="submit" class="btn btn-xs btn-danger"><i class="fa fa-remove"></i></button>
-                                            {!! Form::close() !!}
-                                        </td>
-                                    </tr>
-                                @endforeach
                                 </tbody>
                             </table>
                         </div>
@@ -193,8 +163,54 @@
     <script src="{{ asset('js/admin_dist/dataTable/responsive.bootstrap.js') }}"></script>
     <script src="{{ asset('js/admin_dist/dataTable/dataTables.scroller.min.js') }}"></script>
     <script type="text/javascript" src="<?php echo(asset('js/admin_dist/bootstrap-datepicker.js')); ?>"></script>
-
     <script>
+        $(".datepicker").datepicker({format: "yyyy-mm-dd", autoclose: true, endDate: new Date()});
+        $(".datepicker").datepicker('clearDates');
+    </script>
+    <script>
+        function reload_table() {
+            $('.jambo_table').DataTable().ajax.reload(null, false); // Reload datatable ajax
+        }
+
+        $(document).ready(function () {
+
+            $("#agent_field").on("change",function () {
+
+                var filter_agent = $(this).val();
+
+                if(filter_agent != null){
+                    reload_table();
+                }
+            });
+
+            $("#center_field").on("change",function () {
+
+                var filter_center = $(this).val();
+
+                if(filter_center != null){
+                    reload_table();
+                }
+            });
+
+            $("#monthly_field").on("change",function () {
+
+                var filter_monthly = $(this).val();
+
+                if(filter_monthly!= null){
+                    reload_table();
+                }
+            });
+
+            $('.datepicker').datepicker().on('changeDate', function(e) {
+
+                var filter_daily = e.date;
+                if(filter_daily != null){
+                    reload_table();
+                }
+            });
+
+        });
+
         $('.jambo_table').DataTable({
             "language": {
                 "search": "Rechercher",
@@ -203,9 +219,62 @@
                 paginate: {
                     previous: 'Précédent',
                     next: 'Suivant'
-                },
+                }
+            },
+            "columnDefs": [ {
+                "targets": 7,
+                "orderable": false
+            }],
+            "bProcessing": true,
+            "bServerSide": true,
+            "sAjaxSource": "{{ route('reports-optimize') }}",
+            /*"fnServerData": function ( sSource, aoData, fnCallback ) {
+                /!* Add some extra data to the sender *!/
+                aoData.push( { "name": "filter_agent", "value": "my_value" } );
+                $.getJSON( sSource, aoData, function (json) {
+                    /!* Do whatever additional processing you want on the callback, then tell DataTables *!/
+                    fnCallback(json)
+                } );
+            },*/
+            "fnServerData": function ( sSource, aoData, fnCallback, oSettings ) {
 
-            }
+                if($("#agent_field").val() != null){
+                    aoData.push( { "name": "filter_agent", "value": $("#agent_field").val() } );
+                }
+
+                if($("#center_field").val() != null){
+                    aoData.push( { "name": "filter_center", "value": $("#center_field").val() } );
+                }
+
+                if($("#daily_field").val() != null){
+                    aoData.push( { "name": "filter_daily", "value": $("#daily_field").val() } );
+                }
+
+                if($("#monthly_field").val() != null){
+                    aoData.push( { "name": "filter_monthly", "value": $("#monthly_field").val() } );
+                }
+
+                oSettings.jqXHR = $.ajax({
+                    "dataType": 'json',
+                    "type": "GET",
+                    "url": sSource,
+                    "data": aoData,
+                    "success": fnCallback,
+                    "error": function (e) {
+                        console.log(e.message);
+                    }
+                });
+            },
+            "aoColumns": [
+                { "mData": "agent" },
+                { "mData": "created_at" },
+                { "mData": "report" },
+                { "mData": "company" },
+                { "mData": "mobile" },
+                { "mData": "center" },
+                { "mData": "physician" },
+                { "mData": "options" }
+            ]
 
         });
 
@@ -217,13 +286,8 @@
         });
     </script>
 
-    <script>
-        $(".datepicker").datepicker({format: "yyyy-mm-dd", autoclose: true, endDate: new Date()});
-
-    </script>
-
     <script type="text/javascript">
-        $(document).ready(function () {
+        /*$(document).ready(function () {
             oTable = $('.jambo_table').DataTable();   //pay attention to capital D, which is mandatory to retrieve "api" datatables' object, as @Lionel said
             $('#agent_field').change(function () {
                 // oTable.search($(this).val()).draw() ;
@@ -241,7 +305,7 @@
                 console.log(year + '-' + $(this).val());
                 oTable.columns(2).search(year + '-' + $(this).val()).draw();
             });
-        });
+        });*/
     </script>
     {{--
     <script src="../vendors/jszip/dist/jszip.min.js"></script>
