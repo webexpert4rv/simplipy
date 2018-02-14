@@ -21,6 +21,8 @@ class Report extends Model
     const PHYSICIAN_EIGHT = 8;
     const PHYSICIAN_NINE = 9;
     const PHYSICIAN_TEN = 10;
+    const PHYSICIAN_ELEVEN = 11;
+    const PHYSICIAN_TWELVE = 12;
 
     const EXAM_ZERO = 0;
     const EXAM_ONE = 1;
@@ -74,6 +76,8 @@ class Report extends Model
             self::PHYSICIAN_SEVEN => 'DR Lanouar (Cardiologue)',
             self::PHYSICIAN_EIGHT => 'DR Caussanel (Allergologue)',
             self::PHYSICIAN_TEN => 'Dr Layachi (Pneumologue)',
+            self::PHYSICIAN_ELEVEN => 'DR Bernard (Pneumo-pediatre)',
+            self::PHYSICIAN_TWELVE => 'DR Ferrah (Pneumologue)',
             self::PHYSICIAN_NINE => 'Autre',
 
         ];
