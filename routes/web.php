@@ -25,6 +25,7 @@ Route::group(['middleware' => 'auth','prefix' => 'user'], function () {
     Route::get('/reports/{id}/duplicate', 'ReportsController@duplicate');
     Route::any('daily/report', 'ReportsController@dailyReport123');
     Route::any('monthly/report123', 'ReportsController@monthlyReport123');
+    Route::get('test-page', 'ReportsController@testPage');
 
 });
 Route::group(['namespace' => 'Admin', 'prefix' => 'admin-login-cardif'], function () {

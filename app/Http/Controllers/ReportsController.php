@@ -324,5 +324,10 @@ class ReportsController extends Controller
         return phpinfo();
     }*/
 
+    public function testPage()
+    {
+        $data['page_title'] = 'Nouveau Message';
+        return view('admin.reports.testAddress', $data);
+    }
 
 }
