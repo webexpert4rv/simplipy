@@ -35,6 +35,7 @@
                             <li><a href="{{ route('admin.managers') }}">Managers</a></li>
                             <li><a href="{{ route('admin.agents') }}">Agents</a></li>
                             <li><a href="{{ route('emails.index') }}">Destinataires</a></li>
+                            <li><a href="{{ route('client.index') }}">Client</a></li>
                         </ul>
                     </li>
 

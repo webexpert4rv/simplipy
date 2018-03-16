@@ -40,9 +40,10 @@ class HomeController extends Controller
             return view('admin.reports.create', $data);
         }
         if(\Auth::user()->role_id == \App\User::ROLE_MANAGER){
-            $data['models'] = Report::orderBy('created_at','desc')->get();
+            /*$data['models'] = Report::orderBy('created_at','desc')->get();
             $data['page_title'] = 'Gestion Messagerie';
-            return view('admin.reports.index', $data);
+            return view('admin.reports.index', $data);*/
+            return redirect(route('reports.index'));
         }
 
     }

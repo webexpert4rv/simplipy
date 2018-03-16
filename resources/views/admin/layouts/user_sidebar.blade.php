@@ -41,6 +41,9 @@
                                 <li><a href="{{ url('user/reports/create') }}">Nouveau Message</a></li>
                             @endif
                             <li><a href="{{ url('user/reports') }}">Rechercher</a></li>
+                            {{--@if(\Auth::user()->role_id == \App\User::ROLE_AGENT)
+                                <li><a href="{{ route('message.create') }}">Messaging Tool</a></li>
+                            @endif--}}
                         </ul>
                     </li>
                 </ul>

@@ -27,6 +27,10 @@ Route::group(['middleware' => 'auth','prefix' => 'user'], function () {
     Route::any('monthly/report123', 'ReportsController@monthlyReport123');
     Route::any('user-indexReport-optimize', 'ReportsController@indexOptimize')->name('user-indexReport-optimize');
 
+    /** Message Tool Controller **/
+    Route::get('message-create', 'MessageToolController@create')->name('message.create');
+    Route::post('message-store', 'MessageToolController@store')->name('message.store');
+
 });
 Route::group(['namespace' => 'Admin', 'prefix' => 'admin-login-cardif'], function () {
     Route::get('/', 'Auth\LoginController@showLoginForm');
@@ -41,7 +45,7 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'admin-login-cardif'], functio
     Route::group(['middleware' => 'auth.admin'], function () {
 
         Route::get('home', 'DashboardController@admin');
-       /* Route::get('home2', 'DashboardController@admin2')->name('home2');
+        /*Route::get('home2', 'DashboardController@admin2')->name('home2');
         Route::get('reports-optimize', 'DashboardController@adminOptimize')->name('reports-optimize');*/
         Route::get('/profile', 'UserController@show')->name('admin.profile');
         Route::post('/profile/{id}/update', 'UserController@profileUpdate');
@@ -97,6 +101,12 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'admin-login-cardif'], functio
         Route::get('/monthlyStatus', 'MonthlyReportsController@monthlyStatus')->name('status.monthly');
         Route::any('/monthlyStatusResend', 'MonthlyReportsController@monthlyStatusResend')->name('status.monthlyResend');
 
+        //Client Section
+        Route::get('client-index', 'ClientController@index')->name('client.index');
+        Route::get('client-create', 'ClientController@create')->name('client.create');
+        Route::post('client-store', 'ClientController@store')->name('client.store');
+        Route::delete('client-destroy/{id}', 'ClientController@destroy')->name('client.destroy');
+
     });
 });
 
@@ -127,6 +137,7 @@ Route::get('/info', function () {
 Route::get('test-email',function (){
 
     \Illuminate\Support\Facades\Mail::raw('This is test email',function($message){
+        $message->replyTo('kshitiz_agrawal@rvtechnologies.co.in', 'Reply Guy');
         $message->to('rajat_jain@rvtechnologies.co.in');
     });
 

@@ -23,6 +23,7 @@ class Report extends Model
     const PHYSICIAN_TEN = 10;
     const PHYSICIAN_ELEVEN = 11;
     const PHYSICIAN_TWELVE = 12;
+    const PHYSICIAN_THIRTEEN = 13;
 
     const EXAM_ZERO = 0;
     const EXAM_ONE = 1;
@@ -75,9 +76,10 @@ class Report extends Model
             self::PHYSICIAN_SIX => 'DR Vial Dupuy (Pneumologue)',
             self::PHYSICIAN_SEVEN => 'DR Lanouar (Cardiologue)',
             self::PHYSICIAN_EIGHT => 'DR Caussanel (Allergologue)',
-            self::PHYSICIAN_TEN => 'Dr Layachi (Pneumologue)',
+            self::PHYSICIAN_TEN => 'DR Layachi (DR instead of Dr)',
             self::PHYSICIAN_ELEVEN => 'DR Bernard (Pneumo-pediatre)',
             self::PHYSICIAN_TWELVE => 'DR Ferrah (Pneumologue)',
+            self::PHYSICIAN_THIRTEEN => 'DR Ben Hassen (Pneumologue)',
             self::PHYSICIAN_NINE => 'Autre',
 
         ];
@@ -104,9 +106,10 @@ class Report extends Model
             'DR Vial Dupuy (Pneumologue)' => self::PHYSICIAN_SIX ,
             'DR Lanouar (Cardiologue)' => self::PHYSICIAN_SEVEN ,
             'DR Caussanel (Allergologue)' => self::PHYSICIAN_EIGHT ,
-            'Dr Layachi (Pneumologue)' => self::PHYSICIAN_TEN ,
+            'DR Layachi (DR instead of Dr)' => self::PHYSICIAN_TEN ,
             'DR Bernard (Pneumo-pediatre)' => self::PHYSICIAN_ELEVEN ,
             'DR Ferrah (Pneumologue)' => self::PHYSICIAN_TWELVE ,
+            'DR Ben Hassen (Pneumologue)' => self::PHYSICIAN_THIRTEEN,
             'Autre' => self::PHYSICIAN_NINE ,
 
         ];
