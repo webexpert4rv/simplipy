@@ -25,7 +25,7 @@ Route::group(['middleware' => 'auth','prefix' => 'user'], function () {
     Route::get('/reports/{id}/duplicate', 'ReportsController@duplicate');
     Route::any('daily/report', 'ReportsController@dailyReport123');
     Route::any('monthly/report123', 'ReportsController@monthlyReport123');
-    Route::get('test-page', 'ReportsController@testPage');
+    Route::any('user-indexReport-optimize', 'ReportsController@indexOptimize')->name('user-indexReport-optimize');
 
 });
 Route::group(['namespace' => 'Admin', 'prefix' => 'admin-login-cardif'], function () {
@@ -41,8 +41,8 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'admin-login-cardif'], functio
     Route::group(['middleware' => 'auth.admin'], function () {
 
         Route::get('home', 'DashboardController@admin');
-        /*Route::get('home2', 'DashboardController@admin2')->name('home2');
-        Route::get('reports-optimize', 'DashboardController@adminOptimize')->name('reports-optimize');*/
+        Route::get('home2', 'DashboardController@admin2')->name('home2');
+        Route::get('reports-optimize', 'DashboardController@adminOptimize')->name('reports-optimize');
         Route::get('/profile', 'UserController@show')->name('admin.profile');
         Route::post('/profile/{id}/update', 'UserController@profileUpdate');
 

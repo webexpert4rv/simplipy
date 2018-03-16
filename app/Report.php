@@ -92,6 +92,35 @@ class Report extends Model
 
     }
 
+    public static function getPhysicianId($name = null)
+    {
+        $list = [
+            'N/C' => self::PHYSICIAN_ZERO ,
+            'DR El Husseini (Pneumologue)' => self::PHYSICIAN_ONE ,
+            'DR Pigné (Pneumologue)' => self::PHYSICIAN_TWO ,
+            "DR Sahut D'Izran (Pneumologue)" => self::PHYSICIAN_THREE ,
+            'DR Benazzouz (Pneumologue)' => self::PHYSICIAN_FOUR ,
+            'DR Mounedji (Pneumologue)' => self::PHYSICIAN_FIVE ,
+            'DR Vial Dupuy (Pneumologue)' => self::PHYSICIAN_SIX ,
+            'DR Lanouar (Cardiologue)' => self::PHYSICIAN_SEVEN ,
+            'DR Caussanel (Allergologue)' => self::PHYSICIAN_EIGHT ,
+            'Dr Layachi (Pneumologue)' => self::PHYSICIAN_TEN ,
+            'DR Bernard (Pneumo-pediatre)' => self::PHYSICIAN_ELEVEN ,
+            'DR Ferrah (Pneumologue)' => self::PHYSICIAN_TWELVE ,
+            'Autre' => self::PHYSICIAN_NINE ,
+
+        ];
+
+        if ($name === null)
+            return $list;
+
+        if (isset($list[$name]))
+            return $list[$name];
+
+        return $name;
+
+    }
+
     public static function getExamOptions($id = null)
     {
         $list = [

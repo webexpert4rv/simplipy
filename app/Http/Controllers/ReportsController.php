@@ -33,7 +33,148 @@ class ReportsController extends Controller
     {
         $data['models'] = Report::orderBy('created_at','desc')->get();
         $data['page_title'] = 'Historique des Messages';
-        return view('admin.reports.index', $data);
+        return view('admin.reports.index_optimize', $data);
+    }
+
+    public function indexOptimize(Request $request){
+        //return "ok";
+
+
+        $columns = [
+            0   =>  'reports.created_at',
+            1   =>  'reports.name',
+            2   =>  'company',
+            3   =>  'mobile',
+            4   =>  'center_id',
+            5   =>  'physician_id',
+        ];
+
+        $totalData = Report::count();
+        $limit  =   $request->input('iDisplayLength');
+        $start  =   $request->input('iDisplayStart');
+        $order  =   $columns[$request->input('iSortCol_0')];
+        $dir    =   $request->input('sSortDir_0');
+
+        if(empty($request->input('sSearch')))
+        {
+            $query = Report::select('reports.*');
+
+            $totalFiltered  =   $query->count();
+
+            $reports    =   $query->skip($start)
+                ->limit($limit)
+                ->orderBy($order,$dir)
+                ->get();
+
+
+
+        }else {
+
+            $search = $request->input('sSearch');
+
+
+            if(strtolower($search) == "cardif 1"){
+                $query = Report::select('reports.*')->where('center_id',Report::CENTER_ONE);
+
+            }elseif(strtolower($search) == "cardif 2"){
+                $query = Report::select('reports.*')->where('center_id',Report::CENTER_TWO);
+
+            }else{
+                $physician_id = Report::getPhysicianId($search);
+
+                //echo  $physician_id;
+
+                if(strlen($physician_id) == 1){
+
+                    $query = Report::select('reports.*')->where('physician_id',$physician_id);
+
+                    if(count($query) == 0){
+                        $query   =   Report::leftJoin('users', 'reports.user_id', '=', 'users.id')
+                            ->leftJoin('user_profiles', 'user_profiles.user_id', '=', 'users.id')->select('reports.*')
+                            ->where(function ($query) use ($search) {
+                                $query->orWhere('company', 'LIKE',"%{$search}%")
+                                    ->orWhere('reports.mobile', 'LIKE',"%{$search}%")
+                                    ->orWhere('reports.created_at', 'LIKE',"%{$search}%")
+                                    ->orWhere('reports.name', 'LIKE',"%{$search}%")
+                                    ->orWhere('reports.first_name', 'LIKE',"%{$search}%")
+                                    ->orWhere('users.name', 'LIKE',"%{$search}%")
+                                    ->orWhere('user_profiles.first_name', 'LIKE',"%{$search}%")
+                                    ->orWhere('user_profiles.last_name', 'LIKE',"%{$search}%");
+
+                            });
+                    }
+
+                }else{
+
+                    $query   =   Report::leftJoin('users', 'reports.user_id', '=', 'users.id')
+                        ->leftJoin('user_profiles', 'user_profiles.user_id', '=', 'users.id')->select('reports.*')
+                        ->where(function ($query) use ($search) {
+                            $query->orWhere('company', 'LIKE',"%{$search}%")
+                                ->orWhere('reports.mobile', 'LIKE',"%{$search}%")
+                                ->orWhere('reports.created_at', 'LIKE',"%{$search}%")
+                                ->orWhere('reports.name', 'LIKE',"%{$search}%")
+                                ->orWhere('reports.first_name', 'LIKE',"%{$search}%")
+                                ->orWhere('users.name', 'LIKE',"%{$search}%")
+                                ->orWhere('user_profiles.first_name', 'LIKE',"%{$search}%")
+                                ->orWhere('user_profiles.last_name', 'LIKE',"%{$search}%");
+
+                        });
+                }
+
+
+            }
+
+            $totalFiltered  =   $query->count();
+
+            $reports    =   $query->offset($start)
+                ->limit($limit)
+                ->orderBy($order,$dir)
+                ->get();
+
+        }
+
+        $data = array();
+        if(!empty($reports))
+        {
+            foreach ($reports as $model) {
+
+                $edit = url("user/reports/" . $model->id . '/edit');
+                $delete = route('reports.destroy', [$model->id]);
+
+
+
+                $nestedData['date']        =   (string)$model->created_at;
+                $nestedData['patient']   =   Report::getCivilOptions((int)$model->civil_id).' '.$model->name.' '.$model->first_name;
+                $nestedData['social']       =   $model->company;
+                $nestedData['mobile']       =   $model->mobile;
+                $nestedData['center']       =   Report::getCenterOptions($model->center_id);
+                $nestedData['medecin']    =   Report::getPhysicianOptions($model->physician_id);
+                $nestedData['options']      =   "<a href='{$edit}' title='EDIT' ><i class='fa fa-eye'></i></a>
+                                                   <form action='{$delete}' method='post' id='deleteReport'>
+                                                    <input type='hidden' name='_method' value='delete'>
+                                                    ".csrf_field()."
+                                                    <button type='button' class='btn btn-xs btn-danger deleteConfirm'><i class='fa fa-remove'></i></button>
+                                                   </form>";
+
+                if (\Auth::user()->role_id == \App\User::ROLE_AGENT){
+                    $duplicate = url("user/reports/" . $model->id . '/duplicate');
+
+                    $nestedData['options'].= "<a href='{$duplicate}'>Dupliquer</a>";
+                }
+                $data[] = $nestedData;
+
+            }
+        }
+
+
+        $json_data = array(
+            "draw"            => intval($request->input('sEcho')),
+            "recordsTotal"    => intval($totalData),
+            "recordsFiltered" => intval($totalFiltered),
+            "data"            => $data
+        );
+
+        echo json_encode($json_data);
     }
 
     public function create()
@@ -323,11 +464,5 @@ class ReportsController extends Controller
 
         return phpinfo();
     }*/
-
-    public function testPage()
-    {
-        $data['page_title'] = 'Nouveau Message';
-        return view('admin.reports.testAddress', $data);
-    }
 
 }
