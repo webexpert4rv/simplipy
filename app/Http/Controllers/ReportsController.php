@@ -48,6 +48,7 @@ class ReportsController extends Controller
             4   =>  'center_id',
             5   =>  'physician_id',
         ];
+        //echo "sdada".$request->input('sSortDir_0');
 
         $totalData = Report::count();
         $limit  =   $request->input('iDisplayLength');
@@ -61,7 +62,7 @@ class ReportsController extends Controller
 
             $totalFiltered  =   $query->count();
 
-            $reports    =   $query->skip($start)
+            $reports    =   $query->offset($start)
                 ->limit($limit)
                 ->orderBy($order,$dir)
                 ->get();

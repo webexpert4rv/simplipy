@@ -126,6 +126,11 @@
                     },
 
                 },
+                "columnDefs": [ {
+                    "targets": 6,
+                    "orderable": false
+                }],
+                "order": [[ 0, "desc" ]],
                 "bProcessing": true,
                 "bServerSide": true,
                 "sAjaxSource": "{{ route('user-indexReport-optimize') }}",
