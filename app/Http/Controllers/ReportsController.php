@@ -150,12 +150,7 @@ class ReportsController extends Controller
                 $nestedData['mobile']       =   $model->mobile;
                 $nestedData['center']       =   Report::getCenterOptions($model->center_id);
                 $nestedData['medecin']    =   Report::getPhysicianOptions($model->physician_id);
-                $nestedData['options']      =   "<a href='{$edit}' title='EDIT' ><i class='fa fa-eye'></i></a>
-                                                   <form action='{$delete}' method='post' id='deleteReport'>
-                                                    <input type='hidden' name='_method' value='delete'>
-                                                    ".csrf_field()."
-                                                    <button type='button' class='btn btn-xs btn-danger deleteConfirm'><i class='fa fa-remove'></i></button>
-                                                   </form>";
+                $nestedData['options']      =   "<a href='{$edit}' title='EDIT' ><i class='fa fa-eye'></i></a>";
 
                 if (\Auth::user()->role_id == \App\User::ROLE_AGENT){
                     $duplicate = url("user/reports/" . $model->id . '/duplicate');

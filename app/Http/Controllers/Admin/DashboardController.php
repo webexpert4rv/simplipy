@@ -41,10 +41,12 @@ class DashboardController extends Controller
     public function admin()
     {
         //return view('admin.dashboard.admin');
-        $data['models'] = Report::orderBy('created_at','desc')->get();
+        /*$data['models'] = Report::orderBy('created_at','desc')->get();
         $data['page_title'] = 'Gestion Messagerie';
         $data['agents'] = User::where('role_id',User::ROLE_AGENT)->get();
-        return view('admin.reports.admin_index', $data);
+        return view('admin.reports.admin_index', $data);*/
+
+        return redirect()->route('adminReports.index');
     }
 
     public function admin2()

@@ -91,6 +91,7 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'admin-login-cardif'], functio
 
         Route::resource('/emails', 'EmailController');
         Route::resource('/adminReports', 'ReportsController');
+        Route::get('reports-optimize', 'ReportsController@adminOptimize')->name('reports-optimize');
 
         Route::resource('/dailyReports', 'DailyReportsController');
         Route::get('/daily', 'DailyReportsController@dailyMonthly')->name('reports.dailyMonthly');

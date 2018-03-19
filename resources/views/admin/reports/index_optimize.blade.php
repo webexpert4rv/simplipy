@@ -164,13 +164,13 @@
         $(document).ready(function () {
            $('.report_table').find('.row:first').addClass('search_report');
 
-           $(document).on("click",".deleteConfirm",function () {
+           /*$(document).on("click",".deleteConfirm",function () {
               if(confirm('Supprimer ?')){
                   $('#deleteReport').submit();
               }else {
                   return false;
               }
-           });
+           });*/
         });
     </script>
     {{--

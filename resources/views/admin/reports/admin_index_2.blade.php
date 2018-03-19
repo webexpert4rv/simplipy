@@ -225,6 +225,7 @@
                 "targets": 7,
                 "orderable": false
             }],
+            "order": [[ 1, "desc" ]],
             "bProcessing": true,
             "bServerSide": true,
             "sAjaxSource": "{{ route('reports-optimize') }}",
@@ -306,6 +307,15 @@
                 oTable.columns(2).search(year + '-' + $(this).val()).draw();
             });
         });*/
+
+
+        $(document).on("click",".deleteConfirm",function () {
+            if(confirm('Supprimer ?')){
+                $('#deleteReport').submit();
+            }else {
+                return false;
+            }
+        });
     </script>
     {{--
     <script src="../vendors/jszip/dist/jszip.min.js"></script>
