@@ -41,11 +41,15 @@
                                 <li><a href="{{ url('user/reports/create') }}">Nouveau Message</a></li>
                             @endif
                             <li><a href="{{ url('user/reports') }}">Rechercher</a></li>
-                            {{--@if(\Auth::user()->role_id == \App\User::ROLE_AGENT)
-                                <li><a href="{{ route('message.create') }}">Messaging Tool</a></li>
-                            @endif--}}
                         </ul>
                     </li>
+                    {{--@if(\Auth::user()->role_id == \App\User::ROLE_AGENT)
+                    <li><a><i class="fa fa-envelope" aria-hidden="true"></i>Messagerie Généraliste<span class="fa fa-chevron-down"></span></a>
+                        <ul class="nav child_menu">
+                            <li><a href="{{ route('message.create') }}">Nouveau Message</a></li>
+                        </ul>
+                    </li>
+                    @endif--}}
                 </ul>
             </div>
             {{--<div class="menu_section">

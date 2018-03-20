@@ -29,7 +29,7 @@ Route::group(['middleware' => 'auth','prefix' => 'user'], function () {
 
     /** Message Tool Controller **/
     Route::get('message-create', 'MessageToolController@create')->name('message.create');
-    Route::post('message-store', 'MessageToolController@store')->name('message.store');
+    Route::post('message-send-email', 'MessageToolController@sendMessageEmail')->name('message.send.email');
 
 });
 Route::group(['namespace' => 'Admin', 'prefix' => 'admin-login-cardif'], function () {

@@ -59,7 +59,7 @@
                         <ul class="nav child_menu">
                             <li><a href="{{ route('client.index') }}">Client</a></li>
                             <li><a href="{{ route('replyto.index') }}">Reply To</a></li>
-                            {{--<li><a href="{{ route('bcc.index') }}">Bcc</a></li>--}}
+                            <li><a href="{{ route('bcc.index') }}">Bcc</a></li>
                         </ul>
                     </li>
 
