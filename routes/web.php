@@ -108,6 +108,19 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'admin-login-cardif'], functio
         Route::post('client-store', 'ClientController@store')->name('client.store');
         Route::delete('client-destroy/{id}', 'ClientController@destroy')->name('client.destroy');
 
+        //Reply To Section
+        Route::get('replyto-index', 'ClientController@replyToIndex')->name('replyto.index');
+        Route::get('replyto-create', 'ClientController@replyToCreate')->name('replyto.create');
+        Route::post('replyto-store', 'ClientController@replyTostore')->name('replyto.store');
+        Route::delete('replyto-destroy/{id}', 'ClientController@replyTodestroy')->name('replyto.destroy');
+
+        //Reply To Section
+        Route::get('bcc-index', 'ClientController@bccIndex')->name('bcc.index');
+        Route::get('bcc-create', 'ClientController@bccCreate')->name('bcc.create');
+        Route::post('bcc-store', 'ClientController@bccStore')->name('bcc.store');
+        Route::delete('bcc-destroy/{id}', 'ClientController@bccDestroy')->name('bcc.destroy');
+
+
     });
 });
 

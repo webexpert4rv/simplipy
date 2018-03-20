@@ -35,7 +35,7 @@
                             <li><a href="{{ route('admin.managers') }}">Managers</a></li>
                             <li><a href="{{ route('admin.agents') }}">Agents</a></li>
                             <li><a href="{{ route('emails.index') }}">Destinataires</a></li>
-                            <li><a href="{{ route('client.index') }}">Client</a></li>
+
                         </ul>
                     </li>
 
@@ -52,6 +52,14 @@
                            {{-- <li><a href="{{ route('reports.dailyMonthly') }}">Daily/Monthly Reports</a></li>--}}
                             <li><a href="{{ route('status.daily') }}">Rapports Quotidiens</a></li>
                             <li><a href="{{ route('status.monthly') }}">Rapports Mensuels</a></li>
+                        </ul>
+                    </li>
+
+                    <li><a><i class="fa fa-envelope" aria-hidden="true"></i>Messagerie Généraliste<span class="fa fa-chevron-down"></span></a>
+                        <ul class="nav child_menu">
+                            <li><a href="{{ route('client.index') }}">Client</a></li>
+                            <li><a href="{{ route('replyto.index') }}">Reply To</a></li>
+                            {{--<li><a href="{{ route('bcc.index') }}">Bcc</a></li>--}}
                         </ul>
                     </li>
 
