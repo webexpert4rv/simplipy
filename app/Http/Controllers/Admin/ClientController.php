@@ -56,6 +56,38 @@ class ClientController extends Controller
 
     }
 
+    public function edit($id){
+
+        $data['page_title'] = 'Modifier Client';
+        $data['cancel_link'] = 'client-index';
+        $data['add_link'] = route('client.update',$id);
+        $data['client'] = Client::find($id);
+        $data['back_link'] = link_to_route('client.index', 'Client');
+        return view('admin.client.edit', $data);
+    }
+
+    public function update(Request $request,$id){
+
+        $validator = \Validator::make($request->all(), [
+            'name' => 'required',
+            'email' => 'required|unique:clients,email,'.$id,
+        ]);
+
+        if ($validator->fails()) {
+            return redirect()->back()->withInput()->withErrors($validator->errors());
+        }
+
+
+        $client = Client::find($id);
+        $client->name = $request->name;
+        $client->email = $request->email;
+        if($client->save()){
+            return redirect(route('client.index'))->with('success', 'Client mis à jour avec succès');
+        }
+        return redirect()->back()->withInput()->with('error', 'Something went wrong');
+
+    }
+
     public function destroy($id){
 
         $model = Client::findOrFail($id);
@@ -108,6 +140,41 @@ class ClientController extends Controller
 
     }
 
+    public function replyToEdit($id){
+
+        $data['page_title'] = 'Modifier Répondre à l\'email';
+        $data['cancel_link'] = 'replyto-index';
+        $data['agents'] = User::where('role_id',User::ROLE_AGENT)->get();
+        $data['add_link'] = route('replyto.update',$id);
+        $data['replyto'] = ReplyToEmail::find($id);
+        $data['back_link'] = link_to_route('replyto.index', 'Répondre à');
+
+        //return $data;
+        return view('admin.replyto.edit', $data);
+    }
+
+    public function replyToUpdate(Request $request,$id){
+
+        //return $request->all();
+        $validator = \Validator::make($request->all(), [
+            'agent' => 'required',
+            'email' => 'required|unique:replyto_emails,email,'.$id,
+        ]);
+
+        if ($validator->fails()) {
+            return redirect()->back()->withInput()->withErrors($validator->errors());
+        }
+
+        $replyto = ReplyToEmail::find($id);
+        $replyto->user_id = $request->agent;
+        $replyto->email = $request->email;
+        if($replyto->save()){
+            return redirect(route('replyto.index'))->with('success', 'Répondre à l\'e-mail créé avec succès');
+        }
+        return redirect()->back()->withInput()->with('error', 'Something went wrong');
+
+    }
+
     public function replyToDestroy($id){
 
         $model = ReplyToEmail::findOrFail($id);
@@ -150,6 +217,36 @@ class ClientController extends Controller
         $bcc->email = $request->email;
         if($bcc->save()){
             return redirect(route('bcc.index'))->with('success', 'Email bcc créé avec succès');
+        }
+        return redirect()->back()->withInput()->with('error', 'Something went wrong');
+
+    }
+
+    public function bccEdit($id){
+
+        $data['page_title'] = 'Modifier Email Bcc';
+        $data['cancel_link'] = 'bcc-index';
+        $data['add_link'] = route('bcc.update',$id);
+        $data['bcc'] = BccEmail::find($id);
+        $data['back_link'] = link_to_route('bcc.index', 'Email Bcc');
+        return view('admin.bcc.edit', $data);
+    }
+
+    public function bccUpdate(Request $request,$id){
+
+        $validator = \Validator::make($request->all(), [
+            'email' => 'required|unique:bcc_emails,email,'.$id,
+        ]);
+
+        if ($validator->fails()) {
+            return redirect()->back()->withInput()->withErrors($validator->errors());
+        }
+
+
+        $bcc = BccEmail::find($id);
+        $bcc->email = $request->email;
+        if($bcc->save()){
+            return redirect(route('bcc.index'))->with('success', 'Email bcc mis à jour avec succès');
         }
         return redirect()->back()->withInput()->with('error', 'Something went wrong');
 

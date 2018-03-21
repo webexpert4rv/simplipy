@@ -81,6 +81,7 @@
                                         <td>{{ @$model->userProfile->first_name }} {{ @$model->userProfile->last_name }}</td>
                                         <td>{{ $model->email }}</td>
                                         <td>
+                                            <a href=" {{route('replyto.edit',[$model->id])}} "><i class="fa fa-pencil"></i></a>
                                             {!! Form::open(['style' => 'display: inline;', 'method' => 'DELETE', 'onsubmit' => 'return confirm(\'Supprimer ? \');',  'route' => array('replyto.destroy', $model->id)]) !!}
                                             <button type="submit" class="btn btn-xs btn-danger"><i
                                                         class="fa fa-remove"></i></button>

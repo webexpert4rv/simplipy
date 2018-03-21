@@ -79,6 +79,7 @@
                                         <td>{{ $loop->iteration}}</td>
                                         <td>{{ $model->email }}</td>
                                         <td>
+                                            <a href=" {{route('bcc.edit',[$model->id])}} "><i class="fa fa-pencil"></i></a>
                                             {!! Form::open(['style' => 'display: inline;', 'method' => 'DELETE', 'onsubmit' => 'return confirm(\'Supprimer ? \');',  'route' => array('bcc.destroy', $model->id)]) !!}
                                             <button type="submit" class="btn btn-xs btn-danger"><i
                                                         class="fa fa-remove"></i></button>

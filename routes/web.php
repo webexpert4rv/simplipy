@@ -106,17 +106,23 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'admin-login-cardif'], functio
         Route::get('client-index', 'ClientController@index')->name('client.index');
         Route::get('client-create', 'ClientController@create')->name('client.create');
         Route::post('client-store', 'ClientController@store')->name('client.store');
+        Route::get('client-edit/{id}', 'ClientController@edit')->name('client.edit');
+        Route::post('client-update/{id}', 'ClientController@update')->name('client.update');
         Route::delete('client-destroy/{id}', 'ClientController@destroy')->name('client.destroy');
 
         //Reply To Section
         Route::get('replyto-index', 'ClientController@replyToIndex')->name('replyto.index');
         Route::get('replyto-create', 'ClientController@replyToCreate')->name('replyto.create');
         Route::post('replyto-store', 'ClientController@replyTostore')->name('replyto.store');
+        Route::get('replyto-edit/{id}', 'ClientController@replyToEdit')->name('replyto.edit');
+        Route::post('replyto-update/{id}', 'ClientController@replyToUpdate')->name('replyto.update');
         Route::delete('replyto-destroy/{id}', 'ClientController@replyTodestroy')->name('replyto.destroy');
 
         //Reply To Section
         Route::get('bcc-index', 'ClientController@bccIndex')->name('bcc.index');
         Route::get('bcc-create', 'ClientController@bccCreate')->name('bcc.create');
+        Route::get('bcc-edit/{id}', 'ClientController@bccEdit')->name('bcc.edit');
+        Route::post('bcc-update/{id}', 'ClientController@bccUpdate')->name('bcc.update');
         Route::post('bcc-store', 'ClientController@bccStore')->name('bcc.store');
         Route::delete('bcc-destroy/{id}', 'ClientController@bccDestroy')->name('bcc.destroy');
 
