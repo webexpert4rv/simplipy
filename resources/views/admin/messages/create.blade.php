@@ -138,7 +138,7 @@
                                                     class="required">*</span>
                                         </label>
                                         <div class="col-md-6 col-sm-6 col-xs-12">
-                                            <input required type="text" name="to_email" class="form-control col-md-7 col-xs-12"
+                                            <input required type="email" name="to_email" class="form-control col-md-7 col-xs-12"
                                                    value="{{old('to_email')}}">
                                         </div>
                                     </div>

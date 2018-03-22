@@ -43,13 +43,13 @@
                             <li><a href="{{ url('user/reports') }}">Rechercher</a></li>
                         </ul>
                     </li>
-                    {{--@if(\Auth::user()->role_id == \App\User::ROLE_AGENT)
+                    @if(\Auth::user()->role_id == \App\User::ROLE_AGENT)
                     <li><a><i class="fa fa-envelope" aria-hidden="true"></i>Messagerie Généraliste<span class="fa fa-chevron-down"></span></a>
                         <ul class="nav child_menu">
                             <li><a href="{{ route('message.create') }}">Nouveau Message</a></li>
                         </ul>
                     </li>
-                    @endif--}}
+                    @endif
                 </ul>
             </div>
             {{--<div class="menu_section">
