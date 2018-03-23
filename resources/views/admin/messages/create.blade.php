@@ -74,8 +74,9 @@
 
                                             <select required="required" name="civil_id"
                                                     class="form-control col-md-7 col-xs-12">
+                                                <option value="">N/C</option>
                                                 @foreach(\App\Report::getCivilOptions() as $key => $civil)
-                                                    <option value="{{ $civil }}" {{ old('civil_id') == $key ? 'selected' : ""}}> {{ $civil }}</option>
+                                                    <option value="{{ $civil }}"> {{ $civil }}</option>
                                                 @endforeach
                                             </select>
                                         </div>
