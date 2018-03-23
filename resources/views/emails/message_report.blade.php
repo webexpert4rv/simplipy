@@ -29,10 +29,10 @@
     <br/>
 </div>
 <table name="patient_table" border="0" cellpadding="0" cellspacing="0" height="100%" width="100%" class="patient_data">
-    @if(isset($gender))
+    @if(isset($civil_id))
         <tr>
             <td width="20%" style="padding-top: 15px;font-weight:bold;">Civilité:</td>
-            <td width="80%" style="padding-top: 15px;">{{ @$gender }}</td>
+            <td width="80%" style="padding-top: 15px;">{{ @$civil_id }}</td>
         </tr>
     @endif
     @if(isset($name))

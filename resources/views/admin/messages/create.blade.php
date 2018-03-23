@@ -71,10 +71,12 @@
                                                     class="required">*</span>
                                         </label>
                                         <div class="col-md-6 col-sm-6 col-xs-12">
-                                            <select required="required" name="gender"
+
+                                            <select required="required" name="civil_id"
                                                     class="form-control col-md-7 col-xs-12">
-                                                <option value="male">Male</option>
-                                                <option value="female">Female</option>
+                                                @foreach(\App\Report::getCivilOptions() as $key => $civil)
+                                                    <option value="{{ $civil }}" {{ old('civil_id') == $key ? 'selected' : ""}}> {{ $civil }}</option>
+                                                @endforeach
                                             </select>
                                         </div>
                                     </div>
