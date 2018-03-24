@@ -54,7 +54,7 @@
                                                     class="required">*</span>
                                         </label>
                                         <div class="col-md-6 col-sm-6 col-xs-12">
-                                            <select required="required" name="client_id"
+                                            <select name="client_id"
                                                     class="form-control col-md-7 col-xs-12">
                                                 <option value=""> -- Select Client --</option>
                                                 @if(!empty($clients))
@@ -67,28 +67,24 @@
                                     </div>
                                     <div class="form-group">
                                         <label class="control-label col-md-3 col-sm-3 col-xs-12" for="email">Civilité
-                                            <span
-                                                    class="required">*</span>
                                         </label>
                                         <div class="col-md-6 col-sm-6 col-xs-12">
 
-                                            <select required="required" name="civil_id"
+                                            <select name="civil_id"
                                                     class="form-control col-md-7 col-xs-12">
                                                 <option value="">N/C</option>
-                                                @foreach(\App\Report::getCivilOptions() as $key => $civil)
-                                                    <option value="{{ $civil }}"> {{ $civil }}</option>
-                                                @endforeach
+                                                <option value="M.">M.</option>
+                                                <option value="Mme">Mme.</option>
                                             </select>
                                         </div>
                                     </div>
                                     <input type="hidden" name="agent_id" value="{{ \Auth::user()->id }}">
                                     <div class="form-group">
                                         <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first_name">Prénom
-                                            et nom<span
-                                                    class="required">*</span>
+                                            et nom
                                         </label>
                                         <div class="col-md-6 col-sm-6 col-xs-12">
-                                            <input required="" type="text" name="name" class="form-control col-md-7 col-xs-12"
+                                            <input type="text" name="name" class="form-control col-md-7 col-xs-12"
                                                    value="{{old('name')}}">
                                         </div>
                                     </div>
@@ -137,12 +133,38 @@
                                     </div>
 
                                     <div class="form-group">
-                                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="mob">Adresse e-mai<span
-                                                    class="required">*</span>
+                                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="mob">Numéro de
+                                            fax
                                         </label>
                                         <div class="col-md-6 col-sm-6 col-xs-12">
-                                            <input required type="email" name="to_email" class="form-control col-md-7 col-xs-12"
+                                            <input type="text" name="fax" class="form-control col-md-7 col-xs-12"
+                                                   value="{{old('fax')}}">
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="mob">Adresse e-mai
+                                        </label>
+                                        <div class="col-md-6 col-sm-6 col-xs-12">
+                                            <input type="email" name="to_email" class="form-control col-md-7 col-xs-12"
                                                    value="{{old('to_email')}}">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="mob">Numéro de
+                                            sécurité sociale
+                                        </label>
+                                        <div class="col-md-6 col-sm-6 col-xs-12">
+                                            <input type="text" name="security" class="form-control col-md-7 col-xs-12"
+                                                   value="{{old('security')}}">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="mob">Type d'examen
+                                        </label>
+                                        <div class="col-md-6 col-sm-6 col-xs-12">
+                                            <input type="text" name="exam" class="form-control col-md-7 col-xs-12"
+                                                   value="{{old('exam')}}">
                                         </div>
                                     </div>
                                 </div>
@@ -152,23 +174,21 @@
 
                                     <div class="form-group">
                                         <label class="control-label col-md-3 col-sm-3 col-xs-12" for="mob">Object du
-                                            mail<span
-                                                    class="required">*</span>
+                                            mail
                                         </label>
                                         <div class="col-md-6 col-sm-6 col-xs-12">
                                             <input type="text" name="email_subject"
                                                    class="form-control col-md-7 col-xs-12"
-                                                   value="{{old('email_subject')}}" required>
+                                                   value="{{old('email_subject')}}">
                                         </div>
                                     </div>
 
                                     <div class="form-group">
-                                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="add">Message<span
-                                                    class="required">*</span>
+                                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="add">Message
                                         </label>
                                         <div class="col-md-6 col-sm-6 col-xs-12">
                                             <textarea name="message_body" class="form-control col-md-7 col-xs-12"
-                                                      rows="5" required>{{old('message_body')}}</textarea>
+                                                      rows="5">{{old('message_body')}}</textarea>
                                         </div>
                                     </div>
 

@@ -25,8 +25,10 @@
 <div class="urgent">
     <p>{{ $client_name }},</p>
     <br/>
-    <p>{{ $message_body }}</p>
-    <br/>
+    @if(isset($message_body))
+        <p>{{ $message_body }}</p>
+        <br/>
+    @endif
 </div>
 <table name="patient_table" border="0" cellpadding="0" cellspacing="0" height="100%" width="100%" class="patient_data">
     @if(isset($civil_id))
@@ -59,10 +61,28 @@
             <td width="80%" style="padding-top: 15px;">{{ @$mobile }}</td>
         </tr>
     @endif
+    @if(isset($fax))
+        <tr>
+            <td width="20%" style="padding-top: 15px;font-weight:bold;">Numéro de fax:</td>
+            <td width="80%" style="padding-top: 15px;">{{ @$fax }}</td>
+        </tr>
+    @endif
     @if(isset($to_email))
         <tr>
             <td width="20%" style="padding-top: 15px;font-weight:bold;">Adresse mail:</td>
             <td width="80%" style="padding-top: 15px;">{{ @$to_email }}</td>
+        </tr>
+    @endif
+    @if(isset($security))
+        <tr>
+            <td width="20%" style="padding-top: 15px;font-weight:bold;">Numéro de sécurité sociale:</td>
+            <td width="80%" style="padding-top: 15px;">{{ @$security }}</td>
+        </tr>
+    @endif
+    @if(isset($exam))
+        <tr>
+            <td width="20%" style="padding-top: 15px;font-weight:bold;">Type d'examen:</td>
+            <td width="80%" style="padding-top: 15px;">{{ @$exam }}</td>
         </tr>
     @endif
     <tr>

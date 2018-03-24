@@ -19,7 +19,9 @@ class MessageToolController extends Controller
     }
 
     public function sendMessageEmail(Request $request){
-
+        if(empty($request->client_id)){
+            return redirect()->back()->withInput()->with('error', 'Email not send.Please select the client.');
+        }
         if(!empty($request)){
 
             $emailTo = Client::where('id',$request->client_id)->pluck('email')->toArray();
@@ -45,7 +47,11 @@ class MessageToolController extends Controller
                     }if(!empty($emailBcc)){
                         $message->bcc($emailBcc);
                     }
-                    $message->subject($subject_content);
+                    if(!empty($subject_content)) {
+                        $message->subject($subject_content);
+                    }else{
+                        $message->subject("Message");
+                    }
                 });
 
             } catch (\Exception $e) {
