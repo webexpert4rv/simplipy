@@ -119,7 +119,7 @@
                                         </div>
                                     </div>
 
-                                    <div class="form-group">
+                                    {{--<div class="form-group">
                                         <label class="control-label col-md-3 col-sm-3 col-xs-12" for="post_code">Code
                                             Postal
                                         </label>
@@ -128,7 +128,7 @@
                                                    class="form-control col-md-7 col-xs-12"
                                                    value="{{old('postal_code')}}">
                                         </div>
-                                    </div>
+                                    </div>--}}
 
                                     <div class="form-group">
                                         <label class="control-label col-md-3 col-sm-3 col-xs-12" for="post_code">Complément d'adresse
@@ -259,17 +259,30 @@
             var autocomplete = new google.maps.places.Autocomplete(input);
             autocomplete.addListener('place_changed', function () {
                 var place = autocomplete.getPlace();
-
+                //debugger;
+                //alert(place);
                 for (var i = 0; i < place.address_components.length; i++) {
                     if (place.address_components[i].types[0] == 'postal_code') {
                         var post_code = place.address_components[i].long_name;
                         $('#postal_code').val(post_code);
                     }
-                    /*if(place.address_components[i].types[0] == 'locality'){
+                    if(place.address_components[i].types[0] == 'locality'){
                      var city = place.address_components[i].long_name;
                      $('#city').val(city);
-                     }*/
+                     }
                 }
+                //var str = place;
+                var fulladdress = $('#pac-input').val();
+                if(typeof post_code != "undefined"){
+                    var match = fulladdress.match(post_code+" "+city);
+                    if(match == null) {
+                        fulladdress = fulladdress.replace(city, post_code + " " + city);
+                    }
+                }
+                $('#pac-input').val(fulladdress);
+                //var res = string.match(city);
+                //console.log(res);
+
             });
         }
     </script>

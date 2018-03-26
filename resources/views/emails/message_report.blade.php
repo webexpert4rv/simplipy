@@ -58,7 +58,7 @@
     @if(isset($address))
         <tr>
             <td width="20%" style="padding-top: 15px;font-weight:bold;">Adresse postale:</td>
-            <td width="80%" style="padding-top: 15px;">{{ @$address }}, {{ @$postal_code }}</td>
+            <td width="80%" style="padding-top: 15px;">{{ @$address }}</td>
         </tr>
     @endif
     @if(isset($complete_address))
