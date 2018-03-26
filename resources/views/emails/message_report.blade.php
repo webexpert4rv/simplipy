@@ -23,7 +23,7 @@
 </head>
 <body>
 <div class="urgent">
-    <p>{{ $client_name }},</p>
+    <p>Bonjour,</p>
     <br/>
     @if(isset($message_body))
         <p>{{ $message_body }}</p>
@@ -39,8 +39,14 @@
     @endif
     @if(isset($name))
         <tr>
-            <td width="20%" style="padding-top: 15px;font-weight:bold;">Nom et prénom:</td>
+            <td width="20%" style="padding-top: 15px;font-weight:bold;">Nom:</td>
             <td width="80%" style="padding-top: 15px;">{{ @$name }}</td>
+        </tr>
+    @endif
+    @if(isset($last_name))
+        <tr>
+            <td width="20%" style="padding-top: 15px;font-weight:bold;">Prénom:</td>
+            <td width="80%" style="padding-top: 15px;">{{ @$last_name }}</td>
         </tr>
     @endif
     @if(isset($dob))
@@ -53,6 +59,12 @@
         <tr>
             <td width="20%" style="padding-top: 15px;font-weight:bold;">Adresse postale:</td>
             <td width="80%" style="padding-top: 15px;">{{ @$address }}, {{ @$postal_code }}</td>
+        </tr>
+    @endif
+    @if(isset($complete_address))
+        <tr>
+            <td width="20%" style="padding-top: 15px;font-weight:bold;">Complément d'adresse:</td>
+            <td width="80%" style="padding-top: 15px;">{{ @$complete_address }}</td>
         </tr>
     @endif
     @if(isset($mobile))

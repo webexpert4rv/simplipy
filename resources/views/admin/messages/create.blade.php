@@ -80,12 +80,20 @@
                                     </div>
                                     <input type="hidden" name="agent_id" value="{{ \Auth::user()->id }}">
                                     <div class="form-group">
-                                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first_name">Prénom
-                                            et nom
+                                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first_name">Nom
                                         </label>
                                         <div class="col-md-6 col-sm-6 col-xs-12">
                                             <input type="text" name="name" class="form-control col-md-7 col-xs-12"
                                                    value="{{old('name')}}">
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first_name">Prénom
+                                        </label>
+                                        <div class="col-md-6 col-sm-6 col-xs-12">
+                                            <input type="text" name="last_name" class="form-control col-md-7 col-xs-12"
+                                                   value="{{old('last_name')}}">
                                         </div>
                                     </div>
 
@@ -119,6 +127,16 @@
                                             <input type="text" id="postal_code" name="postal_code"
                                                    class="form-control col-md-7 col-xs-12"
                                                    value="{{old('postal_code')}}">
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="post_code">Complément d'adresse
+                                        </label>
+                                        <div class="col-md-6 col-sm-6 col-xs-12">
+                                            <input type="text" name="complete_address"
+                                                   class="form-control col-md-7 col-xs-12"
+                                                   value="{{old('complete_address')}}">
                                         </div>
                                     </div>
 
@@ -241,6 +259,7 @@
             var autocomplete = new google.maps.places.Autocomplete(input);
             autocomplete.addListener('place_changed', function () {
                 var place = autocomplete.getPlace();
+
                 for (var i = 0; i < place.address_components.length; i++) {
                     if (place.address_components[i].types[0] == 'postal_code') {
                         var post_code = place.address_components[i].long_name;
