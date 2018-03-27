@@ -161,7 +161,7 @@
                                     </div>
 
                                     <div class="form-group">
-                                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="mob">Adresse e-mai
+                                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="mob">Adresse e-mail
                                         </label>
                                         <div class="col-md-6 col-sm-6 col-xs-12">
                                             <input type="email" name="to_email" class="form-control col-md-7 col-xs-12"
@@ -230,7 +230,7 @@
 @endsection
 @section('scripts')
     <script type="text/javascript" src="<?php echo(asset('js/admin_dist/bootstrap-datepicker.js')); ?>"></script>
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAOHjLVDgGV6Ww3XAqU44BzFEY00otrndQ&libraries=places&callback=initAutocomplete"
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD9BslwF5YsiVo0euSXCtyeue6wz4j299g&libraries=places&callback=initAutocomplete"
             async defer></script>
     <script>
         $(".datepicker").datepicker({format: "dd-mm-yyyy", autoclose: true, endDate: new Date()});
@@ -255,7 +255,7 @@
         function initAutocomplete() {
             var input = document.getElementById('pac-input');
             var searchBox = new google.maps.places.SearchBox(input);
-            //map.controls[google.maps.ControlPosition.TOP_LEFT].push(input);
+            //maps.controls[google.maps.ControlPosition.TOP_LEFT].push(input);
             var autocomplete = new google.maps.places.Autocomplete(input);
             autocomplete.addListener('place_changed', function () {
                 var place = autocomplete.getPlace();
@@ -271,7 +271,7 @@
                      $('#city').val(city);
                      }
                 }
-                //var str = place;
+
                 var fulladdress = $('#pac-input').val();
                 if(typeof post_code != "undefined"){
                     var match = fulladdress.match(post_code+" "+city);
@@ -280,8 +280,6 @@
                     }
                 }
                 $('#pac-input').val(fulladdress);
-                //var res = string.match(city);
-                //console.log(res);
 
             });
         }

@@ -245,7 +245,7 @@
 @endsection
 @section('scripts')
     <script type="text/javascript" src="<?php echo(asset('js/admin_dist/bootstrap-datepicker.js')); ?>"></script>
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAOHjLVDgGV6Ww3XAqU44BzFEY00otrndQ&libraries=places&callback=initAutocomplete" async defer></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD9BslwF5YsiVo0euSXCtyeue6wz4j299g&libraries=places&callback=initAutocomplete" async defer></script>
     <script>
         $(".datepicker").datepicker({format: "dd-mm-yyyy", autoclose: true, endDate: new Date()});
 
@@ -277,6 +277,14 @@
                         $('#city').val(city);
                     }
                 }
+                var fulladdress = $('#pac-input').val();
+                if(typeof post_code != "undefined"){
+                    var match = fulladdress.match(post_code+" "+city);
+                    if(match == null) {
+                        fulladdress = fulladdress.replace(city, post_code + " " + city);
+                    }
+                }
+                $('#pac-input').val(fulladdress);
             });
         }
     </script>
