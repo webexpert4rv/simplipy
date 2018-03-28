@@ -123,7 +123,7 @@ class ClientController extends Controller
 
         $validator = \Validator::make($request->all(), [
             'agent' => 'required',
-            'email' => 'required|unique:replyto_emails,email',
+            'email' => 'required',
         ]);
 
         if ($validator->fails()) {
@@ -158,7 +158,7 @@ class ClientController extends Controller
         //return $request->all();
         $validator = \Validator::make($request->all(), [
             'agent' => 'required',
-            'email' => 'required|unique:replyto_emails,email,'.$id,
+            'email' => 'required',
         ]);
 
         if ($validator->fails()) {
