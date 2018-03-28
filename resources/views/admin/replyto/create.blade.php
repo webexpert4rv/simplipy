@@ -59,7 +59,6 @@
                                                     <option value="{{$agent->id }}">{{ $agent->userProfile->first_name }} {{ $agent->userProfile->last_name }}</option>
                                                     @endif
                                                 @endforeach
-
                                             @endif
                                         </select>
                                     </div>

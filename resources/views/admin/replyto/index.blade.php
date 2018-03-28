@@ -39,7 +39,7 @@
                                 <small>des {!! $page_title !!}</small>
                             </h2>
                             <div class="pull-right">
-                               {!! $add_link !!}
+                                {!! $add_link !!}
                             </div>
                             {{--<ul class="nav navbar-right panel_toolbox">
                                 <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
@@ -78,15 +78,21 @@
                                 @foreach($models as $model)
                                     <tr>
                                         <td>{{ $loop->iteration}}</td>
-                                        <td>{{ @$model->userProfile->first_name }} {{ @$model->userProfile->last_name }}</td>
+                                        @if($model->user_id == 0)
+                                            <td>Default</td>
+                                        @else
+                                            <td>{{ @$model->userProfile->first_name }} {{ @$model->userProfile->last_name }}</td>
+                                        @endif
                                         <td>{{ $model->email }}</td>
                                         <td>
-                                            <a href=" {{route('replyto.edit',[$model->id])}} "><i class="fa fa-pencil"></i></a>
-                                            {!! Form::open(['style' => 'display: inline;', 'method' => 'DELETE', 'onsubmit' => 'return confirm(\'Supprimer ? \');',  'route' => array('replyto.destroy', $model->id)]) !!}
-                                            <button type="submit" class="btn btn-xs btn-danger"><i
-                                                        class="fa fa-remove"></i></button>
-                                            {!! Form::close() !!}
-
+                                            <a href=" {{route('replyto.edit',[$model->id])}} "><i
+                                                        class="fa fa-pencil"></i></a>
+                                            @if($model->user_id != 0)
+                                                {!! Form::open(['style' => 'display: inline;', 'method' => 'DELETE', 'onsubmit' => 'return confirm(\'Supprimer ? \');',  'route' => array('replyto.destroy', $model->id)]) !!}
+                                                <button type="submit" class="btn btn-xs btn-danger"><i
+                                                            class="fa fa-remove"></i></button>
+                                                {!! Form::close() !!}
+                                            @endif
                                         </td>
                                     </tr>
                                 @endforeach
@@ -118,7 +124,7 @@
                 "sInfo": "Affichage _START_ de _END_ sur _TOTAL_ entrées",
                 paginate: {
                     previous: 'Précédent',
-                    next:     'Suivant'
+                    next: 'Suivant'
                 },
 
             }

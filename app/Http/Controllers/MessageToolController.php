@@ -28,13 +28,14 @@ class MessageToolController extends Controller
             $client_name = Client::where('id',$request->client_id)->first();
             $request->merge(['client_name'=>$client_name->name]);
             $replyTo = ReplyToEmail::where('user_id',$request->agent_id)->pluck('email')->toArray();
+            $defaultReplyTo = ReplyToEmail::where('user_id',0)->pluck('email')->toArray();
             $emailBcc = BccEmail::pluck('email')->toArray();
 
             //return $request->all();
             $formdata = $request->all();
             $subject_content = $request->email_subject;
             try {
-                Mail::send('emails.message_report', $formdata, function ($message) use ($emailTo, $replyTo, $emailBcc, $subject_content) {
+                Mail::send('emails.message_report', $formdata, function ($message) use ($emailTo, $replyTo, $defaultReplyTo, $emailBcc, $subject_content) {
                     //$message->to("rajat_jain@rvtechnologies.co.in");
                     if(empty($emailTo)){
                         //$message->to("admin@simplify-crm.com");
@@ -44,6 +45,8 @@ class MessageToolController extends Controller
                         //$message->to("rajat_jain@rvtechnologies.co.in");
                     }if(!empty($replyTo)){
                         $message->replyTo($replyTo);
+                    }else{
+                        $message->replyTo($defaultReplyTo);
                     }if(!empty($emailBcc)){
                         $message->bcc($emailBcc);
                     }

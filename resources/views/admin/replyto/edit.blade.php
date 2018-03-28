@@ -50,6 +50,11 @@
                                                 class="required">*</span>
                                     </label>
                                     <div class="col-md-6 col-sm-6 col-xs-12">
+                                        @if($replyto->user_id == 0)
+                                            <select id="agent_field" class="form-control" disabled>
+                                                <option value="">Default</option>
+                                            </select>
+                                        @else
                                         <select id="agent_field" class="form-control" disabled>
                                             @if(!empty($agents))
                                                 @foreach($agents as $agent)
@@ -57,6 +62,7 @@
                                                 @endforeach
                                             @endif
                                         </select>
+                                        @endif
                                         <input type="hidden" name="agent" value="{{ $replyto->user_id }}">
                                     </div>
                                 </div>

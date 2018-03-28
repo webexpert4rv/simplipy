@@ -101,7 +101,7 @@
         <td style="padding-top: 40px;">Cordialement,</td>
     </tr>
     <tr>
-        <td style="padding-bottom: 40px;">Votre télésecretariat Simplify</td>
+        <td style="padding-bottom: 40px;">Votre télésecrétariat Simplify</td>
     </tr>
 </table>
 </body>
