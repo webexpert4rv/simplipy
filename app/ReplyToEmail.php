@@ -15,7 +15,8 @@ class ReplyToEmail extends Model
     }
 
     public static function checkIfUserReplyTo($user_id){
-        if(!empty($user_id)){
+
+        if(!empty($user_id) || $user_id == 0){
             $check = ReplyToEmail::where('user_id',$user_id)->count();
             if($check > 0){
                 return 1;

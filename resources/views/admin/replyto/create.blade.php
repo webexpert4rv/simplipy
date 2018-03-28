@@ -7,7 +7,7 @@
                 <div class="title_left">
                     <ul class="breadcrumb">
                         <li>
-                           {!! $back_link !!}
+                            {!! $back_link !!}
                         </li>
                         <li class="active">
                             {!! $page_title !!}
@@ -42,7 +42,8 @@
                         </div>
                         <div class="x_content">
                             <br/>
-                            <form id="demo-form2" data-parsley-validate class="form-horizontal form-label-left admin_create"
+                            <form id="demo-form2" data-parsley-validate
+                                  class="form-horizontal form-label-left admin_create"
                                   method="post" action="{!! @$add_link !!}">
                                 {!! csrf_field() !!}
                                 <div class="form-group">
@@ -53,10 +54,14 @@
                                         <select id="agent_field" class="form-control" name="agent" required>
                                             @if(!empty($agents))
                                                 <option value=""> -- Select Agent --</option>
+                                                @php $checkIfUserReplyTo = \App\ReplyToEmail::checkIfUserReplyTo(0); @endphp
+                                                @if($checkIfUserReplyTo != 1)
+                                                    <option value="0">Default</option>
+                                                @endif
                                                 @foreach($agents as $agent)
                                                     @php $checkIfUserReplyTo = \App\ReplyToEmail::checkIfUserReplyTo($agent->id); @endphp
                                                     @if($checkIfUserReplyTo != 1)
-                                                    <option value="{{$agent->id }}">{{ $agent->userProfile->first_name }} {{ $agent->userProfile->last_name }}</option>
+                                                        <option value="{{$agent->id }}">{{ $agent->userProfile->first_name }} {{ $agent->userProfile->last_name }}</option>
                                                     @endif
                                                 @endforeach
                                             @endif
@@ -78,7 +83,7 @@
                                     <div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3">
                                         <a class="btn btn-warning" type="button"
                                            href="{{ url('admin-login-cardif/'.$cancel_link) }}">Annuler</a>
-                                       
+
                                         <button type="submit" class="btn btn-success">Créer</button>
                                     </div>
                                 </div>
