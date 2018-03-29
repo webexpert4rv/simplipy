@@ -73,7 +73,7 @@ class ReportsController extends Controller
         {
             $query = Report::leftJoin('users', 'reports.user_id', '=', 'users.id')
                 ->leftJoin('user_profiles', 'user_profiles.user_id', '=', 'users.id')
-                ->select('reports.*','users.id as uid','user_profiles.user_id','user_profiles.first_name','user_profiles.last_name');
+                ->select('reports.*','users.id as uid','user_profiles.user_id','user_profiles.first_name','user_profiles.last_name','reports.first_name as pname');
 
             if(!empty($user_ids)){
                 $query->whereIn('reports.user_id',$user_ids);
@@ -106,7 +106,7 @@ class ReportsController extends Controller
 
             $query   =   Report::leftJoin('users', 'reports.user_id', '=', 'users.id')
                 ->leftJoin('user_profiles', 'user_profiles.user_id', '=', 'users.id')
-                ->select('reports.*','users.id as uid','user_profiles.user_id','user_profiles.first_name','user_profiles.last_name')
+                ->select('reports.*','users.id as uid','user_profiles.user_id','user_profiles.first_name','user_profiles.last_name','reports.first_name as pname')
                 ->where(function ($query) use ($search) {
                     $query->orWhere('company', 'LIKE',"%{$search}%")
                         ->orWhere('mobile', 'LIKE',"%{$search}%")
@@ -147,7 +147,8 @@ class ReportsController extends Controller
 
         if(!empty($reports))
         {
-            //echo $reports."==";
+            //echo $reports."=="; die;
+
             foreach ($reports as $model)
             {
                 //echo $model->id."--";
@@ -156,7 +157,7 @@ class ReportsController extends Controller
 
                 $nestedData['agent']        =   User::getFullName($model->user_id);
                 $nestedData['created_at']   =   (string)$model->created_at;
-                $nestedData['report']       =   Report::getCivilOptions((int)$model->civil_id).' '.$model->name.' '.$model->first_name;
+                $nestedData['report']       =   Report::getCivilOptions((int)$model->civil_id).' '.$model->name.' '.$model->pname;
                 $nestedData['company']      =   $model->company;
                 $nestedData['mobile']       =   $model->mobile;
                 $nestedData['center']       =   Report::getCenterOptions($model->center_id);
