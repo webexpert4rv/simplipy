@@ -185,6 +185,14 @@
                                                    value="{{old('exam')}}">
                                         </div>
                                     </div>
+                                    <div class="form-group">
+                                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="mob">Date de l'examen
+                                        </label>
+                                        <div class="col-md-6 col-sm-6 col-xs-12">
+                                            <input type="text" name="dateexam" class="form-control col-md-7 col-xs-12"
+                                                   value="{{old('dateexam')}}">
+                                        </div>
+                                    </div>
                                 </div>
                                 <div class="ln_solid"></div>
 

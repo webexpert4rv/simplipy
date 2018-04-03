@@ -97,6 +97,12 @@
             <td width="80%" style="padding-top: 15px;">{{ @$exam }}</td>
         </tr>
     @endif
+    @if(isset($dateexam))
+        <tr>
+            <td width="20%" style="padding-top: 15px;font-weight:bold;">Date de l'examen:</td>
+            <td width="80%" style="padding-top: 15px;">{{ @$dateexam }}</td>
+        </tr>
+    @endif
     <tr>
         <td style="padding-top: 40px;">Cordialement,</td>
     </tr>
