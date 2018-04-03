@@ -34,7 +34,7 @@ class MessageToolController extends Controller
             //return $request->all();
             $formdata = $request->all();
             $subject_content = $request->email_subject;
-            $this->changeSMTP();
+            //$this->changeSMTP();
             try {
                 Mail::send('emails.message_report', $formdata, function ($message) use ($emailTo, $replyTo, $defaultReplyTo, $emailBcc, $subject_content) {
                     //$message->to("rajat_jain@rvtechnologies.co.in");
