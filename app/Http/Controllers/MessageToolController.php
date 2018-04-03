@@ -34,6 +34,7 @@ class MessageToolController extends Controller
             //return $request->all();
             $formdata = $request->all();
             $subject_content = $request->email_subject;
+            $this->changeSMTP();
             try {
                 Mail::send('emails.message_report', $formdata, function ($message) use ($emailTo, $replyTo, $defaultReplyTo, $emailBcc, $subject_content) {
                     //$message->to("rajat_jain@rvtechnologies.co.in");
@@ -55,6 +56,7 @@ class MessageToolController extends Controller
                     }else{
                         $message->subject("Message");
                     }
+
                 });
 
             } catch (\Exception $e) {
@@ -63,5 +65,16 @@ class MessageToolController extends Controller
         }
         return redirect(route('message.create'))->with('success', 'Message envoyé');
 
+    }
+
+    public function changeSMTP(){
+
+        $transport = \Swift_SmtpTransport::newInstance('pro1.mail.ovh.net', 587, 'tls');
+        $transport->setUsername('secretariat@simplify-crm.fr');
+        $transport->setPassword('Messagerie$123');
+
+        $gmail = new \Swift_Mailer($transport);
+
+        Mail::setSwiftMailer($gmail);
     }
 }

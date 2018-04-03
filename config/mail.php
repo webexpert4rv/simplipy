@@ -56,7 +56,7 @@ return [
     */
 
     'from' => [
-        'address' => env('MAIL_FROM_ADDRESS', 'secretariat@simplify-crm.fr'),
+        'address' => env('MAIL_FROM_ADDRESS', 'reporting@simplify-crm.fr'),
         'name' => env('MAIL_FROM_NAME', 'Messagerie Simplify'),
     ],
 
