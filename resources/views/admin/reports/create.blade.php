@@ -46,22 +46,7 @@
                             <form id="demo-form2" data-parsley-validate class="form-horizontal form-label-left"
                                   method="post" action="{{ url('user/reports') }}">
                                 {!! csrf_field() !!}
-                                <div class="first_section">
-                                    <h1 class="fh1" >Centre Médical</h1>
-                                    <div class="form-group">
-                                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="email">Centre <span
-                                                    class="required">*</span>
-                                        </label>
-                                        <div class="col-md-6 col-sm-6 col-xs-12">
-                                            <select required="required" name="center_id"
-                                                    class="form-control col-md-7 col-xs-12">
-                                                @foreach(\App\Report::getCenterOptions() as $key => $center)
-                                                    <option value="{{ $key }}" {{ old('center_id') == $key ? 'selected' : ""}}> {{ $center }}</option>
-                                                @endforeach
-                                            </select>
-                                        </div>
-                                    </div>
-                                </div>
+
                                 <div class="second_section">
                                     <h1 class="fh2">Informations personnelles du patient</h1>
                                     <div class="form-group">
@@ -223,7 +208,31 @@
                                         </div>
                                     </div>
                                     <input type="hidden" name="user_id" value="{{\Illuminate\Support\Facades\Auth::user()->id}}">
-                                </div>    
+                                </div>
+                                <div class="first_section">
+                                    <h1 class="fh1" >Centre Médical</h1>
+                                    <div class="form-group">
+                                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="email">
+                                        </label>
+                                        <div class="col-md-6 col-sm-6 col-xs-12">
+                                            <p style="color: red"><b>Choisissez le BON CENTER</b></p>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="email">Centre <span
+                                                    class="required">*</span>
+                                        </label>
+                                        <div class="col-md-6 col-sm-6 col-xs-12">
+                                            <select required="required" name="center_id"
+                                                    class="form-control col-md-7 col-xs-12">
+                                                <option value="">N/C</option>
+                                                @foreach(\App\Report::getCenterOptions() as $key => $center)
+                                                    <option value="{{ $key }}" {{ old('center_id') == $key ? 'selected' : ""}}> {{ $center }}</option>
+                                                @endforeach
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
                                 <div class="ln_solid"></div>
                                 <div class="form-group">
                                     <div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3 report_btn">
