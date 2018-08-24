@@ -30,6 +30,9 @@ Route::group(['middleware' => 'auth','prefix' => 'user'], function () {
     /** Message Tool Controller **/
     Route::get('message-create', 'MessageToolController@create')->name('message.create');
     Route::post('message-send-email', 'MessageToolController@sendMessageEmail')->name('message.send.email');
+    Route::get('message-search', 'MessageToolController@messageSearch')->name('message.search');
+    Route::any('message-search-optimize', 'MessageToolController@messageSearchOptimize')->name('message.search.optimize');
+    Route::get('message-search-edit/{id}', 'MessageToolController@editMessage')->name('message.search.edit');
 
 });
 Route::group(['namespace' => 'Admin', 'prefix' => 'admin-login-cardif'], function () {

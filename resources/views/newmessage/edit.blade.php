@@ -59,7 +59,7 @@
                                                 <option value=""> -- Select Client --</option>
                                                 @if(!empty($clients))
                                                     @foreach($clients as $key=>$client)
-                                                        <option value="{{ $client->id }}" {{ old('client_id') == $client->id ? 'selected' : ""}} data-name="{{ $client->name }}"> {{ $client->name }}</option>
+                                                        <option value="{{ $client->id }}" {{ $model->client_id == $client->id ? 'selected' : ""}} data-name="{{ $client->name }}"> {{ $client->name }}</option>
                                                     @endforeach
                                                 @endif
                                             </select>
@@ -73,19 +73,20 @@
                                             <select name="civil_id"
                                                     class="form-control col-md-7 col-xs-12">
                                                 <option value="">N/C</option>
-                                                <option value="M.">M.</option>
-                                                <option value="Mme">Mme.</option>
+                                                <option value="M." {{ $model->pre_name == 'M.' ? 'selected' : ""}}>M.</option>
+                                                <option value="Mme" {{ $model->pre_name == 'Mme' ? 'selected' : ""}}>Mme.</option>
                                             </select>
                                         </div>
                                     </div>
-                                    <input type="hidden" name="agent_id" value="{{ \Auth::user()->id }}">
+                                    <input type="hidden" name="agent_id" value="{{ $model->agent_id }}">
+                                    <input type="hidden" name="message_id" value="{{ $model->id }}">
                                     <input type="hidden" name="client_name" value="" id="client_name">
                                     <div class="form-group">
                                         <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first_name">Nom
                                         </label>
                                         <div class="col-md-6 col-sm-6 col-xs-12">
                                             <input type="text" name="name" class="form-control col-md-7 col-xs-12"
-                                                   value="{{old('name')}}">
+                                                   value="{{ $model->name,old('name') }}">
                                         </div>
                                     </div>
 
@@ -94,7 +95,7 @@
                                         </label>
                                         <div class="col-md-6 col-sm-6 col-xs-12">
                                             <input type="text" name="last_name" class="form-control col-md-7 col-xs-12"
-                                                   value="{{old('last_name')}}">
+                                                   value="{{ $model->first_name,old('last_name') }}">
                                         </div>
                                     </div>
 
@@ -104,7 +105,7 @@
                                         </label>
                                         <div class="col-md-6 col-sm-6 col-xs-12">
                                             <input type="text" name="dob" class="form-control col-md-7 col-xs-12"
-                                                   value="{{old('dob')}}">
+                                                   value="{{ $model->birth_date,old('dob') }}">
                                             <p>Date format: (jj/mm/aaaa) </p>
                                         </div>
                                     </div>
@@ -115,7 +116,7 @@
                                         </label>
                                         <div class="col-md-6 col-sm-6 col-xs-12">
                                             <input type="text" id="pac-input" name="address"
-                                                   class="form-control col-md-7 col-xs-12" value="{{old('address')}}"
+                                                   class="form-control col-md-7 col-xs-12" value="{{ $model->address,old('address') }}"
                                                    placeholder="">
                                         </div>
                                     </div>
@@ -137,7 +138,7 @@
                                         <div class="col-md-6 col-sm-6 col-xs-12">
                                             <input type="text" name="complete_address"
                                                    class="form-control col-md-7 col-xs-12"
-                                                   value="{{old('complete_address')}}">
+                                                   value="{{ $model->address2,old('complete_address') }}">
                                         </div>
                                     </div>
 
@@ -147,7 +148,7 @@
                                         </label>
                                         <div class="col-md-6 col-sm-6 col-xs-12">
                                             <input type="text" name="mobile" class="form-control col-md-7 col-xs-12"
-                                                   value="{{old('mobile')}}">
+                                                   value="{{ $model->phone,old('mobile') }}">
                                         </div>
                                     </div>
 
@@ -157,7 +158,7 @@
                                         </label>
                                         <div class="col-md-6 col-sm-6 col-xs-12">
                                             <input type="text" name="fax" class="form-control col-md-7 col-xs-12"
-                                                   value="{{old('fax')}}">
+                                                   value="{{$model->fax,old('fax')}}">
                                         </div>
                                     </div>
 
@@ -166,7 +167,7 @@
                                         </label>
                                         <div class="col-md-6 col-sm-6 col-xs-12">
                                             <input type="email" name="to_email" class="form-control col-md-7 col-xs-12"
-                                                   value="{{old('to_email')}}">
+                                                   value="{{$model->email,old('to_email')}}">
                                         </div>
                                     </div>
                                     <div class="form-group">
@@ -175,7 +176,7 @@
                                         </label>
                                         <div class="col-md-6 col-sm-6 col-xs-12">
                                             <input type="text" name="security" class="form-control col-md-7 col-xs-12"
-                                                   value="{{old('security')}}">
+                                                   value="{{$model->security_no,old('security')}}">
                                         </div>
                                     </div>
                                     <div class="form-group">
@@ -183,7 +184,7 @@
                                         </label>
                                         <div class="col-md-6 col-sm-6 col-xs-12">
                                             <input type="text" name="exam" class="form-control col-md-7 col-xs-12"
-                                                   value="{{old('exam')}}">
+                                                   value="{{$model->exam_type,old('exam')}}">
                                         </div>
                                     </div>
                                     <div class="form-group">
@@ -191,7 +192,7 @@
                                         </label>
                                         <div class="col-md-6 col-sm-6 col-xs-12">
                                             <input type="text" name="dateexam" class="form-control col-md-7 col-xs-12"
-                                                   value="{{old('dateexam')}}">
+                                                   value="{{$model->date_of_exam,old('dateexam')}}">
                                         </div>
                                     </div>
                                 </div>
@@ -206,7 +207,7 @@
                                         <div class="col-md-6 col-sm-6 col-xs-12">
                                             <input type="text" name="email_subject"
                                                    class="form-control col-md-7 col-xs-12"
-                                                   value="{{old('email_subject')}}">
+                                                   value="{{$model->subject,old('email_subject')}}">
                                         </div>
                                     </div>
 
@@ -215,7 +216,7 @@
                                         </label>
                                         <div class="col-md-6 col-sm-6 col-xs-12">
                                             <textarea name="message_body" class="form-control col-md-7 col-xs-12"
-                                                      rows="5">{{old('message_body')}}</textarea>
+                                                      rows="5">{{$model->message,old('message_body')}}</textarea>
                                         </div>
                                     </div>
 
@@ -258,13 +259,10 @@
                     return false;
                 }
             });
-
             $("#clients_select").change(function(){
                 var selectedClient = $("#clients_select option:selected").attr('data-name');
                 $('#client_name').val(selectedClient);
             });
-
-            //console.log(( "#clients_select option:selected" ).val());
 
         });
 
@@ -283,9 +281,9 @@
                         $('#postal_code').val(post_code);
                     }
                     if(place.address_components[i].types[0] == 'locality'){
-                     var city = place.address_components[i].long_name;
-                     $('#city').val(city);
-                     }
+                        var city = place.address_components[i].long_name;
+                        $('#city').val(city);
+                    }
                 }
 
                 var fulladdress = $('#pac-input').val();
