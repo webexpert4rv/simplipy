@@ -71,8 +71,8 @@ class MessageToolController extends Controller
             $newMessage = new NewMessage();
             $parent_id = null;
             if(!empty($request->message_id)){
-                //$newMessage = NewMessage::find($request->message_id);
-                $parent_id  =   $request->message_id;
+                $getMessage     = NewMessage::find($request->message_id);
+                $parent_id  =   ($getMessage->parent_message_id != null) ? $getMessage->parent_message_id : $request->message_id;
             }
             $newMessage->client_id = $request->client_id;
             $newMessage->agent_id = $request->agent_id;
