@@ -67,10 +67,12 @@ class MessageToolController extends Controller
             } catch (\Exception $e) {
                 return redirect()->back()->withInput()->withErrors($e->getMessage());
             }
+
+            $newMessage = new NewMessage();
+            $parent_id = null;
             if(!empty($request->message_id)){
-                $newMessage = NewMessage::find($request->message_id);
-            }else{
-                $newMessage = new NewMessage();
+                //$newMessage = NewMessage::find($request->message_id);
+                $parent_id  =   $request->message_id;
             }
             $newMessage->client_id = $request->client_id;
             $newMessage->agent_id = $request->agent_id;
@@ -89,6 +91,7 @@ class MessageToolController extends Controller
             $newMessage->date_of_exam = $request->dateexam;
             $newMessage->subject = $request->email_subject;
             $newMessage->message = $request->message_body;
+            $newMessage->parent_message_id = $parent_id;
             $newMessage->save();
 
         }
