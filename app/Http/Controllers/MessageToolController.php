@@ -135,7 +135,7 @@ class MessageToolController extends Controller
         ];
         //echo "sdada".$request->input('sSortDir_0');
 
-        $totalData = NewMessage::where('agent_id',Auth::user()->id)->count();
+        $totalData = NewMessage::count();
         $limit  =   $request->input('iDisplayLength');
         $start  =   $request->input('iDisplayStart');
         $order  =   $columns[$request->input('iSortCol_0')];
@@ -166,8 +166,7 @@ class MessageToolController extends Controller
                         ->orWhere('phone', 'LIKE',"%{$search}%")
                         ->orWhere('email', 'LIKE',"%{$search}%")
                         ->orWhere('created_at', 'LIKE',"%{$search}%")
-                        ->orWhere('exam_type', 'LIKE',"%{$search}%")
-                        ->where('agent_id',Auth::user()->id);
+                        ->orWhere('exam_type', 'LIKE',"%{$search}%");
 
 
             $totalFiltered  =   $query->count();
