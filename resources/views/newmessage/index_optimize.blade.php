@@ -45,7 +45,8 @@
                                     <th class="column-title">Nom</th>
                                     <th class="column-title">Prénom</th>
                                     <th class="column-title">Date Appel</th>
-                                    <th class="column-title">Adresse Postale</th>
+                                    {{--<th class="column-title">Adresse Postale</th>--}}
+                                    <th class="column-title">Agent</th>
                                     <th class="column-title">Numéro de téléphone</th>
                                     <th class="column-title">Adresse e-mail</th>
 
@@ -143,7 +144,7 @@
                     {"mData": "lastname"},
                     {"mData": "name"},
                     {"mData": "date"},
-                    {"mData": "address"},
+                    {"mData": "agent_name"},
                     {"mData": "phone"},
                     {"mData": "email"},
                     {"mData": "exam"},

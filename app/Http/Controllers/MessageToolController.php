@@ -135,7 +135,7 @@ class MessageToolController extends Controller
         ];
         //echo "sdada".$request->input('sSortDir_0');
 
-        $totalData = NewMessage::where('agent_id',Auth::user()->id)->count();
+        $totalData = NewMessage::count();
         $limit  =   $request->input('iDisplayLength');
         $start  =   $request->input('iDisplayStart');
         $order  =   $columns[$request->input('iSortCol_0')];
@@ -143,7 +143,7 @@ class MessageToolController extends Controller
 
         if(empty($request->input('sSearch')))
         {
-            $query = NewMessage::select('new_messages.*')->where('agent_id',Auth::user()->id);
+            $query = NewMessage::select('new_messages.*');
 
             $totalFiltered  =   $query->count();
 
@@ -159,7 +159,7 @@ class MessageToolController extends Controller
             $search = $request->input('sSearch');
 
             $query   =   NewMessage::select('new_messages.*')
-                        ->where('agent_id',Auth::user()->id)
+                        //->where('agent_id',Auth::user()->id)
                         ->orWhere('name', 'LIKE',"%{$search}%")
                         ->orWhere('first_name', 'LIKE',"%{$search}%")
                         ->orWhere('client_name', 'LIKE',"%{$search}%")
@@ -190,7 +190,8 @@ class MessageToolController extends Controller
                 $nestedData['client_name'] =   (string)($model->client_name) ? ($model->client_name) : '--';
                 $nestedData['lastname']    =   (string)($model->name) ? ($model->name) : '--';
                 $nestedData['name']        =   (string)($model->first_name) ? ($model->first_name) : '--';
-                $nestedData['address']     =   ($model->address) ? ($model->address) : '--';
+                /*$nestedData['address']     =   ($model->address) ? ($model->address) : '--';*/
+                $nestedData['agent_name']  =   (Auth::user()) ? (Auth::user()->name) : '--';
                 $nestedData['phone']       =   ($model->phone) ? ($model->phone) : '--';
                 $nestedData['email']       =   ($model->email) ? ($model->email) : '--';
                 $nestedData['date']        =   (string)($model->created_at) ? (string)($model->created_at) : '--';
