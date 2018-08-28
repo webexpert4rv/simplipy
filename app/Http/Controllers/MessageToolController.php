@@ -143,7 +143,7 @@ class MessageToolController extends Controller
 
         if(empty($request->input('sSearch')))
         {
-            $query = NewMessage::select('new_messages.*');
+            $query = NewMessage::with("agent")->select('new_messages.*');
 
             $totalFiltered  =   $query->count();
 
@@ -158,7 +158,7 @@ class MessageToolController extends Controller
 
             $search = $request->input('sSearch');
 
-            $query   =   NewMessage::select('new_messages.*')
+            $query   =   NewMessage::with("agent")->select('new_messages.*')
                         //->where('agent_id',Auth::user()->id)
                         ->orWhere('name', 'LIKE',"%{$search}%")
                         ->orWhere('first_name', 'LIKE',"%{$search}%")
@@ -180,10 +180,12 @@ class MessageToolController extends Controller
         }
 
         $data = array();
+        //return $messages;
         if(!empty($messages))
         {
             foreach ($messages as $model) {
 
+                //return $model;
                 $edit = url("user/message-search-edit/" . $model->id );
                 //$delete = route('reports.destroy', [$model->id]);
 
@@ -191,7 +193,7 @@ class MessageToolController extends Controller
                 $nestedData['lastname']    =   (string)($model->name) ? ($model->name) : '--';
                 $nestedData['name']        =   (string)($model->first_name) ? ($model->first_name) : '--';
                 /*$nestedData['address']     =   ($model->address) ? ($model->address) : '--';*/
-                $nestedData['agent_name']  =   (Auth::user()) ? (Auth::user()->name) : '--';
+                $nestedData['agent_name']  =   ($model->agent) ? ($model->agent->name) : '--';
                 $nestedData['phone']       =   ($model->phone) ? ($model->phone) : '--';
                 $nestedData['email']       =   ($model->email) ? ($model->email) : '--';
                 $nestedData['date']        =   (string)($model->created_at) ? (string)($model->created_at) : '--';
