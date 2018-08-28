@@ -148,7 +148,7 @@ class MessageToolController extends Controller
             $totalFiltered  =   $query->count();
 
             $messages   =   $query->offset($start)
-                ->where('agent_id',Auth::user()->id)
+                //->where('agent_id',Auth::user()->id)
                 ->limit($limit)
                 ->orderBy($order,$dir)
                 ->get();
