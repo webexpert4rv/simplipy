@@ -135,7 +135,7 @@ class MessageToolController extends Controller
         ];
         //echo "sdada".$request->input('sSortDir_0');
 
-        $totalData = NewMessage::count();
+        $totalData = NewMessage::where('agent_id',Auth::user()->id)->count();
         $limit  =   $request->input('iDisplayLength');
         $start  =   $request->input('iDisplayStart');
         $order  =   $columns[$request->input('iSortCol_0')];
@@ -143,7 +143,7 @@ class MessageToolController extends Controller
 
         if(empty($request->input('sSearch')))
         {
-            $query = NewMessage::with("agent")->select('new_messages.*');
+            $query = NewMessage::with("agent")->select('new_messages.*')->where('agent_id',Auth::user()->id);
 
             $totalFiltered  =   $query->count();
 
@@ -159,7 +159,7 @@ class MessageToolController extends Controller
             $search = $request->input('sSearch');
 
             $query   =   NewMessage::with("agent")->select('new_messages.*')
-                        //->where('agent_id',Auth::user()->id)
+                        ->where('agent_id',Auth::user()->id)
                         ->orWhere('name', 'LIKE',"%{$search}%")
                         ->orWhere('first_name', 'LIKE',"%{$search}%")
                         ->orWhere('client_name', 'LIKE',"%{$search}%")
