@@ -135,7 +135,7 @@ class MessageToolController extends Controller
         ];
         //echo "sdada".$request->input('sSortDir_0');
 
-        $totalData = NewMessage::count();
+        $totalData = NewMessage::where('agent_id',Auth::user()->id)->count();
         $limit  =   $request->input('iDisplayLength');
         $start  =   $request->input('iDisplayStart');
         $order  =   $columns[$request->input('iSortCol_0')];
@@ -148,7 +148,7 @@ class MessageToolController extends Controller
             $totalFiltered  =   $query->count();
 
             $messages   =   $query->offset($start)
-                //->where('agent_id',Auth::user()->id)
+                ->where('agent_id',Auth::user()->id)
                 ->limit($limit)
                 ->orderBy($order,$dir)
                 ->get();
@@ -173,6 +173,7 @@ class MessageToolController extends Controller
 
             $messages    =   $query->offset($start)
                 ->limit($limit)
+                ->where('agent_id',Auth::user()->id)
                 ->orderBy($order,$dir)
                 ->get();
 
