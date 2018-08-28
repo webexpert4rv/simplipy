@@ -143,12 +143,11 @@ class MessageToolController extends Controller
 
         if(empty($request->input('sSearch')))
         {
-            $query = NewMessage::select('new_messages.*');
+            $query = NewMessage::select('new_messages.*')->where('agent_id',Auth::user()->id);
 
             $totalFiltered  =   $query->count();
 
             $messages   =   $query->offset($start)
-                ->where('agent_id',Auth::user()->id)
                 ->limit($limit)
                 ->orderBy($order,$dir)
                 ->get();
@@ -160,6 +159,7 @@ class MessageToolController extends Controller
             $search = $request->input('sSearch');
 
             $query   =   NewMessage::select('new_messages.*')
+                        ->where('agent_id',Auth::user()->id)
                         ->orWhere('name', 'LIKE',"%{$search}%")
                         ->orWhere('first_name', 'LIKE',"%{$search}%")
                         ->orWhere('client_name', 'LIKE',"%{$search}%")
@@ -170,7 +170,7 @@ class MessageToolController extends Controller
                         ->orWhere('exam_type', 'LIKE',"%{$search}%");
 
 
-            $totalFiltered  =   $query->where('agent_id',Auth::user()->id)->count();
+            $totalFiltered  =   $query->count();
 
             $messages    =   $query->offset($start)
                 ->limit($limit)
