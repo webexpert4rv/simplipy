@@ -159,7 +159,9 @@ class MessageToolController extends Controller
 
             $search = $request->input('sSearch');
 
-            $query   =   NewMessage::select('new_messages.*')->orWhere('name', 'LIKE',"%{$search}%")
+            $query   =   NewMessage::select('new_messages.*')
+                        ->where('agent_id',Auth::user()->id)
+                        ->orWhere('name', 'LIKE',"%{$search}%")
                         ->orWhere('first_name', 'LIKE',"%{$search}%")
                         ->orWhere('client_name', 'LIKE',"%{$search}%")
                         ->orWhere('address', 'LIKE',"%{$search}%")
@@ -173,7 +175,6 @@ class MessageToolController extends Controller
 
             $messages    =   $query->offset($start)
                 ->limit($limit)
-                ->where('agent_id',Auth::user()->id)
                 ->orderBy($order,$dir)
                 ->get();
 
