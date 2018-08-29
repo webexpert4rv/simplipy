@@ -188,7 +188,7 @@ class MessageToolController extends Controller
                 $edit = url("user/message-search-edit/" . $model->id );
                 //$delete = route('reports.destroy', [$model->id]);
 
-                $nestedData['client_name'] =   (string)($model->client_name) ? ($model->client_name) : '--';
+                $nestedData['client_name'] =   (string)($model->client_name) ? ($model->client_name).'--'.($model->agent_id) : '--';
                 $nestedData['lastname']    =   (string)($model->name) ? ($model->name) : '--';
                 $nestedData['name']        =   (string)($model->first_name) ? ($model->first_name) : '--';
                 /*$nestedData['address']     =   ($model->address) ? ($model->address) : '--';*/
