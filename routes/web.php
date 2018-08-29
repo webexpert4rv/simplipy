@@ -13,14 +13,14 @@
 
 Route::get('/', function () {
     //return view('welcome');
-   return redirect(url('/admin-login-cardif'));
+    return redirect(url('/admin-login-cardif'));
 });
 
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-Route::group(['middleware' => 'auth','prefix' => 'user'], function () {
+Route::group(['middleware' => 'auth', 'prefix' => 'user'], function () {
     Route::resource('/reports', 'ReportsController');
     Route::get('/reports/{id}/duplicate', 'ReportsController@duplicate');
     Route::any('daily/report', 'ReportsController@dailyReport123');
@@ -54,21 +54,21 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'admin-login-cardif'], functio
         Route::post('/profile/{id}/update', 'UserController@profileUpdate');
 
         //Managers
-        Route::get('managers', ['uses'=>'UserController@managers', 'as' => 'admin.managers']);
-        Route::get('managers/{id}/show', ['uses'=>'UserController@show', 'as' => 'admin.managers.show']);
-        Route::get('managers/create', ['uses'=>'UserController@managerCreate', 'as' => 'admin.managers.create']);
-        Route::post('managers/create', ['uses'=>'UserController@store', 'as' => 'admin.managers.store']);
-        Route::get('managers/{id}/edit', ['uses'=>'UserController@edit', 'as' => 'admin.managers.edit']);
-        Route::post('managers/{id}/edit', ['uses'=>'UserController@update', 'as' => 'admin.managers.update']);
+        Route::get('managers', ['uses' => 'UserController@managers', 'as' => 'admin.managers']);
+        Route::get('managers/{id}/show', ['uses' => 'UserController@show', 'as' => 'admin.managers.show']);
+        Route::get('managers/create', ['uses' => 'UserController@managerCreate', 'as' => 'admin.managers.create']);
+        Route::post('managers/create', ['uses' => 'UserController@store', 'as' => 'admin.managers.store']);
+        Route::get('managers/{id}/edit', ['uses' => 'UserController@edit', 'as' => 'admin.managers.edit']);
+        Route::post('managers/{id}/edit', ['uses' => 'UserController@update', 'as' => 'admin.managers.update']);
         Route::delete('/managers/{id}/delete', 'UserController@destroy')->name('admin.managers.destroy');
 
         //Agents
-        Route::get('agents', ['uses'=>'UserController@agents', 'as' => 'admin.agents']);
-        Route::get('agents/{id}/show', ['uses'=>'UserController@show', 'as' => 'admin.agents.show']);
-        Route::get('agents/create', ['uses'=>'UserController@agentCreate', 'as' => 'admin.agents.create']);
-        Route::post('agents/create', ['uses'=>'UserController@store', 'as' => 'admin.agents.store']);
-        Route::get('agents/{id}/edit', ['uses'=>'UserController@edit', 'as' => 'admin.agents.edit']);
-        Route::post('agents/{id}/edit', ['uses'=>'UserController@update', 'as' => 'admin.agents.update']);
+        Route::get('agents', ['uses' => 'UserController@agents', 'as' => 'admin.agents']);
+        Route::get('agents/{id}/show', ['uses' => 'UserController@show', 'as' => 'admin.agents.show']);
+        Route::get('agents/create', ['uses' => 'UserController@agentCreate', 'as' => 'admin.agents.create']);
+        Route::post('agents/create', ['uses' => 'UserController@store', 'as' => 'admin.agents.store']);
+        Route::get('agents/{id}/edit', ['uses' => 'UserController@edit', 'as' => 'admin.agents.edit']);
+        Route::post('agents/{id}/edit', ['uses' => 'UserController@update', 'as' => 'admin.agents.update']);
         Route::delete('/agents/{id}/delete', 'UserController@destroy')->name('admin.agents.destroy');
 
         Route::post('/user/{user_id}/toggle-status', 'UserController@toggleStatus')->name('users.toggle.status');
@@ -144,7 +144,6 @@ Route::get('/info', function () {
     // return \Carbon\Carbon::yesterday()->format('d-m-Y');
 
 
-
 });
 
 
@@ -156,10 +155,9 @@ Route::get('/info', function () {
     });*/
 
 
+Route::get('test-email', function () {
 
-Route::get('test-email',function (){
-
-    \Illuminate\Support\Facades\Mail::raw('This is test email',function($message){
+    \Illuminate\Support\Facades\Mail::raw('This is test email', function ($message) {
         $message->replyTo('kshitiz_agrawal@rvtechnologies.co.in', 'Reply Guy');
         $message->to('rajat_jain@rvtechnologies.co.in');
     });
