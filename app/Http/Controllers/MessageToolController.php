@@ -195,7 +195,7 @@ class MessageToolController extends Controller
                 $nestedData['lastname']    =   (string)($model->name) ? ($model->name) : '--';
                 $nestedData['name']        =   (string)($model->first_name) ? ($model->first_name) : '--';
                 /*$nestedData['address']     =   ($model->address) ? ($model->address) : '--';*/
-                $nestedData['agent_name']  =   ($model->agent_id) ? ($model->agent_id) : '--';
+                $nestedData['agent_name']  =   ($agent->id) ? ($agent->getName()) : '--';
                 $nestedData['phone']       =   ($model->phone) ? ($model->phone) : '--';
                 $nestedData['email']       =   ($model->email) ? ($model->email) : '--';
                 $nestedData['date']        =   (string)($model->created_at) ? (string)($model->created_at) : '--';
