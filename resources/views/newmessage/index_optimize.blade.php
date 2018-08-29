@@ -127,7 +127,7 @@
                 "sAjaxSource": "{{ route('message.search.optimize') }}",
 
                 "fnServerData": function (sSource, aoData, fnCallback, oSettings) {
-
+                    console.log(aoData);
                     oSettings.jqXHR = $.ajax({
                         "dataType": 'json',
                         "type": "GET",
