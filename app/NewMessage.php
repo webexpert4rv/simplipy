@@ -11,6 +11,6 @@ class NewMessage extends Model
 
     public function agent()
     {
-        return $this->belongsTo('App\User', 'agent_id');
+        return $this->belongsTo('App\UserProfile', 'agent_id','user_id');
     }
 }

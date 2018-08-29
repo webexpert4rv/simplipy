@@ -160,15 +160,16 @@ class MessageToolController extends Controller
 
             $search = $request->input('sSearch');
 
-            $query   =   NewMessage::with("agent")->select('new_messages.*')
-                        ->orWhere('name', 'LIKE',"%{$search}%")
-                        ->orWhere('first_name', 'LIKE',"%{$search}%")
-                        ->orWhere('client_name', 'LIKE',"%{$search}%")
-                        ->orWhere('address', 'LIKE',"%{$search}%")
-                        ->orWhere('phone', 'LIKE',"%{$search}%")
-                        ->orWhere('email', 'LIKE',"%{$search}%")
-                        ->orWhere('created_at', 'LIKE',"%{$search}%")
-                        ->orWhere('exam_type', 'LIKE',"%{$search}%");
+            $query   =   NewMessage::leftJoin('user_profiles', 'user_profiles.user_id', '=', 'new_messages.agent_id')->select('new_messages.*')
+                        ->orWhere('new_messages.name', 'LIKE',"%{$search}%")
+                        ->orWhere('new_messages.first_name', 'LIKE',"%{$search}%")
+                        ->orWhere('new_messages.address', 'LIKE',"%{$search}%")
+                        ->orWhere('new_messages.phone', 'LIKE',"%{$search}%")
+                        ->orWhere('new_messages.email', 'LIKE',"%{$search}%")
+                        ->orWhere('new_messages.created_at', 'LIKE',"%{$search}%")
+                        ->orWhere('new_messages.exam_type', 'LIKE',"%{$search}%")
+                        ->orWhere('user_profiles.first_name', 'LIKE',"%{$search}%")
+                        ->orWhere('user_profiles.last_name', 'LIKE',"%{$search}%");
 
 
             $totalFiltered  =   $query->count();
