@@ -6,6 +6,7 @@ use App\BccEmail;
 use App\Client;
 use App\NewMessage;
 use App\ReplyToEmail;
+use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Mail;
@@ -185,6 +186,7 @@ class MessageToolController extends Controller
             foreach ($messages as $model) {
 
                 //return $model;
+                $agent = User::find($model->agent_id);
                 $edit = url("user/message-search-edit/" . $model->id );
                 //$delete = route('reports.destroy', [$model->id]);
 
@@ -192,7 +194,7 @@ class MessageToolController extends Controller
                 $nestedData['lastname']    =   (string)($model->name) ? ($model->name) : '--';
                 $nestedData['name']        =   (string)($model->first_name) ? ($model->first_name) : '--';
                 /*$nestedData['address']     =   ($model->address) ? ($model->address) : '--';*/
-                $nestedData['agent_name']  =   ($model->agent) ? ($model->agent->name) : '--';
+                $nestedData['agent_name']  =   ($agent->name) ? ($agent->name) : '--';
                 $nestedData['phone']       =   ($model->phone) ? ($model->phone) : '--';
                 $nestedData['email']       =   ($model->email) ? ($model->email) : '--';
                 $nestedData['date']        =   (string)($model->created_at) ? (string)($model->created_at) : '--';
