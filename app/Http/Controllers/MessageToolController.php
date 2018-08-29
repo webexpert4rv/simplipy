@@ -129,10 +129,11 @@ class MessageToolController extends Controller
             1   =>  'name',
             2   =>  'first_name',
             3   =>  'address',
-            4   =>  'phone',
-            5   =>  'email',
-            6   =>  'date',
-            7   =>  'exam_type',
+            4   =>  'agent_name',
+            5   =>  'phone',
+            6   =>  'email',
+            7   =>  'date',
+            8   =>  'exam_type',
         ];
         //echo "sdada".$request->input('sSortDir_0');
 
@@ -194,7 +195,7 @@ class MessageToolController extends Controller
                 $nestedData['lastname']    =   (string)($model->name) ? ($model->name) : '--';
                 $nestedData['name']        =   (string)($model->first_name) ? ($model->first_name) : '--';
                 /*$nestedData['address']     =   ($model->address) ? ($model->address) : '--';*/
-                $nestedData['agent_name']  =   ($agent->name) ? ($agent->name) : '--';
+                $nestedData['agent_name']  =   ($model->agent_id) ? ($model->agent_id) : '--';
                 $nestedData['phone']       =   ($model->phone) ? ($model->phone) : '--';
                 $nestedData['email']       =   ($model->email) ? ($model->email) : '--';
                 $nestedData['date']        =   (string)($model->created_at) ? (string)($model->created_at) : '--';
