@@ -7,6 +7,7 @@ use App\Client;
 use App\NewMessage;
 use App\ReplyToEmail;
 use App\User;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Mail;
@@ -128,7 +129,7 @@ class MessageToolController extends Controller
             0   =>  'client_name',
             1   =>  'name',
             2   =>  'first_name',
-            3   =>  'address',
+            3   =>  'created_at',
             4   =>  'agent_name',
             5   =>  'phone',
             6   =>  'email',

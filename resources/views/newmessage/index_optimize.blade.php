@@ -121,7 +121,7 @@
                     "targets": 8,
                     "orderable": false
                 }],
-                "order": [[ 0, "desc" ]],
+                "order": [[ 3, "desc" ]],
                 "bProcessing": true,
                 "bServerSide": true,
                 "sAjaxSource": "{{ route('message.search.optimize') }}",

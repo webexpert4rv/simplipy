@@ -78,7 +78,7 @@
                                             </select>
                                         </div>
                                     </div>
-                                    <input type="hidden" name="agent_id" value="{{ $model->agent_id }}">
+                                    <input type="hidden" name="agent_id" value="{{ \Auth::user()->id }}">
                                     <input type="hidden" name="message_id" value="{{ $model->id }}">
                                     <input type="hidden" name="client_name" value="" id="client_name">
                                     <div class="form-group">
